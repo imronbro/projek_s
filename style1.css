@@ -9,7 +9,7 @@
 .logo {
     height: 60px;
     margin: 20px;
-    item-align: left;
+    float: left;
 }
 
 .promo-text-box {
