@@ -1,6 +1,6 @@
 .home-header {
-    background: #145375;
-    color: #fff;
+    color: #145375;
+    background: #fff;
     padding-top: 10px;
     padding-bottom: 15%;
     text-align: center;
@@ -24,6 +24,12 @@
 
 .title-box h3 {
     margin-bottom: 10px;
+}
+
+.container {
+    justify-content: center;
+    align-items: center;
+    margin-right: 1000px;
 }
 
 .form-container {
