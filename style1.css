@@ -171,6 +171,7 @@ nav{
     margin: 6% auto;
     background-color: #fff;
     padding: 5px;
+    overflow: hidden;
 }
 
 .button-reg{
@@ -232,4 +233,13 @@ nav{
     border: 0;
     outline: none;
     border-radius: 30px;
+    justify-items: center;
+    align-items: center;
+}
+
+#Siswa {
+    left: 50px;
+}
+#Pengajar {
+    left: 50px;
 }

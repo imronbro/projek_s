@@ -11,26 +11,54 @@
         <div class="form-box">
             <div class="button-reg">
                 <div id="btn"></div>
-                <button type="button" class="siswa-btn">Siswa</button>
-                <button type="button" class="siswa-btn">Pengajar</button>
+                <button type="button" class="siswa-btn" onclick="Siswa()">Siswa</button>
+                <button type="button" class="siswa-btn" onclick="Pengajar()">Pengajar</button>
             </div>
-            <form id="Daftar" class="input-regis" method="POST" action="">
-                <div class="input-regist">    
-                    <input type="text" id="full_name" name="full_name" placeholder="Nama" required>
-                </div>
-                <div class="input-regist">
-                    <input type="email" id="email" name="email" placeholder="Masukkan Email" required>
-                </div>
-                <div class="input-regist">
-                    <input type="password" id="password" name="password" placeholder="Masukkan Kata Sandi" required>
-                </div>
-                <div class="input-regist">
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Ulangi Kata Sandi" required>
-                </div>
+            <form id="Siswa" class="input-regis" method="POST" action="">
+                <input type="text" id="full_name" name="full_name" class="input-regist" placeholder="Nama"
+                required>
+                <input type="email" id="email" name="email" class="input-regist" placeholder="Email"
+                required>
+                <input type="password" id="password" name="password" class="input-regist" placeholder="Password"
+                required>
+                <input type="password" id="confirm-password" name="confirm-password" class="input-regist" placeholder="Konfirmasi_password"
+                required>
+                <br><br><br>
+                <button type="submit" class="submit-reg">Daftar</button>
 
-                <button type="submit" class="submit-reg" name="register">Daftar</button>
+            </form>
+            <form id="Pengajar" class="input-regis" method="POST" action="">
+                <input type="text" id="full_name" name="full_name" class="input-regist" placeholder="Nama"
+                required>
+                <input type="email" id="email" name="email" class="input-regist" placeholder="Email"
+                required>
+                <input type="password" id="password" name="password" class="input-regist" placeholder="Password"
+                required>
+                <input type="password" id="confirm-password" name="confirm-password" class="input-regist" placeholder="Konfirmasi_password"
+                required>
+                <br><br><br>
+                <button type="submit" class="submit-reg">Daftar</button>
+
             </form>
         </div>
     </div>
+    <script>
+        var x = document.getElementById("Siswa")
+        var y = document.getElementById("Pengajar")
+        var z = document.getElementById("btn")
+
+        function Siswa(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "110px";
+        }
+
+        function Pengajar(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+        }
+
+    </script>
 </body>
 </html>
