@@ -59,7 +59,7 @@ if (isset($_POST['register'])) {
 
     // Insert ke database
 
-    $query = "INSERT INTO mentor (nama, email_mentor, password) VALUES ('$full_name', '$email', '$hashed_password')";
+    $query = "INSERT INTO mentor (nama, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
 
     
 

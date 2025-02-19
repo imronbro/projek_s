@@ -17,8 +17,7 @@ if ($email === null) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sekolah = mysqli_real_escape_string($conn, $_POST['sekolah']);
-    $kelas = mysqli_real_escape_string($conn, $_POST['kelas']);
+    $mapel = mysqli_real_escape_string($conn, $_POST['mapel']);
     $ttl = mysqli_real_escape_string($conn, $_POST['ttl']);
     $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
     $nohp = mysqli_real_escape_string($conn, $_POST['nohp']);
@@ -52,21 +51,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    $query = "UPDATE siswa SET sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
+    $query = "UPDATE mentor SET sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
     if ($gambar) {
         $query .= ", gambar='$gambar'";
     }
     $query .= " WHERE email='$email'";
     
     if (mysqli_query($conn, $query)) {
-        echo "<script>alert('Profil berhasil diperbarui!'); window.location.href = 'profile.php';</script>";
+        echo "<script>alert('Profil berhasil diperbarui!'); window.location.href = 'profile_mentor.php';</script>";
         exit();
     } else {
         echo "Error: " . $query . "<br>" . mysqli_error($conn);
     }
 }
 
-$query = "SELECT * FROM siswa WHERE email='$email'";
+$query = "SELECT * FROM mentor WHERE email='$email'";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
 if (!$data) {
@@ -94,12 +93,8 @@ if (!$data) {
         <h2 class="text-center">Edit Profil</h2>
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="sekolah" class="form-label">Sekolah</label>
-                <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['sekolah']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" id="kelas" name="kelas" value="<?= htmlspecialchars($data['kelas']); ?>" class="form-control" required>
+                <label for="sekolah" class="form-label">Mata Pelajaran</label>
+                <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['mapel']); ?>" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="ttl" class="form-label">Tanggal Lahir</label>

@@ -16,11 +16,13 @@ if (!$conn) {
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 
 if ($email) {
-    $query = "SELECT full_name, email, sekolah, alamat, gambar, kelas, ttl, nohp 
-              FROM siswa 
-              WHERE email = '$email'";
-    $result = mysqli_query($conn, $query);
+    $query = "SELECT full_name, email, sekolah, alamat, gambar, kelas, ttl, nohp FROM siswa WHERE email = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $data = mysqli_fetch_assoc($result);
+    mysqli_stmt_close($stmt);
 } else {
     echo "<script>alert('Anda belum login!'); window.location.href='login.php';</script>";
     exit();
@@ -41,9 +43,16 @@ if ($email) {
         }
         .card {
             background-color: #145375;
-            color: #fabe49;
-            border: 2px solid #faaf1d;
+            color:rgb(255, 255, 255);
+            border: 2px solid rgb(255, 255, 255);
         }
+
+        .card p {
+            text-align:justify;
+            padding-left:500px;
+        }
+
+
         .profile-img {
             width: 150px;
             height: 150px;
@@ -59,7 +68,7 @@ if ($email) {
         }
         .btn-secondary {
             background-color: #faaf1d;
-            border-color: #faaf1d;
+            border-color:rgb(88, 79, 59);
             color: #003049;
         }
         .btn-primary:hover {
@@ -79,11 +88,18 @@ if ($email) {
     <div class="container mt-5">
         <h2 class="text-center">Profil Pengguna</h2>
         <div class="card p-3 shadow mb-4 text-center">
-            <?php if (!empty($data['gambar'])): ?>
-                <img src="uploads/<?= htmlspecialchars($data['gambar']); ?>" alt="Foto Profil" class="profile-img">
-            <?php else: ?>
+            <?php 
+            $imagePath = "uploads/" . basename(htmlspecialchars($data['gambar']));
+            if (!empty($data['gambar']) && file_exists($imagePath)) {
+            ?>
+                <img src="<?= $imagePath; ?>" alt="Foto Profil" class="profile-img">
+            <?php 
+            } else { 
+            ?>
                 <img src="uploads/default.png" alt="Foto Profil Default" class="profile-img">
-            <?php endif; ?>
+            <?php 
+            } 
+            ?>
             <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
             <p><strong>Sekolah:</strong> <?= htmlspecialchars($data['sekolah'] ?? '-'); ?></p>

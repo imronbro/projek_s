@@ -6,7 +6,7 @@ if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-    $query = "SELECT * FROM mentor WHERE email_mentor = '$email'";
+    $query = "SELECT * FROM mentor WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_name'] = $user['full_name']; // Simpan nama lengkap di sesi
             $_SESSION['user_email'] = $user['email'];
-            header("Location: home.php");
+            header("Location: home_mentor.php");
             exit();
         } else {
             echo "<script>alert('Password salah!');</script>";
