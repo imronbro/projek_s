@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kehadiran = $_POST['kehadiran'];
 
     // Query INSERT ke tabel presensi
-    $sql = "INSERT INTO siswa (email, sesi, tanggal, kehadiran) 
+    $sql = "INSERT INTO presensi (email, sesi, tanggal, kehadiran) 
             VALUES ('$email', '$sesi', '$tanggal', '$kehadiran')";
 
     if ($conn->query($sql) === TRUE) {
@@ -52,7 +52,7 @@ $email = $_SESSION['user_email'];
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
-            <li><a href="presensi.php">Presensi</a></li>
+            <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
@@ -82,7 +82,7 @@ $email = $_SESSION['user_email'];
             <label for="tanggal">Pilih Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
             <select id="sesi" name="sesi">
-                <option value="Hadir">JHadir</option>
+                <option value="Hadir">Hadir</option>
                 <option value="Izin">Izin</option>
                 <option value="Sakit">Sakit</option>
             </select>
