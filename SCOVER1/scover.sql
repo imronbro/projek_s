@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2025 at 05:04 AM
+-- Generation Time: Feb 19, 2025 at 05:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,20 +92,23 @@ CREATE TABLE `siswa` (
   `sekolah` varchar(255) NOT NULL,
   `kelas` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `presensi` enum('Masuk','Tidak','Izin') NOT NULL,
+  `kehadiran` enum('Hadir','Izin','Sakit') NOT NULL,
+  `sesi` varchar(50) NOT NULL,
+  `tanggal` date NOT NULL,
   `ttl` date NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `jadwal` varchar(255) NOT NULL,
-  `nilai` int(3) NOT NULL
+  `nilai` int(3) NOT NULL,
+  `nohp` varchar(50) NOT NULL,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `siswa`
 --
 
-INSERT INTO `siswa` (`full_name`, `email`, `sekolah`, `kelas`, `password`, `presensi`, `ttl`, `alamat`, `jadwal`, `nilai`) VALUES
-('Firman Tua Parhusip', 'firmanparhusip65@gmail.com', '', '', '$2y$10$RPw4WglnrERBS7U/feKi0OzM4Fcfo8HYfPQ7UlRD/cBPNbMDtSveu', 'Masuk', '0000-00-00', '', '', 0),
-('Imron', 'imron@gmail.com', '', '', '$2y$10$pclOdNdDyFOV/XOf.P4aauk/Ev2VPRcipxTb1SBqoQhl6kTIk3ijS', 'Masuk', '0000-00-00', '', '', 0);
+INSERT INTO `siswa` (`full_name`, `email`, `sekolah`, `kelas`, `password`, `kehadiran`, `sesi`, `tanggal`, `ttl`, `alamat`, `jadwal`, `nilai`, `nohp`, `gambar`) VALUES
+('Firman Tua Parhusip', 'firmanparhusip65@gmail.com', '', '', '$2y$10$UlQODUZ7z5aDMv0Uo.qi1ONNMUGlbg1.iAqse.msJB7xpSVt66ABa', 'Hadir', '', '0000-00-00', '0000-00-00', '', '', 0, '', '');
 
 --
 -- Indexes for dumped tables

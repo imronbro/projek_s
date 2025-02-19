@@ -63,7 +63,7 @@
             <p>Temukan potensi terbaikmu, belajar jadi lebih seru! Scover hadir
               untuk membantumu belajar dengan cara yang lebih mudah, efektif,
               dan menyenangkan! Kami percaya bahwa setiap siswa memiliki
-              potensi luar biasa yang hanya perlu ditemukan dan dikembangkan.</p>
+              potensi luar biasa yang hanya perlu ditemukan dan dikembangkan</p>
         </div>
     </section>
 </body>
