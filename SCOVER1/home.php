@@ -1,6 +1,38 @@
 <?php
 session_start();
 include 'koneksi.php'; // Koneksi database
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Koneksi ke database
+    $conn = new mysqli("localhost", "root", "", "scover");
+
+    // Periksa koneksi
+    if ($conn->connect_error) {
+        die("Koneksi gagal: " . $conn->connect_error);
+    }
+
+    // Ambil data dari form
+    $email = $_POST['email'];  // Pastikan input ini ada di form HTML
+    $sesi = $_POST['sesi'];
+    $tanggal = $_POST['tanggal'];
+    $kehadiran = $_POST['kehadiran'];
+
+    // Query INSERT ke tabel presensi
+    $sql = "INSERT INTO siswa (email, sesi, tanggal, kehadiran) 
+            VALUES ('$email', '$sesi', '$tanggal', '$kehadiran')";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Presensi berhasil disimpan!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Tutup koneksi
+    $conn->close();
+}
+?>
+
+
 
 $email = $_SESSION['user_email'];
 
