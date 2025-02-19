@@ -35,110 +35,55 @@ if ($email) {
     <title>Profil Pengguna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-/* Global Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    margin: 0;
-    padding: 0;
-}
-
-/* Container and Card Styling */
-.container {
-    margin: 50px auto;
-    max-width: 800px;
-    background-color: #34495e;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
-}
-
-.card {
-    background-color: #3b4a5a;
-    padding: 20px;
-    border-radius: 8px;
-    color: #ecf0f1;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card p {
-    margin: 10px 0;
-    font-size: 1.1rem;
-}
-
-.card p strong {
-    color: #3498db;
-}
-
-/* Buttons Styling */
-.btn-primary {
-    display: inline-block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    color: #fff;
-}
-
-.actions {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Back Button */
-.back {
-    background-color: #6c757d;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.back:hover {
-    background-color: #545b62;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        margin: 20px;
-        padding: 15px;
-    }
-
-    .card p {
-        font-size: 1rem;
-    }
-
-    .btn-primary {
-        width: 100%;
-        padding: 12px;
-    }
-
-    .actions {
-        margin-top: 15px;
-    }
-}
-
-</style>
+        body {
+            background-color: #003049;
+            color: #fabe49;
+        }
+        .card {
+            background-color: #145375;
+            color: #fabe49;
+            border: 2px solid #faaf1d;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 3px solid #faaf1d;
+        }
+        .btn-primary {
+            background-color: #0271ab;
+            border-color: #0271ab;
+        }
+        .btn-secondary {
+            background-color: #faaf1d;
+            border-color: #faaf1d;
+            color: #003049;
+        }
+        .btn-primary:hover {
+            background-color: #145375;
+            border-color: #145375;
+        }
+        .btn-secondary:hover {
+            background-color: #fabe49;
+            border-color: #fabe49;
+        }
+        h2 {
+            color: #faaf1d;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h2 class="text-center">Profil Pengguna</h2>
-        <div class="card p-3 shadow mb-4">
+        <div class="card p-3 shadow mb-4 text-center">
+            <?php if (!empty($data['gambar'])): ?>
+                <img src="uploads/<?= htmlspecialchars($data['gambar']); ?>" alt="Foto Profil" class="profile-img">
+            <?php else: ?>
+                <img src="uploads/default.png" alt="Foto Profil Default" class="profile-img">
+            <?php endif; ?>
             <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
             <p><strong>Sekolah:</strong> <?= htmlspecialchars($data['sekolah'] ?? '-'); ?></p>
@@ -146,13 +91,9 @@ body {
             <p><strong>TTL:</strong> <?= htmlspecialchars($data['ttl'] ?? '-'); ?></p>
             <p><strong>Alamat:</strong> <?= htmlspecialchars($data['alamat'] ?? '-'); ?></p>
             <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>
-            <p><strong>Upload Profile:</strong> <?= htmlspecialchars($data['jurusan'] ?? '-'); ?></p>
         </div>
         <a href="home.php" class="btn btn-primary">Kembali</a>
+        <a href="edit_profile.php" class="btn btn-secondary">Edit Profil</a>
     </div>
-    <div class="actions">
-        <a href="edit_profile.php" class="btn btn-primary">Edit Profil</a>
-            </div>
-</body>
 </body>
 </html>
