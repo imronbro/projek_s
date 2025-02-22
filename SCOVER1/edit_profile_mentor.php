@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    $query = "UPDATE mentor SET sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
+    $query = "UPDATE mentor SET mapel='$mapel', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
     if ($gambar) {
         $query .= ", gambar='$gambar'";
     }
@@ -93,8 +93,8 @@ if (!$data) {
         <h2 class="text-center">Edit Profil</h2>
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="sekolah" class="form-label">Mata Pelajaran</label>
-                <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['mapel']); ?>" class="form-control" required>
+                <label for="mapel" class="form-label">Mata Pelajaran</label>
+                <input type="text" id="mapel" name="mapel" value="<?= htmlspecialchars($data['mapel']); ?>" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="ttl" class="form-label">Tanggal Lahir</label>
@@ -116,7 +116,7 @@ if (!$data) {
                 <?php endif; ?>
             </div>
             <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-            <a href="profile.php" class="btn btn-secondary">Kembali</a>
+            <a href="profile_mentor.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </body>

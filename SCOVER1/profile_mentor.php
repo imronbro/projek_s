@@ -16,7 +16,7 @@ if (!$conn) {
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 
 if ($email) {
-    $query = "SELECT nama, email, alamat, gambar, rating, ttl, mapel, nohp FROM mentor WHERE email = ?";
+    $query = "SELECT nama, email, alamat, gambar, ttl, mapel, nohp FROM mentor WHERE email = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -86,7 +86,7 @@ if ($email) {
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center">Profil Pengguna</h2>
+        <h2 class="text-center">Profil Pengguna Pengajar</h2>
         <div class="card p-3 shadow mb-4 text-center">
             <?php 
             $imagePath = "uploads/" . basename(htmlspecialchars($data['gambar']));
@@ -107,8 +107,8 @@ if ($email) {
             <p><strong>Alamat:</strong> <?= htmlspecialchars($data['alamat'] ?? '-'); ?></p>
             <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>
         </div>
-        <a href="home.php" class="btn btn-primary">Kembali</a>
-        <a href="edit_profile.php" class="btn btn-secondary">Edit Profil</a>
+        <a href="home_mentor.php" class="btn btn-primary">Kembali</a>
+        <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
     </div>
 </body>
 </html>
