@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php'; // Koneksi database
-<?php
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Koneksi ke database
     $conn = new mysqli("localhost", "root", "", "scover");
@@ -34,9 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$email = $_SESSION['user_email'];
 
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
