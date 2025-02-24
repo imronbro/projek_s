@@ -65,22 +65,23 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/home.css">
+    
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <div class="logo-circle">LOGO</div>
+            <img src="images/foto4.png" alt="Logo">
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Presensi</a></li>
+            <li><a href="home.php" class="active">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
         </ul>
-        <div class="menu-icon">
+        <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
@@ -120,12 +121,10 @@ $conn->close();
             </form>
         </div>
         <div class="riwayat-presensi">
-    <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensi</a>
-</div>
+            <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensi</a>
+        </div>
     </div>
-    <div class="riwayat-presensi">
-    <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensi</a>
-</div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let today = new Date().toISOString().split('T')[0];
@@ -142,6 +141,11 @@ $conn->close();
                 komentarContainer.style.display = "none";
             }
         }
+        
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+        
     </script>
 </body>
 </html>

@@ -45,16 +45,48 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Presensi</title>
     <link rel="stylesheet" href="css/home.css">
+    <style>
+    .button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .back-button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #2980b9;
+    }
+</style>
+
 </head>
 <body>
-    <nav class="navbar">
+<nav class="navbar">
         <div class="logo">
-            <div class="logo-circle">LOGO</div>
+            <img src="images/foto4.png" alt="Logo">
         </div>
-        <h1 class="title">Riwayat Presensi</h1>
+        <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Kembali</a></li>
+            <li><a href="home.php" class="active">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
         </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <div class="content">
@@ -91,8 +123,36 @@ $result = $stmt->get_result();
                 ?>
             </tbody>
         </table>
+        <div class="button-container">
+    <button class="back-button" onclick="goBack()">Kembali</button>
+</div>
     </div>
 </body>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let today = new Date().toISOString().split('T')[0];
+            document.getElementById("tanggal").value = today;
+        });
+
+        function toggleKomentar() {
+            let kehadiran = document.getElementById("kehadiran").value;
+            let komentarContainer = document.getElementById("komentar-container");
+
+            if (kehadiran === "Izin" || kehadiran === "Sakit") {
+                komentarContainer.style.display = "block";
+            } else {
+                komentarContainer.style.display = "none";
+            }
+        }
+        
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("active");
+        }
+        function goBack() {
+        window.history.back();
+    }
+    </script>
 </html>
 
 <?php
