@@ -81,7 +81,8 @@ $email = $_SESSION['user_email'];
             </select>
             <label for="tanggal">Pilih Tanggal:</label>
             <input type="date" id="tanggal" name="tanggal" required>
-            <select id="sesi" name="sesi">
+            <label for="kehadiran">Pilih Kehadiran:</label>
+            <select id="kehadiran" name="kehadiran">
                 <option value="Hadir">Hadir</option>
                 <option value="Izin">Izin</option>
                 <option value="Sakit">Sakit</option>
