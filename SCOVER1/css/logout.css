@@ -1,0 +1,20 @@
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: rgb(228, 32, 32);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 14px;
+}
+.logout-btn:hover {
+  background-color: rgb(218, 63, 63);
+}
+.logout-btn i {
+  font-size: 30px;
+}

@@ -70,16 +70,16 @@ h2 {
 
 .navbar {
   position: relative;
-  z-index: 1000; /* Pastikan navbar ada di atas elemen lain */
+  z-index: 1000;
 }
 
 .card {
   position: relative;
-  z-index: 1; /* Lebih rendah dari navbar */
+  z-index: 1;
 }
 
 .navbar .nav-links li {
-  margin: 10px 15px;
+  margin: 10px 5px;
   position: relative;
 }
 

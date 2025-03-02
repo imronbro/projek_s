@@ -36,13 +36,13 @@ if ($email) {
     <title>Profil Pengguna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/logout.css">
 </head>
 <body>
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
-        <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
@@ -50,6 +50,7 @@ if ($email) {
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile.php" class="active">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
@@ -90,6 +91,11 @@ if ($email) {
         function toggleMenu() {
             document.querySelector(".nav-links").classList.toggle("active");
         }
+        function confirmLogout() {
+        if (confirm("Apakah Anda yakin ingin keluar?")) {
+            window.location.href = "logout.php";
+        }
+    }
  </script>       
 </html>
 </html>
