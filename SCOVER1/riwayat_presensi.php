@@ -27,10 +27,10 @@ if ($row = $result->fetch_assoc()) {
 $stmt->close();
 
 // Ambil data presensi siswa berdasarkan siswa_id
-$sql = "SELECT tanggal, sesi, status, komentar, created_at 
+$sql = "SELECT tanggal, sesi, status, komentar, waktu_presensi 
         FROM presensi_siswa 
         WHERE siswa_id = ? 
-        ORDER BY tanggal DESC, created_at DESC";
+        ORDER BY tanggal DESC, waktu_presensi DESC";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $siswa_id);
@@ -114,7 +114,7 @@ $result = $stmt->get_result();
                         echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>" . (!empty($row['komentar']) ? htmlspecialchars($row['komentar']) : '-') . "</td>";
-                        echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['waktu_presensi']) . "</td>";
                         echo "</tr>";
                     }
                 } else {

@@ -2,13 +2,13 @@
 session_start();
 include 'koneksi.php'; // File koneksi ke database
 
-// Periksa apakah user sudah login (menggunakan email dalam session)
+// Periksa apakah user sudah login
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
     exit();
 }
 
-$user_email = $_SESSION['user_email']; // Ambil email dari session
+$user_email = $_SESSION['user_email'];
 
 // Ambil siswa_id dan full_name berdasarkan email
 $query = "SELECT siswa_id, full_name FROM siswa WHERE email = ?";
@@ -19,45 +19,60 @@ $result = $stmt->get_result();
 
 if ($row = $result->fetch_assoc()) {
     $siswa_id = $row['siswa_id'];
-    $full_name = $row['full_name']; // Ambil nama lengkap siswa
+    $full_name = $row['full_name'];
 } else {
     echo "<script>alert('Akun tidak ditemukan!'); window.location.href='login.php';</script>";
     exit();
 }
 $stmt->close();
 
+// Cek waktu presensi terakhir
+$sql_cek = "SELECT UNIX_TIMESTAMP(waktu_presensi) as last_presensi FROM presensi_siswa WHERE siswa_id = ? ORDER BY waktu_presensi DESC LIMIT 1";
+$stmt = $conn->prepare($sql_cek);
+$stmt->bind_param("i", $siswa_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+$last_presensi = 0;
+if ($row = $result->fetch_assoc()) {
+    $last_presensi = $row['last_presensi'];
+}
+
 // Jika form disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil data dari form dengan validasi sederhana
     $tanggal = !empty($_POST['tanggal']) ? $_POST['tanggal'] : null;
     $sesi = !empty($_POST['sesi']) ? htmlspecialchars($_POST['sesi']) : null;
     $status = !empty($_POST['kehadiran']) ? htmlspecialchars($_POST['kehadiran']) : null;
     $komentar = !empty($_POST['komentar']) ? htmlspecialchars($_POST['komentar']) : null;
 
-    // Validasi input
     if (!$tanggal || !$sesi || !$status) {
         echo "<script>alert('Semua kolom harus diisi!'); window.history.back();</script>";
         exit();
     }
 
-    // Simpan presensi ke database dengan full_name
-    $sql = "INSERT INTO presensi_siswa (siswa_id, full_name, tanggal, sesi, status, komentar) VALUES (?, ?, ?, ?, ?, ?)";
+    $current_time = time();
+    if ($last_presensi > 0 && ($current_time - $last_presensi) < 5400) {
+        echo "<script>alert('Anda hanya bisa mengisi presensi sekali dalam 90 menit!'); window.history.back();</script>";
+        exit();
+    }
+
+    // Simpan presensi dengan timestamp
+    $sql = "INSERT INTO presensi_siswa (siswa_id, full_name, tanggal, sesi, status, komentar, waktu_presensi) VALUES (?, ?, ?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isssss", $siswa_id, $full_name, $tanggal, $sesi, $status, $komentar);
-
+    
     if ($stmt->execute()) {
         echo "<script>alert('Presensi berhasil disimpan!'); window.location.href='home.php';</script>";
     } else {
         echo "<script>alert('Terjadi kesalahan: " . $stmt->error . "');</script>";
     }
-
+    
     $stmt->close();
 }
 
-// Tutup koneksi database
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
