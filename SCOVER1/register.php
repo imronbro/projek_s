@@ -103,7 +103,7 @@ if (isset($_POST['register'])) {
                 </a>
             </div>
 
-            <h2>Daftar Siswa</h2>
+            <h2>Pendaftaran Siswa</h2>
 
 
             <form method="POST" action="">

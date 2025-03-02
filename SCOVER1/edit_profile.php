@@ -81,6 +81,9 @@ if (!$data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/home.css">
     <style>
         body { background-color: #003049; color: white; }
         .container { background-color: #0271ab; padding: 20px; border-radius: 10px; }
@@ -90,6 +93,25 @@ if (!$data) {
     </style>
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.php">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="profile.php" class="active">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h2 class="text-center">Edit Profil</h2>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -124,5 +146,7 @@ if (!$data) {
             <a href="profile.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
+    <script src="js/menu.js" defer></script>
+    <script src="js/logout.js" defer></script>
 </body>
 </html>

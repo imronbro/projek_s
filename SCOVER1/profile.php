@@ -37,6 +37,7 @@ if ($email) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 <nav class="navbar">
@@ -86,16 +87,7 @@ if ($email) {
         <a href="edit_profile.php" class="btn btn-secondary">Edit Profil</a>
     </div>
 </body>
-<script>
-
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        }
-        function confirmLogout() {
-        if (confirm("Apakah Anda yakin ingin keluar?")) {
-            window.location.href = "logout.php";
-        }
-    }
- </script>       
+<script src="js/menu.js" defer></script>
+<script src="js/logout.js" defer></script> 
 </html>
 </html>

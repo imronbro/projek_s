@@ -80,7 +80,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/home.css">
-    
+    <link rel="stylesheet" href="css/logout.css">
 </head>
 <body>
     <nav class="navbar">
@@ -95,6 +95,7 @@ $conn->close();
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
@@ -139,28 +140,8 @@ $conn->close();
             <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensi</a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let today = new Date().toISOString().split('T')[0];
-            document.getElementById("tanggal").value = today;
-        });
-
-        function toggleKomentar() {
-            let kehadiran = document.getElementById("kehadiran").value;
-            let komentarContainer = document.getElementById("komentar-container");
-
-            if (kehadiran === "Izin" || kehadiran === "Sakit") {
-                komentarContainer.style.display = "block";
-            } else {
-                komentarContainer.style.display = "none";
-            }
-        }
-        
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        }
-        
-    </script>
+    <script src="js/logout.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>

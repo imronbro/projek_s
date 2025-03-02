@@ -45,6 +45,7 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Presensi</title>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/logout.css">
     <style>
     .button-container {
         margin-top: 20px;
@@ -81,6 +82,7 @@ $result = $stmt->get_result();
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
@@ -127,32 +129,16 @@ $result = $stmt->get_result();
     <button class="back-button" onclick="goBack()">Kembali</button>
 </div>
     </div>
-</body>
-
-<script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let today = new Date().toISOString().split('T')[0];
-            document.getElementById("tanggal").value = today;
-        });
-
-        function toggleKomentar() {
-            let kehadiran = document.getElementById("kehadiran").value;
-            let komentarContainer = document.getElementById("komentar-container");
-
-            if (kehadiran === "Izin" || kehadiran === "Sakit") {
-                komentarContainer.style.display = "block";
-            } else {
-                komentarContainer.style.display = "none";
-            }
-        }
-        
-        function toggleMenu() {
-            document.querySelector(".nav-links").classList.toggle("active");
-        }
-        function goBack() {
+    <script src="js/menu.js" defer></script>
+    <script src="js/logout.js" defer></script>
+    <script>        function goBack() {
         window.history.back();
     }
     </script>
+</body>
+
+
+
 </html>
 
 <?php
