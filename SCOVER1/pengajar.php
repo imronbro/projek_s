@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $query);
                             <img src="uploads1/default.png" alt="Foto Default" class="profile-img">
                         <?php } ?>
                         <h4><?= htmlspecialchars($row['nama']); ?></h4>
-                        <p><strong>Mapel:</strong> <?= htmlspecialchars($row['mapel']); ?></p>
+                        <p><strong></strong> <?= htmlspecialchars($row['mapel']); ?></p>
                         <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
                     </div>
                 </div>
