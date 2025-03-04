@@ -59,7 +59,7 @@ if (isset($_POST['register'])) {
 
     // Insert ke database
 
-    $query = "INSERT INTO mentor (nama, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
+    $query = "INSERT INTO mentor (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
 
     
 
@@ -108,8 +108,8 @@ if (isset($_POST['register'])) {
 
             <form method="POST" action="">
                 <div class="input-field">
-                    <label for="full_name">Nama Lengkap</label>
-                    <input type="text" id="full_name" name="full_name" placeholder="Masukkan Nama Lengkap" required>
+                    <label for="full_name">full_name Lengkap</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="Masukkan full_name Lengkap" required>
                 </div>
                 <div class="input-field">
                     <label for="email">Email</label>

@@ -16,7 +16,7 @@ if (!$conn) {
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 
 if ($email) {
-    $query = "SELECT nama, email, alamat, gambar, ttl, mapel, nohp FROM mentor WHERE email = ?";
+    $query = "SELECT full_name, email, alamat, gambar, ttl, mapel, nohp FROM mentor WHERE email = ?";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -36,6 +36,9 @@ if ($email) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Pengguna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/home.css">
     <style>
         body {
             background-color: #003049;
@@ -85,6 +88,25 @@ if ($email) {
     </style>
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home_mentor.php">Presensi</a></li>
+            <li><a href="siswa.php" >Siswa</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="jurnal.php">Jurnal</a></li>
+            <li><a href="profile_mentor.php" class="active">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h2 class="text-center">Profil Pengguna Pengajar</h2>
         <div class="card p-3 shadow mb-4 text-center">
@@ -100,7 +122,7 @@ if ($email) {
             <?php 
             } 
             ?>
-            <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['nama']); ?></p>
+            <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
             <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($data['mapel'] ?? '-'); ?></p>
             <p><strong>TTL:</strong> <?= htmlspecialchars($data['ttl'] ?? '-'); ?></p>
@@ -110,5 +132,8 @@ if ($email) {
         <a href="home_mentor.php" class="btn btn-primary">Kembali</a>
         <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
     </div>
+    <script src="js/logout.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>
