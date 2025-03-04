@@ -81,6 +81,7 @@ $conn->close();
     <title>Dashboard Mentor</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/logout.css">
+    
 </head>
 <body>
 <nav class="navbar">
