@@ -5,6 +5,14 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-color: #ffffff;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+
 }
 
 /* Top Bar */
@@ -18,7 +26,14 @@ body {
     align-items: center;
     border-bottom: 1px solid #6d7a82; /* Warna dan ketebalan garis */
     padding-bottom: 20px; /* Beri sedikit ruang agar tidak terlalu mepet */
+    animation: slideDown 1s ease-out;
 }
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
 
 .container {
     width: 80%;
@@ -73,11 +88,12 @@ body {
     font-size: 18px;
     margin-right: 10px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .social-media a:hover {
     background-color: #fabe49;
+    transform: scale(1.2);
 }
 
 /* Hero Section */
@@ -114,7 +130,16 @@ body {
     margin-top: 20px;
     line-height: 140%;
     font-size: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out 0.5s forwards;
 }
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 
 
 .hero-image {
@@ -138,7 +163,16 @@ body {
     object-fit: cover;
     position: relative;
     top: -53px; /* Geser gambar lebih ke atas */
+    opacity: 0;
+    transform: scale(0.8);
+    animation: zoomIn 1s ease-out 0.8s forwards;
 }
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 
 
 
@@ -226,8 +260,11 @@ body {
     width: 100%;
     padding-top: -30px;
     margin-top: -40px;
+    animation: fadeIn 1s ease-in 1.5s forwards;
 }
+
 
 .footer p {
     font-size: 14px;
 }
+
