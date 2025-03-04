@@ -58,6 +58,8 @@ $result = mysqli_query($conn, $query);
     </style>
         <link rel="stylesheet" href="css/logout.css">
         <link rel="stylesheet" href="css/home.css">
+
+
 </head>
 <body>
 <nav class="navbar">
