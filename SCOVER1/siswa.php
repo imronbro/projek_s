@@ -12,7 +12,7 @@ if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-$query = "SELECT full_name, gambar, sekolah, nohp FROM siswa";
+$query = "SELECT full_name, kelas, alamat, gambar, sekolah, nohp FROM siswa";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -95,6 +95,8 @@ $result = mysqli_query($conn, $query);
                         <?php } ?>
                         <h4><?= htmlspecialchars($row['full_name']); ?></h4>
                         <p><strong></strong> <?= htmlspecialchars($row['sekolah']); ?></p>
+                        <p><strong></strong>Kelas: <?= htmlspecialchars($row['kelas']); ?></p>
+                        <p><strong></strong> <?= htmlspecialchars($row['alamat']); ?></p>
                         <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
                     </div>
                 </div>
