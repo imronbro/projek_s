@@ -3,57 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Keren</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-            background-color: #fff;
-            color: #FFC312;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: #1B4F72;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        select {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 20px;
-            background: #ffffff;
-            color: #0A3D62;
-            border: none;
-            border-radius: 5px;
-        }
-        .schedule {
-            display: none;
-            margin-top: 20px;
-        }
-        .card {
-            background: #FFC312;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease-in-out;
-            color: #0A3D62;
-        }
-        .show {
-            display: block;
-        }
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <title>Dashboard Siswa</title>
+    <link rel="stylesheet" href="css/jadwal.css">
+    <link rel="stylesheet" href="css/logout.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <h1 class="title">Dashboard Siswa</h1>
+        <ul class="nav-links">
+            <li><a href="home.php" class="active">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
     <div class="container">
         <h2>Pilih Kelas</h2>
         <select id="classSelector" onchange="updateClassSections()">
@@ -187,5 +162,8 @@
             }
         }
     </script>
+        <script src="js/logout.js" defer></script>
+        <script src="js/home.js" defer></script>
+        <script src="js/menu.js" defer></script>
 </body>
 </html>
