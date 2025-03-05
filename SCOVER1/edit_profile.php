@@ -66,6 +66,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+function formatNoHP($nohp) {
+    // Pastikan hanya angka
+    $nohp = preg_replace('/[^0-9]/', '', $nohp);
+
+    // Jika diawali dengan 0, ubah menjadi +62
+    if (substr($nohp, 0, 1) === '0') {
+        $nohp = '+62' . substr($nohp, 1);
+    } elseif (substr($nohp, 0, 2) !== '62') {
+        $nohp = '+62' . $nohp;
+    } else {
+        $nohp = '+' . $nohp;
+    }
+
+    return $nohp;
+}
+
 $query = "SELECT * FROM siswa WHERE email='$email'";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
@@ -146,6 +162,22 @@ if (!$data) {
             <a href="profile.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
+    <script>
+        document.getElementById('nohp').addEventListener('input', function (e) {
+            let value = e.target.value;
+            // Hanya angka dan tanda plus yang diperbolehkan
+            value = value.replace(/[^0-9+]/g, '');
+            // Jika dimulai dengan 0, ubah menjadi +62
+            if (value.startsWith('0')) {
+                value = '+62' + value.slice(1);
+            }
+            // Jika dimulai dengan 62 tanpa tanda plus, tambahkan tanda plus
+            if (value.startsWith('62')) {
+                value = '+62' + value.slice(2);
+            }
+            e.target.value = value;
+        });
+    </script>
     <script src="js/menu.js" defer></script>
     <script src="js/logout.js" defer></script>
 </body>
