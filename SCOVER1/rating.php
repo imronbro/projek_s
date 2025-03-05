@@ -82,6 +82,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: none;
             cursor: pointer;
         }
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            gap: 5px;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s, transform 0.2s;
+        }
+        .rating input:checked ~ label,
+        .rating input:hover ~ label {
+            color: gold;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -126,13 +146,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </select>
     
     <label for="rating">Rating:</label>
-    <select name="rating" required>
-        <option value="1">⭐</option>
-        <option value="2">⭐⭐</option>
-        <option value="3">⭐⭐⭐</option>
-        <option value="4">⭐⭐⭐⭐</option>
-        <option value="5">⭐⭐⭐⭐⭐</option>
-    </select>
+
+    <div class="rating">
+    <input type="radio" name="rating" id="star5" value="5">
+    <label for="star5">⭐</label>
+
+    <input type="radio" name="rating" id="star4" value="4">
+    <label for="star4">⭐</label>
+
+    <input type="radio" name="rating" id="star3" value="3">
+    <label for="star3">⭐</label>
+
+    <input type="radio" name="rating" id="star2" value="2">
+    <label for="star2">⭐</label>
+
+    <input type="radio" name="rating" id="star1" value="1">
+    <label for="star1">⭐</label>
+</div>
     
     <label for="komentar">Komentar:</label>
     <textarea name="komentar" placeholder="Tambahkan komentar (opsional)"></textarea>
@@ -143,6 +173,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="js/logout.js" defer></script>
 <script src="js/home.js" defer></script>
 <script src="js/menu.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const stars = document.querySelectorAll(".rating input");
+        const labels = document.querySelectorAll(".rating label");
+
+        stars.forEach((star) => {
+            star.addEventListener("change", function () {
+                updateStars(this.value);
+            });
+        });
+
+        function updateStars(value) {
+            labels.forEach((label, index) => {
+                if (index >= 5 - value) {
+                    label.style.color = "gold";
+                } else {
+                    label.style.color = "#ccc"; 
+                }
+            });
+        }
+    });
+</script>
+
 
 <?php
 mysqli_close($conn);

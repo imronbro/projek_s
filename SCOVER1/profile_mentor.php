@@ -7,12 +7,10 @@ $dbname = "scover";
 
 $conn = mysqli_connect($host, $user, $password, $dbname);
 
-// Cek koneksi
 if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-// Ambil data user berdasarkan email dari session
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 
 if ($email) {
@@ -24,7 +22,6 @@ if ($email) {
     $data = mysqli_fetch_assoc($result);
     mysqli_stmt_close($stmt);
 
-    // Ambil rata-rata rating dari tabel rating_pengajar
     $pengajar_id = $data['pengajar_id'];
     $rating_query = "SELECT AVG(rating) as avg_rating FROM rating_pengajar WHERE pengajar_id = ?";
     $stmt_rating = mysqli_prepare($conn, $rating_query);
@@ -48,11 +45,10 @@ if ($email) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Pengguna</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="css/logout.css">
     <link rel="stylesheet" href="css/home.css">
     <style>
-              body {
+        body {
             background-color: #003049;
             color: #fabe49;
         }
@@ -69,7 +65,6 @@ if ($email) {
             text-align: center;
             margin-right: 20px;
         }
-
         .rating {
             font-size: 18px;
             color: #ffd700;
@@ -78,7 +73,6 @@ if ($email) {
         .profile-info {
             flex-grow: 1;
         }
-
         .profile-img {
             width: 150px;
             height: 150px;
@@ -94,7 +88,7 @@ if ($email) {
         }
         .btn-secondary {
             background-color: #faaf1d;
-            border-color:rgb(88, 79, 59);
+            border-color: rgb(88, 79, 59);
             color: #003049;
         }
         .btn-primary:hover {
@@ -108,16 +102,33 @@ if ($email) {
         h2 {
             color: #faaf1d;
         }
+        .star {
+            font-size: 24px;
+            display: inline-block;
+        }
+        .star.full {
+            color: #ffd700;
+        }
+        .star.empty {
+            color: #d3d3d3; 
+        }
+        .star.partial {
+            background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            position: relative;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
         <ul class="nav-links">
             <li><a href="home_mentor.php">Presensi</a></li>
-            <li><a href="siswa.php" >Siswa</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="jurnal.php">Jurnal</a></li>
             <li><a href="profile_mentor.php" class="active">Profil</a></li>
@@ -145,8 +156,26 @@ if ($email) {
             <?php 
             } 
             ?>
-            <div class="rating">⭐ <?= $average_rating; ?>/5</div>
-            <a href="riwayat_rating.php">Riwayat Rating</a>
+<div class="rating">
+    <?php
+    $fullStars = floor($average_rating); 
+    $decimal = $average_rating - $fullStars;
+    $emptyStars = 5 - ceil($average_rating); 
+    for ($i = 0; $i < $fullStars; $i++) {
+        echo '<span class="star full">★</span>';
+    }
+    if ($decimal > 0) {
+        $percentage = $decimal * 100; 
+        echo '<span class="star partial" style="--fill:' . $percentage . '%;">★</span>';
+    }
+    for ($i = 0; $i < $emptyStars; $i++) {
+        echo '<span class="star empty">★</span>';
+    }
+    ?>
+    <?= number_format($average_rating, 1); ?>/5
+</div>
+
+
             <div class="profile-info">
                 <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
                 <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
@@ -158,6 +187,7 @@ if ($email) {
         </div>
         <a href="home_mentor.php" class="btn btn-primary">Kembali</a>
         <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
+        <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
     </div>
     <script src="js/logout.js" defer></script>
     <script src="js/home.js" defer></script>

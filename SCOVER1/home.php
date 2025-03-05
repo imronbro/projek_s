@@ -1,22 +1,18 @@
 <?php
 session_start();
-include 'koneksi.php'; // File koneksi ke database
+include 'koneksi.php'; 
 
-// Periksa apakah user sudah login
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
     exit();
 }
-
 $user_email = $_SESSION['user_email'];
 
-// Ambil siswa_id dan full_name berdasarkan email
 $query = "SELECT siswa_id, full_name FROM siswa WHERE email = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $user_email);
 $stmt->execute();
 $result = $stmt->get_result();
-
 if ($row = $result->fetch_assoc()) {
     $siswa_id = $row['siswa_id'];
     $full_name = $row['full_name'];
@@ -26,7 +22,6 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-// Cek waktu presensi terakhir
 $sql_cek = "SELECT UNIX_TIMESTAMP(waktu_presensi) as last_presensi FROM presensi_siswa WHERE siswa_id = ? ORDER BY waktu_presensi DESC LIMIT 1";
 $stmt = $conn->prepare($sql_cek);
 $stmt->bind_param("i", $siswa_id);
@@ -39,7 +34,6 @@ if ($row = $result->fetch_assoc()) {
     $last_presensi = $row['last_presensi'];
 }
 
-// Jika form disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal = !empty($_POST['tanggal']) ? $_POST['tanggal'] : null;
     $sesi = !empty($_POST['sesi']) ? htmlspecialchars($_POST['sesi']) : null;
@@ -57,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Simpan presensi dengan timestamp
     $sql = "INSERT INTO presensi_siswa (siswa_id, full_name, tanggal, sesi, status, komentar, waktu_presensi) VALUES (?, ?, ?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isssss", $siswa_id, $full_name, $tanggal, $sesi, $status, $komentar);

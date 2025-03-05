@@ -24,6 +24,7 @@ $email = $_SESSION['user_email'];
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="rating.php">Rating</a></li>
             <li><a href="profil.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
         </ul>
