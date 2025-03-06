@@ -11,13 +11,11 @@ if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-// Periksa apakah user sudah login
 if (!isset($_SESSION['user_email'])) {
     header("Location: loginadmin.php");
     exit();
 }
 
-// Ambil data riwayat rating pengajar beserta nama siswa
 $query = "
     SELECT rp.id, s.full_name AS nama_siswa, rp.pengajar_id, rp.rating, rp.komentar, rp.created_at
     FROM rating_pengajar rp
