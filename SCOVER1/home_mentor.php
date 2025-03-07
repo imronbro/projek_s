@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php'; // File koneksi ke database
+include 'koneksi.php'; 
 
 // Periksa apakah user sudah login
 if (!isset($_SESSION['user_email'])) {

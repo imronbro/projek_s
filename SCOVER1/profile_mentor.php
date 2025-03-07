@@ -179,7 +179,7 @@ if ($email) {
             <div class="profile-info">
                 <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
                 <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
-                <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($data['mapel'] ?? '-'); ?></p>
+                <p><strong>Tutor:</strong> <?= htmlspecialchars($data['mapel'] ?? '-'); ?></p>
                 <p><strong>TTL:</strong> <?= htmlspecialchars($data['ttl'] ?? '-'); ?></p>
                 <p><strong>Alamat:</strong> <?= htmlspecialchars($data['alamat'] ?? '-'); ?></p>
                 <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>

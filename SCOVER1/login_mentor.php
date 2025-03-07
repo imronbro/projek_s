@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
                     </div>
                     <button type="submit" class="btn" name="login">Masuk</button>
-                    <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
+                    <p>Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
                 </form>
             </div>
         </div>

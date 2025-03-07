@@ -108,7 +108,7 @@ if (isset($_POST['register'])) {
 
             <form method="POST" action="">
                 <div class="input-field">
-                    <label for="full_name">full_name Lengkap</label>
+                    <label for="full_name">Nama Lengkap</label>
                     <input type="text" id="full_name" name="full_name" placeholder="Masukkan full_name Lengkap" required>
                 </div>
                 <div class="input-field">
