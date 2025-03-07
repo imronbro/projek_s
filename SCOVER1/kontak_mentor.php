@@ -15,9 +15,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Kami</title>
     <link rel="stylesheet" href="css/kontak.css">
-
+    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home_mentor.php">Presensi</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="jurnal.php">Jurnal</a></li>
+            <li><a href="profile_mentor.php">Profil</a></li>
+            <li><a href="kontak_mentor.php" class="active">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <div class="container">
         <header>
             <h1>Tentang Kami</h1>
@@ -37,5 +57,8 @@
             </div>
         </section>
     </div>
+    <script src="js/logout.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>

@@ -101,7 +101,7 @@ $conn->close();
         <li><a href="kuis.php">Kuis</a></li>
         <li><a href="jurnal.php">Jurnal</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
-        <li><a href="kontak.php">Kontak</a></li>
+        <li><a href="kontak_mentor.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
 </nav>

@@ -130,9 +130,10 @@ if ($email) {
             <li><a href="home_mentor.php">Presensi</a></li>
             <li><a href="siswa.php">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="kuis.php">Kuis</a></li>
             <li><a href="jurnal.php">Jurnal</a></li>
             <li><a href="profile_mentor.php" class="active">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
+            <li><a href="kontak_mentor.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
