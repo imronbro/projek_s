@@ -130,6 +130,22 @@ mysqli_close($conn);
             background-color: #faaf1d;
             color: #003049;
         }
+        /* CSS untuk tombol Kembali */
+.back-button {
+    display: inline-block;
+    background-color: #faaf1d;
+    color: #003049;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #fabe49;
+}
+
     </style>
 </head>
 <body>
@@ -152,6 +168,8 @@ mysqli_close($conn);
             
             <button type="submit">Simpan Nilai</button>
         </form>
+        <a href="home.php" class="back-button">Kembali</a>
+        <a href="input_nilai.php" class="back-button">Riwayat</a>
     </div>
 
     <script>

@@ -117,7 +117,7 @@ if (!$data) {
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php" class="active">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>

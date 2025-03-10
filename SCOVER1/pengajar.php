@@ -69,7 +69,7 @@ $result = mysqli_query($conn, $query);
             <li><a href="pengajar.php" class="active">Pengajar</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
