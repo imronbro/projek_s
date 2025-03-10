@@ -31,22 +31,49 @@ $full_name = $siswa['full_name'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pengajar_id = $_POST["pengajar_id"];
-    $rating = $_POST["rating"];
+    $rating = isset($_POST["rating"]) ? $_POST["rating"] : null;
     $komentar = $_POST["komentar"];
 
-    $sql = "INSERT INTO rating_pengajar (pengajar_id, siswa_id, rating, komentar) VALUES (?, ?, ?, ?)";
+    // Cek apakah rating sudah dipilih
+    if (!$rating) {
+        echo "<script>alert('Harap pilih rating sebelum mengirim.'); window.history.back();</script>";
+        exit();
+    }
+
+    // Cek apakah user sudah memberikan rating dalam 90 menit terakhir
+    $query = "SELECT created_at FROM rating_pengajar WHERE siswa_id = ? ORDER BY created_at DESC LIMIT 1";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $siswa_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $last_rating = $result->fetch_assoc();
+
+    if ($last_rating) {
+        $last_rating_time = strtotime($last_rating['created_at']);
+        $current_time = time();
+        $time_diff = $current_time - $last_rating_time;
+
+        if ($time_diff < 5400) { // 5400 detik = 90 menit
+            echo "<script>alert('Anda hanya bisa memberikan rating setiap 90 menit sekali.'); window.history.back();</script>";
+            exit();
+        }
+    }
+
+    // Simpan rating ke database
+    $sql = "INSERT INTO rating_pengajar (pengajar_id, siswa_id, rating, komentar, created_at) VALUES (?, ?, ?, ?, NOW())";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "iiis", $pengajar_id, $siswa_id, $rating, $komentar);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo "Rating berhasil dikirim!";
+        echo "<script>alert('Rating berhasil dikirim!'); window.location.href = 'rating.php';</script>";
     } else {
-        echo "Terjadi kesalahan: " . mysqli_error($conn);
+        echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
     }
 
     mysqli_stmt_close($stmt);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

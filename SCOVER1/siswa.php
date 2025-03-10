@@ -70,6 +70,7 @@ $result = mysqli_query($conn, $query);
             <li><a href="home_mentor.php">Presensi</a></li>
             <li><a href="siswa.php" class="active">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="kuis.php">Kuis</a></li>
             <li><a href="jurnal.php">Jurnal</a></li>
             <li><a href="profile_mentor.php">Profil</a></li>
             <li><a href="kontak_mentor.php">Kontak</a></li>
