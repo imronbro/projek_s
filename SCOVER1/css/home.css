@@ -10,13 +10,20 @@ body {
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+
   background-color: #003049;
   padding: 15px;
   color: white;
   width: 100%;
+  width: 100%;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .navbar .logo img {
@@ -134,6 +141,32 @@ body {
   bottom: 0;
   left: 0;
   animation: fadeIn 2s ease-in-out;
+}
+
+.logout-btn:hover {
+  background-color: rgb(218, 63, 63);
+}
+.logout-btn i {
+  font-size: 30px;
+}
+
+.logout-btn {
+  background-color: red;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Samakan tinggi dengan menu lainnya */
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
 }
 
 @keyframes fadeIn {
