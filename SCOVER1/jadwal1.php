@@ -22,7 +22,7 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-$sql = "SELECT * FROM jadwal WHERE siswa_id = ? ORDER BY tanggal, sesi";
+$sql = "SELECT * FROM jadwal_siswa WHERE siswa_id = ? ORDER BY tanggal, sesi";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $siswa_id);
 $stmt->execute();
