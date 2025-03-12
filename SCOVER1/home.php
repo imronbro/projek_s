@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php'; 
+include 'koneksi.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
@@ -54,13 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO presensi_siswa (siswa_id, full_name, tanggal, sesi, status, komentar, waktu_presensi) VALUES (?, ?, ?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("isssss", $siswa_id, $full_name, $tanggal, $sesi, $status, $komentar);
-    
+
     if ($stmt->execute()) {
         echo "<script>alert('Presensi berhasil disimpan!'); window.location.href='home.php';</script>";
     } else {
         echo "<script>alert('Terjadi kesalahan: " . $stmt->error . "');</script>";
     }
-    
+
     $stmt->close();
 }
 
@@ -68,19 +68,58 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
+
+    <style>
+        body {
+            background-color: #003049;
+            color: #fabe49;
+        }
+
+        .card {
+            background-color: #145375;
+            color: white;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #faaf1d;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-whatsapp {
+            background-color: #faaf1d;
+            color: #003049;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #fabe49;
+        }
+    </style>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/logout.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
-        <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
             <li><a href="home.php" class="active">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
@@ -138,4 +177,5 @@ $conn->close();
     <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
 </body>
+
 </html>
