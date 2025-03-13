@@ -94,7 +94,7 @@ $conn->close();
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php while ($row = $jadwal_result->fetch_assoc()) { ?>
+        <?php while ($row = $jadwal_result->fetch_assoc()) {
         <tr>
             <td><?= htmlspecialchars($row['full_name']) ?></td>
             <td><?= htmlspecialchars($row['tanggal']) ?></td>
@@ -106,7 +106,7 @@ $conn->close();
                 <a href="hapus_jadwal.php?id=<?= $row['id'] ?>" onclick="return confirm('Hapus jadwal ini?')">Hapus</a>
             </td>
         </tr>
-        <?php } ?>
+        } ?>
     </table>
 </body>
 </html>
