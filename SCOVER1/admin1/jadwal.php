@@ -94,19 +94,22 @@ $conn->close();
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php while ($row = $jadwal_result->fetch_assoc()) { ?>
-        <tr>
-            <td><?= htmlspecialchars($row['full_name']) ?></td>
-            <td><?= htmlspecialchars($row['tanggal']) ?></td>
-            <td><?= htmlspecialchars($row['sesi']) ?></td>
-            <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
-            <td><?= htmlspecialchars($row['pengajar']) ?></td>
-            <td>
-                <a href="edit_jadwal.php?id=<?= $row['id'] ?>">Edit</a> |
-                <a href="hapus_jadwal.php?id=<?= $row['id'] ?>" onclick="return confirm('Hapus jadwal ini?')">Hapus</a>
-            </td>
-        </tr>
-        <?php } ?>
+        <?php if ($jadwal_result->num_rows > 0) {
+    while ($row = $jadwal_result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['pengajar']) . "</td>";
+        echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";
+        echo "<a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
+        echo "</tr>";
+    }
+    } else {
+    echo "<tr><td colspan='6'>Tidak ada data jadwal.</td></tr>";
+    }
+    ?>
     </table>
 </body>
 </html>
