@@ -46,7 +46,7 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Admin - Atur Jadwal</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="jadwal.css"> 
+    <link rel="stylesheet" href="jadwal.css">
 </head>
 <body>
     <h2>Atur Jadwal Siswa</h2>
@@ -90,11 +90,11 @@ $conn->close();
             <th>Siswa</th>
             <th>Tanggal</th>
             <th>Sesi</th>
-            <th>Mata pelajaran</th>
+            <th>Mata Pelajaran</th>
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php while ($row = $jadwal_result->fetch_assoc()) {
+        <?php while ($row = $jadwal_result->fetch_assoc()) { ?>
         <tr>
             <td><?= htmlspecialchars($row['full_name']) ?></td>
             <td><?= htmlspecialchars($row['tanggal']) ?></td>
@@ -106,7 +106,7 @@ $conn->close();
                 <a href="hapus_jadwal.php?id=<?= $row['id'] ?>" onclick="return confirm('Hapus jadwal ini?')">Hapus</a>
             </td>
         </tr>
-        } ?>
+        <?php } ?>
     </table>
 </body>
 </html>
