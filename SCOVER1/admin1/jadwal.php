@@ -46,7 +46,6 @@ $conn->close();
     <meta charset="UTF-8">
     <title>Admin - Atur Jadwal</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="jadwal.css">
 </head>
 <body>
     <h2>Atur Jadwal Siswa</h2>
