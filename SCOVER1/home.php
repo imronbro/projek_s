@@ -170,7 +170,7 @@ $conn->close();
             </form>
         </div>
         <div class="riwayat-presensi">
-            <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensi</a>
+            <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensii</a>
         </div>
     </div>
     <script src="js/logout.js" defer></script>
