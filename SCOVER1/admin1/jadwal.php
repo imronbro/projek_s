@@ -156,7 +156,7 @@ $conn->close();
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php if ($jadwal_result->num_rows > 0) {
+        <?php if (isset($jadwal_result) && $jadwal_result->num_rows > 0) {
     while ($row = $jadwal_result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
