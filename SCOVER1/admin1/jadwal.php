@@ -42,12 +42,75 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <title>Admin - Atur Jadwal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa</title>
+
+    <style>
+        body {
+            background-color: #003049;
+            color: #fabe49;
+        }
+
+        .card {
+            background-color: #145375;
+            color: white;
+            border: 2px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #faaf1d;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-whatsapp {
+            background-color: #faaf1d;
+            color: #003049;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #fabe49;
+        }
+    </style>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/logout.css">
 </head>
+
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.php" class="active">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    
     <h2>Atur Jadwal Siswa</h2>
 
     <!-- Form Tambah Jadwal -->
@@ -93,19 +156,22 @@ $conn->close();
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php while ($row = $jadwal_result->fetch_assoc()) { ?>
-        <tr>
-            <td><?= htmlspecialchars($row['full_name']) ?></td>
-            <td><?= htmlspecialchars($row['tanggal']) ?></td>
-            <td><?= htmlspecialchars($row['sesi']) ?></td>
-            <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
-            <td><?= htmlspecialchars($row['pengajar']) ?></td>
-            <td>
-                <a href="edit_jadwal.php?id=<?= $row['id'] ?>">Edit</a> |
-                <a href="hapus_jadwal.php?id=<?= $row['id'] ?>" onclick="return confirm('Hapus jadwal ini?')">Hapus</a>
-            </td>
-        </tr>
-        <?php } ?>
+        <?php if (isset($jadwal_result) && $jadwal_result->num_rows > 0) {
+    while ($row = $jadwal_result->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['pengajar']) . "</td>";
+        echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";
+        echo "<a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
+        echo "</tr>";
+    }
+    } else {
+    echo "<tr><td colspan='6'>Tidak ada data jadwal.</td></tr>";
+    }
+    ?>
     </table>
 </body>
 </html>
