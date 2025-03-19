@@ -12,7 +12,7 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user_name'] = $user['full_name']; // Simpan nama lengkap di sesi
+            $_SESSION['user_name'] = $user['full_name'];
             $_SESSION['user_email'] = $user['email'];
             header("Location: home.php");
             exit();
