@@ -10,7 +10,6 @@ if (!$conn) {
     die("Koneksi database gagal: " . mysqli_connect_error());
 }
 
-// Pastikan pengajar sudah login
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
     exit();
@@ -18,7 +17,6 @@ if (!isset($_SESSION['user_email'])) {
 
 $email = $_SESSION['user_email'];
 
-// Ambil data pengajar berdasarkan email
 $query = "SELECT pengajar_id, full_name FROM mentor WHERE email = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $email);
@@ -33,7 +31,6 @@ if (!$pengajar) {
 $pengajar_id = $pengajar['pengajar_id'];
 $pengajar_name = $pengajar['full_name'];
 
-// Proses simpan nilai jika formulir disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $siswa_id = $_POST["siswa_id"];
     $nama_kuis = $_POST["nama_kuis"];
@@ -57,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 }
 
-// Ambil data siswa untuk autocomplete
 $query = "SELECT siswa_id, full_name FROM siswa";
 $result = mysqli_query($conn, $query);
 $siswaList = [];
@@ -112,7 +108,7 @@ mysqli_close($conn);
         button:hover {
             background-color: #fabe49;
         }
-        /* Style autocomplete */
+
         .autocomplete-suggestions {
             border: 1px solid #ccc;
             border-top: none;
@@ -132,7 +128,7 @@ mysqli_close($conn);
             background-color: #faaf1d;
             color: #003049;
         }
-        /* CSS untuk tombol Kembali */
+
 .back-button {
     display: inline-block;
     background-color: #faaf1d;
@@ -177,9 +173,8 @@ mysqli_close($conn);
         <form action="" method="POST">
             <label for="searchStudent">Cari Siswa:</label>
             <input type="text" id="searchStudent" placeholder="Ketik nama siswa...">
-            <!-- Input tersembunyi untuk menyimpan siswa_id -->
+
             <input type="hidden" name="siswa_id" id="siswaId">
-            <!-- Daftar saran autocomplete -->
             <div id="autocomplete-list" class="autocomplete-suggestions"></div>
             
             <label for="nama_kuis">Nama Kuis:</label>
@@ -197,7 +192,6 @@ mysqli_close($conn);
     <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script>
-        // Ambil data siswa dari PHP ke dalam variabel JavaScript
         const siswaList = <?php echo json_encode($siswaList); ?>;
         
         const searchInput = document.getElementById('searchStudent');
@@ -206,7 +200,7 @@ mysqli_close($conn);
         
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase();
-            autocompleteList.innerHTML = ''; // Kosongkan saran sebelumnya
+            autocompleteList.innerHTML = ''; 
             
             if (!query) {
                 return;
@@ -218,8 +212,7 @@ mysqli_close($conn);
                     suggestionItem.classList.add('autocomplete-suggestion');
                     suggestionItem.textContent = siswa.full_name;
                     suggestionItem.dataset.id = siswa.siswa_id;
-                    
-                    // Ketika item saran diklik, isi input dan set siswa_id
+
                     suggestionItem.addEventListener('click', function() {
                         searchInput.value = siswa.full_name;
                         siswaIdInput.value = siswa.siswa_id;
@@ -231,7 +224,6 @@ mysqli_close($conn);
             });
         });
         
-        // Hapus saran jika klik di luar kotak autocomplete
         document.addEventListener('click', function(e) {
             if (e.target !== searchInput) {
                 autocompleteList.innerHTML = '';
