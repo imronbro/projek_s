@@ -72,6 +72,8 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Nilai Siswa</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/logout.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -149,6 +151,26 @@ mysqli_close($conn);
     </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/foto4.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="home_mentor.php">Presensi</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php" class="active">Nilai</a></li>
+        <li><a href="profile_mentor.php">Profil</a></li>
+        <li><a href="kontak_mentor.php">Kontak</a></li>
+        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <h2>Input Nilai Siswa</h2>
     <p>Pengajar: <b><?php echo htmlspecialchars($pengajar_name); ?></b></p>
     <div class="container">
@@ -171,7 +193,9 @@ mysqli_close($conn);
         <a href="home.php" class="back-button">Kembali</a>
         <a href="input_nilai.php" class="back-button">Riwayat</a>
     </div>
-
+    <script src="js/logout.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/menu.js" defer></script>
     <script>
         // Ambil data siswa dari PHP ke dalam variabel JavaScript
         const siswaList = <?php echo json_encode($siswaList); ?>;

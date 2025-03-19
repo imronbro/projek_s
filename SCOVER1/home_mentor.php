@@ -4,7 +4,7 @@ include 'koneksi.php';
 
 // Periksa apakah user sudah login
 if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+    header("Location: login_mentor.php");
     exit();
 }
 
@@ -21,7 +21,7 @@ if ($row = $result->fetch_assoc()) {
     $pengajar_id = $row['pengajar_id'];
     $full_name = $row['full_name'];
 } else {
-    echo "<script>alert('Akun tidak ditemukan!'); window.location.href='login.php';</script>";
+    echo "<script>alert('Akun tidak ditemukan!'); window.location.href='login_mentor.php';</script>";
     exit();
 }
 $stmt->close();
@@ -104,7 +104,12 @@ $conn->close();
         <li><a href="kontak_mentor.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
-</nav>
+    <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
 <div class="content">
     <div class="form-presensi">

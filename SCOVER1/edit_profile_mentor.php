@@ -68,8 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 function formatNoHP($nohp) {
     // Pastikan hanya angka
     $nohp = preg_replace('/[^0-9]/', '', $nohp);
-
-    // Jika diawali dengan 0, ubah menjadi +62
     if (substr($nohp, 0, 1) === '0') {
         $nohp = '+62' . substr($nohp, 1);
     } elseif (substr($nohp, 0, 2) !== '62') {
@@ -96,6 +94,8 @@ if (!$data) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/logout.css">
     <style>
         body { background-color: #003049; color: white; }
         .container { background-color: #0271ab; padding: 20px; border-radius: 10px; }
@@ -105,6 +105,25 @@ if (!$data) {
     </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/foto4.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="home_mentor.php" class="active">Presensi</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
+        <li><a href="profile_mentor.php">Profil</a></li>
+        <li><a href="kontak_mentor.php">Kontak</a></li>
+        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+</div>
     <div class="container mt-5">
         <h2 class="text-center">Edit Profil</h2>
         <form action="" method="POST" enctype="multipart/form-data">
@@ -135,16 +154,16 @@ if (!$data) {
             <a href="profile_mentor.php" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
+    <script src="js/logout.js" defer></script>
+<script src="js/home.js" defer></script>
+<script src="js/menu.js" defer></script>
     <script>
         document.getElementById('nohp').addEventListener('input', function (e) {
             let value = e.target.value;
-            // Hanya angka dan tanda plus yang diperbolehkan
             value = value.replace(/[^0-9+]/g, '');
-            // Jika dimulai dengan 0, ubah menjadi +62
             if (value.startsWith('0')) {
                 value = '+62' + value.slice(1);
             }
-            // Jika dimulai dengan 62 tanpa tanda plus, tambahkan tanda plus
             if (value.startsWith('62')) {
                 value = '+62' + value.slice(2);
             }

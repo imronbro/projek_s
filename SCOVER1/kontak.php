@@ -18,6 +18,26 @@
 
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.php">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php" class="active">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <div class="container">
         <header>
             <h1>Tentang Kami</h1>
