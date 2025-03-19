@@ -47,7 +47,7 @@ if ($email) {
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php" class="active">Profil</a></li>

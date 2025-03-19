@@ -66,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function formatNoHP($nohp) {
-    // Pastikan hanya angka
     $nohp = preg_replace('/[^0-9]/', '', $nohp);
     if (substr($nohp, 0, 1) === '0') {
         $nohp = '+62' . substr($nohp, 1);
