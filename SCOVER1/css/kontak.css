@@ -117,3 +117,114 @@ header h1 {
     transform: scale(1);
   }
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #003049;
+  color: white;
+  width: 100%;
+  width: 100%;
+  padding: 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar .logo img {
+  width: 70px;
+  height: auto;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  margin: 10px 15px;
+  position: relative;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: white;
+  padding-bottom: 5px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.navbar .nav-links a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: #fabe49;
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+}
+
+.navbar .nav-links a:hover::after {
+  width: 100%;
+}
+
+.navbar .nav-links a.active::after {
+  width: 100%;
+  background-color: #fabe49;
+}
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #003049;
+    width: 100%;
+    padding: 10px 0;
+  }
+  .navbar .nav-links.active {
+    display: flex;
+  }
+  .navbar .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+  .menu-icon {
+    display: flex;
+  }
+}

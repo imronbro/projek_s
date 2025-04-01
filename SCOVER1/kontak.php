@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Kami</title>
     <link rel="stylesheet" href="css/kontak.css">
-    <link rel="stylesheet" href="css/jadwal.css" />
     <link rel="stylesheet" href="css/logout.css" />
 
 </head>
@@ -59,5 +58,8 @@
             </div>
         </section>
     </div>
+    <script src="js/logout.js" defer></script>
+    <script src="js/home.js" defer></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>
