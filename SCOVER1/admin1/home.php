@@ -1,10 +1,28 @@
 <?php
 session_start();
-include 'koneksi.php'; // Koneksi database
+include 'koneksi.php'; 
+// Koneksi database
 
 $email = $_SESSION['user_email'];
+$conn = new mysqli('localhost', 'root', '', 'database_sekolah');
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
 
+// Inisialisasi variabel filter
+$kelas = isset($_POST['kelas']) ? $_POST['kelas'] : '';
+$hari = isset($_POST['hari']) ? $_POST['hari'] : '';
+$sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
+
+// Query untuk mengambil data siswa berdasarkan filter
+$query = "SELECT * FROM presensi WHERE 1=1";
+if ($kelas) $query .= " AND kelas = '$kelas'";
+if ($hari) $query .= " AND hari = '$hari'";
+if ($sesi) $query .= " AND sesi = '$sesi'";
+
+$result = $conn->query($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,6 +30,70 @@ $email = $_SESSION['user_email'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/home.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #145375;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #145375;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .nav-links li {
+            margin: 0 10px;
+        }
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+        }
+        h2 {
+            color: #e6c200;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #145375;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #e6c200;
+            color: #145375;
+        }
+        button {
+            background-color: #e6c200;
+            color: #145375;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #145375;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -28,14 +110,52 @@ $email = $_SESSION['user_email'];
             <li><a href="profil.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
         </ul>
-        <div class="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
     </nav>
     <div class="content">
-        <!-- Konten Utama -->
+        <h2>Daftar Siswa Hadir</h2>
+        <form method="POST" action="">
+            <label for="kelas">Pilih Kelas:</label>
+            <select name="kelas" id="kelas">
+                <option value="">Semua</option>
+                <option value="Aspira">Aspira</option>
+                <option value="Ignite">Ignite</option>
+                <option value="Neptunus">Neptunus</option>
+                <option value="Free Fire">Free Fire</option>
+            </select>
+
+            <label for="hari">Pilih Hari:</label>
+            <input type="date" name="hari" id="hari">
+
+            <label for="sesi">Pilih Sesi:</label>
+            <select name="sesi" id="sesi">
+                <option value="">Semua</option>
+                <option value="Sesi 1">Sesi 1</option>
+                <option value="Sesi 2">Sesi 2</option>
+                <option value="Sesi 3">Sesi 3</option>
+            </select>
+            
+            <button type="submit">Filter</button>
+        </form>
+        <table border="1">
+            <tr>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Hari</th>
+                <th>Sesi</th>
+            </tr>
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <tr>
+                    <td><?php echo $row['nama_siswa']; ?></td>
+                    <td><?php echo $row['kelas']; ?></td>
+                    <td><?php echo $row['hari']; ?></td>
+                    <td><?php echo $row['sesi']; ?></td>
+                </tr>
+            <?php } ?>
+        </table>
     </div>
 </body>
 </html>
+
+<?php
+$conn->close();
+?>
