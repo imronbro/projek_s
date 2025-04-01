@@ -19,6 +19,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <style>
+        .hero-image img {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s ease-out 0.8s forwards;
+        }
+    </style>
 </head>
 
 <body>

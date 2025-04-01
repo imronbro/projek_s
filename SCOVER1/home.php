@@ -112,8 +112,6 @@ $conn->close();
         }
     </style>
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/logout.css">
 </head>
 
 <body>

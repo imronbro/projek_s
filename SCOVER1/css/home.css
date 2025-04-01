@@ -7,6 +7,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 70px; /* Tambahkan padding untuk menghindari elemen tertutupi header */
 }
 
 .navbar {
@@ -16,66 +17,100 @@ body {
   background-color: #003049;
   color: white;
   width: 100%;
-  width: 100%;
-  padding: 15px;
+  padding: 15px 20px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px; /* Tambahkan jarak di bawah navbar */
 }
 
 .navbar .logo img {
-  width: 70px;
+  width: 60px;
   height: auto;
 }
 
+/* Navbar default untuk layar besar */
 .navbar .nav-links {
-  list-style: none;
-  display: flex;
-  padding: 0;
+  display: flex; /* Tampilkan navbar secara default */
+  flex-direction: row; /* Atur elemen secara horizontal */
+  position: static; /* Tidak absolute pada layar besar */
+  background-color: transparent; /* Tidak ada background */
+  width: auto; /* Sesuaikan dengan konten */
+  padding: 0; /* Hilangkan padding */
+  box-shadow: none; /* Hilangkan bayangan */
+  border-radius: 0; /* Hilangkan border-radius */
+  text-align: left; /* Teks rata kiri */
 }
 
 .navbar .nav-links li {
-  margin: 10px 15px;
-  position: relative;
+  margin: 0 15px; /* Tambahkan jarak horizontal antar item */
+  list-style: none; /* Hilangkan bullet point */
 }
 
 .navbar .nav-links a {
   text-decoration: none;
   color: white;
-  padding-bottom: 5px;
+  font-size: 16px;
+  padding: 10px 15px; /* Tambahkan padding untuk jarak dalam */
   transition: all 0.3s;
   position: relative;
 }
 
+.navbar .nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Tambahkan efek hover */
+  border-radius: 5px; /* Tambahkan border-radius untuk tampilan lebih halus */
+}
+
 .navbar .nav-links a::after {
   content: "";
-  display: block;
-  width: 0;
-  height: 2px;
-  background-color: #fabe49;
-  transition: width 0.3s ease-in-out;
   position: absolute;
   bottom: -2px;
   left: 0;
 }
 
-.navbar .nav-links a:hover::after {
+.navbar .nav-links a:hover::after,
+.navbar .nav-links a.active::after {
   width: 100%;
 }
 
-.navbar .nav-links a.active::after {
-  width: 100%;
-  background-color: #fabe49;
+/* Sembunyikan menu hamburger secara default */
+.menu-icon {
+  display: none; /* Tidak terlihat pada layar besar */
+}
+
+.menu-icon span {
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s;
+}
+
+/* Animasi menu hamburger */
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .content {
-  width: 80%;
+  width: 90%;
+  max-width: 1200px;
   background-color: #145375;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  margin: 80px 0 20px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .form-presensi {
@@ -87,24 +122,27 @@ body {
 .form-presensi label {
   font-weight: bold;
   color: #003049;
+  font-size: 14px;
 }
 
 .form-presensi select,
 .form-presensi input,
 .form-presensi textarea {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .form-presensi button {
   background-color: #faaf1d;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
   transition: background-color 0.3s;
 }
 
@@ -138,12 +176,119 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  animation: fadeIn 2s ease-in-out;
+  font-size: 14px;
+}
+
+.logout-btn {
+  background-color: red;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  transition: background-color 0.3s;
 }
 
 .logout-btn:hover {
   background-color: rgb(218, 63, 63);
 }
+
+.logout-btn i {
+  font-size: 30px;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navbar untuk layar kecil (tablet/ponsel) */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex; /* Tampilkan menu hamburger */
+    flex-direction: column;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1100;
+  }
+
+  .navbar .nav-links {
+    display: none; /* Sembunyikan navbar default */
+    flex-direction: column; /* Atur elemen secara vertikal */
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #003049;
+    width: 100%;
+    padding: 20px 0; /* Tambahkan padding untuk jarak vertikal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+  }
+
+  .navbar .nav-links.active {
+    display: flex; /* Tampilkan menu saat aktif */
+  }
+
+  .navbar .nav-links li {
+    margin: 10px 0; /* Tambahkan jarak vertikal antar item */
+  }
+
+  .navbar .nav-links a {
+    font-size: 14px; /* Sesuaikan ukuran font */
+    padding: 10px 20px; /* Tambahkan padding untuk jarak dalam */
+  }
+
+  .content {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .logo img {
+    width: 50px;
+  }
+
+  .navbar .nav-links a {
+    font-size: 12px;
+  }
+
+  .content {
+    font-size: 13px;
+  }
+
+  .form-presensi button {
+    font-size: 12px;
+  }
+
+  .footer {
+    font-size: 12px;
+  }
+}
+
+.logout-btn:hover {
+  background-color: rgb(218, 63, 63);
+}
+
 .logout-btn i {
   font-size: 30px;
 }
@@ -165,51 +310,4 @@ body {
 .nav-links li {
   display: flex;
   align-items: center;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.menu-icon {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.menu-icon span {
-  width: 30px;
-  height: 4px;
-  background-color: white;
-  margin: 4px 0;
-}
-
-@media (max-width: 768px) {
-  .navbar .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #003049;
-    width: 100%;
-    padding: 10px 0;
-  }
-  .navbar .nav-links.active {
-    display: flex;
-  }
-  .navbar .nav-links li {
-    margin: 10px 0;
-    text-align: center;
-  }
-  .menu-icon {
-    display: flex;
-  }
 }
