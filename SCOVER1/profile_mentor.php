@@ -1,15 +1,7 @@
 <?php
 session_start();
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "scover";
+include 'koneksi.php';
 
-$conn = mysqli_connect($host, $user, $password, $dbname);
-
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
-}
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 

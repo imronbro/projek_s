@@ -1,14 +1,6 @@
 <?php
 session_start();
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "scover";
-
-$conn = mysqli_connect($host, $user, $password, $dbname);
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
-}
+include 'koneksi.php';
 
 // Pastikan siswa sudah login
 if (!isset($_SESSION['user_email'])) {
