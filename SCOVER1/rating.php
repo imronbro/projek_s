@@ -72,6 +72,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Rating Pengajar</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/rating.css">
+    <style>
+        .content {
+            margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar">
@@ -95,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <span></span>
     </div>
 </nav>
-
+<div class="content">
 <h2>Rating Pengajar</h2>
 
 <form action="" method="POST" onsubmit="return confirm('Yakin ingin mengirim rating?');">
@@ -138,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     <button type="submit">Kirim Rating</button>
 </form>
-
+</div>
 <script src="js/logout.js" defer></script>
 <script src="js/home.js" defer></script>
 <script src="js/menu.js" defer></script>

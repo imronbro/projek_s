@@ -31,11 +31,11 @@
 }
 
 .navbar .nav-links a {
+  position: relative; /* Pastikan elemen induk memiliki posisi relatif */
   text-decoration: none;
   color: white;
   font-size: 16px;
   padding: 10px 15px;
-  position: relative;
   transition: all 0.3s ease;
 }
 
@@ -67,7 +67,7 @@
 
 /* Garis kuning tetap ada pada menu aktif */
 .navbar .nav-links a.active::after {
-  width: 100%; /* Garis kuning penuh */
+  width: 100%; /* Garis kuning penuh untuk menu aktif */
 }
 
 .navbar .nav-links a.active {
@@ -106,13 +106,15 @@
 /* Menu hamburger */
 .menu-icon {
   display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
 }
 
 .menu-icon span {
   width: 30px;
-  height: 4px;
+  height: 3px;
   background-color: white;
-  margin: 4px 0;
   transition: all 0.3s ease;
 }
 
@@ -147,27 +149,28 @@
 
   .navbar .logo {
     margin-bottom: 10px; /* Tambahkan jarak bawah untuk logo */
+    text-align: center; /* Pusatkan logo */
+  }
+
+  .navbar .logo img {
+    width: 50px; /* Perkecil ukuran logo */
+  }
+
+  .navbar .logo-text {
+    font-size: 1.2em; /* Sesuaikan ukuran teks logo */
   }
 
   .menu-icon {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1100;
+    display: flex; /* Tampilkan tombol hamburger */
   }
 
   .navbar .nav-links {
-    flex-direction: column; /* Susun link secara vertikal */
-    width: 100%; /* Link memenuhi lebar layar */
-    gap: 10px; /* Tambahkan jarak antar link */
-    text-align: center;
     display: none;
+    flex-direction: column; /* Susun link secara vertikal */
     position: absolute;
     top: 60px;
     left: 0;
+    width: 100%; /* Link memenuhi lebar layar */
     background-color: #003049;
     padding: 20px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -181,14 +184,41 @@
 
   .navbar .nav-links li {
     margin: 10px 0;
+    text-align: center;
   }
 
   .navbar .nav-links a {
     font-size: 14px; /* Sesuaikan ukuran font */
-    padding: 10px; /* Tambahkan padding */
+    padding: 10px; /* Sesuaikan padding */
+  }
+
+  .navbar .nav-links a::after {
+    height: 2px; /* Pastikan tinggi garis tetap sama */
   }
 
   .navbar .logout-btn {
     margin-top: 10px; /* Tambahkan jarak atas */
+    font-size: 14px; /* Sesuaikan ukuran font tombol logout */
+  }
+}
+
+/* Responsif untuk layar sangat kecil (ponsel) */
+@media (max-width: 480px) {
+  .navbar .logo img {
+    width: 40px; /* Perkecil ukuran logo lebih lanjut */
+  }
+
+  .navbar .logo-text {
+    font-size: 1em; /* Sesuaikan ukuran teks logo */
+  }
+
+  .navbar .nav-links a {
+    font-size: 12px; /* Sesuaikan ukuran font */
+    padding: 8px; /* Sesuaikan padding */
+  }
+
+  .navbar .logout-btn {
+    font-size: 12px; /* Sesuaikan ukuran font tombol logout */
+    padding: 8px 10px; /* Sesuaikan padding tombol logout */
   }
 }

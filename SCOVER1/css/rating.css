@@ -7,6 +7,16 @@ body {
   text-align: center;
 }
 
+.navbar .logo img {
+  width: 60px;
+  height: auto;
+}
+
+.content {
+  margin-top: 120px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
+  padding: 20px;
+}
+
 h2 {
   color: #faaf1d;
   margin: 20px 0;
@@ -129,5 +139,9 @@ form button:hover {
 
   .rating label {
     font-size: 30px;
+  }
+
+  .content {
+    margin-top: 120px; /* Sesuaikan dengan tinggi navbar pada perangkat kecil */
   }
 }

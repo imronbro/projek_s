@@ -1,7 +1,12 @@
 function toggleMenu() {
-  const menuIcon = document.querySelector(".menu-icon");
   const navLinks = document.querySelector(".nav-links");
-
-  menuIcon.classList.toggle("active");
+  const menuIcon = document.querySelector(".menu-icon");
   navLinks.classList.toggle("active");
+  menuIcon.classList.toggle("active");
+}
+
+function confirmLogout() {
+  if (confirm("Apakah Anda yakin ingin keluar?")) {
+    window.location.href = "logout.php";
+  }
 }

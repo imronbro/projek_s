@@ -120,6 +120,7 @@ $conn->close();
     <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
+            <span class="logo-text">Scover Center</span>
         </div>
         <ul class="nav-links">
             <li><a href="home.php" class="active">Presensi</a></li>
@@ -139,6 +140,7 @@ $conn->close();
     </nav>
 
     <div class="content">
+        <h2 class="form-title">Presensi Siswa</h2>
         <div class="form-presensi">
             <form action="" method="post">
                 <label for="sesi">Sesi:</label>
@@ -170,13 +172,8 @@ $conn->close();
                 <button type="submit">Kirim</button>
             </form>
         </div>
-        <div class="riwayat-presensi">
-            <a href="riwayat_presensi.php" class="btn">Lihat Riwayat Presensii</a>
-        </div>
     </div>
     <script src="js/logout.js" defer></script>
     <script src="js/home.js" defer></script>
-    <script src="js/menu.js" defer></script>
 </body>
-
 </html>

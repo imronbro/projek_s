@@ -13,41 +13,8 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pengajar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #003049;
-            color: #fabe49;
-        }
-        .card {
-            background-color: #145375;
-            color: white;
-            border: 2px solid white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #faaf1d;
-            display: block;
-            margin: 0 auto;
-        }
-        .btn-whatsapp {
-            background-color: #faaf1d;
-            color: #003049;
-            border: none;
-        }
-        .btn-whatsapp:hover {
-            background-color: #fabe49;
-        }
-    </style>
-        <link rel="stylesheet" href="css/logout.css">
-        <link rel="stylesheet" href="css/home.css">
+        <link rel="stylesheet" href="css/pengajar.css">
+        <link rel="stylesheet" href="css/navbar.css">
 
 
 </head>
