@@ -166,11 +166,11 @@
 
   .navbar .nav-links {
     display: none;
-    flex-direction: column; /* Susun link secara vertikal */
+    flex-direction: column;
     position: absolute;
     top: 60px;
     left: 0;
-    width: 100%; /* Link memenuhi lebar layar */
+    width: 100%;
     background-color: #003049;
     padding: 20px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -188,37 +188,36 @@
   }
 
   .navbar .nav-links a {
-    font-size: 14px; /* Sesuaikan ukuran font */
-    padding: 10px; /* Sesuaikan padding */
+    font-size: 14px;
+    padding: 10px;
   }
 
   .navbar .nav-links a::after {
-    height: 2px; /* Pastikan tinggi garis tetap sama */
+    height: 2px;
   }
 
   .navbar .logout-btn {
-    margin-top: 10px; /* Tambahkan jarak atas */
-    font-size: 14px; /* Sesuaikan ukuran font tombol logout */
+    margin-top: 10px;
+    font-size: 14px;
   }
 }
 
-/* Responsif untuk layar sangat kecil (ponsel) */
 @media (max-width: 480px) {
   .navbar .logo img {
-    width: 40px; /* Perkecil ukuran logo lebih lanjut */
+    width: 40px;
   }
 
   .navbar .logo-text {
-    font-size: 1em; /* Sesuaikan ukuran teks logo */
+    font-size: 1em;
   }
 
   .navbar .nav-links a {
-    font-size: 12px; /* Sesuaikan ukuran font */
-    padding: 8px; /* Sesuaikan padding */
+    font-size: 12px;
+    padding: 8px;
   }
 
   .navbar .logout-btn {
-    font-size: 12px; /* Sesuaikan ukuran font tombol logout */
-    padding: 8px 10px; /* Sesuaikan padding tombol logout */
+    font-size: 12px;
+    padding: 8px 10px;
   }
 }

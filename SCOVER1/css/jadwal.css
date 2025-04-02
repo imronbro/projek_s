@@ -1,232 +1,146 @@
+/* Global Styles */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 20px;
-    background-color: #003049;
-    color: #FFC312;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #003049; /* Dark background */
+  color: #fabe49; /* Light text */
 }
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #003049;
-    padding: 15px;
-    color: white;
-    width: 100%;
-  }
 
-  .navbar .logo img {
-    width: 70px;
-    height: auto;
-  }
-  
-  .navbar .nav-links {
-    list-style: none;
-    display: flex;
-    padding: 0;
-  }
-  
-  .navbar .nav-links li {
-    margin: 10px 15px;
-    position: relative;
-  }
-  
-  .navbar .nav-links a {
-    text-decoration: none;
-    color: white;
-    padding-bottom: 5px;
-    transition: all 0.3s;
-    position: relative;
-  }
-  
-  .navbar .nav-links a::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background-color: #fabe49;
-    transition: width 0.3s ease-in-out;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-  }
-  
-  .navbar .nav-links a:hover::after {
-    width: 100%;
-  }
-  
-  .navbar .nav-links a.active::after {
-    width: 100%;
-    background-color: #fabe49;
-  }  
 .container {
-    max-width: 600px;
-    margin: auto;
-    background: #1B4F72;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 120px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #145375; /* Dark blue background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: white;
+  animation: fadeIn 1s ease-in-out; /* Animasi untuk kontainer */
 }
+
+h2 {
+  color: #faaf1d; /* Dark yellow */
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  text-align: center;
+  animation: slideIn 1s ease-in-out; /* Animasi untuk judul */
+}
+
 select {
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    background: #ffffff;
-    color: #0A3D62;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #0271ab; /* Light blue border */
+  border-radius: 5px;
+  background-color: #003049; /* Dark background */
+  color: #fabe49; /* Light text */
+  font-size: 1em;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
+
+select:focus {
+  border-color: #faaf1d; /* Dark yellow focus */
+  background-color: #0271ab; /* Light blue focus */
+  outline: none;
+}
+
 .schedule {
-    display: none;
-    margin-top: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
+
 .card {
-    background: #FFC312;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+  background-color: #0271ab; /* Light blue */
+  color: #fabe49; /* Light text */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-size: 1em;
+  width: 200px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  background-color: #faaf1d; /* Dark yellow hover */
+  color: #003049; /* Dark text on hover */
+  transform: scale(1.05); /* Efek pembesaran */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease-in-out;
-    color: #0A3D62;
-}
-.show {
-    display: block;
-}
-.fade-in {
+    transform: translateY(-20px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
-}
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
-  
-  .menu-icon {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
-  
-  .menu-icon span {
-    width: 30px;
-    height: 4px;
-    background-color: white;
-    margin: 4px 0;
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  @media (max-width: 768px) {
-    .navbar .nav-links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      background-color: #003049;
-      width: 100%;
-      padding: 10px 0;
-    }
-    .navbar .nav-links.active {
-      display: flex;
-    }
-    .navbar .nav-links li {
-      margin: 10px 0;
-      text-align: center;
-    }
-      /* Gaya dasar */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-}
-
-h1, h2, h3 {
-    color: #333;
-}
-
-/* Navbar Styling */
-.navbar {
-    background-color: #007bff;
-    padding: 15px;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.navbar a:hover {
-    background: rgba(255, 255, 255, 0.4);
-}
-
-/* Table Styling */
-.content {
-    max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table th, table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-table th {
-    background-color: #007bff;
-    color: white;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #e0e0e0;
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-    .content {
-        width: 90%;
-    }
-    table {
-        width: 100%;
-    }
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  select {
+    font-size: 0.9em;
+  }
+
+  .card {
+    width: 150px;
+    font-size: 0.9em;
+  }
 }
 
-    .menu-icon {
-      display: flex;
-    }
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 10px;
   }
-   
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  select {
+    font-size: 0.8em;
+  }
+
+  .card {
+    width: 120px;
+    font-size: 0.8em;
+  }
+}

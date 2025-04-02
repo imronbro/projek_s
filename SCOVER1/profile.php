@@ -24,7 +24,6 @@ if ($email) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Pengguna</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/navbar.css">
 
@@ -37,8 +36,8 @@ if ($email) {
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php" class="active">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
