@@ -12,14 +12,16 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Pengajar</title>
-    <link rel="stylesheet" href="css/pengajar.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/pengajar.css">
 </head>
 <body>
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
+            <span class="logo-text">Scover Center</span>
         </div>
+        <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php" class="active">Pengajar</a></li>

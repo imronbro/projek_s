@@ -32,7 +32,9 @@ if ($email) {
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
+            <span class="logo-text">Scover Center</span>
         </div>
+        <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>

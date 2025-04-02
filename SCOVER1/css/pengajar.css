@@ -84,26 +84,3 @@ h2 {
   background-color: #fabe49;
   transform: scale(1.1); /* Efek pembesaran saat hover */
 }
-
-/* Animasi */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleUp {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}

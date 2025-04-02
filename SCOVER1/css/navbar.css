@@ -27,12 +27,20 @@
   display: flex;
   flex-direction: row;
   justify-content: center; /* Pusatkan link di tengah */
-  gap: 20px; /* Tambahkan jarak antar link */
+  align-items: center; /* Pastikan semua elemen sejajar secara vertikal */
+  gap: 20px; /* Tambahkan jarak antar elemen */
+  list-style: none; /* Hilangkan bullet point pada <li> */
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  list-style: none; /* Pastikan tidak ada bullet point */
 }
 
 .navbar .nav-links a {
   position: relative; /* Pastikan elemen induk memiliki posisi relatif */
-  text-decoration: none;
+  text-decoration: none; /* Hilangkan garis bawah default */
   color: white;
   font-size: 16px;
   padding: 10px 15px;
@@ -42,65 +50,45 @@
 .navbar .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: -5px; /* Atur jarak garis bawah agar tidak menempel pada teks */
+  left: 50%; /* Mulai dari tengah */
   width: 0;
   height: 2px;
-  background-color: #ffd700;
-  transition: width 0.3s ease;
+  background-color: #ffd700; /* Warna kuning */
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
-.navbar .nav-links a:hover::after {
-  width: 100%; /* Garis kuning muncul penuh saat hover */
+.navbar .nav-links a:hover::after,
+.navbar .nav-links a.active::after {
+  width: 100%; /* Garis kuning penuh */
+  left: 0; /* Geser ke kiri */
 }
 
 .navbar .nav-links a:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  transform: scale(1.1);
-}
-
-.navbar .nav-links a:active {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(0.95);
-}
-
-/* Garis kuning tetap ada pada menu aktif */
-.navbar .nav-links a.active::after {
-  width: 100%; /* Garis kuning penuh untuk menu aktif */
-}
-
-.navbar .nav-links a.active {
-  color: #ffd700; /* Opsional: Ubah warna teks menu aktif menjadi kuning */
-}
-
-.navbar .nav-links li {
-  margin: 0 15px;
-  list-style: none;
-  transition: transform 0.3s ease;
-}
-
-.navbar .nav-links li:hover {
-  transform: translateY(-3px);
+  transform: scale(1.05);
 }
 
 .navbar .logout-btn {
   background-color: red;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 20px;
   font-size: 14px;
   color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  transition: background-color 0.3s;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0;
 }
 
 .navbar .logout-btn:hover {
   background-color: rgb(218, 63, 63);
+  transform: scale(1.05);
 }
 
 /* Menu hamburger */
@@ -118,15 +106,6 @@
   transition: all 0.3s ease;
 }
 
-.menu-icon:hover span:nth-child(1) {
-  transform: translateY(2px);
-}
-
-.menu-icon:hover span:nth-child(3) {
-  transform: translateY(-2px);
-}
-
-/* Animasi menu hamburger */
 .menu-icon.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -139,33 +118,14 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Navbar untuk layar kecil (tablet/ponsel) */
+/* Navbar untuk layar kecil */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column; /* Susun elemen navbar secara vertikal */
-    align-items: center; /* Elemen berada di tengah */
-    padding: 10px 15px;
-  }
-
-  .navbar .logo {
-    margin-bottom: 10px; /* Tambahkan jarak bawah untuk logo */
-    text-align: center; /* Pusatkan logo */
-  }
-
-  .navbar .logo img {
-    width: 50px; /* Perkecil ukuran logo */
-  }
-
-  .navbar .logo-text {
-    font-size: 1.2em; /* Sesuaikan ukuran teks logo */
-  }
-
   .menu-icon {
     display: flex; /* Tampilkan tombol hamburger */
   }
 
   .navbar .nav-links {
-    display: none;
+    display: none; /* Sembunyikan nav-links */
     flex-direction: column;
     position: absolute;
     top: 60px;
@@ -179,7 +139,7 @@
   }
 
   .navbar .nav-links.active {
-    display: flex;
+    display: flex; /* Tampilkan nav-links saat menu aktif */
   }
 
   .navbar .nav-links li {
@@ -190,10 +150,6 @@
   .navbar .nav-links a {
     font-size: 14px;
     padding: 10px;
-  }
-
-  .navbar .nav-links a::after {
-    height: 2px;
   }
 
   .navbar .logout-btn {
@@ -207,10 +163,6 @@
     width: 40px;
   }
 
-  .navbar .logo-text {
-    font-size: 1em;
-  }
-
   .navbar .nav-links a {
     font-size: 12px;
     padding: 8px;
@@ -220,4 +172,23 @@
     font-size: 12px;
     padding: 8px 10px;
   }
+}
+
+/* Teks di Samping Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Jarak antara logo dan teks */
+}
+
+.logo img {
+  width: 60px;
+  height: auto;
+}
+
+.logo-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #fabe49;
+  animation: fadeIn 1s ease-in-out;
 }

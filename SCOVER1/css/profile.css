@@ -1,10 +1,10 @@
 /* Global Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #003049; /* Dark background */
-  color: #fabe49; /* Light text */
+  background-color: #002b5b; /* Deep navy background */
+  color: #f5f5f5; /* Light text */
   padding-top: 80px; /* Beri ruang untuk navbar */
   display: flex;
   flex-direction: column;
@@ -12,69 +12,28 @@ body {
   justify-content: center;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #003049; /* Dark background */
-  color: white;
-  padding: 15px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.navbar .logo img {
-  width: 50px;
-  height: auto;
-}
-
-.navbar .nav-links {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.navbar .nav-links a.active,
-.navbar .nav-links a:hover {
-  background-color: #0271ab; /* Light blue */
-  color: #fabe49; /* Light text */
-}
-
 /* Container */
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   background-color: #145375; /* Dark blue background */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   color: white;
-  text-align: center; /* Center all text */
-  animation: fadeIn 1s ease-in-out; /* Animasi untuk kontainer */
+  text-align: center;
+  animation: fadeIn 1s ease-in-out; /* Smooth fade-in animation */
 }
 
 /* Card */
 .card {
   background-color: #0271ab; /* Light blue */
-  color: #fabe49; /* Light text */
+  color: #f5f5f5; /* Light text */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
-  animation: slideUp 1s ease-in-out; /* Animasi untuk kartu */
+  animation: slideUp 1s ease-in-out; /* Smooth slide-up animation */
 }
 
 .card p {
@@ -88,19 +47,19 @@ body {
   border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 20px;
-  border: 3px solid #faaf1d; /* Dark yellow */
+  border: 4px solid #faaf1d; /* Golden yellow */
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 5px;
+  margin: 10px;
 }
 
 .btn-primary {
@@ -112,25 +71,25 @@ body {
 .btn-primary:hover {
   background-color: #145375; /* Dark blue */
   border-color: #145375;
-  transform: scale(1.05); /* Efek pembesaran */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
 .btn-secondary {
-  background-color: #faaf1d; /* Dark yellow */
-  color: #003049; /* Dark text */
+  background-color: #faaf1d; /* Golden yellow */
+  color: #003049; /* Dark navy */
   border: 2px solid #faaf1d;
 }
 
 .btn-secondary:hover {
   background-color: #fabe49; /* Light yellow */
   border-color: #fabe49;
-  transform: scale(1.05); /* Efek pembesaran */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Footer */
 .footer {
-  background-color: #fabe49; /* Light yellow */
-  color: #003049; /* Dark text */
+  background-color: #003049; /* Dark navy */
+  color: #f5f5f5; /* Light text */
   text-align: center;
   padding: 15px;
   width: 100%;
@@ -168,7 +127,7 @@ body {
 @media (max-width: 768px) {
   .container {
     width: 90%;
-    padding: 15px;
+    padding: 20px;
   }
 
   .card img.profile-img {
@@ -178,14 +137,14 @@ body {
 
   .btn {
     font-size: 14px;
-    padding: 8px 15px;
+    padding: 10px 20px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
   }
 
   .card img.profile-img {
@@ -195,6 +154,6 @@ body {
 
   .btn {
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 8px 15px;
   }
 }
