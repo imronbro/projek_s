@@ -86,6 +86,7 @@ if (!$data) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         body { background-color: #003049; color: white; }
         .container { background-color: #0271ab; padding: 20px; border-radius: 10px; }

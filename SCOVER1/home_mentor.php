@@ -87,7 +87,7 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor</title>
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 <nav class="navbar">

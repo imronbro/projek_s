@@ -1,0 +1,109 @@
+body {
+  background-color: #003049;
+  color: #fabe49;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 100px; /* Memberikan ruang di bawah navbar */
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #faaf1d;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* Membuat daftar pengajar dapat digulir secara horizontal */
+  gap: 20px;
+  padding: 10px;
+  scroll-behavior: smooth; /* Animasi scroll yang halus */
+}
+
+.row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.row::-webkit-scrollbar-thumb {
+  background-color: #faaf1d;
+  border-radius: 10px;
+}
+
+.row::-webkit-scrollbar-track {
+  background-color: #145375;
+}
+
+.card {
+  background-color: #145375;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  flex: 0 0 auto; /* Membuat elemen tidak meluas */
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efek melayang saat hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #faaf1d;
+  margin-bottom: 15px;
+  animation: scaleUp 1s ease-in-out;
+}
+
+.btn-whatsapp {
+  background-color: #faaf1d;
+  color: #003049;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+  background-color: #fabe49;
+  transform: scale(1.1); /* Efek pembesaran saat hover */
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

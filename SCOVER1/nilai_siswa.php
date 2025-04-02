@@ -102,8 +102,7 @@ $result = $stmt->get_result();
         }
 
     </style>
-        <link rel="stylesheet" href="css/home.css">
-        <link rel="stylesheet" href="css/logout.css">
+        <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 <nav class="navbar">

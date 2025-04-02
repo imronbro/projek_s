@@ -43,7 +43,7 @@ $result = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Penilaian</title>
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
             font-family: Arial, sans-serif;

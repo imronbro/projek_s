@@ -7,98 +7,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 70px; /* Tambahkan padding untuk menghindari elemen tertutupi header */
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #003049;
-  color: white;
-  width: 100%;
-  padding: 15px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px; /* Tambahkan jarak di bawah navbar */
-}
-
-.navbar .logo img {
-  width: 60px;
-  height: auto;
-}
-
-/* Navbar default untuk layar besar */
-.navbar .nav-links {
-  display: flex; /* Tampilkan navbar secara default */
-  flex-direction: row; /* Atur elemen secara horizontal */
-  position: static; /* Tidak absolute pada layar besar */
-  background-color: transparent; /* Tidak ada background */
-  width: auto; /* Sesuaikan dengan konten */
-  padding: 0; /* Hilangkan padding */
-  box-shadow: none; /* Hilangkan bayangan */
-  border-radius: 0; /* Hilangkan border-radius */
-  text-align: left; /* Teks rata kiri */
-}
-
-.navbar .nav-links li {
-  margin: 0 15px; /* Tambahkan jarak horizontal antar item */
-  list-style: none; /* Hilangkan bullet point */
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  padding: 10px 15px; /* Tambahkan padding untuk jarak dalam */
-  transition: all 0.3s;
-  position: relative;
-}
-
-.navbar .nav-links a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Tambahkan efek hover */
-  border-radius: 5px; /* Tambahkan border-radius untuk tampilan lebih halus */
-}
-
-.navbar .nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-}
-
-.navbar .nav-links a:hover::after,
-.navbar .nav-links a.active::after {
-  width: 100%;
-}
-
-/* Sembunyikan menu hamburger secara default */
-.menu-icon {
-  display: none; /* Tidak terlihat pada layar besar */
-}
-
-.menu-icon span {
-  width: 30px;
-  height: 4px;
-  background-color: white;
-  margin: 4px 0;
-  transition: all 0.3s;
-}
-
-/* Animasi menu hamburger */
-.menu-icon.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-icon.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-icon.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  padding-top: 70px;
 }
 
 .content {
@@ -202,11 +111,6 @@ body {
   font-size: 30px;
 }
 
-.nav-links li {
-  display: flex;
-  align-items: center;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -218,60 +122,13 @@ body {
   }
 }
 
-/* Navbar untuk layar kecil (tablet/ponsel) */
 @media (max-width: 768px) {
-  .menu-icon {
-    display: flex; /* Tampilkan menu hamburger */
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1100;
-  }
-
-  .navbar .nav-links {
-    display: none; /* Sembunyikan navbar default */
-    flex-direction: column; /* Atur elemen secara vertikal */
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: #003049;
-    width: 100%;
-    padding: 20px 0; /* Tambahkan padding untuk jarak vertikal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    z-index: 1000;
-    text-align: center;
-  }
-
-  .navbar .nav-links.active {
-    display: flex; /* Tampilkan menu saat aktif */
-  }
-
-  .navbar .nav-links li {
-    margin: 10px 0; /* Tambahkan jarak vertikal antar item */
-  }
-
-  .navbar .nav-links a {
-    font-size: 14px; /* Sesuaikan ukuran font */
-    padding: 10px 20px; /* Tambahkan padding untuk jarak dalam */
-  }
-
   .content {
     font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .navbar .logo img {
-    width: 50px;
-  }
-
-  .navbar .nav-links a {
-    font-size: 12px;
-  }
-
   .content {
     font-size: 13px;
   }
@@ -283,31 +140,4 @@ body {
   .footer {
     font-size: 12px;
   }
-}
-
-.logout-btn:hover {
-  background-color: rgb(218, 63, 63);
-}
-
-.logout-btn i {
-  font-size: 30px;
-}
-
-.logout-btn {
-  background-color: red;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 15px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px; /* Samakan tinggi dengan menu lainnya */
-}
-
-.nav-links li {
-  display: flex;
-  align-items: center;
 }

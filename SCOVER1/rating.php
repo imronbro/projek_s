@@ -70,56 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rating Pengajar</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/logout.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #003049;
-            color: #fabe49;
-            text-align: center;
-        }
-        form {
-            background-color: #0271ab;
-            padding: 20px;
-            width: 50%;
-            margin: auto;
-            border-radius: 10px;
-        }
-        select, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #faaf1d;
-            color: #003049;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-            gap: 5px;
-        }
-        .rating input {
-            display: none;
-        }
-        .rating label {
-            font-size: 30px;
-            cursor: pointer;
-            color: #ccc;
-            transition: color 0.3s, transform 0.2s;
-        }
-        .rating input:checked ~ label,
-        .rating input:hover ~ label {
-            color: gold;
-            transform: scale(1.2);
-        }
-    </style>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/rating.css">
 </head>
 <body>
 <nav class="navbar">

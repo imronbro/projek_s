@@ -55,8 +55,7 @@ if ($result_pengajar->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Rating untuk <?php echo htmlspecialchars($pengajar_name); ?></title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
             font-family: Arial, sans-serif;
