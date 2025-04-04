@@ -4,23 +4,11 @@ include 'koneksi.php';
 // Koneksi database
 
 $email = $_SESSION['user_email'];
-$conn = new mysqli('localhost', 'root', '', 'database_sekolah');
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
 
 // Inisialisasi variabel filter
 $kelas = isset($_POST['kelas']) ? $_POST['kelas'] : '';
 $hari = isset($_POST['hari']) ? $_POST['hari'] : '';
 $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
-
-// Query untuk mengambil data siswa berdasarkan filter
-$query = "SELECT * FROM presensi WHERE 1=1";
-if ($kelas) $query .= " AND kelas = '$kelas'";
-if ($hari) $query .= " AND hari = '$hari'";
-if ($sesi) $query .= " AND sesi = '$sesi'";
-
-$result = $conn->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -136,26 +124,7 @@ $result = $conn->query($query);
             
             <button type="submit">Filter</button>
         </form>
-        <table border="1">
-            <tr>
-                <th>Nama Siswa</th>
-                <th>Kelas</th>
-                <th>Hari</th>
-                <th>Sesi</th>
-            </tr>
-            <?php while ($row = $result->fetch_assoc()) { ?>
-                <tr>
-                    <td><?php echo $row['nama_siswa']; ?></td>
-                    <td><?php echo $row['kelas']; ?></td>
-                    <td><?php echo $row['hari']; ?></td>
-                    <td><?php echo $row['sesi']; ?></td>
-                </tr>
-            <?php } ?>
-        </table>
+        <p>Data siswa tidak tersedia karena koneksi ke database telah dihapus.</p>
     </div>
 </body>
 </html>
-
-<?php
-$conn->close();
-?>

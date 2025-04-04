@@ -9,16 +9,16 @@ if (!isset($_SESSION['user_email'])) {
 $user_email = $_SESSION['user_email'];
 
 // Proses tambah jadwal
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['siswa_id'])) {
     $siswa_id = $_POST['siswa_id'];
     $tanggal = $_POST['tanggal'];
     $sesi = $_POST['sesi'];
     $mata_pelajaran = $_POST['mata_pelajaran'];
-    $pengajar = $_POST['pengajar'];
+    $pengajar_id = $_POST['pengajar_id'];
 
-    $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar) VALUES (?, ?, ?, ?, ?)";
+    $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar_id) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("issss", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar);
+    $stmt->bind_param("isssi", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar_id);
 
     if ($stmt->execute()) {
         echo "<script>alert('Jadwal berhasil ditambahkan!'); window.location.href='jadwal.php';</script>";
@@ -31,11 +31,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Ambil daftar siswa
 $siswa_result = $conn->query("SELECT siswa_id, full_name FROM siswa");
 
-// Ambil semua jadwal
-$jadwal_result = $conn->query("SELECT j.id, s.full_name, j.tanggal, j.sesi, j.mata_pelajaran, j.pengajar 
-                               FROM jadwal_siswa j 
-                               JOIN siswa s ON j.siswa_id = s.siswa_id 
-                               ORDER BY j.tanggal, j.sesi");
+// Ambil daftar pengajar
+$pengajar_result = $conn->query("SELECT pengajar_id, full_name FROM mentor");
+
+// Proses pencarian siswa
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$jadwal_query = "SELECT j.id, s.full_name AS siswa_name, j.tanggal, j.sesi, j.mata_pelajaran, m.full_name AS pengajar_name 
+                 FROM jadwal_siswa j 
+                 JOIN siswa s ON j.siswa_id = s.siswa_id 
+                 JOIN mentor m ON j.pengajar_id = m.pengajar_id";
+if (!empty($search)) {
+    $jadwal_query .= " WHERE s.full_name LIKE ?";
+}
+$jadwal_query .= " ORDER BY j.tanggal, j.sesi";
+
+$stmt = $conn->prepare($jadwal_query);
+if (!empty($search)) {
+    $search_param = "%" . $search . "%";
+    $stmt->bind_param("s", $search_param);
+}
+$stmt->execute();
+$jadwal_result = $stmt->get_result();
 
 $conn->close();
 ?>
@@ -87,6 +103,7 @@ $conn->close();
     </style>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/logout.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body>
@@ -139,10 +156,20 @@ $conn->close();
         <label for="mata_pelajaran">Mata Pelajaran:</label>
         <input type="text" name="mata_pelajaran" required>
 
-        <label for="pengajar">Pengajar:</label>
-        <input type="text" name="pengajar" required>
+        <label for="pengajar_id">Pengajar:</label>
+        <select name="pengajar_id" required>
+            <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
+                <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
+            <?php } ?>
+        </select>
 
         <button type="submit">Tambah Jadwal</button>
+    </form>
+
+    <!-- Form Pencarian -->
+    <form method="get" action="">
+        <input type="text" name="search" placeholder="Cari siswa..." value="<?= htmlspecialchars($search) ?>">
+        <button type="submit">Cari</button>
     </form>
 
     <!-- Tabel Jadwal -->
@@ -156,22 +183,22 @@ $conn->close();
             <th>Pengajar</th>
             <th>Aksi</th>
         </tr>
-        <?php if (isset($jadwal_result) && $jadwal_result->num_rows > 0) {
-    while ($row = $jadwal_result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['pengajar']) . "</td>";
-        echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";
-        echo "<a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
-        echo "</tr>";
-    }
-    } else {
-    echo "<tr><td colspan='6'>Tidak ada data jadwal.</td></tr>";
-    }
-    ?>
+        <?php if ($jadwal_result->num_rows > 0) {
+            while ($row = $jadwal_result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['siswa_name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['pengajar_name']) . "</td>";
+                echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";
+                echo "<a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6'>Tidak ada data jadwal.</td></tr>";
+        }
+        ?>
     </table>
 </body>
 </html>
