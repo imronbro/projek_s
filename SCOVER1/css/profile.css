@@ -1,159 +1,264 @@
-/* Global Styles */
+/* Gaya umum untuk profil */
 body {
-  font-family: "Arial", sans-serif;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #002b5b; /* Deep navy background */
-  color: #f5f5f5; /* Light text */
-  padding-top: 80px; /* Beri ruang untuk navbar */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background-color: #003049; /* Dark background */
+  color: #fabe49; /* Light yellow text for readability */
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+  animation: fadeInBody 1s ease-in-out; /* Animasi fade-in untuk body */
+}
+
+/* Animasi untuk body */
+@keyframes fadeInBody {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Container */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #145375; /* Dark blue background */
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  color: white;
+  max-width: 75%; /* 3/4 dari lebar layar */
+  margin: 80px auto 20px; /* Tambahkan margin-top untuk memberi jarak dari navbar */
+  padding: 30px; /* Perbesar padding */
+  background-color: #145375; /* Solid dark blue background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Pastikan lebar container mengikuti layar */
+  box-sizing: border-box; /* Termasuk padding dalam lebar */
+  color: #fabe49; /* Light yellow text for contrast */
+  animation: slideInContainer 1s ease-in-out; /* Animasi slide-in untuk container */
+}
+
+/* Animasi untuk container */
+@keyframes slideInContainer {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Heading */
+h2 {
+  font-size: 2.5em; /* Perbesar ukuran heading */
+  margin-bottom: 20px;
+  color: #faaf1d; /* Bright yellow */
   text-align: center;
-  animation: fadeIn 1s ease-in-out; /* Smooth fade-in animation */
+  word-wrap: break-word; /* Memastikan teks tidak melampaui layar */
+  animation: fadeInHeading 1.2s ease-in-out; /* Animasi fade-in untuk heading */
+}
+
+/* Animasi untuk heading */
+@keyframes fadeInHeading {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Card */
 .card {
-  background-color: #0271ab; /* Light blue */
-  color: #f5f5f5; /* Light text */
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  animation: slideUp 1s ease-in-out; /* Smooth slide-up animation */
+  padding: 25px; /* Perbesar padding */
+  background-color: #0271ab; /* Light blue background */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Pastikan card mengikuti lebar layar */
+  box-sizing: border-box;
+  color: #fabe49; /* Light yellow text */
+  animation: zoomInCard 1s ease-in-out; /* Animasi zoom-in untuk card */
 }
 
-.card p {
-  margin: 10px 0;
-  text-align: center; /* Center text */
+/* Animasi untuk card */
+@keyframes zoomInCard {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-.card img.profile-img {
-  width: 150px;
-  height: 150px;
+/* Gambar Profil */
+.profile-img {
+  width: 200px; /* Perbesar ukuran gambar */
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto 20px;
-  border: 4px solid #faaf1d; /* Golden yellow */
+  margin: 0 auto 20px; /* Tengahkan gambar */
+  display: block;
+  border: 3px solid #faaf1d; /* Border kuning terang */
+  animation: fadeInImage 1.5s ease-in-out; /* Animasi fade-in untuk gambar profil */
+}
+
+/* Animasi untuk gambar profil */
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Paragraph */
+p {
+  font-size: 1.5em; /* Perbesar ukuran teks */
+  margin: 10px 0;
+  text-align: center; /* Tengahkan teks */
+  word-wrap: break-word; /* Memastikan teks tidak melampaui layar */
+  animation: fadeInText 1.3s ease-in-out; /* Animasi fade-in untuk teks */
+}
+
+/* Animasi untuk teks */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 12px 25px;
-  font-size: 16px;
-  text-align: center;
+  padding: 15px 25px; /* Perbesar padding tombol */
+  margin: 10px 5px;
   text-decoration: none;
+  color: #003049; /* Dark text */
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 10px;
-}
-
-.btn-primary {
-  background-color: #0271ab; /* Light blue */
-  color: white;
-  border: 2px solid #0271ab;
-}
-
-.btn-primary:hover {
-  background-color: #145375; /* Dark blue */
-  border-color: #145375;
-  transform: scale(1.05); /* Slight zoom effect */
-}
-
-.btn-secondary {
-  background-color: #faaf1d; /* Golden yellow */
-  color: #003049; /* Dark navy */
-  border: 2px solid #faaf1d;
-}
-
-.btn-secondary:hover {
-  background-color: #fabe49; /* Light yellow */
-  border-color: #fabe49;
-  transform: scale(1.05); /* Slight zoom effect */
-}
-
-/* Footer */
-.footer {
-  background-color: #003049; /* Dark navy */
-  color: #f5f5f5; /* Light text */
   text-align: center;
-  padding: 15px;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 2s ease-in-out;
+  width: auto; /* Pastikan tombol tidak terlalu lebar */
+  font-weight: bold;
+  font-size: 1.2em; /* Perbesar ukuran teks tombol */
+  animation: fadeInButton 1.5s ease-in-out; /* Animasi fade-in untuk tombol */
 }
 
-/* Animations */
-@keyframes fadeIn {
-  0% {
+/* Animasi untuk tombol */
+@keyframes fadeInButton {
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.btn-primary {
+  background-color: #faaf1d; /* Bright yellow */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+.btn-primary:hover {
+  background-color: #fabe49; /* Light yellow hover */
+  color: #003049; /* Dark text tetap terlihat */
+  transform: scale(1.05); /* Efek pembesaran saat hover */
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-secondary {
+  background-color: #f4f4f4; /* Light gray */
+  color: #003049; /* Dark text */
+  border: none; /* Hapus garis luar */
+}
+
+.btn-secondary:hover {
+  background-color: #d9d9d9; /* Slightly darker gray hover */
+  color: #003049; /* Dark text tetap terlihat */
+  transform: scale(1.05); /* Efek pembesaran saat hover */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 1024px) {
   .container {
-    width: 90%;
+    max-width: 85%; /* Kurangi lebar container untuk layar lebih kecil */
     padding: 20px;
   }
 
-  .card img.profile-img {
-    width: 120px;
+  h2 {
+    font-size: 2em; /* Ukuran heading mengecil */
+  }
+
+  p {
+    font-size: 1.3em; /* Ukuran teks mengecil */
+  }
+
+  .profile-img {
+    width: 150px; /* Ukuran gambar mengecil */
+    height: 150px;
+  }
+
+  .btn {
+    padding: 12px 20px; /* Ukuran tombol mengecil */
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%; /* Kurangi lebar container lebih jauh */
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.8em; /* Ukuran heading lebih kecil */
+  }
+
+  p {
+    font-size: 1.2em; /* Ukuran teks lebih kecil */
+  }
+
+  .profile-img {
+    width: 120px; /* Ukuran gambar lebih kecil */
     height: 120px;
   }
 
   .btn {
-    font-size: 14px;
-    padding: 10px 20px;
+    padding: 10px 15px; /* Ukuran tombol lebih kecil */
+    font-size: 0.9em;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    width: 100%;
-    padding: 15px;
+    max-width: 95%; /* Hampir penuh untuk layar kecil */
+    padding: 10px;
   }
 
-  .card img.profile-img {
-    width: 100px;
+  h2 {
+    font-size: 1.5em; /* Ukuran heading lebih kecil */
+  }
+
+  p {
+    font-size: 1em; /* Ukuran teks lebih kecil */
+  }
+
+  .profile-img {
+    width: 100px; /* Ukuran gambar lebih kecil */
     height: 100px;
   }
 
   .btn {
-    font-size: 12px;
-    padding: 8px 15px;
+    padding: 8px 10px; /* Ukuran tombol lebih kecil */
+    font-size: 0.8em;
   }
 }

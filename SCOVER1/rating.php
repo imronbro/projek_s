@@ -148,8 +148,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit">Kirim Rating</button>
 </form>
 </div>
-<script src="js/logout.js" defer></script>
-<script src="js/home.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {

@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #003049; /* Dark background */
-  color: #fabe49; /* Light text */
+  color: #fabe49; /* Light yellow text for readability */
 }
 
 .container {
@@ -14,39 +14,108 @@ body {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #145375; /* Dark blue background */
+  background-color: #145375; /* Solid dark blue background */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: white;
+  color: #fabe49; /* Light yellow text for contrast */
   animation: fadeIn 1s ease-in-out; /* Animasi untuk kontainer */
 }
 
+/* Header animasi */
 h2 {
-  color: #faaf1d; /* Dark yellow */
+  color: #faaf1d; /* Bright yellow */
   margin-bottom: 15px;
   font-size: 1.8em;
   text-align: center;
-  animation: slideIn 1s ease-in-out; /* Animasi untuk judul */
+  animation: slideInLeft 1s ease-in-out; /* Animasi slide-in dari kiri */
 }
 
+/* Konten fade-in */
+.content {
+  margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+  padding: 20px;
+  background-color: #0271ab; /* Light blue background */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fabe49; /* Light yellow text for readability */
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in */
+}
+
+/* Gaya untuk tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #145375; /* Solid dark blue background */
+  animation: zoomIn 0.8s ease-in-out; /* Animasi zoom-in */
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #faaf1d; /* Bright yellow */
+  color: #003049; /* Dark text for contrast */
+  animation: slideInRight 1s ease-in-out; /* Animasi slide-in dari kanan */
+}
+
+table tr:nth-child(even) {
+  background-color: #0271ab; /* Light blue for even rows */
+}
+
+table tr:nth-child(odd) {
+  background-color: #145375; /* Dark blue for odd rows */
+}
+
+table tr {
+  animation: fadeIn 0.8s ease-in-out; /* Animasi fade-in untuk baris */
+}
+
+table td {
+  color: #fabe49; /* Light yellow text for readability */
+}
+
+/* Gaya untuk header tanggal */
+h3 {
+  margin-top: 20px;
+  color: #faaf1d; /* Bright yellow */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Pesan jika tidak ada jadwal */
+p {
+  color: #e63946; /* Bright red for warning */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Dropdown animasi */
 select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
   border: 2px solid #0271ab; /* Light blue border */
   border-radius: 5px;
-  background-color: #003049; /* Dark background */
-  color: #fabe49; /* Light text */
+  background-color: #145375; /* Solid dark blue background */
+  color: #fabe49; /* Light yellow text for readability */
   font-size: 1em;
   transition: border-color 0.3s ease, background-color 0.3s ease;
+  animation: slideInLeft 1s ease-in-out; /* Animasi slide-in dari kiri */
 }
 
 select:focus {
-  border-color: #faaf1d; /* Dark yellow focus */
+  border-color: #faaf1d; /* Bright yellow focus */
   background-color: #0271ab; /* Light blue focus */
   outline: none;
 }
 
+/* Kartu jadwal animasi */
 .schedule {
   margin-top: 20px;
   display: flex;
@@ -57,7 +126,7 @@ select:focus {
 
 .card {
   background-color: #0271ab; /* Light blue */
-  color: #fabe49; /* Light text */
+  color: #fabe49; /* Light yellow text */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -66,26 +135,22 @@ select:focus {
   width: 200px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.card.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeIn 1s ease-in-out forwards; /* Animasi fade-in */
+  transition: transform 0.5s ease, background-color 0.3s ease;
 }
 
 .card:hover {
-  background-color: #faaf1d; /* Dark yellow hover */
+  background-color: #faaf1d; /* Bright yellow hover */
   color: #003049; /* Dark text on hover */
   transform: scale(1.05); /* Efek pembesaran */
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: hoverBounce 0.5s ease-in-out; /* Animasi bounce saat hover */
 }
 
 /* Animasi */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -93,14 +158,46 @@ select:focus {
   }
 }
 
-@keyframes slideIn {
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hoverBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
   }
 }
 

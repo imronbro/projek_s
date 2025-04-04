@@ -18,6 +18,7 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,27 +26,6 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
             color: #145375;
             margin: 0;
             padding: 0;
-        }
-        .navbar {
-            background-color: #145375;
-            color: #fff;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-        }
-        .nav-links li {
-            margin: 0 10px;
-        }
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
         }
         .content {
             padding: 20px;
@@ -98,6 +78,11 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
             <li><a href="profil.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
         </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
     <div class="content">
         <h2>Daftar Siswa Hadir</h2>
@@ -126,5 +111,11 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
         </form>
         <p>Data siswa tidak tersedia karena koneksi ke database telah dihapus.</p>
     </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

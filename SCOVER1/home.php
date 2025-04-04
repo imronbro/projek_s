@@ -174,7 +174,6 @@ $conn->close();
             </form>
         </div>
     </div>
-    <script src="js/logout.js" defer></script>
     <script src="js/home.js" defer></script>
 </body>
 </html>

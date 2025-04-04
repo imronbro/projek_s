@@ -10,3 +10,9 @@ function confirmLogout() {
     window.location.href = "logout.php";
   }
 }
+
+function confirmLogout() {
+  if (confirm("Apakah Anda yakin ingin keluar?")) {
+    window.location.href = "logout.php";
+  }
+}
