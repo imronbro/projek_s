@@ -1,8 +1,9 @@
 /* Navbar */
 .navbar {
   display: flex;
-  justify-content: space-between; /* Atur jarak antara logo, hamburger menu, dan elemen lainnya */
-  align-items: center; /* Pastikan semua elemen sejajar secara vertikal */
+  justify-content: space-between; /* Atur jarak antara elemen */
+  align-items: center;
+  flex-wrap: wrap; /* Pastikan elemen tidak keluar dari layar */
   background-color: #003049;
   color: white;
   width: 100%;
@@ -133,12 +134,20 @@
   justify-content: center;
   height: auto;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 0;
+  margin: 0 10px 0 0; /* Tambahkan margin kanan untuk memberi ruang */
+  white-space: nowrap; /* Pastikan teks tidak membungkus */
 }
 
 .navbar .logout-btn:hover {
   background-color: rgb(218, 63, 63); /* Warna hover */
   transform: scale(1.05); /* Efek zoom */
+}
+
+/* Default untuk nav-links li */
+.navbar .nav-links li {
+  margin: 10px 0; /* Margin default */
+  text-align: center;
+  font-size: 16px; /* Ukuran font default */
 }
 
 /* Responsif untuk layar tablet dan laptop kecil */
@@ -155,12 +164,22 @@
     font-size: 14px; /* Ukuran lebih kecil untuk nav-link */
     padding: 8px 12px;
   }
+
+  .navbar .nav-links li {
+    margin: 8px 0; /* Kurangi margin */
+    font-size: 14px; /* Ukuran font lebih kecil */
+  }
 }
 
 /* Navbar untuk layar kecil */
 @media (max-width: 768px) {
   .menu-icon {
     display: flex; /* Tampilkan tombol hamburger */
+  }
+
+  .navbar {
+    flex-direction: column; /* Atur elemen navbar menjadi kolom */
+    align-items: flex-start; /* Pastikan elemen rata kiri */
   }
 
   .navbar .title {
@@ -186,8 +205,8 @@
   }
 
   .navbar .nav-links li {
-    margin: 10px 0;
-    text-align: center;
+    margin: 6px 0; /* Kurangi margin lebih jauh */
+    font-size: 13px; /* Ukuran font lebih kecil */
   }
 
   .navbar .nav-links a {
@@ -196,8 +215,10 @@
   }
 
   .navbar .logout-btn {
-    margin-top: 10px;
+    margin: 10px auto; /* Posisikan tombol di tengah dengan margin otomatis */
     font-size: 14px;
+    padding: 10px 15px; /* Sesuaikan ukuran tombol */
+    align-self: center; /* Posisikan tombol di tengah */
   }
 
   .navbar .logo-text {
@@ -222,13 +243,22 @@
   .navbar .title {
     font-size: 1em; /* Sesuaikan ukuran judul */
   }
-  s .navbar .nav-links a {
+
+  .navbar .nav-links a {
     font-size: 12px;
     padding: 8px;
   }
 
+  .navbar .nav-links li {
+    margin: 5px 0; /* Margin lebih kecil */
+    font-size: 12px; /* Ukuran font lebih kecil */
+  }
+
   .navbar .logout-btn {
-    font-size: 12px;
-    padding: 8px 10px;
+    font-size: 12px; /* Ukuran teks lebih kecil */
+    padding: 8px 10px; /* Sesuaikan padding */
+    width: 90%; /* Tombol memenuhi 90% lebar layar */
+    text-align: center; /* Teks di tengah */
+    margin: 10px auto; /* Posisikan tombol di tengah */
   }
 }
