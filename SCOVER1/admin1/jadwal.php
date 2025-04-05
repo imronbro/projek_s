@@ -212,20 +212,20 @@ $conn->close();
 
             <label for="sesi">Sesi:</label>
             <select name="sesi" required>
-                <option value="Sesi 1">Sesi 1 (09.00-10.30)</option>
-                <option value="Sesi 2">Sesi 2 (10.30-12.00)</option>
-                <option value="Sesi 3">Sesi 3 (13.00-14.30)</option>
-                <option value="Sesi 4">Sesi 4 (14.30-16.00)</option>
-                <option value="Sesi 5">Sesi 5 (16.00-17.30)</option>
-                <option value="Sesi 6">Sesi 6 (18.00-19.30)</option>
-                <option value="Sesi 7">Sesi 7 (19.30-21.00)</option>
+                <option value="Sesi 1 (09:00-10:30)">Sesi 1 (09:00-10:30)</option>
+                <option value="Sesi 2 (10:30-12:00)">Sesi 2 (10:30-12:00)</option>
+                <option value="Sesi 3 (13:00-14:30)">Sesi 3 (13:00-14:30)</option>
+                <option value="Sesi 4 (14:30-16:00)">Sesi 4 (14:30-16:00)</option>
+                <option value="Sesi 5 (16:00-17:30)">Sesi 5 (16:00-17:30)</option>
+                <option value="Sesi 6 (18:00-19:30)">Sesi 6 (18:00-19:30)</option>
+                <option value="Sesi 7 (19:30-21:00)">Sesi 7 (19:30-21:00)</option>
             </select>
 
             <label for="mata_pelajaran">Mata Pelajaran:</label>
             <input type="text" name="mata_pelajaran" required>
 
-            <label for="pengajar_id">Pengajar:</label>
-            <select name="pengajar_id" id="pengajar_id" class="select2" required>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+            <label for="pengajar_id">Pengajar:</label\                                                 <select name="pengajar_id" id="pengajar_id" class="select2" required>
                 <option value="" disabled selected>Pilih Pengajar</option>
                 <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
                     <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
@@ -254,7 +254,7 @@ $conn->close();
                     echo "<td>" . htmlspecialchars($row['siswa_name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
                     echo "<td>" . htmlspecialchars($hari) . "</td>"; // Tampilkan nama hari
-                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>"; // Tampilkan sesi lengkap
                     echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['pengajar_name']) . "</td>";
                     echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";

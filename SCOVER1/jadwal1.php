@@ -97,7 +97,7 @@ $conn->close();
                         <tr>
                             <td><?= htmlspecialchars($row['sesi']) ?></td>
                             <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
-                            <td><?= htmlspecialchars($row['pengajar'] ?? 'Pengajar Tidak Ditemukan') ?></td>
+                            <td><?= htmlspecialchars('Kak ' . ($row['pengajar'] ?? 'Pengajar Tidak Ditemukan')) ?></td>
                         </tr>
             <?php endwhile; ?>
             </table>
