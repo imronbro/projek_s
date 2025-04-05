@@ -23,14 +23,17 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
+// Ambil tanggal hari ini
+$tanggal_sekarang = date('Y-m-d');
+
 // Ambil jadwal siswa dengan join ke tabel mentor untuk mendapatkan nama pengajar
 $sql = "SELECT j.tanggal, j.sesi, j.mata_pelajaran, j.pengajar_id, m.full_name AS pengajar 
         FROM jadwal_siswa j
         LEFT JOIN mentor m ON j.pengajar_id = m.pengajar_id
-        WHERE j.siswa_id = ?
+        WHERE j.siswa_id = ? AND j.tanggal >= ?
         ORDER BY j.tanggal, j.sesi";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $siswa_id);
+$stmt->bind_param("is", $siswa_id, $tanggal_sekarang); // Gunakan tanggal sekarang sebagai parameter
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -215,7 +215,7 @@ $result = $stmt->get_result();
         <li><a href="kontak.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
-    <div class="menu-icon" onclick="toggleMenu()"
+    <div class="menu-icon" onclick="toggleMenu()">
         <span></span>
         <span></span>
         <span></span>

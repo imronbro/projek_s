@@ -35,27 +35,44 @@ body {
   animation: fadeIn 1s ease-in-out; /* Animasi untuk konten */
 }
 
+/* Gaya untuk form presensi */
 .form-presensi {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%; /* Pastikan form memenuhi lebar container */
   animation: slideIn 1s ease-in-out; /* Animasi untuk form */
 }
 
+/* Gaya untuk setiap baris form */
+.form-presensi .form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* Jarak antar elemen */
+  width: 100%; /* Pastikan baris memenuhi lebar container */
+}
+
+/* Gaya untuk label */
 .form-presensi label {
+  flex: 1; /* Label mengambil ruang yang sama */
   font-weight: bold;
   color: #003049;
   font-size: 14px;
+  text-align: left; /* Pastikan teks label rata kiri */
 }
 
-.form-presensi select,
+/* Gaya untuk input */
 .form-presensi input,
+.form-presensi select,
 .form-presensi textarea {
-  width: 100%;
+  flex: 2; /* Input atau select mengambil ruang lebih besar */
+  width: 100%; /* Pastikan input memenuhi ruang yang tersedia */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
+  box-sizing: border-box; /* Termasuk padding dalam lebar */
   animation: fadeIn 1.2s ease-in-out; /* Animasi untuk input */
 }
 
