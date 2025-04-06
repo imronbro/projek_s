@@ -22,16 +22,14 @@ body {
 
 /* Container */
 .container {
-  max-width: 50%; /* Kurangi lebar container menjadi 50% */
-  margin: 80px auto 20px; /* Sesuaikan margin-top agar tidak tertutupi navbar */
-  padding: 15px; /* Kurangi padding untuk menghemat ruang */
-  background-color: #145375; /* Solid dark blue background */
+  max-width: 50%; /* Kurangi lebar container */
+  margin: 80px auto 20px; /* Posisikan container di tengah */
+  padding: 15px;
+  background-color: #145375; /* Warna latar belakang */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 100%; /* Pastikan lebar container mengikuti layar */
-  box-sizing: border-box; /* Termasuk padding dalam lebar */
-  color: #fabe49; /* Light yellow text for contrast */
-  animation: fadeInSlideUp 1s ease-in-out; /* Tambahkan animasi */
+  color: #fabe49; /* Warna teks */
+  text-align: center; /* Pusatkan teks */
 }
 
 /* Heading */
@@ -45,50 +43,90 @@ h2 {
 
 /* Card */
 .card {
-  padding: 25px; /* Perbesar padding */
-  background-color: #0271ab; /* Light blue background */
+  padding: 20px;
+  background-color: #0271ab; /* Warna latar belakang kartu */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Pastikan card mengikuti lebar layar */
-  box-sizing: border-box;
-  color: #fabe49; /* Light yellow text */
+  margin-bottom: 20px;
+  text-align: center; /* Pusatkan teks dalam kartu */
+}
+
+/* Paragraf dalam Card */
+.card p {
+  font-size: 1.5em; /* Ukuran teks default */
+  margin: 10px 0; /* Jarak antar paragraf */
+  text-align: left; /* Teks rata kiri */
+  line-height: 1.6; /* Jarak antar baris */
+  display: flex; /* Gunakan Flexbox untuk pengaturan elemen */
+  flex-wrap: nowrap; /* Pastikan teks tidak turun ke bawah */
+  align-items: center; /* Posisikan elemen di tengah secara vertikal */
+  gap: 10px; /* Tambahkan jarak antara label dan konten */
+}
+
+/* Teks Tebal */
+.card p strong {
+  font-weight: bold; /* Teks tebal */
+  min-width: 150px; /* Lebar tetap untuk label */
+  text-align: left; /* Pastikan label rata kiri */
+  flex-shrink: 0; /* Jangan biarkan label mengecil */
 }
 
 /* Gambar Profil */
 .profile-img {
-  width: 200px; /* Perbesar ukuran gambar */
+  width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto 20px; /* Tengahkan gambar */
+  margin: 0 auto 20px; /* Posisikan gambar di tengah */
   display: block;
-  border: 3px solid #faaf1d; /* Border kuning terang */
+  border: 3px solid #faaf1d;
 }
 
 /* Paragraph */
 p {
-  font-size: 1.5em; /* Perbesar ukuran teks */
-  margin: 10px 0;
-  text-align: center; /* Tengahkan teks */
+  font-size: 1.5em; /* Ukuran teks */
+  margin: 10px 0; /* Jarak antar paragraf */
+  text-align: justify; /* Teks rata kiri dan kanan */
   word-wrap: break-word; /* Memastikan teks tidak melampaui layar */
+  line-height: 1.6; /* Jarak antar baris untuk keterbacaan */
+  display: flex; /* Gunakan Flexbox untuk pengaturan elemen */
+  flex-wrap: wrap; /* Pastikan teks yang panjang terbungkus */
+  align-items: center; /* Posisikan elemen di tengah secara vertikal */
+  gap: 5px; /* Tambahkan jarak antar elemen */
+}
+
+/* Strong (untuk teks tebal) */
+p strong {
+  font-weight: bold; /* Teks tebal */
+  margin-right: 5px; /* Tambahkan jarak setelah teks tebal */
+}
+
+/* Info Row */
+.info-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* Jarak antara label dan konten */
+  margin-bottom: 5px; /* Jarak antar baris */
+}
+
+.info-row strong {
+  min-width: 150px; /* Lebar tetap untuk label */
+  text-align: left;
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 15px 25px; /* Perbesar padding tombol */
+  padding: 10px 20px;
   margin: 10px 5px;
   text-decoration: none;
-  color: #003049; /* Dark text */
+  color: #003049;
   border-radius: 5px;
   text-align: center;
-  width: auto; /* Pastikan tombol tidak terlalu lebar */
-  font-weight: bold;
-  font-size: 1.2em; /* Perbesar ukuran teks tombol */
 }
 
 .btn-primary {
-  background-color: #faaf1d; /* Bright yellow */
+  background-color: #faaf1d;
 }
 
 .btn-primary:hover {
@@ -99,9 +137,7 @@ p {
 }
 
 .btn-secondary {
-  background-color: #f4f4f4; /* Light gray */
-  color: #003049; /* Dark text */
-  border: none; /* Hapus garis luar */
+  background-color: #f4f4f4;
 }
 
 .btn-secondary:hover {
@@ -125,6 +161,14 @@ p {
 
   p {
     font-size: 1.3em; /* Ukuran teks mengecil */
+  }
+
+  .card p {
+    font-size: 1.3em; /* Ukuran teks mengecil untuk layar sedang */
+  }
+
+  .card p strong {
+    min-width: 130px; /* Kurangi lebar label untuk layar sedang */
   }
 
   .profile-img {
@@ -153,6 +197,14 @@ p {
     font-size: 1.2em; /* Ukuran teks lebih kecil */
   }
 
+  .card p {
+    font-size: 1.2em; /* Ukuran teks lebih kecil untuk layar kecil */
+  }
+
+  .card p strong {
+    min-width: 120px; /* Kurangi lebar label untuk layar kecil */
+  }
+
   .profile-img {
     width: 120px; /* Ukuran gambar lebih kecil */
     height: 120px;
@@ -177,6 +229,14 @@ p {
 
   p {
     font-size: 1em; /* Ukuran teks lebih kecil */
+  }
+
+  .card p {
+    font-size: 1em; /* Ukuran teks lebih kecil untuk layar sangat kecil */
+  }
+
+  .card p strong {
+    min-width: 100px; /* Kurangi lebar label untuk layar sangat kecil */
   }
 
   .profile-img {

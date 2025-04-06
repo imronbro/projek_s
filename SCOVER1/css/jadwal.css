@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  margin-top: 120px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
+  margin-top: 180px; /* Tambahkan jarak lebih besar dari navbar */
   padding: 20px;
   width: 90%;
   max-width: 1200px;
@@ -28,6 +28,16 @@ h2 {
   font-size: 1.8em;
   text-align: center;
   animation: slideInLeft 1s ease-in-out; /* Animasi slide-in dari kiri */
+}
+
+/* Gaya untuk Judul Konten */
+.content-title {
+  font-size: 2em; /* Ukuran font besar */
+  font-weight: bold; /* Teks tebal */
+  color: #faaf1d; /* Warna kuning cerah */
+  text-align: center; /* Teks rata tengah */
+  margin-bottom: 20px; /* Jarak bawah */
+  animation: slideIn 1s ease-in-out; /* Animasi slide-in */
 }
 
 /* Konten fade-in */
@@ -201,10 +211,23 @@ select:focus {
   }
 }
 
+/* Animasi Slide-In */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Geser ke atas */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi semula */
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
     width: 95%;
+    margin-top: 150px; /* Jarak lebih kecil untuk perangkat tablet */
     padding: 15px;
   }
 
@@ -225,6 +248,7 @@ select:focus {
 @media (max-width: 480px) {
   .container {
     width: 100%;
+    margin-top: 120px; /* Jarak lebih kecil untuk perangkat ponsel */
     padding: 10px;
   }
 

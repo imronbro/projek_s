@@ -67,13 +67,36 @@ if ($email) {
             <?php 
             } 
             ?>
-            <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($data['full_name']); ?></p>
-            <p><strong>Email:</strong> <?= htmlspecialchars($data['email']); ?></p>
-            <p><strong>Sekolah:</strong> <?= htmlspecialchars($data['sekolah'] ?? '-'); ?></p>
-            <p><strong>Kelas:</strong> <?= htmlspecialchars($data['kelas'] ?? '-'); ?></p>
-            <p><strong>TTL:</strong> <?= htmlspecialchars($data['ttl'] ?? '-'); ?></p>
-            <p><strong>Alamat:</strong> <?= htmlspecialchars($data['alamat'] ?? '-'); ?></p>
-            <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>
+        </div>
+        <div class="card p-3 shadow mb-4 text-left">
+            <div class="info-row">
+                <strong>Nama Lengkap</strong>
+                <span>: <?= htmlspecialchars($data['full_name']); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>Email</strong>
+                <span>: <?= htmlspecialchars($data['email']); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>Sekolah</strong>
+                <span>: <?= htmlspecialchars($data['sekolah'] ?? '-'); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>Kelas</strong>
+                <span>: <?= htmlspecialchars($data['kelas'] ?? '-'); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>TTL</strong>
+                <span>: <?= htmlspecialchars($data['ttl'] ?? '-'); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>Alamat</strong>
+                <span>: <?= htmlspecialchars($data['alamat'] ?? '-'); ?></span>
+            </div>
+            <div class="info-row">
+                <strong>No HP</strong>
+                <span>: <?= htmlspecialchars($data['nohp'] ?? '-'); ?></span>
+            </div>
         </div>
         <a href="home.php" class="btn btn-primary">Kembali</a>
         <a href="edit_profile.php" class="btn btn-secondary">Edit Profil</a>

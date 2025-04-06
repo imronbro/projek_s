@@ -1,38 +1,28 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #003049;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-top: 70px;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  justify-content: center; /* Pusatkan secara vertikal */
+  min-height: 100vh; /* Pastikan body memenuhi tinggi layar */
+  margin: 0;
+  padding: 0;
   background-color: #003049;
-  color: white;
-  padding: 15px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif; /* Gunakan font yang seragam */
+  color: white; /* Warna teks default */
 }
 
 .content {
-  width: 90%;
-  max-width: 1200px;
-  background-color: #145375;
+  margin-top: 80px; /* Kurangi jarak atas agar lebih pas */
+  margin: 0 auto; /* Pusatkan secara horizontal */
   padding: 20px;
+  background-color: #145375;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 100px 0 20px; /* Tambahkan margin-top agar tidak tertutupi navbar */
   font-size: 16px;
   line-height: 1.6;
   animation: fadeIn 1s ease-in-out; /* Animasi untuk konten */
+  font-family: Arial, sans-serif; /* Gunakan font yang sama dengan navbar */
+  color: white; /* Warna teks */
 }
 
 /* Gaya untuk form presensi */
@@ -136,6 +126,7 @@ body {
   text-align: center;
   margin-bottom: 20px;
   animation: slideIn 1s ease-in-out;
+  font-family: Arial, sans-serif; /* Gunakan font yang sama dengan navbar */
 }
 
 /* Animations */
@@ -189,6 +180,14 @@ body {
   .footer {
     font-size: 12px;
   }
+
+  .form-title {
+    font-size: 1.8em; /* Sesuaikan ukuran judul */
+  }
+
+  .btn {
+    font-size: 12px; /* Ukuran font tombol lebih kecil */
+  }
 }
 
 @media (max-width: 480px) {
@@ -202,6 +201,15 @@ body {
 
   .footer {
     font-size: 12px;
+  }
+
+  .form-title {
+    font-size: 1.5em; /* Sesuaikan ukuran judul */
+  }
+
+  .btn {
+    font-size: 12px; /* Ukuran font tombol lebih kecil */
+    padding: 10px 15px; /* Sesuaikan padding */
   }
 }
 
@@ -222,6 +230,7 @@ body {
   margin: 20px auto; /* Posisikan tombol di tengah dengan margin */
   width: auto; /* Ukuran tombol sesuai konten */
   text-decoration: none; /* Hilangkan garis bawah */
+  font-family: Arial, sans-serif; /* Gunakan font yang sama dengan navbar */
 }
 
 /* Hover Effect untuk Semua Tombol */
