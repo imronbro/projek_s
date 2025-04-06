@@ -80,12 +80,15 @@ body {
   background-color: #faaf1d;
   color: white;
   border: none;
-  padding: 12px;
+  padding: 12px 20px; /* Tambahkan padding horizontal */
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s, transform 0.3s;
   animation: bounceIn 1s ease-in-out; /* Animasi untuk tombol */
+  margin: 20px auto; /* Tambahkan margin atas dan bawah, serta posisikan di tengah */
+  display: block; /* Pastikan tombol menjadi elemen blok untuk bisa diatur ke tengah */
+  width: auto; /* Pastikan tombol tidak memenuhi lebar penuh */
 }
 
 .form-presensi button:hover {
