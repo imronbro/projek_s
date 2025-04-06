@@ -170,7 +170,10 @@ $conn->close();
                     <textarea id="komentar" name="komentar" rows="3" placeholder="Jelaskan alasan izin atau sakit..."></textarea>
                 </div>
 
-                <button type="submit">Kirim</button>
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+                    <button type="submit" class="btn">Kirim</button>
+                    <a href="riwayat_presensi.php" class="btn">Riwayat Presensi</a>
+                </div>
             </form>
         </div>
     </div>

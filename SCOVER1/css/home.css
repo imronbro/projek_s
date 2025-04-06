@@ -204,3 +204,28 @@ body {
     font-size: 12px;
   }
 }
+
+/* Gaya Seragam untuk Semua Tombol */
+.btn {
+  background-color: #faaf1d; /* Warna latar belakang */
+  color: white; /* Warna teks */
+  border: none; /* Hilangkan border */
+  padding: 12px 20px; /* Padding seragam */
+  border-radius: 5px; /* Sudut membulat */
+  font-size: 14px; /* Ukuran font seragam */
+  cursor: pointer; /* Pointer untuk interaksi */
+  text-align: center; /* Teks rata tengah secara horizontal */
+  display: flex; /* Gunakan Flexbox */
+  align-items: center; /* Teks rata tengah secara vertikal */
+  justify-content: center; /* Teks rata tengah secara horizontal */
+  transition: background-color 0.3s, transform 0.3s; /* Efek transisi */
+  margin: 20px auto; /* Posisikan tombol di tengah dengan margin */
+  width: auto; /* Ukuran tombol sesuai konten */
+  text-decoration: none; /* Hilangkan garis bawah */
+}
+
+/* Hover Effect untuk Semua Tombol */
+.btn:hover {
+  background-color: #fabe49; /* Warna hover */
+  transform: scale(1.05); /* Efek pembesaran saat hover */
+}
