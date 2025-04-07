@@ -46,26 +46,161 @@ $result = $stmt->get_result();
     <title>Riwayat Presensi</title>
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-    .button-container {
-        margin-top: 20px;
-        text-align: center;
+    body {
+      font-family: Arial, sans-serif; /* Gunakan font yang sama dengan navbar */
+      color: white; /* Warna teks default */
+      background-color: #003049; /* Warna latar belakang */
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      position: fixed; /* Navbar tetap di atas */
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .content {
+      margin-top: 100px; /* Tambahkan jarak agar tidak tertutup navbar */
+      padding: 20px;
+      background-color: #145375; /* Warna latar belakang konten */
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      color: #fabe49; /* Warna teks */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: #145375; /* Warna latar belakang tabel */
+      color: #fabe49; /* Warna teks */
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #faaf1d; /* Warna kuning cerah */
+      color: #003049; /* Warna teks gelap */
+    }
+
+    table tr:nth-child(even) {
+      background-color: #0271ab; /* Warna biru terang untuk baris genap */
+    }
+
+    table tr:nth-child(odd) {
+      background-color: #145375; /* Warna biru gelap untuk baris ganjil */
     }
 
     .back-button {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
+      font-family: Arial, sans-serif; /* Gunakan font yang sama */
+      font-size: 16px; /* Ukuran font tombol */
+      background-color: #3498db; /* Warna tombol */
+      color: white; /* Warna teks tombol */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .back-button:hover {
-        background-color: #2980b9;
+      background-color: #2980b9; /* Warna hover */
+      transform: scale(1.05); /* Efek zoom */
     }
-</style>
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+      .content {
+        margin-top: 120px; /* Sesuaikan jarak untuk layar kecil */
+        padding: 15px; /* Kurangi padding */
+        font-size: 14px; /* Ukuran font lebih kecil */
+      }
+
+      h2 {
+        font-size: 1.5em; /* Sesuaikan ukuran judul */
+        text-align: center;
+      }
+
+      table {
+        font-size: 12px; /* Ukuran font tabel lebih kecil */
+      }
+
+      table th, table td {
+        padding: 8px; /* Kurangi padding tabel */
+      }
+
+      .back-button {
+        font-size: 14px; /* Ukuran font tombol lebih kecil */
+        padding: 8px 15px; /* Sesuaikan padding tombol */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content {
+        margin-top: 100px; /* Sesuaikan jarak untuk layar HP */
+        padding: 10px; /* Kurangi padding lebih jauh */
+        font-size: 12px; /* Ukuran font lebih kecil */
+      }
+
+      h2 {
+        font-size: 1.2em; /* Ukuran judul lebih kecil */
+      }
+
+      table {
+        font-size: 10px; /* Ukuran font tabel lebih kecil */
+      }
+
+      table th, table td {
+        padding: 5px; /* Kurangi padding tabel lebih jauh */
+      }
+
+      .back-button {
+        font-size: 12px; /* Ukuran font tombol lebih kecil */
+        padding: 6px 10px; /* Sesuaikan padding tombol */
+        width: 100%; /* Tombol memenuhi lebar layar */
+        text-align: center;
+      }
+
+      .navbar .nav-links {
+        flex-direction: column; /* Atur link navbar menjadi kolom */
+        gap: 10px; /* Tambahkan jarak antar link */
+      }
+
+      .navbar .nav-links a {
+        font-size: 14px; /* Ukuran font link lebih kecil */
+        padding: 8px; /* Sesuaikan padding link */
+      }
+
+      .navbar .menu-icon {
+        display: flex; /* Tampilkan menu hamburger */
+      }
+
+      .navbar .nav-links {
+        display: none; /* Sembunyikan link navbar secara default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #003049;
+        padding: 20px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        z-index: 1000;
+      }
+
+      .navbar .nav-links.active {
+        display: flex; /* Tampilkan link navbar saat menu aktif */
+      }
+    }
+    </style>
 
 </head>
 <body>
@@ -75,21 +210,22 @@ $result = $stmt->get_result();
             <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
-        <ul class="nav-links">
-            <li><a href="home.php" class="active">Presensi</a></li>
-            <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal1.php">Jadwal</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="profile.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
-            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-        </ul>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+    <ul class="nav-links">
+        <li><a href="home.php" class="active">Presensi</a></li>
+        <li><a href="pengajar.php">Pengajar</a></li>
+        <li><a href="rating.php">Rating</a></li>
+        <li><a href="jadwal1.php">Jadwal</a></li>
+        <li><a href="nilai_siswa.php">Nilai</a></li>
+        <li><a href="profile.php">Profil</a></li>
+        <li><a href="kontak.php">Kontak</a></li>
+        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
 
     <div class="content">
         <h2>Riwayat Presensi - <?php echo htmlspecialchars($full_name); ?></h2>
