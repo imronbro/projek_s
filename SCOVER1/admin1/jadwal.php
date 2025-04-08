@@ -80,7 +80,7 @@ $conn->close();
 
         .container {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 100px auto;
             background: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -176,7 +176,8 @@ $conn->close();
 <body>
 <nav class="navbar">
         <div class="logo">
-            <div class="logo-circle">LOGO</div>
+            <img src="images/foto4.png" alt="Logo">
+            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
