@@ -28,7 +28,7 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
             padding: 0;
         }
         .content {
-            padding: 80px;
+            padding: 100px;
         }
         h2 {
             color: #e6c200;
