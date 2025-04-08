@@ -7,11 +7,6 @@ body {
   text-align: center;
 }
 
-.navbar .logo img {
-  width: 60px;
-  height: auto;
-}
-
 .content {
   margin-top: 120px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
   padding: 20px;
