@@ -28,7 +28,7 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
             padding: 0;
         }
         .content {
-            padding: 100px;
+            padding: 20px;
         }
         h2 {
             color: #e6c200;
@@ -66,12 +66,11 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
+            <div class="logo-circle">LOGO</div>
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
-            <li><a class="active">Presensi</a></li>
+            <li><a href="presensi.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
