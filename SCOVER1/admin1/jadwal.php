@@ -188,6 +188,7 @@ $conn->close();
             <li><a href="rating.php">Rating</a></li>
             <li><a href="profil.php">Profil</a></li>
             <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
