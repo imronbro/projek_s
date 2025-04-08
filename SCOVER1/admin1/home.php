@@ -68,7 +68,7 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
         <div class="logo">
             <div class="logo-circle">LOGO</div>
         </div>
-        <h1 class="title">Dashboard Siswa</h1>
+        <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
             <li><a href="presensi.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
