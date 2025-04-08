@@ -80,7 +80,7 @@ $conn->close();
 
         .container {
             max-width: 800px;
-            margin: 100px auto;
+            margin: 80px auto;
             background: #fff;
             padding: 20px;
             border-radius: 8px;
