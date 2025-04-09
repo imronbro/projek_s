@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php'; 
+include 'koneksi.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: loginadmin.php");
@@ -9,7 +9,8 @@ if (!isset($_SESSION['user_email'])) {
 $user_email = $_SESSION['user_email'];
 
 // Fungsi untuk mendapatkan nama hari dalam bahasa Indonesia
-function getHari($tanggal) {
+function getHari($tanggal)
+{
     $hari = date('l', strtotime($tanggal));
     $hariIndonesia = [
         'Monday' => 'Senin',
@@ -103,7 +104,8 @@ $conn->close();
             margin-bottom: 5px;
         }
 
-        input, select {
+        input,
+        select {
             padding: 10px;
             font-size: 14px;
             border: 1px solid #ccc;
@@ -156,7 +158,8 @@ $conn->close();
             margin-top: 20px;
         }
 
-        table th, table td {
+        table th,
+        table td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
@@ -170,19 +173,99 @@ $conn->close();
         table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 0;
+            margin: 0;
+            left: -35px;
+            list-style: none;
+            border: 1px solid #ccc;
+            /* <- tambahkan border */
+        }
+
+        .dropdown-menu li a {
+            color: #145375 !important;
+            /* pastikan warnanya terlihat */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: #fff;
+            font-weight: bold;
+            /* opsional biar lebih terlihat */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #e6c200;
+            color: #145375;
+        }
+
+
+        .arrow {
+            font-size: 12px;
+            margin-left: 5px;
+        }
     </style>
 </head>
+<script>
+    function toggleDropdown(event) {
+        event.preventDefault(); // supaya gak reload atau pergi ke #
+        const dropdown = event.currentTarget.nextElementSibling;
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleDropdown(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        const dropdown = link.nextElementSibling;
+        const arrow = link.querySelector('#arrow');
+
+        const isOpen = dropdown.style.display === 'block';
+        dropdown.style.display = isOpen ? 'none' : 'block';
+        arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
+    }
+
+
+    // Tutup dropdown kalau klik di luar menu
+    document.addEventListener('click', function(event) {
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            if (!menu.parentElement.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
-            <img src="images/foto4.png" alt="Logo">
+            <a href="home.php">
+                <img src="images/foto4.png" alt="Logo" class="logo-image">
+            </a>
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Presensi</a></li>
+            <li class="dropdown">
+                <a href="#" onclick="toggleDropdown(event)">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="home.php">Presensi Siswa</a></li>
+                    <li><a href="presensi_pengajar.php">Presensi Pengajar</a></li>
+                </ul>
+            </li>
+
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="jadwal.php" class="active">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><a href="profil.php">Profil</a></li>
@@ -225,15 +308,15 @@ $conn->close();
             <label for="mata_pelajaran">Mata Pelajaran:</label>
             <input type="text" name="mata_pelajaran" required>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-            <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id" class="select2" required>
-                <option value="" disabled selected>Pilih Pengajar</option>
-                <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
-                    <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
-                <?php } ?>
-            </select>
 
-            <button type="submit">Tambah Jadwal</button>
+            <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id" class="select2" required>
+                    <option value="" disabled selected>Pilih Pengajar</option>
+                    <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
+                        <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
+                    <?php } ?>
+                </select>
+
+                <button type="submit">Tambah Jadwal</button>
         </form>
 
         <!-- Tabel Jadwal -->
