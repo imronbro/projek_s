@@ -266,7 +266,7 @@ $conn->close();
                 <a href="#" onclick="toggleDropdown(event)">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
                 <ul class="dropdown-menu">
                     <li><a href="home.php">Presensi Siswa</a></li>
-                    <li><a href="presensi_pengajar.php">Presensi Pengajar</a></li>
+                    <li><a href="presensipengajar.php">Presensi Pengajar</a></li>
                 </ul>
             </li>
 
