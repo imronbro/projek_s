@@ -1,26 +1,27 @@
 <?php
-session_start();
-include 'koneksi.php'; 
+include 'koneksi.php';
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: loginadmin.php");
-    exit();
-}
-$user_email = $_SESSION['user_email'];
-$search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
-
-$query = "SELECT pengajar_id, full_name, gambar, mapel, nohp FROM mentor";
-if (!empty($search)) {
-    $query .= " WHERE full_name LIKE '%$search%'";
+if (!isset($_GET['id'])) {
+    echo "Pengajar tidak ditemukan.";
+    exit;
 }
 
-$result = mysqli_query($conn, $query);
+$id = intval($_GET['id']);
 
+// Ambil data pengajar
+$mentorQuery = mysqli_query($conn, "SELECT * FROM mentor WHERE pengajar_id = $id");
+$mentor = mysqli_fetch_assoc($mentorQuery);
 
+if (!$mentor) {
+    echo "Pengajar tidak ditemukan.";
+    exit;
+}
+
+// Ambil rating pengajar
+$ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar WHERE pengajar_id = $id");
 ?>
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,7 +46,7 @@ $result = mysqli_query($conn, $query);
 
         h2 {
             text-align: center;
-            color: #007bff;
+            color:rgb(255, 255, 255);
         }
 
         form {
@@ -95,7 +96,7 @@ $result = mysqli_query($conn, $query);
 
         button {
             padding: 10px 15px;
-            background-color: #007bff;
+            background-color:rgb(7, 52, 100);
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -103,7 +104,7 @@ $result = mysqli_query($conn, $query);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color:rgb(14, 54, 98);
         }
 
         table {
@@ -119,7 +120,7 @@ $result = mysqli_query($conn, $query);
         }
 
         table th {
-            background-color: #007bff;
+            background-color:rgb(16, 59, 105);
             color: #fff;
         }
 
@@ -146,11 +147,35 @@ $result = mysqli_query($conn, $query);
             align-items: center;
             margin-top: 10px;
         }
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+.card {
+    background-color:rgb(2, 65, 131) ;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(14, 63, 148, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.mentor-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid rgb(12, 54, 99);
+}
 
 
     </style>
 </head>
-
 <body>
 <nav class="navbar">
         <div class="logo">
@@ -174,40 +199,15 @@ $result = mysqli_query($conn, $query);
             <span></span>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h2 class="text-center">Daftar Pengajar</h2>
-        <!-- Form Pencarian -->
-        <form action="pengajar.php" method="get" class="search-form">
-            <input type="text" name="search" placeholder="Cari Nama Pengajar..." class="search-input">
-            <button type="submit" class="btn">Cari</button>
-        </form>
-        <div class="container mt-5">
-    <div class="row mt-4">
-        <?php if (mysqli_num_rows($result) > 0) { ?>
-            <?php while ($row = mysqli_fetch_assoc($result)) { 
-                $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
-                $defaultImage = "../uploads1/default.png";
-                $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
-            ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card text-center p-3">
-                        <img src="<?= $finalImage; ?>" alt="Foto Pengajar" class="profile-img mb-3">
-
-                        <h4><?= htmlspecialchars($row['full_name']); ?></h4>
-                        <p><strong>TUTOR <?= htmlspecialchars($row['mapel']); ?></strong></p>
-
-                        <div class="btn-group-vertical">
-                            <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>
-                            <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
-            <?php } ?>
-        <?php } else { ?>
-            <div class="col-12 text-center">
-                <p class="text-danger">Pengajar tidak ditemukan.</p>
-            </div>
-        <?php } ?>
+    <div class="profile-container">
+    <div class="card">
+        <img src="uploads/<?= htmlspecialchars($mentor['gambar']); ?>" alt="Foto Pengajar" class="mentor-img">
+        <h2><?= htmlspecialchars($mentor['full_name']); ?></h2>
+        <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($mentor['mapel']); ?></p>
+        <p><strong>Email:</strong> <?= htmlspecialchars($mentor['email']); ?></p>
+        <p><strong>No HP:</strong> <?= htmlspecialchars($mentor['nohp']); ?></p>
+        <p><strong>Alamat:</strong> <?= htmlspecialchars($mentor['alamat']); ?></p>
+        <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($mentor['ttl']); ?></p>
     </div>
 </div>
 </body>
