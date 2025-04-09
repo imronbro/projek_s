@@ -174,33 +174,32 @@ $conn->close();
             background-color: #f9f9f9;
         }
 
-        /* Dropdown styles */
-        .dropdown {
+        /* Dropdown styles */ .dropdown {
             position: relative;
         }
 
         .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #fff;
+            background-color: #0271ab;
             min-width: 180px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             padding: 0;
-            margin: 0;
+            margin: 5px;
             left: -35px;
             list-style: none;
-            border: 1px solid #ccc;
+           
             /* <- tambahkan border */
         }
 
         .dropdown-menu li a {
-            color: #145375 !important;
+            color: #fff !important;
             /* pastikan warnanya terlihat */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            background-color: #fff;
+           
             font-weight: bold;
             /* opsional biar lebih terlihat */
         }
@@ -214,6 +213,13 @@ $conn->close();
         .arrow {
             font-size: 12px;
             margin-left: 5px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 ;
+            width: 100%;
         }
     </style>
 </head>

@@ -82,25 +82,25 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
         .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #fff;
+            background-color: #0271ab;
             min-width: 180px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
             padding: 0;
-            margin: 0;
+            margin: 5px;
             left: -35px;
             list-style: none;
-            border: 1px solid #ccc;
+           
             /* <- tambahkan border */
         }
 
         .dropdown-menu li a {
-            color: #145375 !important;
+            color: #fff !important;
             /* pastikan warnanya terlihat */
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-            background-color: #fff;
+           
             font-weight: bold;
             /* opsional biar lebih terlihat */
         }
@@ -115,34 +115,43 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
             font-size: 12px;
             margin-left: 5px;
         }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 ;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <a href="home.php">
-                <img src="images/foto4.png" alt="Logo" class="logo-image">
-            </a>
-        </div>
-        <h1 class="title">Dashboard Admin</h1>
-        <ul class="nav-links">
-            <li class="dropdown">
-                <a href="#" onclick="toggleDropdown(event)" class="active">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="home.php">Presensi Siswa</a></li>
-                    <li><a href="presensi_pengajar.php">Presensi Pengajar</a></li>
-                </ul>
-            </li>
+       
+            <div class="logo">
+                <a href="home.php">
+                    <img src="images/foto4.png" alt="Logo" class="logo-image">
+                </a>
+            </div>
+            <h1 class="title">Dashboard Admin</h1>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#" onclick="toggleDropdown(event)" class="active">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="home.php">Presensi Siswa</a></li>
+                        <li><a href="presensi_pengajar.php">Presensi Pengajar</a></li>
+                    </ul>
+                </li>
 
-            <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="rating.php">Rating</a></li>
-            <li><a href="profil.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
-            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-        </ul>
+                <li><a href="pengajar.php">Pengajar</a></li>
+                <li><a href="jadwal.php">Jadwal</a></li>
+                <li><a href="nilai.php">Nilai</a></li>
+                <li><a href="rating.php">Rating</a></li>
+                <li><a href="profil.php">Profil</a></li>
+                <li><a href="kontak.php">Kontak</a></li>
+                <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+            </ul>
+        
         <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
