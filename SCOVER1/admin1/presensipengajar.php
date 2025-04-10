@@ -21,6 +21,11 @@ $sesi = isset($_POST['sesi']) ? $_POST['sesi'] : '';
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+        * {
+            
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;

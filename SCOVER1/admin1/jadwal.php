@@ -71,6 +71,11 @@ $conn->close();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+        * {
+        
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -224,6 +229,10 @@ $conn->close();
     </style>
 </head>
 <script>
+     function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
     function toggleDropdown(event) {
         event.preventDefault(); // supaya gak reload atau pergi ke #
         const dropdown = event.currentTarget.nextElementSibling;
