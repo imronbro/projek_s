@@ -29,6 +29,11 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
+        * {
+           
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -196,6 +201,10 @@ $result = mysqli_query($conn, $query);
     </style>
 </head>
 <script>
+     function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
     function toggleDropdown(event) {
         event.preventDefault(); // supaya gak reload atau pergi ke #
         const dropdown = event.currentTarget.nextElementSibling;

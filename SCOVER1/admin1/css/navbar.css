@@ -7,7 +7,6 @@
   background-color: #003049;
   color: white;
   width: 100%;
-  position: relative;
   padding: 15px 20px;
   position: fixed;
   top: 0;
@@ -78,27 +77,7 @@
 .menu-icon.active span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
-@media (max-width: 1024px) {
-  .menu-icon {
-    display: flex;
-  }
-  
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #145375;
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-}
 
 /* Navbar */
 .navbar .nav-links {
@@ -174,37 +153,7 @@
 }
 
 /* Responsif untuk layar tablet dan laptop kecil */
-
-
-@media (max-width: 1024px) {
-  .navbar .nav-links {
-    display: none;
-  }
-
-  .navbar .nav-links.active {
-    display: flex;
-  }
-  .navbar .logo-text {
-    font-size: 1.3em; /* Ukuran lebih kecil untuk layar tablet */
-  }
-
-  .navbar .title {
-    display: none; /* Sembunyikan judul pada layar tablet */
-  }
-
-  .navbar .nav-links a {
-    font-size: 14px; /* Ukuran lebih kecil untuk nav-link */
-    padding: 8px 12px;
-  }
-
-  .navbar .nav-links li {
-    margin: 8px 0; /* Kurangi margin */
-    font-size: 14px; /* Ukuran font lebih kecil */
-  }
-}
-
-/* Navbar untuk layar kecil */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .menu-icon {
     display: flex; /* Tampilkan tombol hamburger */
   }
@@ -259,38 +208,5 @@
 
   .navbar .title {
     font-size: 1.2em; /* Sesuaikan ukuran judul */
-  }
-}
-
-/* Responsif untuk layar ponsel kecil */
-@media (max-width: 480px) {
-  .navbar .logo img {
-    width: 40px;
-  }
-
-  .navbar .logo-text {
-    font-size: 1em; /* Ukuran lebih kecil untuk layar ponsel kecil */
-  }
-
-  .navbar .title {
-    font-size: 1em; /* Sesuaikan ukuran judul */
-  }
-
-  .navbar .nav-links a {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .navbar .nav-links li {
-    margin: 5px 0; /* Margin lebih kecil */
-    font-size: 12px; /* Ukuran font lebih kecil */
-  }
-
-  .navbar .logout-btn {
-    font-size: 12px; /* Ukuran teks lebih kecil */
-    padding: 8px 10px; /* Sesuaikan padding */
-    width: 90%; /* Tombol memenuhi 90% lebar layar */
-    text-align: center; /* Teks di tengah */
-    margin: 10px auto; /* Posisikan tombol di tengah */
   }
 }

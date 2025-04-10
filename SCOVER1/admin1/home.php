@@ -35,6 +35,11 @@ $result = mysqli_query($conn, $query);
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+        * {
+            
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #fff;
@@ -42,6 +47,7 @@ $result = mysqli_query($conn, $query);
             margin: 0;
             padding: 0;
             padding-top: 100px;
+            overflow-x: hidden;
 
         }
 
