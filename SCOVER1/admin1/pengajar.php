@@ -228,7 +228,6 @@ $result = mysqli_query($conn, $query);
     <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
@@ -241,11 +240,10 @@ $result = mysqli_query($conn, $query);
             </li>
 
             <li><a href="pengajar.php" class="active">Pengajar</a></li>
+            <li><a href="profil.php">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
-            <li><a href="profil.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
