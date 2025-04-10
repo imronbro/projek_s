@@ -18,7 +18,14 @@ if (!$mentor) {
 }
 
 // Ambil rating pengajar
-$ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar WHERE pengajar_id = $id");
+$ratingQuery = mysqli_query($conn, "
+    SELECT r.rating, r.komentar, r.created_at, s.full_name 
+    FROM rating_pengajar r
+    JOIN siswa s ON r.siswa_id = s.siswa_id
+    WHERE r.pengajar_id = $id
+    ORDER BY r.created_at DESC
+");
+
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -40,7 +47,7 @@ $ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar
         }
 
         .container {
-            margin-top: 100px;
+            margin-top: 0px;
             /* Memberikan ruang di bawah navbar */
             padding: 20px;
             text-align: center;
@@ -155,11 +162,13 @@ $ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar
         }
 
         .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    margin-top: 120px; /* tambahkan ini */
+}
+
 
         .card {
             background-color: rgb(2, 65, 131);
@@ -221,6 +230,7 @@ $ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar
             font-size: 12px;
             margin-left: 5px;
         }
+        
     </style>
 </head>
 <script>
@@ -284,7 +294,19 @@ $ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar
     </nav>
     <div class="profile-container">
         <div class="card">
-            <img src="uploads/<?= htmlspecialchars($mentor['gambar']); ?>" alt="Foto Pengajar" class="mentor-img">
+        <?php
+$gambar = htmlspecialchars($mentor['gambar']);
+$imagePath = "../" . $gambar; // gambar sudah termasuk 'uploads/namafile' dari DB
+$defaultImage = "../uploads1/default.png";
+
+if (!empty($gambar) && file_exists($imagePath)) {
+    $displayImage = $imagePath;
+} else {
+    $displayImage = $defaultImage;
+}
+?>
+<img src="<?= $displayImage; ?>" alt="Foto Pengajar" class="mentor-img">
+
             <h2><?= htmlspecialchars($mentor['full_name']); ?></h2>
             <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($mentor['mapel']); ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($mentor['email']); ?></p>
@@ -292,6 +314,38 @@ $ratingQuery = mysqli_query($conn, "SELECT rating, komentar FROM rating_pengajar
             <p><strong>Alamat:</strong> <?= htmlspecialchars($mentor['alamat']); ?></p>
             <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($mentor['ttl']); ?></p>
         </div>
+        <div class="container">
+    <h2 style="color: #0b3c5d;">Riwayat Rating dan Komentar</h2>
+
+    <div class="rating-section">
+    <?php if (mysqli_num_rows($ratingQuery) > 0): ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Siswa</th>
+                    <th>Rating</th>
+                    <th>Komentar</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while ($rating = mysqli_fetch_assoc($ratingQuery)) : ?>
+                    <tr>
+                        <td><?= htmlspecialchars($rating['full_name']) ?></td>
+                        <td><?= htmlspecialchars($rating['rating']) ?> / 5</td>
+                        <td><?= htmlspecialchars($rating['komentar']) ?></td>
+                        <td><?= date("d M Y, H:i", strtotime($rating['created_at'])) ?></td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Belum ada rating untuk pengajar ini.</p>
+    <?php endif; ?>
+</div>
+
+</div>
+
     </div>
 </body>
 
