@@ -46,7 +46,7 @@ $result = mysqli_query($conn, $query);
 
         h2 {
             text-align: center;
-            color: #007bff;
+            color: #145375;
         }
 
         form {
@@ -70,34 +70,9 @@ $result = mysqli_query($conn, $query);
             box-sizing: border-box;
         }
 
-        .select2-container {
-            width: 100% !important;
-        }
-
-        .select2-container--default .select2-selection--single {
-            height: 45px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: #333;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 35px;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            height: 45px;
-            width: 40px;
-        }
-
         button {
             padding: 10px 15px;
-            background-color: #007bff;
+            background-color: #145375;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -105,7 +80,7 @@ $result = mysqli_query($conn, $query);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #145375;
         }
 
         table {
@@ -122,7 +97,7 @@ $result = mysqli_query($conn, $query);
         }
 
         table th {
-            background-color: #007bff;
+            background-color: #145375;
             color: #fff;
         }
 
@@ -151,6 +126,55 @@ $result = mysqli_query($conn, $query);
             align-items: center;
             margin-top: 10px;
         }
+                    /* Form pencarian seperti filter-bar */
+.search-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+}
+
+/* Tombol cari */
+.search-form button {
+    background-color: #f1c40f; /* kuning */
+    color: #0b3c5d; /* biru tua */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 85px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #d4ac0d;
+}
+
+
+        button {
+            background-color: #e6c200;
+            color: #145375;
+            padding: 10px 100px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #145375;
+            color: #fff;
+        }
 
         /* Dropdown styles */
         .dropdown {
@@ -160,7 +184,7 @@ $result = mysqli_query($conn, $query);
         .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #0271ab;
+            background-color: #145375;
             min-width: 180px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
@@ -193,6 +217,7 @@ $result = mysqli_query($conn, $query);
             font-size: 12px;
             margin-left: 5px;
         }
+        
         .star {
     font-size: 20px;
     display: inline-block;
@@ -214,7 +239,6 @@ $result = mysqli_query($conn, $query);
 .star.empty {
     color: #ccc;
 }
-
 
     </style>
 </head>
@@ -280,9 +304,8 @@ $result = mysqli_query($conn, $query);
         <!-- Form Pencarian -->
         <form action="pengajar.php" method="get" class="search-form">
             <input type="text" name="search" placeholder="Cari Nama Pengajar..." class="search-input">
-            <button type="submit" class="btn">Cari</button>
+            <button type="submit" class="button">Cari</button>
         </form>
-        <div class="container mt-5">
             <div class="row mt-4">
                 <?php if (mysqli_num_rows($result) > 0) { ?>
                     <?php while ($row = mysqli_fetch_assoc($result)) {
