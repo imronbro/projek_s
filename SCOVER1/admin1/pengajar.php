@@ -193,6 +193,29 @@ $result = mysqli_query($conn, $query);
             font-size: 12px;
             margin-left: 5px;
         }
+        .star {
+    font-size: 20px;
+    display: inline-block;
+    position: relative;
+    color: #ccc;
+}
+
+.star.full {
+    color: gold;
+}
+
+.star.partial {
+    background: linear-gradient(90deg, gold var(--fill), #ccc var(--fill));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.star.empty {
+    color: #ccc;
+}
+
+
     </style>
 </head>
 <script>
@@ -227,9 +250,7 @@ $result = mysqli_query($conn, $query);
 <body>
     <nav class="navbar">
         <div class="logo">
-            <a href="home.php">
-                <img src="images/foto4.png" alt="Logo" class="logo-image">
-            </a>
+            <img src="images/foto4.png" alt="Logo">
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
@@ -243,10 +264,9 @@ $result = mysqli_query($conn, $query);
 
             <li><a href="pengajar.php" class="active">Pengajar</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="profil.php">Siswa</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
-            <li><a href="profil.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -266,16 +286,63 @@ $result = mysqli_query($conn, $query);
             <div class="row mt-4">
                 <?php if (mysqli_num_rows($result) > 0) { ?>
                     <?php while ($row = mysqli_fetch_assoc($result)) {
-                        $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
-                        $defaultImage = "../uploads1/default.png";
-                        $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
-                    ?>
+    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
+    $defaultImage = "../uploads1/default.png";
+    $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+
+    // Ambil rata-rata rating dari tabel rating_pengajar
+    $pengajarId = $row['pengajar_id'];
+    $sqlRating = "SELECT AVG(rating) AS rata_rating, COUNT(*) AS jumlah_rating FROM rating_pengajar WHERE pengajar_id = $pengajarId";
+    $resultRating = mysqli_query($conn, $sqlRating);
+    $rataRating = 0;
+    $jumlahRating = 0;
+
+    if ($resultRating && $dataRating = mysqli_fetch_assoc($resultRating)) {
+        $rataRating = round($dataRating['rata_rating'], 1);
+        $jumlahRating = $dataRating['jumlah_rating'];
+    }
+?>
+
                         <div class="col-md-4 mb-4">
                             <div class="card text-center p-3">
                                 <img src="<?= $finalImage; ?>" alt="Foto Pengajar" class="profile-img mb-3">
 
                                 <h4><?= htmlspecialchars($row['full_name']); ?></h4>
                                 <p><strong>TUTOR <?= htmlspecialchars($row['mapel']); ?></strong></p>
+<!-- Menampilkan rata-rata rating -->
+<?php if ($jumlahRating > 0): ?>
+    <div class="mb-2">
+        <?php
+            $average_rating = $rataRating;
+            $fullStars = floor($average_rating); 
+            $decimal = $average_rating - $fullStars;
+            $emptyStars = 5 - ceil($average_rating); 
+
+            // Bintang penuh
+            for ($i = 0; $i < $fullStars; $i++) {
+                echo '<span class="star full">★</span>';
+            }
+
+            // Bintang sebagian
+            if ($decimal > 0) {
+                $percentage = $decimal * 100;
+                echo '<span class="star partial" style="--fill:' . $percentage . '%;">★</span>';
+            }
+
+            // Bintang kosong
+            for ($i = 0; $i < $emptyStars; $i++) {
+                echo '<span class="star empty">★</span>';
+            }
+        ?>
+        <br>
+        <span class="rating-text"><?= number_format($average_rating, 1); ?> / 5 (<?= $jumlahRating; ?> ulasan)</span>
+    </div>
+<?php else: ?>
+    <div class="mb-2">
+        <span class="rating-text">Belum ada ulasan</span>
+    </div>
+<?php endif; ?>
+
 
                                 <div class="btn-group-vertical">
                                     <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>

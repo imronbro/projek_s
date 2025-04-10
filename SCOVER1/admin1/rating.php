@@ -1,124 +1,253 @@
 <?php
-session_start();
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "scover";
-
-$conn = mysqli_connect($host, $user, $password, $dbname);
-
-if (!$conn) {
-    die("Koneksi database gagal: " . mysqli_connect_error());
+$conn = new mysqli("localhost", "root", "", "scover");
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: loginadmin.php");
-    exit();
-}
+// Ambil keyword pencarian jika ada
+$keyword = isset($_GET['keyword']) ? $conn->real_escape_string($_GET['keyword']) : "";
 
-$query = "
-    SELECT rp.id, s.full_name AS nama_siswa, rp.pengajar_id, rp.rating, rp.komentar, rp.created_at
+// Query gabung 3 tabel: rating_pengajar + mentor + siswa
+$sql = "
+    SELECT 
+        rp.*, 
+        m.full_name AS nama_pengajar, 
+        s.full_name AS nama_siswa
     FROM rating_pengajar rp
-    INNER JOIN siswa s ON rp.siswa_id = s.siswa_id
+    JOIN mentor m ON rp.pengajar_id = m.pengajar_id
+    JOIN siswa s ON rp.siswa_id = s.siswa_id
+    WHERE m.full_name LIKE '%$keyword%'
     ORDER BY rp.created_at DESC
 ";
-$result = mysqli_query($conn, $query);
 
 
-
+$result = $conn->query($sql);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Rating Pengajar</title>
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/logout.css">
+    <title>Dashboard Siswa</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/pengajar.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #003049;
-            color: #fabe49;
-            text-align: center;
+            background-color: #fff;
+            color: #145375;
+            margin: 0;
+            padding: 0;
+            padding-top:100px;
         }
+        .content{
+            padding: 100px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h3 {
+            text-align: center;
+            color: #145375;
+            margin : 30px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         table {
-            width: 80%;
+            width: 100%;
+            max-width: 960px;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: #0271ab;
-            color: #fabe49;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
         }
-        th, td {
-            padding: 10px;
-            border: 1px solid #faaf1d;
-        }
+
         th {
-            background-color: #faaf1d;
-            color: #003049;
+            padding: 9px 12px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
         }
+        td {
+            padding: 8px 10px;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        table th {
+            background-color: #145375;
+            color: white;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 13px;
+            color: #444;
+        }
+
+        tr:hover {
+            background-color: #f1f9ff;
+        }
+
+        .btn-detail {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color:rgb(13, 78, 135);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-detail:hover {
+            background-color:rgb(2, 65, 131);
+        }
+        .btn-group-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .bintang {
+            color: gold;
+            font-size: 20px;
+        }
+        .bintang-kosong {
+            color: #ccc;
+            font-size: 20px;
+        }
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .filter-bar form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        button {
+            background-color: #e6c200;
+            color: #145375;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #145375;
+            color: #fff;
+        }
+
     </style>
 </head>
+
 <body>
 <nav class="navbar">
-    <div class="logo">
-        <img src="images/foto4.png" alt="Logo">
-    </div>
-    <h1 class="title">Dashboard Admin</h1>
-    <ul class="nav-links">
-        <li><a href="home.php">Beranda</a></li>
-        <li><a href="pengajar.php">Pengajar</a></li>
-        <li><a href="siswa.php">Siswa</a></li>
-        <li><a href="rating_pengajar.php" class="active">Rating Pengajar</a></li>
-        <li><a href="jadwal.php">Jadwal</a></li>
-        <li><a href="nilai.php">Nilai</a></li>
-        <li><a href="profile.php">Profil</a></li>
-        <li><a href="kontak.php">Kontak</a></li>
-        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-    </ul>
-    <div class="menu-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <h1 class="title">Dashboard Admin</h1>
+        <ul class="nav-links">
+            <li><a href="home.php">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="rating.php"class="active">Rating</a></li>
+            <li><a href="profil.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+<div class="container">
+<h3>Data Rating Pengajar</h3>
 
-<h2>Riwayat Rating Pengajar</h2>
+<div class="filter-bar">
+    <form method="GET" action="">
+        <input type="text" name="keyword" placeholder="Cari Nama Pengajar..." value="<?= htmlspecialchars($keyword) ?>">
+        <button type="submit">Cari</button>
+    </form>
+</div>
 
 <table>
-    <tr>
-        <th>ID</th>
-        <th>Nama Siswa</th>
-        <th>ID Pengajar</th>
-        <th>Rating</th>
-        <th>Komentar</th>
-        <th>Tanggal Dibuat</th>
-    </tr>
-    <?php
-    if ($result && mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['nama_siswa']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['nama_pengajar']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['pengajar_id']) . "</td>";
-            echo "<td>" . str_repeat("⭐", $row['rating']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['komentar']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
-            echo "</tr>";
-        }
-    } else {
-        echo "<tr><td colspan='6'>Belum ada rating yang diberikan.</td></tr>";
-    }
-    ?>
+    <thead>
+        <tr>
+            <th>Nama Pengajar</th>
+            <th>Nama Siswa</th>
+            <th>Rating</th>
+            <th>Komentar</th>
+            <th>Waktu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if ($result->num_rows > 0): ?>
+            <?php while($row = $result->fetch_assoc()): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['nama_pengajar']) ?></td>
+                    <td><?= htmlspecialchars($row['nama_siswa']) ?></td>
+                    <td>
+                        <?php
+                            $rating = (int)$row['rating'];
+                            for ($i = 1; $i <= 5; $i++) {
+                            if ($i <= $rating) {
+                            echo '<span class="bintang">★</span>';
+                            } else {
+                                echo '<span class="bintang-kosong">☆</span>';
+                            }
+                        }
+                        ?>
+                    </td>
+                    <td><?= htmlspecialchars($row['komentar']) ?></td>
+                    <td><?= htmlspecialchars($row['created_at']) ?></td>
+                </tr>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr><td colspan="5">Tidak ada data ditemukan.</td></tr>
+        <?php endif; ?>
+    </tbody>
 </table>
-
-<script src="js/logout.js" defer></script>
-<script src="js/home.js" defer></script>
-<script src="js/menu.js" defer></script>
-
-<?php
-mysqli_close($conn);
-?>
+</div>
 </body>
-</html>
+</html> 
+<?php $conn->close(); ?>   
