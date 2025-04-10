@@ -151,13 +151,21 @@ if (!$data) {
     <script>
         document.getElementById('nohp').addEventListener('input', function (e) {
             let value = e.target.value;
-            value = value.replace(/[^0-9+]/g, '');
+
+            // Hapus karakter selain angka dan tanda +
+            value = value.replace(/[^0-9]/g, '');
+
+            // Jika dimulai dengan 0, ubah menjadi +62
             if (value.startsWith('0')) {
                 value = '+62' + value.slice(1);
             }
-            if (value.startsWith('62')) {
+
+            // Jika dimulai dengan 62 tanpa tanda +, tambahkan +
+            if (value.startsWith('62') && !value.startsWith('+62')) {
                 value = '+62' + value.slice(2);
             }
+
+            // Tetapkan nilai yang telah diformat kembali ke input
             e.target.value = value;
         });
     </script>

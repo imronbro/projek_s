@@ -104,14 +104,16 @@ p strong {
 /* Info Row */
 .info-row {
   display: flex;
-  justify-content: flex-start;
-  gap: 10px; /* Jarak antara label dan konten */
+  flex-wrap: wrap; /* Pastikan elemen terbungkus jika terlalu panjang */
+  justify-content: flex-start; /* Tetap rata kiri */
+  gap: 10px; /* Jarak antar elemen */
   margin-bottom: 5px; /* Jarak antar baris */
 }
 
 .info-row strong {
-  min-width: 150px; /* Lebar tetap untuk label */
-  text-align: left;
+  min-width: 120px; /* Lebar tetap untuk label */
+  text-align: left; /* Pastikan label rata kiri */
+  flex-shrink: 0; /* Jangan biarkan label mengecil */
 }
 
 /* Buttons */
@@ -219,33 +221,103 @@ p strong {
 @media (max-width: 480px) {
   .container {
     max-width: 95%; /* Hampir penuh untuk layar kecil */
-    padding: 8px;
+    padding: 12px; /* Tambahkan padding */
     margin: 50px auto 20px; /* Sesuaikan margin-top */
+    background-color: #145375; /* Warna latar belakang tetap */
+    border-radius: 10px; /* Tambahkan sudut melengkung */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Tambahkan bayangan */
   }
 
   h2 {
-    font-size: 1.4em; /* Ukuran heading lebih kecil */
+    font-size: 1.8em; /* Perbesar ukuran heading */
+    margin-bottom: 15px; /* Tambahkan jarak bawah heading */
+    color: #faaf1d; /* Warna heading tetap cerah */
+    text-align: center;
   }
 
   p {
-    font-size: 1em; /* Ukuran teks lebih kecil */
+    font-size: 1.2em; /* Perbesar ukuran teks */
+    line-height: 1.8; /* Tambahkan jarak antar baris */
+    text-align: justify; /* Teks rata kiri dan kanan */
+    margin: 10px 0; /* Jarak antar paragraf */
+  }
+
+  .card {
+    padding: 15px; /* Kurangi padding untuk layar kecil */
+    background-color: #0271ab; /* Warna latar belakang kartu */
+    border-radius: 8px; /* Sudut melengkung */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+    margin-bottom: 20px;
   }
 
   .card p {
-    font-size: 1em; /* Ukuran teks lebih kecil untuk layar sangat kecil */
+    font-size: 1.2em; /* Perbesar ukuran teks dalam kartu */
+    line-height: 1.6; /* Tambahkan jarak antar baris */
+    text-align: left; /* Teks rata kiri */
   }
 
   .card p strong {
-    min-width: 100px; /* Kurangi lebar label untuk layar sangat kecil */
+    font-size: 1em; /* Perbesar ukuran teks label */
+    min-width: 100px; /* Kurangi lebar label */
+    text-align: left; /* Pastikan label rata kiri */
   }
 
   .profile-img {
-    width: 100px; /* Ukuran gambar lebih kecil */
-    height: 100px;
+    width: 120px; /* Perbesar ukuran gambar */
+    height: 120px;
+    border-radius: 50%; /* Tetap bulat */
+    object-fit: cover;
+    margin: 0 auto 15px; /* Posisikan gambar di tengah */
+    border: 3px solid #faaf1d; /* Warna border tetap */
   }
 
   .btn {
-    padding: 8px 10px; /* Ukuran tombol lebih kecil */
-    font-size: 0.8em;
+    padding: 10px 15px; /* Tambahkan padding tombol */
+    font-size: 1em; /* Perbesar ukuran font tombol */
+    border-radius: 5px; /* Sudut melengkung */
+    text-align: center;
+    transition: all 0.3s ease-in-out; /* Tambahkan animasi hover */
+  }
+
+  .btn-primary {
+    background-color: #faaf1d; /* Warna tombol utama */
+    color: #003049; /* Warna teks tombol */
+  }
+
+  .btn-primary:hover {
+    background-color: #fabe49; /* Warna hover tombol utama */
+    transform: scale(1.05); /* Efek pembesaran saat hover */
+  }
+
+  .btn-secondary {
+    background-color: #f4f4f4; /* Warna tombol sekunder */
+    color: #003049; /* Warna teks tombol */
+  }
+
+  .btn-secondary:hover {
+    background-color: #d9d9d9; /* Warna hover tombol sekunder */
+    transform: scale(1.05); /* Efek pembesaran saat hover */
+  }
+
+  .info-row {
+    display: flex; /* Gunakan Flexbox */
+    flex-wrap: wrap; /* Pastikan elemen terbungkus jika terlalu panjang */
+    justify-content: flex-start; /* Tetap rata kiri */
+    align-items: center; /* Posisikan elemen di tengah secara vertikal */
+    gap: 5px; /* Tambahkan jarak antar elemen */
+  }
+
+  .info-row strong {
+    min-width: 100px; /* Tetapkan lebar minimum untuk label */
+    text-align: left; /* Pastikan teks label rata kiri */
+    font-size: 1em; /* Ukuran teks label */
+    flex-shrink: 0; /* Jangan biarkan label mengecil */
+  }
+
+  .info-row span {
+    flex: 1; /* Biarkan konten mengambil sisa ruang */
+    font-size: 1em; /* Ukuran teks konten */
+    text-align: left; /* Pastikan teks konten rata kiri */
+    word-wrap: break-word; /* Bungkus teks jika terlalu panjang */
   }
 }

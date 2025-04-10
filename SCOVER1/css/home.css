@@ -3,7 +3,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Pusatkan secara vertikal */
-  min-height: 100vh; /* Pastikan body memenuhi tinggi layar */
+  min-height: 80vh; /* Pastikan body memenuhi tinggi layar */
   margin: 0;
   padding: 0;
   background-color: #003049;
