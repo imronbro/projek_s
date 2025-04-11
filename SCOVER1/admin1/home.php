@@ -137,6 +137,7 @@ $result = mysqli_query($conn, $query);
             th,
             td {
                 font-size: 12px;
+                width: 97%;
             }
 
             .filter-bar {

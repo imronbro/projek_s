@@ -201,6 +201,40 @@ $result = mysqli_query($conn, $query);
             font-size: 12px;
             margin-left: 5px;
         }
+
+        @media (max-width: 768px) {
+            table {
+                width: 97%;
+          
+            }
+
+            th,
+            td {
+                padding: 11px 3px;
+                font-size: 11.3px;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            button {
+                background-color: #e6c200;
+                color: #145375;
+                padding: 4px 8px;
+                font-size: 13px;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                border-radius: 6px;
+            }
+
+            button:hover {
+                background-color: #145375;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 
