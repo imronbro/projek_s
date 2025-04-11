@@ -173,7 +173,7 @@ $result = $conn->query($sql);
         button:hover {
             background-color: #145375;
             color: #fff;
-        }
+        }
 
     </style>
 </head>
