@@ -4,8 +4,7 @@ include 'koneksi.php';
 // Koneksi database
 
 // Ambil filter dan search dari GET request
-$tanggal = $_GET['tanggal'] ?? '';
-$kelas = $_GET['kelas'] ?? '';
+$tanggal = $_GET['tanggal'] ?? date('Y-m-d');
 $search = $_GET['search'] ?? '';
 
 // Query dasar
