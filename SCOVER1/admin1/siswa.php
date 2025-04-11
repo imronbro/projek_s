@@ -90,7 +90,9 @@ $result = mysqli_query($conn, $query);
             border-radius: 50%;
             border: 3px solid #145375;
             margin-bottom: 10px;
+            background-color: #ccc; /* fallback warna abu-abu kalau default.png transparan */
         }
+
 
         .btn-group-vertical {
             display: flex;
@@ -108,7 +110,7 @@ $result = mysqli_query($conn, $query);
         }
 
         .btn-whatsapp {
-            background-color: #25d366;
+            background-color: #e6c200;
             color: white;
             padding: 8px 12px;
             border-radius: 6px;
@@ -132,8 +134,8 @@ $result = mysqli_query($conn, $query);
         <ul class="nav-links">
             <li><a href="home.php">Presensi Siswa</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="siswa.php"class="active">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="siswa.php" class="active">Siswa</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
@@ -152,9 +154,11 @@ $result = mysqli_query($conn, $query);
             <?php
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
+                    $gambar = htmlspecialchars($row['gambar']);
+                    $imagePath = "../uploads/" . basename($gambar);
                     $defaultImage = "../uploads1/default.png";
-                    $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+                    $finalImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+
             ?>
                     <div class="card">
                         <img src="<?= $finalImage; ?>" alt="Foto Siswa" class="profile-img">
