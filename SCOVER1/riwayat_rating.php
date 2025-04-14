@@ -143,7 +143,6 @@ if ($result_pengajar->num_rows > 0) {
   <nav class="navbar">
     <div class="logo">
       <img src="images/foto4.png" alt="Logo">
-      <span class="logo-text">Scover Center</span>
     </div>
     <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
