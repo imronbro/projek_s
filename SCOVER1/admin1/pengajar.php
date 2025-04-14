@@ -155,45 +155,43 @@ $result = mysqli_query($conn, $query);
         }
 
         /* Form pencarian seperti filter-bar */
-     
+
 
         .search-form {
             display: flex;
             justify-content: center;
-            align-items: center;
-            flex-wrap: nowrap;
-            /* Pastikan tetap dalam satu baris */
-            gap: 10px;
             margin-bottom: 20px;
         }
 
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        .search-form input[type="text"] {
+        .search-box input[type="text"] {
             padding: 10px 15px;
             font-size: 14px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            width: 200px;
+            width: 250px;
         }
 
-        /* Tombol cari */
-        .search-form button {
+        .search-box button {
             background-color: #f1c40f;
-            /* kuning */
             color: #0b3c5d;
-            /* biru tua */
             border: none;
-            border-radius: 8px;
-            padding: 10px 85px;
+            border-radius: 6px;
+            padding: 10px 20px;
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
         }
 
-        .search-form button:hover {
+        .search-box button:hover {
             background-color: #d4ac0d;
         }
+
 
 
         button {
@@ -274,6 +272,22 @@ $result = mysqli_query($conn, $query);
         .star.empty {
             color: #ccc;
         }
+
+        .not-found-message {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #e6c200;
+            border: 1px solid #0b3c5d;
+            border-radius: 10px;
+            color: #145375;
+            font-size: 18px;
+            font-weight: bold;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
     </style>
 </head>
 <script>
@@ -342,8 +356,10 @@ $result = mysqli_query($conn, $query);
         <h2 class="text-center">Daftar Pengajar</h2>
         <!-- Form Pencarian -->
         <form action="pengajar.php" method="get" class="search-form">
-            <input type="text" name="search" placeholder="Cari Nama Pengajar..." class="search-input">
-            <button type="submit" class="button">Cari</button>
+            <div class="search-box">
+                <input type="text" name="search" placeholder="Cari Nama Pengajar..." class="search-input">
+                <button type="submit" class="search-button">Cari</button>
+            </div>
         </form>
         <div class="row mt-4">
             <?php if (mysqli_num_rows($result) > 0) { ?>
@@ -414,9 +430,10 @@ $result = mysqli_query($conn, $query);
                     </div>
                 <?php } ?>
             <?php } else { ?>
-                <div class="col-12 text-center">
-                    <p class="text-danger">Pengajar tidak ditemukan.</p>
+                <div class="col-12 text-center not-found-message">
+                    <p>Pengajar tidak ditemukan.</p>
                 </div>
+
             <?php } ?>
         </div>
     </div>
