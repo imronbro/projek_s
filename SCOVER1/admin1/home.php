@@ -41,7 +41,7 @@ $result = mysqli_query($conn, $query);
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #fff;
+            background-color: #f4f4f4;
             color: #145375;
             margin: 0;
             padding: 0;
@@ -224,6 +224,7 @@ $result = mysqli_query($conn, $query);
             </li>
 
             <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
