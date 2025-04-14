@@ -109,7 +109,7 @@ $result = $conn->query($sql);
         }
 
         td {
-            font-size: 13px;
+            font-size: 15px;
             color: #444;
         }
 
@@ -173,7 +173,7 @@ $result = $conn->query($sql);
         button:hover {
             background-color: #145375;
             color: #fff;
-        }
+        }
 
     </style>
 </head>

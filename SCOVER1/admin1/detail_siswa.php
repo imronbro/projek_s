@@ -2,30 +2,25 @@
 include 'koneksi.php';
 
 if (!isset($_GET['id'])) {
-    echo "Pengajar tidak ditemukan.";
+    echo "Siswa tidak ditemukan.";
     exit;
 }
 
 $id = intval($_GET['id']);
 
-// Ambil data pengajar
-$mentorQuery = mysqli_query($conn, "SELECT * FROM mentor WHERE pengajar_id = $id");
-$mentor = mysqli_fetch_assoc($mentorQuery);
+// Ambil data siswa
+$siswaQuery = mysqli_query($conn, "SELECT * FROM siswa WHERE siswa_id = $id");
+$siswa = mysqli_fetch_assoc($siswaQuery);
 
-if (!$mentor) {
-    echo "Pengajar tidak ditemukan.";
+if (!$siswa) {
+    echo "Siswa tidak ditemukan.";
     exit;
 }
 
-// Ambil rating pengajar
-$ratingQuery = mysqli_query($conn, "
-    SELECT r.rating, r.komentar, r.created_at, s.full_name 
-    FROM rating_pengajar r
-    JOIN siswa s ON r.siswa_id = s.siswa_id
-    WHERE r.pengajar_id = $id
-    ORDER BY r.created_at DESC
-");
-
+$gambar = htmlspecialchars($siswa['gambar']);
+$imagePath = "../" . $gambar;
+$defaultImage = "../uploads1/default.png";
+$displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -167,12 +162,12 @@ $ratingQuery = mysqli_query($conn, "
         }
 
         .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    margin-top: 120px; /* tambahkan ini */
-}
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             padding: 40px 20px;
+             margin-top: 120px; /* tambahkan ini */
+        }
 
 
         .card {
@@ -202,7 +197,7 @@ $ratingQuery = mysqli_query($conn, "
         .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #0271ab;
+            background-color: #145375;
             min-width: 180px;
             box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
@@ -235,41 +230,61 @@ $ratingQuery = mysqli_query($conn, "
             font-size: 12px;
             margin-left: 5px;
         }
+
+        .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    margin-top: 120px;
+}
+
+.card {
+    background-color: #145375;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(14, 63, 148, 0.1);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    color: white;
+}
+
+.siswa-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid rgb(12, 54, 99);
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.btn-group {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    background-color: #ffc107;
+    color: #145375;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e6c200;
+}
+
         
     </style>
 </head>
-<script>
-     function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-    function toggleDropdown(event) {
-        event.preventDefault(); // supaya gak reload atau pergi ke #
-        const dropdown = event.currentTarget.nextElementSibling;
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function toggleDropdown(event) {
-        event.preventDefault();
-        const link = event.currentTarget;
-        const dropdown = link.nextElementSibling;
-        const arrow = link.querySelector('#arrow');
-
-        const isOpen = dropdown.style.display === 'block';
-        dropdown.style.display = isOpen ? 'none' : 'block';
-        arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
-    }
-    
-    // Tutup dropdown kalau klik di luar menu
-    document.addEventListener('click', function(event) {
-        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-        dropdownMenus.forEach(menu => {
-            if (!menu.parentElement.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
-    });
-</script>
 <body>
 <nav class="navbar">
         <div class="logo">
@@ -287,8 +302,8 @@ $ratingQuery = mysqli_query($conn, "
                 </ul>
             </li>
 
-            <li><a href="pengajar.php" class="active">Pengajar</a></li>
-            <li><a href="siswa.php" >Siswa</a></li>
+            <li><a href="pengajar.php" >Pengajar</a></li>
+            <li><a href="siswa.php" class="active">Siswa</a></li>
             <li><a href="jadwal.php" >Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
@@ -303,59 +318,21 @@ $ratingQuery = mysqli_query($conn, "
     </nav>
     <div class="profile-container">
         <div class="card">
-        <?php
-$gambar = htmlspecialchars($mentor['gambar']);
-$imagePath = "../" . $gambar; // gambar sudah termasuk 'uploads/namafile' dari DB
-$defaultImage = "../uploads1/default.png";
+            <img src="<?= $displayImage ?>" alt="Foto Siswa" class="siswa-img">
+            <h2><?= htmlspecialchars($siswa['full_name']) ?></h2>
+            <p><strong>Email:</strong> <?= htmlspecialchars($siswa['email']) ?></p>
+            <p><strong>Sekolah:</strong> <?= htmlspecialchars($siswa['sekolah']) ?></p>
+            <p><strong>Kelas:</strong> <?= htmlspecialchars($siswa['kelas']) ?></p>
+            <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($siswa['ttl']) ?></p>
+            <p><strong>Alamat:</strong> <?= htmlspecialchars($siswa['alamat']) ?></p>
+            <p><strong>No HP:</strong> <?= htmlspecialchars($siswa['nohp']) ?></p>
+            <p><strong>Dibuat pada:</strong> <?= htmlspecialchars($siswa['created_at']) ?></p>
 
-if (!empty($gambar) && file_exists($imagePath)) {
-    $displayImage = $imagePath;
-} else {
-    $displayImage = $defaultImage;
-}
-?>
-<img src="<?= $displayImage; ?>" alt="Foto Pengajar" class="mentor-img">
-
-            <h2><?= htmlspecialchars($mentor['full_name']); ?></h2>
-            <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($mentor['mapel']); ?></p>
-            <p><strong>Email:</strong> <?= htmlspecialchars($mentor['email']); ?></p>
-            <p><strong>No HP:</strong> <?= htmlspecialchars($mentor['nohp']); ?></p>
-            <p><strong>Alamat:</strong> <?= htmlspecialchars($mentor['alamat']); ?></p>
-            <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($mentor['ttl']); ?></p>
+            <div class="btn-group">
+                <a href="siswa.php" class="btn">Kembali</a>
+                <a href="edit_siswa.php?id=<?= $siswa['siswa_id'] ?>" class="btn">Edit</a>
+            </div>
         </div>
-        <div class="container">
-    <h2 style="color: #0b3c5d;">Riwayat Rating dan Komentar</h2>
-
-    <div class="rating-section">
-    <?php if (mysqli_num_rows($ratingQuery) > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama Siswa</th>
-                    <th>Rating</th>
-                    <th>Komentar</th>
-                    <th>Tanggal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($rating = mysqli_fetch_assoc($ratingQuery)) : ?>
-                    <tr>
-                        <td><?= htmlspecialchars($rating['full_name']) ?></td>
-                        <td><?= htmlspecialchars($rating['rating']) ?> / 5</td>
-                        <td><?= htmlspecialchars($rating['komentar']) ?></td>
-                        <td><?= date("d M Y, H:i", strtotime($rating['created_at'])) ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>Belum ada rating untuk pengajar ini.</p>
-    <?php endif; ?>
-</div>
-
-</div>
-
     </div>
 </body>
-
 </html>
