@@ -2,6 +2,8 @@
 session_start();
 include 'koneksi.php'; // File koneksi database
 
+date_default_timezone_set('Asia/Jakarta'); // Sesuaikan dengan zona waktu Anda
+
 // Periksa apakah user sudah login (menggunakan email dalam session)
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
@@ -26,14 +28,37 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-// Ambil data presensi siswa berdasarkan siswa_id
-$sql = "SELECT tanggal, sesi, status, komentar, waktu_presensi 
-        FROM presensi_siswa 
-        WHERE siswa_id = ? 
-        ORDER BY tanggal DESC, waktu_presensi DESC";
+// Ambil tanggal dan bulan yang dipilih dari filter (jika ada)
+$selected_date = isset($_GET['tanggal']) ? $_GET['tanggal'] : date('Y-m-d'); // Default ke hari ini
+$selected_month = isset($_GET['bulan']) ? $_GET['bulan'] : date('Y-m'); // Default ke bulan ini
 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $siswa_id);
+// Query untuk mengambil data presensi berdasarkan siswa_id, tanggal, atau bulan
+if (isset($_GET['tanggal'])) {
+    // Filter berdasarkan tanggal
+    $sql = "SELECT id, tanggal, sesi, status, komentar, waktu_presensi 
+            FROM presensi_siswa 
+            WHERE siswa_id = ? AND tanggal = ?
+            ORDER BY waktu_presensi DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $siswa_id, $selected_date);
+} elseif (isset($_GET['bulan'])) {
+    // Filter berdasarkan bulan
+    $sql = "SELECT id, tanggal, sesi, status, komentar, waktu_presensi 
+            FROM presensi_siswa 
+            WHERE siswa_id = ? AND DATE_FORMAT(tanggal, '%Y-%m') = ?
+            ORDER BY waktu_presensi DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $siswa_id, $selected_month);
+} else {
+    // Default: Tampilkan data hari ini
+    $sql = "SELECT id, tanggal, sesi, status, komentar, waktu_presensi 
+            FROM presensi_siswa 
+            WHERE siswa_id = ? AND tanggal = ?
+            ORDER BY waktu_presensi DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("is", $siswa_id, $selected_date);
+}
+
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -115,6 +140,57 @@ $result = $stmt->get_result();
       transform: scale(1.05); /* Efek zoom */
     }
 
+    .btn.edit-btn {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #faaf1d;
+        color: #003049;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn.edit-btn:hover {
+        background-color: #fabe49;
+    }
+
+    .filter-form {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter-form label {
+        font-weight: bold;
+        color: #fabe49;
+    }
+
+    .filter-form input[type="date"],
+    .filter-form input[type="month"] {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .filter-form button {
+        padding: 5px 15px;
+        background-color: #faaf1d;
+        color: #003049;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .filter-form button:hover {
+        background-color: #fabe49;
+    }
+
     /* Responsif untuk layar kecil */
     @media (max-width: 768px) {
       .content {
@@ -170,20 +246,20 @@ $result = $stmt->get_result();
 
       .navbar .nav-links {
         flex-direction: column; /* Atur link navbar menjadi kolom */
-        gap: 10px; /* Tambahkan jarak antar link */
+        gap: 10px; 
       }
 
       .navbar .nav-links a {
-        font-size: 14px; /* Ukuran font link lebih kecil */
-        padding: 8px; /* Sesuaikan padding link */
+        font-size: 14px; 
+        padding: 8px; 
       }
 
       .navbar .menu-icon {
-        display: flex; /* Tampilkan menu hamburger */
+        display: flex; 
       }
 
       .navbar .nav-links {
-        display: none; /* Sembunyikan link navbar secara default */
+        display: none; 
         flex-direction: column;
         position: absolute;
         top: 60px;
@@ -197,7 +273,7 @@ $result = $stmt->get_result();
       }
 
       .navbar .nav-links.active {
-        display: flex; /* Tampilkan link navbar saat menu aktif */
+        display: flex; 
       }
     }
     </style>
@@ -227,44 +303,70 @@ $result = $stmt->get_result();
     </div>
 </nav>
 
-    <div class="content">
-        <h2>Riwayat Presensi - <?php echo htmlspecialchars($full_name); ?></h2>
+<div class="content">
+    <h2>Riwayat Presensi - <?php echo htmlspecialchars($full_name); ?></h2>
 
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Sesi</th>
-                    <th>Status</th>
-                    <th>Komentar</th>
-                    <th>Dibuat Pada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                if ($result->num_rows > 0) {
-                    $no = 1;
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $no++ . "</td>";
-                        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                        echo "<td>" . (!empty($row['komentar']) ? htmlspecialchars($row['komentar']) : '-') . "</td>";
-                        echo "<td>" . htmlspecialchars($row['waktu_presensi']) . "</td>";
-                        echo "</tr>";
+    <!-- Filter Tanggal dan Bulan -->
+    <form method="GET" class="filter-form">
+        <label for="tanggal">Pilih Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($selected_date); ?>">
+
+        <label for="bulan">Pilih Bulan:</label>
+        <input type="month" id="bulan" name="bulan" value="<?php echo htmlspecialchars($selected_month); ?>">
+
+        <button type="submit">Tampilkan</button>
+    </form>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Sesi</th>
+                <th>Status</th>
+                <th>Komentar</th>
+                <th>Dibuat Pada</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if ($result->num_rows > 0) {
+                $no = 1;
+                while ($row = $result->fetch_assoc()) {
+                    $waktu_presensi = new DateTime($row['waktu_presensi']);
+                    $current_time = new DateTime();
+                    $time_difference = $current_time->getTimestamp() - $waktu_presensi->getTimestamp();
+
+                    echo "<tr>";
+                    echo "<td>" . $no++ . "</td>";
+                    echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                    echo "<td>" . (!empty($row['komentar']) ? htmlspecialchars($row['komentar']) : '-') . "</td>";
+                    echo "<td>" . htmlspecialchars($row['waktu_presensi']) . "</td>";
+                    echo "<td>";
+
+                    if ($time_difference >= 0 && $time_difference <= 1800) { // 1800 detik = 30 menit
+                        echo "<a href='edit_riwayat.php?id=" . $row['id'] . "' class='btn edit-btn'>Edit</a>";
+                    } else {
+                        echo "-";
                     }
-                } else {
-                    echo "<tr><td colspan='6' style='text-align:center;'>Belum ada data presensi</td></tr>";
+
+                    echo "</td>";
+                    echo "</tr>";
                 }
-                ?>
-            </tbody>
-        </table>
-        <div class="button-container">
-    <button class="back-button" onclick="goBack()">Kembali</button>
-</div>
+            } else {
+                echo "<tr><td colspan='7' style='text-align:center;'>Tidak ada data presensi untuk filter ini.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <button class="back-button" onclick="goBack()">Kembali</button>
     </div>
+</div>
+
     <script src="js/menu.js" defer></script>
     <script src="js/logout.js" defer></script>
     <script>        function goBack() {
