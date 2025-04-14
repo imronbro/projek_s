@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
         * {
-           
+
             box-sizing: border-box;
         }
 
@@ -131,39 +131,42 @@ $result = mysqli_query($conn, $query);
             align-items: center;
             margin-top: 10px;
         }
-                    /* Form pencarian seperti filter-bar */
-.search-form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
-.search-form input[type="text"] {
-    padding: 10px 15px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 200px;
-}
+        /* Form pencarian seperti filter-bar */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-/* Tombol cari */
-.search-form button {
-    background-color: #f1c40f; /* kuning */
-    color: #0b3c5d; /* biru tua */
-    border: none;
-    border-radius: 8px;
-    padding: 10px 85px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+        .search-form input[type="text"] {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 200px;
+        }
 
-.search-form button:hover {
-    background-color: #d4ac0d;
-}
+        /* Tombol cari */
+        .search-form button {
+            background-color: #f1c40f;
+            /* kuning */
+            color: #0b3c5d;
+            /* biru tua */
+            border: none;
+            border-radius: 8px;
+            padding: 10px 85px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: #d4ac0d;
+        }
 
 
         button {
@@ -179,7 +182,7 @@ $result = mysqli_query($conn, $query);
         button:hover {
             background-color: #145375;
             color: #fff;
-        }
+        }
 
         /* Dropdown styles */
         .dropdown {
@@ -222,36 +225,36 @@ $result = mysqli_query($conn, $query);
             font-size: 12px;
             margin-left: 5px;
         }
-        
+
         .star {
-    font-size: 20px;
-    display: inline-block;
-    position: relative;
-    color: #ccc;
-}
+            font-size: 20px;
+            display: inline-block;
+            position: relative;
+            color: #ccc;
+        }
 
-.star.full {
-    color: gold;
-}
+        .star.full {
+            color: gold;
+        }
 
-.star.partial {
-    background: linear-gradient(90deg, gold var(--fill), #ccc var(--fill));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
+        .star.partial {
+            background: linear-gradient(90deg, gold var(--fill), #ccc var(--fill));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
 
-.star.empty {
-    color: #ccc;
-}
-
+        .star.empty {
+            color: #ccc;
+        }
     </style>
 </head>
 <script>
-     function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
     function toggleDropdown(event) {
         event.preventDefault(); // supaya gak reload atau pergi ke #
         const dropdown = event.currentTarget.nextElementSibling;
@@ -315,81 +318,81 @@ $result = mysqli_query($conn, $query);
             <input type="text" name="search" placeholder="Cari Nama Pengajar..." class="search-input">
             <button type="submit" class="button">Cari</button>
         </form>
-            <div class="row mt-4">
-                <?php if (mysqli_num_rows($result) > 0) { ?>
-                    <?php while ($row = mysqli_fetch_assoc($result)) {
-    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
-    $defaultImage = "../uploads1/default.png";
-    $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+        <div class="row mt-4">
+            <?php if (mysqli_num_rows($result) > 0) { ?>
+                <?php while ($row = mysqli_fetch_assoc($result)) {
+                    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
+                    $defaultImage = "../uploads1/default.png";
+                    $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 
-    // Ambil rata-rata rating dari tabel rating_pengajar
-    $pengajarId = $row['pengajar_id'];
-    $sqlRating = "SELECT AVG(rating) AS rata_rating, COUNT(*) AS jumlah_rating FROM rating_pengajar WHERE pengajar_id = $pengajarId";
-    $resultRating = mysqli_query($conn, $sqlRating);
-    $rataRating = 0;
-    $jumlahRating = 0;
+                    // Ambil rata-rata rating dari tabel rating_pengajar
+                    $pengajarId = $row['pengajar_id'];
+                    $sqlRating = "SELECT AVG(rating) AS rata_rating, COUNT(*) AS jumlah_rating FROM rating_pengajar WHERE pengajar_id = $pengajarId";
+                    $resultRating = mysqli_query($conn, $sqlRating);
+                    $rataRating = 0;
+                    $jumlahRating = 0;
 
-    if ($resultRating && $dataRating = mysqli_fetch_assoc($resultRating)) {
-        $rataRating = round($dataRating['rata_rating'], 1);
-        $jumlahRating = $dataRating['jumlah_rating'];
-    }
-?>
+                    if ($resultRating && $dataRating = mysqli_fetch_assoc($resultRating)) {
+                        $rataRating = round($dataRating['rata_rating'], 1);
+                        $jumlahRating = $dataRating['jumlah_rating'];
+                    }
+                ?>
 
-                        <div class="col-md-4 mb-4">
-                            <div class="card text-center p-3">
-                                <img src="<?= $finalImage; ?>" alt="Foto Pengajar" class="profile-img mb-3">
+                    <div class="col-md-4 mb-4">
+                        <div class="card text-center p-3">
+                            <img src="<?= $finalImage; ?>" alt="Foto Pengajar" class="profile-img mb-3">
 
-                                <h4><?= htmlspecialchars($row['full_name']); ?></h4>
-                                <p><strong>TUTOR <?= htmlspecialchars($row['mapel']); ?></strong></p>
-<!-- Menampilkan rata-rata rating -->
-<?php if ($jumlahRating > 0): ?>
-    <div class="mb-2">
-        <?php
-            $average_rating = $rataRating;
-            $fullStars = floor($average_rating); 
-            $decimal = $average_rating - $fullStars;
-            $emptyStars = 5 - ceil($average_rating); 
+                            <h4><?= htmlspecialchars($row['full_name']); ?></h4>
+                            <p><strong>TUTOR <?= htmlspecialchars($row['mapel']); ?></strong></p>
+                            <!-- Menampilkan rata-rata rating -->
+                            <?php if ($jumlahRating > 0): ?>
+                                <div class="mb-2">
+                                    <?php
+                                    $average_rating = $rataRating;
+                                    $fullStars = floor($average_rating);
+                                    $decimal = $average_rating - $fullStars;
+                                    $emptyStars = 5 - ceil($average_rating);
 
-            // Bintang penuh
-            for ($i = 0; $i < $fullStars; $i++) {
-                echo '<span class="star full">★</span>';
-            }
+                                    // Bintang penuh
+                                    for ($i = 0; $i < $fullStars; $i++) {
+                                        echo '<span class="star full">★</span>';
+                                    }
 
-            // Bintang sebagian
-            if ($decimal > 0) {
-                $percentage = $decimal * 100;
-                echo '<span class="star partial" style="--fill:' . $percentage . '%;">★</span>';
-            }
+                                    // Bintang sebagian
+                                    if ($decimal > 0) {
+                                        $percentage = $decimal * 100;
+                                        echo '<span class="star partial" style="--fill:' . $percentage . '%;">★</span>';
+                                    }
 
-            // Bintang kosong
-            for ($i = 0; $i < $emptyStars; $i++) {
-                echo '<span class="star empty">★</span>';
-            }
-        ?>
-        <br>
-        <span class="rating-text"><?= number_format($average_rating, 1); ?> / 5 (<?= $jumlahRating; ?> ulasan)</span>
-    </div>
-<?php else: ?>
-    <div class="mb-2">
-        <span class="rating-text">Belum ada ulasan</span>
-    </div>
-<?php endif; ?>
-
-
-                                <div class="btn-group-vertical">
-                                    <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>
-                                    <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
+                                    // Bintang kosong
+                                    for ($i = 0; $i < $emptyStars; $i++) {
+                                        echo '<span class="star empty">★</span>';
+                                    }
+                                    ?>
+                                    <br>
+                                    <span class="rating-text"><?= number_format($average_rating, 1); ?> / 5 (<?= $jumlahRating; ?> ulasan)</span>
                                 </div>
+                            <?php else: ?>
+                                <div class="mb-2">
+                                    <span class="rating-text">Belum ada ulasan</span>
+                                </div>
+                            <?php endif; ?>
+
+
+                            <div class="btn-group-vertical">
+                                <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>
+                                <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
                             </div>
                         </div>
-                    <?php } ?>
-                <?php } else { ?>
-                    <div class="col-12 text-center">
-                        <p class="text-danger">Pengajar tidak ditemukan.</p>
                     </div>
                 <?php } ?>
-            </div>
+            <?php } else { ?>
+                <div class="col-12 text-center">
+                    <p class="text-danger">Pengajar tidak ditemukan.</p>
+                </div>
+            <?php } ?>
         </div>
+    </div>
 </body>
 
 </html>

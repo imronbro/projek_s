@@ -66,137 +66,136 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rating Pengajar</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/rating.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         .content {
-            margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
+            margin-top: 80px;
+            /* Sesuaikan dengan tinggi navbar */
         }
     </style>
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
-    <ul class="nav-links">
-        <li><a href="home.php">Presensi</a></li>
-        <li><a href="pengajar.php">Pengajar</a></li>
-        <li><a href="rating.php" class="active">Rating</a></li>
-        <li><a href="jadwal1.php">Jadwal</a></li>
-        <li><a href="nilai_siswa.php">Nilai</a></li>
-        <li><a href="profile.php">Profil</a></li>
-        <li><a href="kontak.php">Kontak</a></li>
-        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-    </ul>
-    <div class="menu-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
-<div class="content">
-<h2>Rating Pengajar</h2>
+        <ul class="nav-links">
+            <li><a href="home.php">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="rating.php" class="active">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="content">
+        <h2>Rating Pengajar</h2>
 
-<form action="" method="POST" onsubmit="return confirm('Yakin ingin mengirim rating?');">
-    <input type="hidden" name="siswa_id" value="<?php echo $siswa_id; ?>">
-    
-    <label for="pengajar">Nama Pengajar:</label>
-    <input list="pengajar-list" name="pengajar_name" id="pengajar" placeholder="Cari nama pengajar..." required>
-    <datalist id="pengajar-list">
-        <?php
-        $query = "SELECT pengajar_id, full_name FROM mentor";
-        $result = mysqli_query($conn, $query);
-        if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                // Tampilkan nama pengajar sebagai value, dan ID sebagai atribut data-id
-                echo "<option value='" . htmlspecialchars($row['full_name']) . "' data-id='" . $row['pengajar_id'] . "'></option>";
-            }
-        }
-        ?>
-    </datalist>
-    <input type="hidden" name="pengajar_id" id="pengajar-id">
-    
-    <label for="rating">Rating:</label>
+        <form action="" method="POST" onsubmit="return confirm('Yakin ingin mengirim rating?');">
+            <input type="hidden" name="siswa_id" value="<?php echo $siswa_id; ?>">
 
-    <div class="rating">
-        <input type="radio" id="star5" name="rating" value="5" />
-        <label for="star5" title="5 stars">★</label>
-
-        <input type="radio" id="star4" name="rating" value="4" />
-        <label for="star4" title="4 stars">★</label>
-
-        <input type="radio" id="star3" name="rating" value="3" />
-        <label for="star3" title="3 stars">★</label>
-
-        <input type="radio" id="star2" name="rating" value="2" />
-        <label for="star2" title="2 stars">★</label>
-
-        <input type="radio" id="star1" name="rating" value="1" />
-        <label for="star1" title="1 star">★</label>
-    </div>
-    
-    <label for="komentar">Komentar:</label>
-    <textarea name="komentar" placeholder="Tambahkan komentar (opsional)"></textarea>
-    
-    <button type="submit">Kirim Rating</button>
-</form>
-</div>
-<script src="js/menu.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const stars = document.querySelectorAll(".rating input");
-        const labels = document.querySelectorAll(".rating label");
-
-        stars.forEach((star) => {
-            star.addEventListener("change", function () {
-                updateStars(this.value);
-            });
-        });
-
-        function updateStars(value) {
-            labels.forEach((label, index) => {
-                if (index >= 5 - value) {
-                    label.style.color = "gold";
-                } else {
-                    label.style.color = "#ccc"; 
+            <label for="pengajar">Nama Pengajar:</label>
+            <input list="pengajar-list" name="pengajar_name" id="pengajar" placeholder="Cari nama pengajar..." required>
+            <datalist id="pengajar-list">
+                <?php
+                $query = "SELECT pengajar_id, full_name FROM mentor";
+                $result = mysqli_query($conn, $query);
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Tampilkan nama pengajar sebagai value, dan ID sebagai atribut data-id
+                        echo "<option value='" . htmlspecialchars($row['full_name']) . "' data-id='" . $row['pengajar_id'] . "'></option>";
+                    }
                 }
+                ?>
+            </datalist>
+            <input type="hidden" name="pengajar_id" id="pengajar-id">
+
+            <label for="rating">Rating:</label>
+
+            <div class="rating">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" title="1 star">★</label>
+            </div>
+
+            <label for="komentar">Komentar:</label>
+            <textarea name="komentar" placeholder="Tambahkan komentar (opsional)"></textarea>
+
+            <button type="submit">Kirim Rating</button>
+        </form>
+    </div>
+    <script src="js/menu.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const stars = document.querySelectorAll(".rating input");
+            const labels = document.querySelectorAll(".rating label");
+
+            stars.forEach((star) => {
+                star.addEventListener("change", function() {
+                    updateStars(this.value);
+                });
             });
-        }
-    });
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const pengajarInput = document.getElementById("pengajar");
-        const pengajarIdInput = document.getElementById("pengajar-id");
-        const datalistOptions = document.querySelectorAll("#pengajar-list option");
-
-        pengajarInput.addEventListener("input", function () {
-            const inputValue = pengajarInput.value;
-            let found = false;
-
-            datalistOptions.forEach((option) => {
-                if (option.value === inputValue) {
-                    pengajarIdInput.value = option.getAttribute("data-id"); // Set ID pengajar ke hidden input
-                    found = true;
-                }
-            });
-
-            if (!found) {
-                pengajarIdInput.value = ""; // Kosongkan ID jika nama tidak valid
+            function updateStars(value) {
+                labels.forEach((label, index) => {
+                    if (index >= 5 - value) {
+                        label.style.color = "gold";
+                    } else {
+                        label.style.color = "#ccc";
+                    }
+                });
             }
         });
-    });
-</script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const pengajarInput = document.getElementById("pengajar");
+            const pengajarIdInput = document.getElementById("pengajar-id");
+            const datalistOptions = document.querySelectorAll("#pengajar-list option");
+
+            pengajarInput.addEventListener("input", function() {
+                const inputValue = pengajarInput.value;
+                let found = false;
+
+                datalistOptions.forEach((option) => {
+                    if (option.value === inputValue) {
+                        pengajarIdInput.value = option.getAttribute("data-id"); // Set ID pengajar ke hidden input
+                        found = true;
+                    }
+                });
+
+                if (!found) {
+                    pengajarIdInput.value = ""; // Kosongkan ID jika nama tidak valid
+                }
+            });
+        });
+    </script>
 
 
-<?php
-mysqli_close($conn);
-?>
+    <?php
+    mysqli_close($conn);
+    ?>
 </body>
+
 </html>
