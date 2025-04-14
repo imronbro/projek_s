@@ -344,44 +344,70 @@ $result = $stmt->get_result();
     </div>
   </nav>
 
-    <div class="content">
-        <h2>Riwayat Presensi - <?php echo htmlspecialchars($full_name); ?></h2>
+<div class="content">
+    <h2>Riwayat Presensi - <?php echo htmlspecialchars($full_name); ?></h2>
 
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Tanggal</th>
-                    <th>Sesi</th>
-                    <th>Status</th>
-                    <th>Komentar</th>
-                    <th>Dibuat Pada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                if ($result->num_rows > 0) {
-                    $no = 1;
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $no++ . "</td>";
-                        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['status']) . "</td>";
-                        echo "<td>" . (!empty($row['komentar']) ? htmlspecialchars($row['komentar']) : '-') . "</td>";
-                        echo "<td>" . htmlspecialchars($row['waktu_presensi']) . "</td>";
-                        echo "</tr>";
+    <!-- Filter Tanggal dan Bulan -->
+    <form method="GET" class="filter-form">
+        <label for="tanggal">Pilih Tanggal:</label>
+        <input type="date" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($selected_date); ?>">
+
+        <label for="bulan">Pilih Bulan:</label>
+        <input type="month" id="bulan" name="bulan" value="<?php echo htmlspecialchars($selected_month); ?>">
+
+        <button type="submit">Tampilkan</button>
+    </form>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Sesi</th>
+                <th>Status</th>
+                <th>Komentar</th>
+                <th>Dibuat Pada</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            if ($result->num_rows > 0) {
+                $no = 1;
+                while ($row = $result->fetch_assoc()) {
+                    $waktu_presensi = new DateTime($row['waktu_presensi']);
+                    $current_time = new DateTime();
+                    $time_difference = $current_time->getTimestamp() - $waktu_presensi->getTimestamp();
+
+                    echo "<tr>";
+                    echo "<td>" . $no++ . "</td>";
+                    echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                    echo "<td>" . (!empty($row['komentar']) ? htmlspecialchars($row['komentar']) : '-') . "</td>";
+                    echo "<td>" . htmlspecialchars($row['waktu_presensi']) . "</td>";
+                    echo "<td>";
+
+                    if ($time_difference >= 0 && $time_difference <= 1800) { // 1800 detik = 30 menit
+                        echo "<a href='edit_riwayat.php?id=" . $row['id'] . "' class='btn edit-btn'>Edit</a>";
+                    } else {
+                        echo "-";
                     }
-                } else {
-                    echo "<tr><td colspan='6' style='text-align:center;'>Belum ada data presensi</td></tr>";
+
+                    echo "</td>";
+                    echo "</tr>";
                 }
-                ?>
-            </tbody>
-        </table>
-        <div class="button-container">
-    <button class="back-button" onclick="goBack()">Kembali</button>
-</div>
+            } else {
+                echo "<tr><td colspan='7' style='text-align:center;'>Tidak ada data presensi untuk filter ini.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <button class="back-button" onclick="goBack()">Kembali</button>
     </div>
+</div>
+
     <script src="js/menu.js" defer></script>
     <script src="js/logout.js" defer></script>
     <script>        function goBack() {

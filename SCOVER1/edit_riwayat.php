@@ -63,19 +63,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Riwayat Presensi</title>
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #003049;
+            background-color: #f4f4f4;
             color: #fabe49;
             margin: 0;
             padding: 0;
         }
 
         .container {
+            margin-top: 100px;
             max-width: 600px;
-            margin: 50px auto;
-            background-color: #145375;
+            margin: 20px auto;
+            background-color: #f9f9f9;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -137,6 +139,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
+<nav class="navbar">
+        <div class="logo">
+            <img src="images/foto4.png" alt="Logo">
+        </div>
+        <h1 class="title">Dashboard Siswa</h1>
+        <ul class="nav-links">
+            <li><a href="home.php" class="active">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
+            <li><a href="nilai_siswa.php">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
     <div class="container">
         <h2>Edit Riwayat Presensi</h2>
         <form method="POST">
