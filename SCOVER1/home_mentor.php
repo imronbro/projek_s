@@ -93,17 +93,15 @@ $conn->close();
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
-        <li><a href="home_mentor.php" class="active">Presensi</a></li>
+        <li><a href="home_mentor.php" class="active">Jurnal</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>
         <li><a href="nilai.php">Nilai</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
-        <li><a href="kontak_mentor.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
     <div class="menu-icon" onclick="toggleMenu()">
