@@ -72,16 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin: 0;
             padding: 0;
         }
-
         .container {
-            margin-top: 100px;
-            max-width: 600px;
-            margin: 20px auto;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    margin-top: 120px; /* Tambahkan jarak agar tidak tertutupi navbar */
+    max-width: 600px;
+    margin: 120px auto; /* Sesuaikan margin */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
         h2 {
             text-align: center;

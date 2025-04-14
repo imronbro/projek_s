@@ -83,14 +83,6 @@ $result = $stmt->get_result();
       padding: 0;
     }
 
-    .navbar {
-      position: fixed;
-      /* Navbar tetap di atas */
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
 
     .content {
       margin-top: 100px;
@@ -285,38 +277,6 @@ $result = $stmt->get_result();
         text-align: center;
       }
 
-      .navbar .nav-links {
-        flex-direction: column; /* Atur link navbar menjadi kolom */
-        gap: 10px; /* Tambahkan jarak antar link */
-      }
-
-      .navbar .nav-links a {
-        font-size: 14px; /* Ukuran font link lebih kecil */
-        padding: 8px; /* Sesuaikan padding link */
-      }
-
-      .navbar .menu-icon {
-        display: flex; /* Tampilkan menu hamburger */
-      }
-
-      .navbar .nav-links {
-        display: none; /* Sembunyikan link navbar secara default */
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        background-color: #003049;
-        padding: 20px 0;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        z-index: 1000;
-      }
-
-      .navbar .nav-links.active {
-        display: flex; /* Tampilkan link navbar saat menu aktif */
-      }
-    }
   </style>
 
 </head>
@@ -415,9 +375,6 @@ $result = $stmt->get_result();
     }
   </script>
 </body>
-
-
-
 </html>
 
 <?php
