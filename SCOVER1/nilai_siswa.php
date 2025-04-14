@@ -25,16 +25,32 @@ if (!$siswa) {
 $siswa_id   = $siswa['siswa_id'];
 $siswa_name = $siswa['full_name'];
 
-// Ambil data nilai siswa beserta nama pengajar menggunakan JOIN
+// Ambil tahun saat ini
+$current_year = date('Y');
+
+// Ambil tahun yang dipilih dari filter (jika ada)
+$selected_year = isset($_GET['tahun']) ? $_GET['tahun'] : $current_year;
+
+// Buat array tahun mulai dari 2025 hingga tahun berikutnya
+$years = range(2025, $current_year + 1);
+
+// Ambil bulan dan tahun yang dipilih dari filter (jika ada)
+$selected_month = isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); // Default ke bulan saat ini
+
+// Query untuk mengambil data nilai berdasarkan bulan dan tahun yang dipilih
 $query = "SELECT n.nilai, n.nama_kuis, n.waktu, p.full_name AS pengajar_name 
           FROM nilai_siswa n 
           JOIN mentor p ON n.pengajar_id = p.pengajar_id 
-          WHERE n.siswa_id = ?
+          WHERE n.siswa_id = ? AND MONTH(n.waktu) = ? AND YEAR(n.waktu) = ?
           ORDER BY n.waktu DESC";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("i", $siswa_id);
+$stmt->bind_param("iii", $siswa_id, $selected_month, $selected_year);
 $stmt->execute();
 $result = $stmt->get_result();
+
+// Query untuk mendapatkan daftar tahun yang tersedia
+$tahun_query = "SELECT DISTINCT YEAR(waktu) AS tahun FROM nilai_siswa ORDER BY tahun DESC";
+$tahun_result = $conn->query($tahun_query);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -146,6 +162,40 @@ $result = $stmt->get_result();
             transform: scale(1.05); /* Efek zoom saat hover */
         }
 
+        /* Filter Form */
+        .filter-form {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-form label {
+            font-weight: bold;
+            color: #003049;
+        }
+
+        .filter-form select {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .filter-form button {
+            padding: 5px 15px;
+            background-color: #faaf1d;
+            color: #003049;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-form button:hover {
+            background-color: #fabe49;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -224,6 +274,30 @@ $result = $stmt->get_result();
     <div class="container">
         <h2>Daftar Nilai Siswa</h2>
         <p>Selamat datang, <?php echo htmlspecialchars($siswa_name); ?></p>
+
+        <!-- Filter Pilihan Bulan dan Tahun -->
+        <form method="GET" class="filter-form">
+            <label for="bulan">Pilih Bulan:</label>
+            <select name="bulan" id="bulan">
+                <?php for ($i = 1; $i <= 12; $i++): ?>
+                    <option value="<?= $i; ?>" <?= $i == $selected_month ? 'selected' : ''; ?>>
+                        <?= date('F', mktime(0, 0, 0, $i, 1)); ?>
+                    </option>
+                <?php endfor; ?>
+            </select>
+
+            <label for="tahun">Pilih Tahun:</label>
+            <select name="tahun" id="tahun">
+                <?php foreach ($years as $year): ?>
+                    <option value="<?= $year; ?>" <?= $year == $selected_year ? 'selected' : ''; ?>>
+                        <?= $year; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+            <button type="submit">Tampilkan</button>
+        </form>
+
         <table>
             <thead>
                 <tr>
@@ -247,7 +321,7 @@ $result = $stmt->get_result();
                               </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='4'>Belum ada nilai yang ditampilkan.</td></tr>";
+                    echo "<tr><td colspan='4'>Tidak ada nilai untuk bulan dan tahun ini.</td></tr>";
                 }
                 ?>
             </tbody>

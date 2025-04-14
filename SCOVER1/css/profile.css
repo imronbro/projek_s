@@ -20,35 +20,78 @@ body {
   }
 }
 
+/* Animasi Dasar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Mulai dari posisi lebih rendah */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Kembali ke posisi normal */
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Container */
 .container {
   max-width: 50%; /* Kurangi lebar container */
-  margin: 80px auto 20px; /* Posisikan container di tengah */
-  padding: 15px;
+  margin: 100px auto 20px; /* Posisikan container di tengah */
+  padding: 20px;
   background-color: #145375; /* Warna latar belakang */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: #fabe49; /* Warna teks */
   text-align: center; /* Pusatkan teks */
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk container */
 }
 
 /* Heading */
 h2 {
-  font-size: 2em; /* Perkecil ukuran heading */
-  margin-bottom: 15px; /* Kurangi jarak bawah heading */
+  font-size: 2.5em; /* Perbesar ukuran heading */
+  margin-bottom: 30px; /* Tambahkan jarak bawah heading */
   color: #faaf1d; /* Bright yellow */
   text-align: center;
   word-wrap: break-word; /* Memastikan teks tidak melampaui layar */
+  animation: scaleUp 1s ease-in-out; /* Animasi pembesaran heading */
 }
 
 /* Card */
 .card {
   padding: 20px;
   background-color: #0271ab; /* Warna latar belakang kartu */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
   text-align: center; /* Pusatkan teks dalam kartu */
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk kartu */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efek melayang saat hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Paragraf dalam Card */
@@ -73,13 +116,14 @@ h2 {
 
 /* Gambar Profil */
 .profile-img {
-  width: 200px;
-  height: 200px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto 20px; /* Posisikan gambar di tengah */
+  margin: 0 auto 15px; /* Posisikan gambar di tengah */
   display: block;
   border: 3px solid #faaf1d;
+  animation: scaleUp 1s ease-in-out; /* Animasi pembesaran gambar profil */
 }
 
 /* Paragraph */
@@ -108,23 +152,43 @@ p strong {
   justify-content: flex-start; /* Tetap rata kiri */
   gap: 10px; /* Jarak antar elemen */
   margin-bottom: 5px; /* Jarak antar baris */
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk baris info */
 }
 
 .info-row strong {
   min-width: 120px; /* Lebar tetap untuk label */
   text-align: left; /* Pastikan label rata kiri */
   flex-shrink: 0; /* Jangan biarkan label mengecil */
+  font-size: 1em;
+}
+
+.info-row span {
+  flex: 1;
+  font-size: 1em;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 15px;
   margin: 10px 5px;
   text-decoration: none;
   color: #003049;
   border-radius: 5px;
   text-align: center;
+  background-color: #faaf1d;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk tombol */
+}
+
+.btn:hover {
+  background-color: #fabe49;
+  transform: scale(1.05); /* Efek pembesaran saat hover */
 }
 
 .btn-primary {
