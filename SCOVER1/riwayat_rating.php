@@ -49,90 +49,135 @@ if ($result_pengajar->num_rows > 0) {
     exit();
 }
 ?>
+<!-- Setelah kode PHP di atas -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Rating untuk <?php echo htmlspecialchars($pengajar_name); ?></title>
-    <link rel="stylesheet" href="css/navbar.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #003049;
-            color: #fabe49;
-            text-align: center;
-        }
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            background-color: #0271ab;
-            color: #fabe49;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #faaf1d;
-        }
-        th {
-            background-color: #faaf1d;
-            color: #003049;
-        }
-        .tombol-kembali {
-            padding: 10px 20px;
-            background-color: #faaf1d;
-            color: #003049;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.3s, color 0.3s;
-            margin-top: 20px;
-        }
-        .tombol-kembali:hover {
-            background-color: #003049;
-            color: #faaf1d;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riwayat Rating - <?php echo htmlspecialchars($pengajar_name); ?></title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #145375;
+      margin: 0;
+      padding: 0;
+      padding-top: 100px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #145375;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #e6c200;
+      color: #145375;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .btn {
+      background-color: #e6c200;
+      color: #145375;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #145375;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+
+      table, th, td {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-<nav class="navbar">
-        <div class="logo">
-            <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
-        </div>
-        <h1 class="title">Dashboard Mentor</h1>
-        <ul class="nav-links">
-            <li><a href="home_mentor.php">Presensi</a></li>
-            <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="jurnal.php">Jurnal</a></li>
-            <li><a href="profile_mentor.php" class="active">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
-            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-        </ul>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/foto4.png" alt="Logo">
+    </div>
+    <h1 class="title">Dashboard Mentor</h1>
+    <ul class="nav-links">
+      <li><a href="home_mentor.php">Presensi</a></li>
+      <li><a href="siswa.php">Siswa</a></li>
+      <li><a href="jadwal.php">Jadwal</a></li>
+      <li><a href="jurnal.php">Jurnal</a></li>
+      <li><a href="profile_mentor.php" class="active">Profil</a></li>
+      <li><a href="kontak.php">Kontak</a></li>
+      <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-<h2>Riwayat Rating untuk <?php echo htmlspecialchars($pengajar_name); ?></h2>
+  <div class="container">
+    <h2>Riwayat Rating untuk <?php echo htmlspecialchars($pengajar_name); ?></h2>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nama Siswa</th>
-        <th>Rating</th>
-        <th>Komentar</th>
-        <th>Tanggal Dibuat</th>
-    </tr>
-    <?php
-    if ($result_rating->num_rows > 0) {
-        while ($row = $result_rating->fetch_assoc()) {
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nama Siswa</th>
+          <th>Rating</th>
+          <th>Komentar</th>
+          <th>Tanggal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        if ($result_rating->num_rows > 0) {
+          while ($row = $result_rating->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . htmlspecialchars($row['id']) . "</td>";
             echo "<td>" . htmlspecialchars($row['nama_siswa']) . "</td>";
@@ -140,20 +185,18 @@ if ($result_pengajar->num_rows > 0) {
             echo "<td>" . htmlspecialchars($row['komentar']) . "</td>";
             echo "<td>" . htmlspecialchars($row['created_at']) . "</td>";
             echo "</tr>";
+          }
+        } else {
+          echo "<tr><td colspan='5' style='text-align:center;'>Belum ada rating yang diberikan.</td></tr>";
         }
-    } else {
-        echo "<tr><td colspan='5'>Belum ada rating yang diberikan.</td></tr>";
-    }
-    ?>
-</table>
-<button class="tombol-kembali" onclick="history.back()">Kembali</button>
+        ?>
+      </tbody>
+    </table>
 
-<script src="js/logout.js" defer></script>
-<script src="js/home.js" defer></script>
-<script src="js/menu.js" defer></script>
+    <a href="javascript:history.back()" class="btn">Kembali</a>
+  </div>
 
-<?php
-$conn->close();
-?>
+  <script src="js/logout.js" defer></script>
+  <script src="js/menu.js" defer></script>
 </body>
 </html>
