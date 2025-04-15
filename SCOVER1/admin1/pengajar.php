@@ -15,6 +15,8 @@ if (!empty($search)) {
 }
 
 $result = mysqli_query($conn, $query);
+$jumlahCard = mysqli_num_rows($result);
+$centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
 
 
 ?>
@@ -55,7 +57,6 @@ $result = mysqli_query($conn, $query);
             box-sizing: border-box;
         }
 
-
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -65,9 +66,9 @@ $result = mysqli_query($conn, $query);
         }
 
         .container {
-            margin-top: 100px;
+            margin-top: 90px;
             /* Memberikan ruang di bawah navbar */
-            padding: 20px;
+            padding: 50px;
             text-align: center;
         }
 
@@ -153,39 +154,42 @@ $result = mysqli_query($conn, $query);
             align-items: center;
             margin-top: 10px;
         }
-                    /* Form pencarian seperti filter-bar */
-.search-form {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
-.search-form input[type="text"] {
-    padding: 10px 15px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 200px;
-}
+        /* Form pencarian seperti filter-bar */
+        .search-form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-/* Tombol cari */
-.search-form button {
-    background-color: #f1c40f; /* kuning */
-    color: #0b3c5d; /* biru tua */
-    border: none;
-    border-radius: 8px;
-    padding: 10px 85px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s;
-}
+        .search-form input[type="text"] {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 200px;
+        }
 
-.search-form button:hover {
-    background-color: #d4ac0d;
-}
+        /* Tombol cari */
+        .search-form button {
+            background-color: #f1c40f;
+            /* kuning */
+            color: #0b3c5d;
+            /* biru tua */
+            border: none;
+            border-radius: 8px;
+            padding: 10px 85px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: #d4ac0d;
+        }
 
 
 
@@ -264,10 +268,89 @@ $result = mysqli_query($conn, $query);
             display: inline-block;
         }
 
-.star.empty {
-    color: #ccc;
-}
+        .star.empty {
+            color: #ccc;
+        }
 
+        .card-container.centered {
+            justify-content: center;
+        }
+
+        .alert-notfound {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            max-width: 500px;
+            margin: 40px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .row.centered {
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+
+        @media (max-width: 1200px) {
+
+
+            .row {
+                padding-left: 120px;
+                gap: 150px;
+                /* jarak antar card */
+            }
+
+            .col-md-4 {
+                flex: 1 1 100%;
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                padding: 15px;
+                border-radius: 10px;
+                height: 400px;
+                margin-left: -80px;
+                margin-top: 10px;
+              
+            }
+
+            .search-form button {
+                background-color: #f1c40f;
+                /* kuning */
+                color: #0b3c5d;
+                /* biru tua */
+                border: none;
+                border-radius: 8px;
+                padding: 10px 35px;
+                font-size: 14px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+
+        
+
+            }
     </style>
 </head>
 <script>
@@ -292,6 +375,16 @@ $result = mysqli_query($conn, $query);
         dropdown.style.display = isOpen ? 'none' : 'block';
         arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
     }
+
+    const cardContainer = document.querySelector('.card-container');
+    const cards = document.querySelectorAll('.card');
+
+    if (cards.length === 1) {
+        cardContainer.classList.add('centered');
+    } else {
+        cardContainer.classList.remove('centered');
+    }
+
 
     // Tutup dropdown kalau klik di luar menu
     document.addEventListener('click', function(event) {
@@ -341,7 +434,8 @@ $result = mysqli_query($conn, $query);
                 <button type="submit" class="search-button">Cari</button>
             </div>
         </form>
-        <div class="row mt-4">
+        <div class="row mt-4 <?= $centerClass ?>">
+
             <?php if (mysqli_num_rows($result) > 0) { ?>
                 <?php while ($row = mysqli_fetch_assoc($result)) {
                     $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
@@ -402,20 +496,21 @@ $result = mysqli_query($conn, $query);
                             <?php endif; ?>
 
 
-                                <div class="btn-group-vertical">
-                                    <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>
-                                    <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
-                                </div>
+                            <div class="btn-group-vertical">
+                                <a href="detail_pengajar.php?id=<?= $row['pengajar_id']; ?>" class="btn btn-detail">Lihat Detail</a>
+                                <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
                             </div>
                         </div>
-                    <?php } ?>
-                <?php } else { ?>
-                    <div class="col-12 text-center">
-                        <p class="text-danger">Pengajar tidak ditemukan.</p>
                     </div>
                 <?php } ?>
-            </div>
+            <?php } else { ?>
+                <div class="alert-notfound">
+                    <p>😢 Maaf, pengajar tidak ditemukan. Silakan coba kata kunci lain.</p>
+                </div>
+
+            <?php } ?>
         </div>
+    </div>
 </body>
 
 </html>

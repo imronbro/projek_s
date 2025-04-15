@@ -79,7 +79,7 @@ $result = mysqli_query($conn, $query);
             border-radius: 12px;
             padding: 20px;
             width: 300px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -90,7 +90,8 @@ $result = mysqli_query($conn, $query);
             border-radius: 50%;
             border: 3px solid #145375;
             margin-bottom: 10px;
-            background-color: #ccc; /* fallback warna abu-abu kalau default.png transparan */
+            background-color: #ccc;
+            /* fallback warna abu-abu kalau default.png transparan */
         }
 
 
@@ -122,6 +123,31 @@ $result = mysqli_query($conn, $query);
             opacity: 0.9;
         }
 
+        .alert-notfound {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            max-width: 500px;
+            margin: 40px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -134,7 +160,7 @@ $result = mysqli_query($conn, $query);
         <ul class="nav-links">
             <li><a href="home.php">Presensi Siswa</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="siswa.php"class="active">Siswa</a></li>
+            <li><a href="siswa.php" class="active">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
@@ -172,7 +198,7 @@ $result = mysqli_query($conn, $query);
             <?php
                 }
             } else {
-                echo "<p style='text-align:center;'>Siswa tidak ditemukan.</p>";
+                echo "<div class='alert-notfound'>😢 Maaf, siswa tidak ditemukan. Silakan coba kata kunci lain.</div>";
             }
             ?>
         </div>
