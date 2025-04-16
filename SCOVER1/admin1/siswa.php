@@ -160,7 +160,7 @@ $result = mysqli_query($conn, $query);
         <ul class="nav-links">
             <li><a href="home.php">Presensi Siswa</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="siswa.php" class="active">Siswa</a></li>
+            <li><a href="siswa.php"class="active">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
