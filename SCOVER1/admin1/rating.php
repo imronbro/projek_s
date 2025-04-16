@@ -196,7 +196,7 @@ $result = $conn->query($sql);
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="siswa.php">Siswa</a></li>
             <li><a href="jadwaL.php">Jadwal</a></li>
-            <li><a href="nilai.php">Rating</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php"class="active">Rating</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
