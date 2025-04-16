@@ -315,7 +315,7 @@ $centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
 
             .row {
                 padding-left: 120px;
-                gap: 150px;
+                gap: 160px;
                 /* jarak antar card */
             }
 
