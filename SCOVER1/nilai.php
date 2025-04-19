@@ -65,7 +65,7 @@ mysqli_close($conn);
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #003049;
+            background-color:rgb(255, 255, 255);
             color: #fabe49;
             text-align: center;
             margin: 0;
@@ -78,7 +78,7 @@ mysqli_close($conn);
             width: 50%;
             margin: 20px auto;
             padding: 20px;
-            background-color: #0271ab;
+            background-color: #145375;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
             position: relative;
@@ -142,18 +142,16 @@ mysqli_close($conn);
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
-        <li><a href="home_mentor.php">Presensi</a></li>
-        <li><a href="siswa.php">Siswa</a></li>
-        <li><a href="jadwal.php">Jadwal</a></li>
-        <li><a href="kuis.php">Kuis</a></li>
-        <li><a href="nilai.php" class="active">Nilai</a></li>
-        <li><a href="profile_mentor.php">Profil</a></li>
-        <li><a href="kontak_mentor.php">Kontak</a></li>
-        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    <li><a href="home_mentor.php">Jurnal</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
+            <li><a href="jadwal.php" >Jadwal</a></li>
+            <li><a href="kuis.php">Kuis</a></li>
+            <li><a href="nilai.php"class="active">Nilai</a></li>
+            <li><a href="profile_mentor.php">Profil</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
     <div class="menu-icon" onclick="toggleMenu()">
             <span></span>

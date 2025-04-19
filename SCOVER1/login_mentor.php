@@ -14,6 +14,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_name'] = $user['full_name']; // Simpan nama lengkap di sesi
             $_SESSION['user_email'] = $user['email'];
+            $_SESSION['mentor_id'] = $user['pengajar_id']; // Simpan pengajar_id ke sesi
             header("Location: home_mentor.php");
             exit();
         } else {
