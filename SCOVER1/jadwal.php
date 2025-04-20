@@ -28,63 +28,113 @@ $result = $stmt->get_result();
     <title>Dashboard Mentor</title>
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #145375;
-            margin: 0;
-            padding: 0;
-            padding-top: 100px;
-            overflow-x: hidden;
-        }
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        color: #145375;
+        margin: 0;
+        padding: 0;
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
 
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+        text-align: center;
+        color: #145375;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th,
+    td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    th {
+        background-color: #145375;
+        color: white;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #e9f3f9;
+    }
+
+    @media (max-width: 768px) {
         .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 20px;
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+
+        thead {
+            display: none;
+        }
+
+        tr {
+            margin-bottom: 15px;
+        }
+
+        td {
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td::before {
+            position: absolute;
+            left: 16px;
+            width: 45%;
+            white-space: nowrap;
+            font-weight: bold;
             color: #145375;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
+        td:nth-of-type(1)::before {
+            content: "Nama Siswa";
         }
 
-        th, td {
-            padding: 12px 16px;
-            text-align: left;
-            border: 1px solid #ddd;
+        td:nth-of-type(2)::before {
+            content: "Tanggal";
         }
 
-        th {
-            background-color: #145375;
-            color: white;
+        td:nth-of-type(3)::before {
+            content: "Sesi";
         }
 
-        tr:nth-child(even) {
-            background-color: #f1f1f1;
+        td:nth-of-type(4)::before {
+            content: "Mata Pelajaran";
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            table {
-                font-size: 14px;
-            }
-        }
+    }
     </style>
-</head>
 
 <body>
     <nav class="navbar">

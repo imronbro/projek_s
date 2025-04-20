@@ -56,6 +56,7 @@ mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,97 +64,130 @@ mysqli_close($conn);
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color:rgb(255, 255, 255);
-            color: #fabe49;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        h2 {
-            margin-top: 20px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        color: #145375;
+        margin: 0;
+        padding: 0;
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
+
+    h2,
+    p {
+        color: #145375;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+        color: #145375;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    #autocomplete-list {
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+
+    button {
+        background-color: #faaf1d;
+        color:rgb(255, 255, 255);
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #145375;
+    }
+
+    .back-button {
+        display: inline-block;
+        background-color: #faaf1d;
+        color:rgb(255, 255, 255);
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background-color: #145375;
+    }
+
+    /* Autocomplete */
+    .autocomplete-suggestions {
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 150px;
+        overflow-y: auto;
+        background-color: #ffffff;
+        position: absolute;
+        width: calc(100% - 22px);
+        z-index: 9999;
+        left: 10px;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .autocomplete-suggestion {
+        padding: 10px;
+        cursor: pointer;
+        color: #145375;
+    }
+
+    .autocomplete-suggestion:hover {
+        background-color: #faaf1d;
+        color: #003049;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
         .container {
-            width: 50%;
-            margin: 20px auto;
             padding: 20px;
-            background-color: #145375;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-            position: relative;
         }
-        input[type="text"], input[type="number"], button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: #faaf1d;
-            color: #003049;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #fabe49;
-        }
-
-        .autocomplete-suggestions {
-            border: 1px solid #ccc;
-            border-top: none;
-            max-height: 150px;
-            overflow-y: auto;
-            background-color: #0271ab;
-            position: absolute;
-            width: calc(100% - 22px);
-            z-index: 9999;
-            left: 10px;
-        }
-        .autocomplete-suggestion {
-            padding: 10px;
-            cursor: pointer;
-        }
-        .autocomplete-suggestion:hover {
-            background-color: #faaf1d;
-            color: #003049;
-        }
-
-.back-button {
-    display: inline-block;
-    background-color: #faaf1d;
-    color: #003049;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.back-button:hover {
-    background-color: #fabe49;
-}
-
+    }
     </style>
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
         <h1 class="title">Dashboard Mentor</h1>
-    <ul class="nav-links">
-    <li><a href="home_mentor.php">Jurnal</a></li>
+        <ul class="nav-links">
+            <li><a href="home_mentor.php">Jurnal</a></li>
             <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwal.php" >Jadwal</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="kuis.php">Kuis</a></li>
-            <li><a href="nilai.php"class="active">Nilai</a></li>
+            <li><a href="nilai.php" class="active">Nilai</a></li>
             <li><a href="profile_mentor.php">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-    </ul>
-    <div class="menu-icon" onclick="toggleMenu()">
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
@@ -168,13 +202,13 @@ mysqli_close($conn);
 
             <input type="hidden" name="siswa_id" id="siswaId">
             <div id="autocomplete-list" class="autocomplete-suggestions"></div>
-            
+
             <label for="nama_kuis">Nama Kuis:</label>
             <input type="text" name="nama_kuis" placeholder="Contoh: Kuis Matematika" required>
-            
+
             <label for="nilai">Nilai:</label>
             <input type="number" name="nilai" min="0" max="100" placeholder="Masukkan nilai (0-100)" required>
-            
+
             <button type="submit">Simpan Nilai</button>
         </form>
         <a href="home.php" class="back-button">Kembali</a>
@@ -184,43 +218,44 @@ mysqli_close($conn);
     <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script>
-        const siswaList = <?php echo json_encode($siswaList); ?>;
-        
-        const searchInput = document.getElementById('searchStudent');
-        const autocompleteList = document.getElementById('autocomplete-list');
-        const siswaIdInput = document.getElementById('siswaId');
-        
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase();
-            autocompleteList.innerHTML = ''; 
-            
-            if (!query) {
-                return;
-            }
-            
-            siswaList.forEach(function(siswa) {
-                if (siswa.full_name.toLowerCase().includes(query)) {
-                    const suggestionItem = document.createElement('div');
-                    suggestionItem.classList.add('autocomplete-suggestion');
-                    suggestionItem.textContent = siswa.full_name;
-                    suggestionItem.dataset.id = siswa.siswa_id;
+    const siswaList = <?php echo json_encode($siswaList); ?>;
 
-                    suggestionItem.addEventListener('click', function() {
-                        searchInput.value = siswa.full_name;
-                        siswaIdInput.value = siswa.siswa_id;
-                        autocompleteList.innerHTML = '';
-                    });
-                    
-                    autocompleteList.appendChild(suggestionItem);
-                }
-            });
-        });
-        
-        document.addEventListener('click', function(e) {
-            if (e.target !== searchInput) {
-                autocompleteList.innerHTML = '';
+    const searchInput = document.getElementById('searchStudent');
+    const autocompleteList = document.getElementById('autocomplete-list');
+    const siswaIdInput = document.getElementById('siswaId');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        autocompleteList.innerHTML = '';
+
+        if (!query) {
+            return;
+        }
+
+        siswaList.forEach(function(siswa) {
+            if (siswa.full_name.toLowerCase().includes(query)) {
+                const suggestionItem = document.createElement('div');
+                suggestionItem.classList.add('autocomplete-suggestion');
+                suggestionItem.textContent = siswa.full_name;
+                suggestionItem.dataset.id = siswa.siswa_id;
+
+                suggestionItem.addEventListener('click', function() {
+                    searchInput.value = siswa.full_name;
+                    siswaIdInput.value = siswa.siswa_id;
+                    autocompleteList.innerHTML = '';
+                });
+
+                autocompleteList.appendChild(suggestionItem);
             }
         });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (e.target !== searchInput) {
+            autocompleteList.innerHTML = '';
+        }
+    });
     </script>
 </body>
+
 </html>

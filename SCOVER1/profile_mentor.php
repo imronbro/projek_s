@@ -36,14 +36,33 @@ if ($email) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Pengguna</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dashboard Mentor</title>
     <link rel="stylesheet" href="css/navbar.css">
-
     <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-        background-color:rgb(255, 255, 255);
-        color: #fabe49;
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        color: #145375;
+        margin: 0;
+        padding: 0;
+        padding-top: 100px;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
     }
 
     .card {
@@ -54,21 +73,13 @@ if ($email) {
         flex-direction: row;
         align-items: center;
         padding: 20px;
+        border-radius: 10px;
+        gap: 20px;
     }
 
     .profile-section {
         text-align: center;
         margin-right: 20px;
-    }
-
-    .rating {
-        font-size: 18px;
-        color: #ffd700;
-        margin-top: 10px;
-    }
-
-    .profile-info {
-        flex-grow: 1;
     }
 
     .profile-img {
@@ -81,29 +92,53 @@ if ($email) {
         border: 3px solid #faaf1d;
     }
 
+    .profile-info {
+        flex-grow: 1;
+    }
+
+    .rating {
+        font-size: 18px;
+        color: #ffd700;
+        margin-top: 10px;
+    }
+
+    h2 {
+        color: #145375;
+        text-align: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        display: inline-block;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 5px;
+        cursor: pointer;
+    }
+
     .btn-primary {
-        background-color: #0271ab;
-        border-color: #0271ab;
+        background-color: #145375;
+        color: white;
+        border: 1px solid #145375;
+    }
+
+    .btn-primary:hover {
+        background-color: #0d3c5b;
+        border-color: #0d3c5b;
     }
 
     .btn-secondary {
         background-color: #faaf1d;
-        border-color: rgb(88, 79, 59);
+        border: 1px solid #584f3b;
         color: #003049;
-    }
-
-    .btn-primary:hover {
-        background-color: #145375;
-        border-color: #145375;
     }
 
     .btn-secondary:hover {
         background-color: #fabe49;
         border-color: #fabe49;
-    }
-
-    h2 {
-        color: #faaf1d;
     }
 
     .star {
@@ -123,7 +158,6 @@ if ($email) {
         background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        display: inline-block;
         position: relative;
     }
     </style>
@@ -141,13 +175,11 @@ if ($email) {
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="kuis.php">Kuis</a></li>
             <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="profile_mentor.php"class="active">Profil</a></li>
+            <li><a href="profile_mentor.php" class="active">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </nav>
     <div class="container mt-5">

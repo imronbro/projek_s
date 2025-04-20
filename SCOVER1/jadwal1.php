@@ -105,6 +105,47 @@ $conn->close();
             <p>Belum ada jadwal yang tersedia.</p>
         <?php endif; ?>
     </div>
+    
+    <!-- Bagian Kuis dari Mentor -->
+<h2 style="text-align: center; margin-top: 40px;">Kuis dari Mentor</h2>
+<?php
+include 'koneksi.php'; // Pastikan koneksi dibuka ulang jika sebelumnya sudah ditutup
+
+$sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
+             FROM kuis k
+             LEFT JOIN mentor m ON k.pengajar_id = m.pengajar_id
+             WHERE k.siswa_id = ?
+             ORDER BY k.tanggal DESC";
+$stmt_kuis = $conn->prepare($sql_kuis);
+$stmt_kuis->bind_param("i", $siswa_id);
+$stmt_kuis->execute();
+$result_kuis = $stmt_kuis->get_result();
+
+if ($result_kuis->num_rows > 0): ?>
+    <table border="1" style="margin: 0 auto; margin-top: 20px;">
+        <tr>
+            <th>Nama Kuis</th>
+            <th>Pengajar</th>
+            <th>File</th>
+        </tr>
+        <?php while ($row = $result_kuis->fetch_assoc()): ?>
+            <tr>
+                <td><?= htmlspecialchars($row['nama']) ?></td>
+                <td><?= htmlspecialchars('Kak ' . $row['pengajar']) ?></td>
+                <td>
+                    <?php if (!empty($row['file_kuis'])): ?>
+                        <a href="uploads/<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                    <?php else: ?>
+                        Tidak Ada File
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+<?php else: ?>
+    <p style="text-align: center;">Belum ada kuis yang diberikan oleh mentor.</p>
+<?php endif; ?>
+
     <script src="js/menu.js" defer></script>
   </body>
 </html>
