@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Upload file kuis
-    $target_dir = "uploads/";
+    $target_dir = "uploads1/";
     $file_name = basename($file_kuis["name"]);
     $target_file = $target_dir . $file_name;
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -133,10 +133,8 @@ mysqli_close($conn);
         background-color: #145375;
     }
 
-    /* Autocomplete */
     .autocomplete-suggestions {
-        border: 1px solid #ccc;
-        border-top: none;
+        border: none;
         max-height: 150px;
         overflow-y: auto;
         background-color: #ffffff;
@@ -145,7 +143,10 @@ mysqli_close($conn);
         z-index: 9999;
         left: 10px;
         border-radius: 0 0 5px 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* opsional buat kesan melayang */
     }
+
 
     .autocomplete-suggestion {
         padding: 10px;
@@ -158,9 +159,6 @@ mysqli_close($conn);
         color: #003049;
     }
 
-    #autocomplete-list {
-        display: none;
-    }
 
 
     /* Responsive */
@@ -205,8 +203,8 @@ mysqli_close($conn);
             <label for="nama_kuis">Nama Kuis:</label>
             <input type="text" name="nama_kuis" placeholder="Contoh: Kuis Matematika" required>
 
-            <label for="file_kuis">Upload File Kuis:</label>
-            <input type="file" name="file_kuis" required>
+            <label for="file_kuis">Upload File Kuis (pdf):</label>
+            <input type="file" name="file_kuis" accept=".pdf" required>
 
             <button type="submit">Simpan Kuis</button>
         </form>

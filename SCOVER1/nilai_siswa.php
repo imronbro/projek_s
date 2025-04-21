@@ -368,6 +368,7 @@ $tahun_result = $conn->query($tahun_query);
             </tbody>
         </table>
         <a href="home.php" class="back-button">Kembali</a>
+        <a href="download_nilai.php" class="back-button">Unduh PDF</a>
     </div>
 </body>
     <script src="js/logout.js" defer></script>

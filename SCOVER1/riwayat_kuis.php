@@ -144,7 +144,11 @@ $result = $stmt->get_result();
                     <td><?= htmlspecialchars($row['nama_kuis']) ?></td>
                     <td><?= htmlspecialchars($row['tanggal']) ?></td>
                     <td>
-                        <a class="download-btn" href="uploads/<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                        <?php if (!empty($row['file_kuis'])): ?>
+                            <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                        <?php else: ?>
+                            Tidak Ada File
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endwhile; ?>
