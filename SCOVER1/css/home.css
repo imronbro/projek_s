@@ -8,7 +8,7 @@ body {
   padding: 0;
   background-color: #003049;
   font-family: Arial, sans-serif; /* Gunakan font yang seragam */
-  color: white; /* Warna teks default */
+  color: #f4f4f4; /* Warna teks default */
 }
 
 .content {

@@ -62,10 +62,23 @@ $tahun_result = $conn->query($tahun_query);
         /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #003049; /* Dark background */
-            color: #fabe49; /* Light text */
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4; /* Latar belakang abu-abu terang */
+            color: #003049; /* Teks biru gelap */
+            padding-top: 110px; /* Sesuaikan dengan tinggi navbar, tambahkan lebih banyak ruang */
+        }
+
+        .container {
+            margin-top: 35px; /* Tambahkan jarak tambahan untuk memastikan konten tidak tertutupi */
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff; /* Latar belakang putih */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
         }
 
         /* Animasi untuk kontainer */
@@ -81,15 +94,7 @@ $tahun_result = $conn->query($tahun_query);
         }
 
         .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            background-color: #0271ab; /* Light blue background */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 1s ease-in-out; /* Tambahkan animasi fade-in */
-            margin-top: 100px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
         }
 
         h2 {
@@ -166,34 +171,70 @@ $tahun_result = $conn->query($tahun_query);
         .filter-form {
             margin-bottom: 20px;
             display: flex;
+            flex-wrap: wrap; /* Membuat elemen dalam form responsif */
             align-items: center;
             gap: 10px;
+            justify-content: center; /* Pusatkan elemen */
         }
 
         .filter-form label {
             font-weight: bold;
-            color: #003049;
+            color: #003049; /* Teks biru gelap */
+            margin-bottom: 5px;
         }
 
         .filter-form select {
-            padding: 5px 10px;
+            padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            font-size: 1em;
+            width: 200px; /* Lebar default */
+            box-sizing: border-box;
         }
 
         .filter-form button {
-            padding: 5px 15px;
-            background-color: #faaf1d;
-            color: #003049;
+            padding: 10px 20px;
+            background-color: #faaf1d; /* Tombol kuning */
+            color: #ffffff; /* Teks putih */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1em;
         }
 
         .filter-form button:hover {
-            background-color: #fabe49;
+            background-color: #fabe49; /* Kuning lebih terang saat hover */
+            transform: scale(1.05); /* Efek zoom */
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .filter-form {
+                flex-direction: column; /* Elemen ditampilkan secara vertikal */
+                align-items: stretch; /* Elemen memenuhi lebar */
+            }
+
+            .filter-form select {
+                width: 100%; /* Lebar penuh untuk layar kecil */
+            }
+
+            .filter-form button {
+                width: 100%; /* Tombol memenuhi lebar */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-form select {
+                font-size: 0.9em; /* Ukuran font lebih kecil */
+                padding: 8px; /* Kurangi padding */
+            }
+
+            .filter-form button {
+                font-size: 0.9em; /* Ukuran font lebih kecil */
+                padding: 8px 15px; /* Kurangi padding */
+            }
         }
 
         /* Responsive Design */
@@ -223,7 +264,8 @@ $tahun_result = $conn->query($tahun_query);
 
         @media (max-width: 480px) {
             .container {
-                padding: 15px;
+                padding: 12px;
+                margin-top: 15px;
             }
 
             h2 {
@@ -252,7 +294,6 @@ $tahun_result = $conn->query($tahun_query);
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
     <ul class="nav-links">

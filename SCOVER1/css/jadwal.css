@@ -3,8 +3,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #003049; /* Dark background */
-  color: #fabe49; /* Light yellow text for readability */
+  background-color: #f4f4f4; /* Latar belakang abu-abu terang */
+  color: #000000; /* Teks hitam */
 }
 
 .container {
@@ -14,16 +14,16 @@ body {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #145375; /* Solid dark blue background */
+  background-color: #f9f9f9; /* Latar belakang putih terang */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #fabe49; /* Light yellow text for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  color: #000000; /* Teks hitam */
   animation: fadeIn 1s ease-in-out; /* Animasi untuk kontainer */
 }
 
 /* Header animasi */
 h2 {
-  color: #faaf1d; /* Bright yellow */
+  color: #003049; /* Teks biru gelap */
   margin-bottom: 15px;
   font-size: 1.8em;
   text-align: center;
@@ -34,7 +34,7 @@ h2 {
 .content-title {
   font-size: 2em; /* Ukuran font besar */
   font-weight: bold; /* Teks tebal */
-  color: #faaf1d; /* Warna kuning cerah */
+  color: #003049; /* Teks biru gelap */
   text-align: center; /* Teks rata tengah */
   margin-bottom: 20px; /* Jarak bawah */
   animation: slideIn 1s ease-in-out; /* Animasi slide-in */
@@ -44,10 +44,10 @@ h2 {
 .content {
   margin-top: 80px; /* Sesuaikan dengan tinggi navbar */
   padding: 20px;
-  background-color: #0271ab; /* Light blue background */
+  background-color: #ffffff; /* Latar belakang putih */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #fabe49; /* Light yellow text for readability */
+  color: #000000; /* Teks hitam */
   animation: fadeIn 1s ease-in-out; /* Animasi fade-in */
 }
 
@@ -56,7 +56,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: #145375; /* Solid dark blue background */
+  background-color: #f9f9f9; /* Latar belakang putih terang */
   animation: zoomIn 0.8s ease-in-out; /* Animasi zoom-in */
 }
 
@@ -68,38 +68,39 @@ table td {
 }
 
 table th {
-  background-color: #faaf1d; /* Bright yellow */
-  color: #003049; /* Dark text for contrast */
+  background-color: #003049; /* Header tabel biru gelap */
+  color: #ffffff; /* Teks putih */
   animation: slideInRight 1s ease-in-out; /* Animasi slide-in dari kanan */
 }
 
 table tr:nth-child(even) {
-  background-color: #0271ab; /* Light blue for even rows */
+  background-color: #f4f4f4; /* Baris genap abu-abu terang */
 }
 
 table tr:nth-child(odd) {
-  background-color: #145375; /* Dark blue for odd rows */
+  background-color: #ffffff; /* Baris ganjil putih */
 }
 
-table tr {
-  animation: fadeIn 0.8s ease-in-out; /* Animasi fade-in untuk baris */
+table tr:hover {
+  background-color: #fabe49; /* Baris kuning saat hover */
+  color: #003049; /* Teks biru gelap */
 }
 
 table td {
-  color: #fabe49; /* Light yellow text for readability */
+  color: #000000; /* Teks hitam */
 }
 
 /* Gaya untuk header tanggal */
 h3 {
   margin-top: 20px;
-  color: #faaf1d; /* Bright yellow */
+  color: #003049; /* Teks biru gelap */
   font-size: 18px;
   font-weight: bold;
 }
 
 /* Pesan jika tidak ada jadwal */
 p {
-  color: #e63946; /* Bright red for warning */
+  color: #e63946; /* Merah terang untuk peringatan */
   font-size: 16px;
   font-weight: bold;
   text-align: center;
@@ -110,33 +111,25 @@ select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
-  border: 2px solid #0271ab; /* Light blue border */
+  border: 2px solid #003049; /* Border biru gelap */
   border-radius: 5px;
-  background-color: #145375; /* Solid dark blue background */
-  color: #fabe49; /* Light yellow text for readability */
+  background-color: #ffffff; /* Latar belakang putih */
+  color: #000000; /* Teks hitam */
   font-size: 1em;
   transition: border-color 0.3s ease, background-color 0.3s ease;
   animation: slideInLeft 1s ease-in-out; /* Animasi slide-in dari kiri */
 }
 
 select:focus {
-  border-color: #faaf1d; /* Bright yellow focus */
-  background-color: #0271ab; /* Light blue focus */
+  border-color: #fabe49; /* Border kuning saat fokus */
+  background-color: #f4f4f4; /* Latar belakang abu-abu terang saat fokus */
   outline: none;
 }
 
 /* Kartu jadwal animasi */
-.schedule {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
 .card {
-  background-color: #0271ab; /* Light blue */
-  color: #fabe49; /* Light yellow text */
+  background-color: #f9f9f9; /* Latar belakang putih terang */
+  color: #000000; /* Teks hitam */
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -150,8 +143,8 @@ select:focus {
 }
 
 .card:hover {
-  background-color: #faaf1d; /* Bright yellow hover */
-  color: #003049; /* Dark text on hover */
+  background-color: #fabe49; /* Kuning terang saat hover */
+  color: #003049; /* Teks biru gelap saat hover */
   transform: scale(1.05); /* Efek pembesaran */
   animation: hoverBounce 0.5s ease-in-out; /* Animasi bounce saat hover */
 }
