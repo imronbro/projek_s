@@ -39,7 +39,7 @@ $ratingQuery = mysqli_query($conn, "
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
         * {
-            
+
             box-sizing: border-box;
         }
 
@@ -167,12 +167,13 @@ $ratingQuery = mysqli_query($conn, "
         }
 
         .profile-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    margin-top: 120px; /* tambahkan ini */
-}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            margin-top: 120px;
+            /* tambahkan ini */
+        }
 
 
         .card {
@@ -235,14 +236,14 @@ $ratingQuery = mysqli_query($conn, "
             font-size: 12px;
             margin-left: 5px;
         }
-        
     </style>
 </head>
 <script>
-     function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
     function toggleDropdown(event) {
         event.preventDefault(); // supaya gak reload atau pergi ke #
         const dropdown = event.currentTarget.nextElementSibling;
@@ -259,7 +260,7 @@ $ratingQuery = mysqli_query($conn, "
         dropdown.style.display = isOpen ? 'none' : 'block';
         arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
     }
-    
+
     // Tutup dropdown kalau klik di luar menu
     document.addEventListener('click', function(event) {
         const dropdownMenus = document.querySelectorAll('.dropdown-menu');
@@ -270,8 +271,13 @@ $ratingQuery = mysqli_query($conn, "
         });
     });
 </script>
+
 <body>
-<nav class="navbar">
+    <a href="pengajar.php" style="position: absolute; top: 90px; left: 20px; text-decoration: none; margin: top 100px;">
+        <button style="background-color: #083d6e; color: white; padding: 8px 16px; border: none; border-radius: 8px;">← Kembali</button>
+    </a>
+
+    <nav class="navbar">
         <div class="logo">
             <a href="home.php">
                 <img src="images/foto4.png" alt="Logo" class="logo-image">
@@ -288,8 +294,8 @@ $ratingQuery = mysqli_query($conn, "
             </li>
 
             <li><a href="pengajar.php" class="active">Pengajar</a></li>
-            <li><a href="siswa.php" >Siswa</a></li>
-            <li><a href="jadwal.php" >Jadwal</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><a href="kontak.php">Kontak</a></li>
@@ -303,18 +309,18 @@ $ratingQuery = mysqli_query($conn, "
     </nav>
     <div class="profile-container">
         <div class="card">
-        <?php
-$gambar = htmlspecialchars($mentor['gambar']);
-$imagePath = "../" . $gambar; // gambar sudah termasuk 'uploads/namafile' dari DB
-$defaultImage = "../uploads1/default.png";
+            <?php
+            $gambar = htmlspecialchars($mentor['gambar']);
+            $imagePath = "../" . $gambar; // gambar sudah termasuk 'uploads/namafile' dari DB
+            $defaultImage = "../uploads1/default.png";
 
-if (!empty($gambar) && file_exists($imagePath)) {
-    $displayImage = $imagePath;
-} else {
-    $displayImage = $defaultImage;
-}
-?>
-<img src="<?= $displayImage; ?>" alt="Foto Pengajar" class="mentor-img">
+            if (!empty($gambar) && file_exists($imagePath)) {
+                $displayImage = $imagePath;
+            } else {
+                $displayImage = $defaultImage;
+            }
+            ?>
+            <img src="<?= $displayImage; ?>" alt="Foto Pengajar" class="mentor-img">
 
             <h2><?= htmlspecialchars($mentor['full_name']); ?></h2>
             <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($mentor['mapel']); ?></p>
@@ -322,38 +328,15 @@ if (!empty($gambar) && file_exists($imagePath)) {
             <p><strong>No HP:</strong> <?= htmlspecialchars($mentor['nohp']); ?></p>
             <p><strong>Alamat:</strong> <?= htmlspecialchars($mentor['alamat']); ?></p>
             <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($mentor['ttl']); ?></p>
+            <!-- Tombol navigasi -->
+            <div class="btn-group-vertical">
+                <a href="detailriwayatrating.php?id=<?= $id ?>" class="btn-detail">Riwayat Rating & Komentar</a>
+                <a href="riwayat_presensi.php?id=<?= $id ?>" class="btn-detail">Riwayat Presensi</a>
+            </div>
         </div>
-        <div class="container">
-    <h2 style="color: #0b3c5d;">Riwayat Rating dan Komentar</h2>
 
-    <div class="rating-section">
-    <?php if (mysqli_num_rows($ratingQuery) > 0): ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nama Siswa</th>
-                    <th>Rating</th>
-                    <th>Komentar</th>
-                    <th>Tanggal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($rating = mysqli_fetch_assoc($ratingQuery)) : ?>
-                    <tr>
-                        <td><?= htmlspecialchars($rating['full_name']) ?></td>
-                        <td><?= htmlspecialchars($rating['rating']) ?> / 5</td>
-                        <td><?= htmlspecialchars($rating['komentar']) ?></td>
-                        <td><?= date("d M Y, H:i", strtotime($rating['created_at'])) ?></td>
-                    </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>Belum ada rating untuk pengajar ini.</p>
-    <?php endif; ?>
-</div>
 
-</div>
+
 
     </div>
 </body>

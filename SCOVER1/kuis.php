@@ -2,48 +2,44 @@
 session_start();
 include 'koneksi.php';
 
-if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['mentor_id'])) {
+    header("Location: login_mentor.php");
     exit();
 }
 
-$email = $_SESSION['user_email'];
-
-$query = "SELECT pengajar_id, full_name FROM mentor WHERE email = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$result = $stmt->get_result();
-$pengajar = $result->fetch_assoc();
-
-if (!$pengajar) {
-    die("Akun tidak ditemukan.");
-}
-
-$pengajar_id = $pengajar['pengajar_id'];
-$pengajar_name = $pengajar['full_name'];
+$mentor_id = $_SESSION['mentor_id'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $siswa_id = $_POST["siswa_id"];
     $nama_kuis = $_POST["nama_kuis"];
-    $nilai = $_POST["nilai"];
+    $file_kuis = $_FILES["file_kuis"];
 
     // Validasi input
-    if (empty($siswa_id) || empty($nama_kuis) || empty($nilai)) {
+    if (empty($siswa_id) || empty($nama_kuis) || empty($file_kuis)) {
         echo "<script>alert('Harap isi semua kolom.'); window.history.back();</script>";
         exit();
     }
 
-    $query = "INSERT INTO nilai_siswa (pengajar_id, siswa_id, nama_kuis, nilai) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("iisi", $pengajar_id, $siswa_id, $nama_kuis, $nilai);
+    // Upload file kuis
+    $target_dir = "uploads/";
+    $file_name = basename($file_kuis["name"]);
+    $target_file = $target_dir . $file_name;
+    $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Nilai berhasil disimpan!'); window.location.href = 'input_nilai.php';</script>";
+    if (move_uploaded_file($file_kuis["tmp_name"], $target_file)) {
+        $query = "INSERT INTO kuis (pengajar_id, siswa_id, nama, file_kuis) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iiss", $mentor_id, $siswa_id, $nama_kuis, $target_file);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Kuis berhasil disimpan!'); window.location.href = 'kuis.php';</script>";
+        } else {
+            echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
+        }
+        $stmt->close();
     } else {
-        echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
+        echo "<script>alert('Gagal mengupload file.'); window.history.back();</script>";
     }
-    $stmt->close();
 }
 
 $query = "SELECT siswa_id, full_name FROM siswa";
@@ -54,16 +50,20 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Nilai Siswa</title>
-    <link rel="stylesheet" href="css/home.css">
+    <title>Dashboard Mentor - Kuis</title>
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         font-family: Arial, sans-serif;
         background-color: #ffffff;
@@ -92,7 +92,7 @@ mysqli_close($conn);
     }
 
     input[type="text"],
-    input[type="number"],
+    input[type="file"],
     button {
         width: 100%;
         padding: 10px;
@@ -103,14 +103,9 @@ mysqli_close($conn);
         font-size: 16px;
     }
 
-    #autocomplete-list {
-        margin-bottom: 0;
-        border-bottom: none;
-    }
-
     button {
         background-color: #faaf1d;
-        color:rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
         font-weight: bold;
         font-size: 16px;
         cursor: pointer;
@@ -124,7 +119,7 @@ mysqli_close($conn);
     .back-button {
         display: inline-block;
         background-color: #faaf1d;
-        color:rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
         padding: 10px 20px;
         text-decoration: none;
         border-radius: 5px;
@@ -163,6 +158,11 @@ mysqli_close($conn);
         color: #003049;
     }
 
+    #autocomplete-list {
+        display: none;
+    }
+
+
     /* Responsive */
     @media (max-width: 768px) {
         .container {
@@ -182,8 +182,8 @@ mysqli_close($conn);
             <li><a href="home_mentor.php">Jurnal</a></li>
             <li><a href="siswa.php">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="kuis.php">Kuis</a></li>
-            <li><a href="nilai.php" class="active">Nilai</a></li>
+            <li><a href="kuis.php" class="active">Kuis</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile_mentor.php">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
@@ -193,33 +193,30 @@ mysqli_close($conn);
             <span></span>
         </div>
     </nav>
-    <h2>Input Nilai Siswa</h2>
-    <p>Pengajar: <b><?php echo htmlspecialchars($pengajar_name); ?></b></p>
+    <h2 style="text-align: center;">Input Kuis</h2>
+
     <div class="container">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <label for="searchStudent">Cari Siswa:</label>
             <input type="text" id="searchStudent" placeholder="Ketik nama siswa...">
-
             <input type="hidden" name="siswa_id" id="siswaId">
             <div id="autocomplete-list" class="autocomplete-suggestions"></div>
 
             <label for="nama_kuis">Nama Kuis:</label>
             <input type="text" name="nama_kuis" placeholder="Contoh: Kuis Matematika" required>
 
-            <label for="nilai">Nilai:</label>
-            <input type="number" name="nilai" min="0" max="100" placeholder="Masukkan nilai (0-100)" required>
+            <label for="file_kuis">Upload File Kuis:</label>
+            <input type="file" name="file_kuis" required>
 
-            <button type="submit">Simpan Nilai</button>
+            <button type="submit">Simpan Kuis</button>
         </form>
-        <a href="home.php" class="back-button">Kembali</a>
-        <a href="input_nilai.php" class="back-button">Riwayat</a>
+
+        <a href="home_mentor.php" class="back-button">Kembali</a>
+        <a href="riwayat_kuis.php" class="back-button">Riwayat Kuis</a>
     </div>
-    <script src="js/logout.js" defer></script>
-    <script src="js/home.js" defer></script>
-    <script src="js/menu.js" defer></script>
+
     <script>
     const siswaList = <?php echo json_encode($siswaList); ?>;
-
     const searchInput = document.getElementById('searchStudent');
     const autocompleteList = document.getElementById('autocomplete-list');
     const siswaIdInput = document.getElementById('siswaId');
@@ -256,6 +253,7 @@ mysqli_close($conn);
         }
     });
     </script>
+
 </body>
 
 </html>

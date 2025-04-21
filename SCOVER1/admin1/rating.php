@@ -42,9 +42,10 @@ $result = $conn->query($sql);
             color: #145375;
             margin: 0;
             padding: 0;
-            padding-top:100px;
+            padding-top: 100px;
         }
-        .content{
+
+        .content {
             padding: 100px;
         }
 
@@ -56,7 +57,7 @@ $result = $conn->query($sql);
         h3 {
             text-align: center;
             color: #145375;
-            margin : 30px 0;
+            margin: 30px 0;
         }
 
         form {
@@ -70,7 +71,8 @@ $result = $conn->query($sql);
             margin-bottom: 5px;
         }
 
-        input, select {
+        input,
+        select {
             padding: 10px;
             font-size: 14px;
             border: 1px solid #ccc;
@@ -95,11 +97,13 @@ $result = $conn->query($sql);
             text-align: center;
             border-bottom: 1px solid #f0f0f0;
         }
+
         td {
             padding: 8px 10px;
             text-align: center;
             border-bottom: 1px solid #f0f0f0;
         }
+
         table th {
             background-color: #145375;
             color: white;
@@ -115,21 +119,22 @@ $result = $conn->query($sql);
 
         tr:hover {
             background-color: #f1f9ff;
-        }
+        }
 
         .btn-detail {
             display: inline-block;
             margin-top: 10px;
             padding: 8px 12px;
-            background-color:rgb(13, 78, 135);
+            background-color: rgb(13, 78, 135);
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .btn-detail:hover {
-            background-color:rgb(2, 65, 131);
+            background-color: rgb(2, 65, 131);
         }
+
         .btn-group-vertical {
             display: flex;
             flex-direction: column;
@@ -142,10 +147,12 @@ $result = $conn->query($sql);
             color: gold;
             font-size: 20px;
         }
+
         .bintang-kosong {
             color: #ccc;
             font-size: 20px;
         }
+
         .filter-bar {
             display: flex;
             justify-content: center;
@@ -160,6 +167,7 @@ $result = $conn->query($sql);
             gap: 10px;
             justify-content: center;
         }
+
         button {
             background-color: #e6c200;
             color: #145375;
@@ -174,12 +182,11 @@ $result = $conn->query($sql);
             background-color: #145375;
             color: #fff;
         }
-
     </style>
 </head>
 
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
@@ -187,11 +194,10 @@ $result = $conn->query($sql);
         <ul class="nav-links">
             <li><a href="home.php">Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
+            <li><a href="jadwaL.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php"class="active">Rating</a></li>
-            <li><a href="profil.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -200,54 +206,57 @@ $result = $conn->query($sql);
             <span></span>
         </div>
     </nav>
-<div class="container">
-<h3>Data Rating Pengajar</h3>
+    <div class="container">
+        <h3>Data Rating Pengajar</h3>
 
-<div class="filter-bar">
-    <form method="GET" action="">
-        <input type="text" name="keyword" placeholder="Cari Nama Pengajar..." value="<?= htmlspecialchars($keyword) ?>">
-        <button type="submit">Cari</button>
-    </form>
-</div>
+        <div class="filter-bar">
+            <form method="GET" action="">
+                <input type="text" name="keyword" placeholder="Cari Nama Pengajar..." value="<?= htmlspecialchars($keyword) ?>">
+                <button type="submit">Cari</button>
+            </form>
+        </div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nama Pengajar</th>
-            <th>Nama Siswa</th>
-            <th>Rating</th>
-            <th>Komentar</th>
-            <th>Waktu</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if ($result->num_rows > 0): ?>
-            <?php while($row = $result->fetch_assoc()): ?>
+        <table>
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($row['nama_pengajar']) ?></td>
-                    <td><?= htmlspecialchars($row['nama_siswa']) ?></td>
-                    <td>
-                        <?php
-                            $rating = (int)$row['rating'];
-                            for ($i = 1; $i <= 5; $i++) {
-                            if ($i <= $rating) {
-                            echo '<span class="bintang">★</span>';
-                            } else {
-                                echo '<span class="bintang-kosong">☆</span>';
-                            }
-                        }
-                        ?>
-                    </td>
-                    <td><?= htmlspecialchars($row['komentar']) ?></td>
-                    <td><?= htmlspecialchars($row['created_at']) ?></td>
+                    <th>Nama Pengajar</th>
+                    <th>Nama Siswa</th>
+                    <th>Rating</th>
+                    <th>Komentar</th>
+                    <th>Waktu</th>
                 </tr>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <tr><td colspan="5">Tidak ada data ditemukan.</td></tr>
-        <?php endif; ?>
-    </tbody>
-</table>
-</div>
+            </thead>
+            <tbody>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($row['nama_pengajar']) ?></td>
+                            <td><?= htmlspecialchars($row['nama_siswa']) ?></td>
+                            <td>
+                                <?php
+                                $rating = (int)$row['rating'];
+                                for ($i = 1; $i <= 5; $i++) {
+                                    if ($i <= $rating) {
+                                        echo '<span class="bintang">★</span>';
+                                    } else {
+                                        echo '<span class="bintang-kosong">☆</span>';
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td><?= htmlspecialchars($row['komentar']) ?></td>
+                            <td><?= htmlspecialchars($row['created_at']) ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">Tidak ada data ditemukan.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 </body>
-</html> 
-<?php $conn->close(); ?>   
+
+</html>
+<?php $conn->close(); ?>
