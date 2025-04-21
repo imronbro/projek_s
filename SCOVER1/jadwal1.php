@@ -126,12 +126,14 @@ if ($result_kuis->num_rows > 0): ?>
         <tr>
             <th>Nama Kuis</th>
             <th>Pengajar</th>
+            <th>Tanggal</th> <!-- Tambahkan kolom Tanggal -->
             <th>File</th>
         </tr>
         <?php while ($row = $result_kuis->fetch_assoc()): ?>
             <tr>
                 <td><?= htmlspecialchars($row['nama']) ?></td>
                 <td><?= htmlspecialchars('Kak ' . $row['pengajar']) ?></td>
+                <td><?= htmlspecialchars($row['tanggal']) ?></td>
                 <td>
                     <?php if (!empty($row['file_kuis'])): ?>
                         <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
