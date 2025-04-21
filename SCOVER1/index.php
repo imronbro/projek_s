@@ -7,7 +7,7 @@
     <title>Learnings Platform</title>
 
     <!-- Link CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/indexhome.css">
 
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -87,7 +87,7 @@
     <!-- Footer Section -->
     <!-- Footer Section -->
     <footer class="footer">
-        <div class="container">
+        <div>
             <p>&copy; 2025 Scover Learning Center Indonesia. All Rights Reserved.</p>
         </div>
     </footer>
