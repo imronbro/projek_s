@@ -158,6 +158,11 @@ mysqli_close($conn);
         color: #003049;
     }
 
+    #autocomplete-list {
+        display: none;
+    }
+
+
     /* Responsive */
     @media (max-width: 768px) {
         .container {
