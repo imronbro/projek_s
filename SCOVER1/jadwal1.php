@@ -76,6 +76,7 @@ $conn->close();
 
     <div class="content">
         <h2>Jadwal Siswa</h2>
+        <a href="download_jadwal.php" class="back-button">Unduh PDF Jadwal</a>
         <?php if ($result->num_rows > 0): ?>
             <?php
             $current_date = null; // Variabel untuk melacak tanggal saat ini
@@ -149,3 +150,4 @@ if ($result_kuis->num_rows > 0): ?>
     <script src="js/menu.js" defer></script>
   </body>
 </html>
+``` 
