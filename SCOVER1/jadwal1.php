@@ -76,7 +76,6 @@ $conn->close();
 
     <div class="content">
         <h2>Jadwal Siswa</h2>
-        <a href="download_jadwal.php" class="back-button">Unduh PDF Jadwal</a>
         <?php if ($result->num_rows > 0): ?>
             <?php
             $current_date = null; // Variabel untuk melacak tanggal saat ini
@@ -135,7 +134,7 @@ if ($result_kuis->num_rows > 0): ?>
                 <td><?= htmlspecialchars('Kak ' . $row['pengajar']) ?></td>
                 <td>
                     <?php if (!empty($row['file_kuis'])): ?>
-                        <a href="uploads/<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                        <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
                     <?php else: ?>
                         Tidak Ada File
                     <?php endif; ?>
@@ -150,4 +149,21 @@ if ($result_kuis->num_rows > 0): ?>
     <script src="js/menu.js" defer></script>
   </body>
 </html>
-``` 
+
+<?php
+// Pastikan file yang diminta ada di folder uploads
+if (isset($_GET['file'])) {
+    $file_name = basename($_GET['file']);
+    $file_path = __DIR__ . '/uploads1/' . $file_name;
+
+    echo "Parameter file: " . htmlspecialchars($file_name) . "<br>";
+    echo "Path file: " . htmlspecialchars($file_path) . "<br>";
+
+    if (file_exists($file_path)) {
+        echo "File ditemukan.";
+    } else {
+        echo "File tidak ditemukan.";
+    }
+    exit();
+}
+?>
