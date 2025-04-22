@@ -20,19 +20,27 @@ if ($email) {
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Pengguna</title>
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        * {
+
+            box-sizing: border-box;
+        }
+    </style>
 
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
+
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
@@ -55,17 +63,17 @@ if ($email) {
     <div class="container mt-5">
         <h2 class="text-center">Profil Pengguna</h2>
         <div class="card p-3 shadow mb-4 text-center">
-            <?php 
+            <?php
             $imagePath = "uploads/" . basename(htmlspecialchars($data['gambar']));
             if (!empty($data['gambar']) && file_exists($imagePath)) {
             ?>
                 <img src="<?= $imagePath; ?>" alt="Foto Profil" class="profile-img">
-            <?php 
-            } else { 
+            <?php
+            } else {
             ?>
                 <img src="uploads/default.png" alt="Foto Profil Default" class="profile-img">
-            <?php 
-            } 
+            <?php
+            }
             ?>
         </div>
         <div class="card p-3 shadow mb-4 text-left">
@@ -103,6 +111,8 @@ if ($email) {
     </div>
 </body>
 <script src="js/menu.js" defer></script>
-<script src="js/logout.js" defer></script> 
+<script src="js/logout.js" defer></script>
+
 </html>
+
 </html>

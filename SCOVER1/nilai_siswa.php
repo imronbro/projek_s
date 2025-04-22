@@ -54,52 +54,70 @@ $tahun_result = $conn->query($tahun_query);
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nilai Siswa</title>
     <style>
         /* Global Styles */
+
+        * {
+
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Latar belakang abu-abu terang */
-            color: #003049; /* Teks biru gelap */
-            padding-top: 110px; /* Sesuaikan dengan tinggi navbar, tambahkan lebih banyak ruang */
+            background-color: #f4f4f4;
+            /* Latar belakang abu-abu terang */
+            color: #003049;
+            /* Teks biru gelap */
+            padding-top: 110px;
+            /* Sesuaikan dengan tinggi navbar, tambahkan lebih banyak ruang */
         }
 
         .container {
-            margin-top: 35px; /* Tambahkan jarak tambahan untuk memastikan konten tidak tertutupi */
+            margin-top: 35px;
+            /* Tambahkan jarak tambahan untuk memastikan konten tidak tertutupi */
             padding: 20px;
             width: 90%;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            background-color: #ffffff; /* Latar belakang putih */
+            background-color: #ffffff;
+            /* Latar belakang putih */
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Bayangan lembut */
         }
 
         /* Animasi untuk kontainer */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px); /* Mulai dari posisi sedikit ke bawah */
+                transform: translateY(20px);
+                /* Mulai dari posisi sedikit ke bawah */
             }
+
             to {
                 opacity: 1;
-                transform: translateY(0); /* Berakhir di posisi normal */
+                transform: translateY(0);
+                /* Berakhir di posisi normal */
             }
         }
 
         .container {
-            animation: fadeInUp 1s ease-in-out; /* Tambahkan animasi fade-in */
+            animation: fadeInUp 1s ease-in-out;
+            /* Tambahkan animasi fade-in */
         }
 
         h2 {
             text-align: center;
-            color: #faaf1d; /* Dark yellow */
+            color: #faaf1d;
+            /* Dark yellow */
             margin-bottom: 20px;
             font-size: 2.5em;
         }
@@ -112,47 +130,68 @@ $tahun_result = $conn->query($tahun_query);
 
         /* Tabel */
         table {
-            width: 100%; /* Tabel memenuhi lebar kontainer */
-            border-collapse: collapse; /* Hilangkan jarak antar border */
+            width: 100%;
+            /* Tabel memenuhi lebar kontainer */
+            border-collapse: collapse;
+            /* Hilangkan jarak antar border */
             margin-top: 20px;
-            background-color: #fabe49; /* Latar belakang tabel */
-            color: #003049; /* Warna teks */
-            border-radius: 10px; /* Membuat sudut tabel membulat */
-            overflow: hidden; /* Pastikan border-radius terlihat */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+            background-color: #fabe49;
+            /* Latar belakang tabel */
+            color: #003049;
+            /* Warna teks */
+            border-radius: 10px;
+            /* Membuat sudut tabel membulat */
+            overflow: hidden;
+            /* Pastikan border-radius terlihat */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Tambahkan bayangan */
         }
 
-        th, td {
-            padding: 15px; /* Tambahkan ruang di dalam sel */
-            border: 1px solid #003049; /* Border gelap */
-            text-align: center; /* Teks di tengah */
-            font-size: 1em; /* Ukuran font */
+        th,
+        td {
+            padding: 15px;
+            /* Tambahkan ruang di dalam sel */
+            border: 1px solid #003049;
+            /* Border gelap */
+            text-align: center;
+            /* Teks di tengah */
+            font-size: 1em;
+            /* Ukuran font */
         }
 
         th {
-            background-color: #faaf1d; /* Latar belakang header tabel */
-            color: #003049; /* Warna teks header */
-            font-weight: bold; /* Teks tebal */
+            background-color: #faaf1d;
+            /* Latar belakang header tabel */
+            color: #003049;
+            /* Warna teks header */
+            font-weight: bold;
+            /* Teks tebal */
         }
 
         tr:nth-child(even) {
-            background-color: #e0e0e0; /* Warna abu-abu terang untuk baris genap */
+            background-color: #e0e0e0;
+            /* Warna abu-abu terang untuk baris genap */
         }
 
         tr:nth-child(odd) {
-            background-color: #ffffff; /* Warna putih untuk baris ganjil */
+            background-color: #ffffff;
+            /* Warna putih untuk baris ganjil */
         }
 
         tr:hover {
-            background-color: #faaf1d; /* Warna kuning gelap saat di-hover */
-            color: #003049; /* Warna teks saat di-hover */
+            background-color: #faaf1d;
+            /* Warna kuning gelap saat di-hover */
+            color: #003049;
+            /* Warna teks saat di-hover */
         }
 
         /* Tombol Kembali */
         .back-button {
             display: inline-block;
-            background-color: #faaf1d; /* Dark yellow */
-            color: #003049; /* Dark text */
+            background-color: #faaf1d;
+            /* Dark yellow */
+            color: #003049;
+            /* Dark text */
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
@@ -163,23 +202,28 @@ $tahun_result = $conn->query($tahun_query);
         }
 
         .back-button:hover {
-            background-color: #fabe49; /* Light yellow */
-            transform: scale(1.05); /* Efek zoom saat hover */
+            background-color: #fabe49;
+            /* Light yellow */
+            transform: scale(1.05);
+            /* Efek zoom saat hover */
         }
 
         /* Filter Form */
         .filter-form {
             margin-bottom: 20px;
             display: flex;
-            flex-wrap: wrap; /* Membuat elemen dalam form responsif */
+            flex-wrap: wrap;
+            /* Membuat elemen dalam form responsif */
             align-items: center;
             gap: 10px;
-            justify-content: center; /* Pusatkan elemen */
+            justify-content: center;
+            /* Pusatkan elemen */
         }
 
         .filter-form label {
             font-weight: bold;
-            color: #003049; /* Teks biru gelap */
+            color: #003049;
+            /* Teks biru gelap */
             margin-bottom: 5px;
         }
 
@@ -188,14 +232,17 @@ $tahun_result = $conn->query($tahun_query);
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: 1em;
-            width: 200px; /* Lebar default */
+            width: 200px;
+            /* Lebar default */
             box-sizing: border-box;
         }
 
         .filter-form button {
             padding: 10px 20px;
-            background-color: #faaf1d; /* Tombol kuning */
-            color: #ffffff; /* Teks putih */
+            background-color: #faaf1d;
+            /* Tombol kuning */
+            color: #ffffff;
+            /* Teks putih */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -205,35 +252,45 @@ $tahun_result = $conn->query($tahun_query);
         }
 
         .filter-form button:hover {
-            background-color: #fabe49; /* Kuning lebih terang saat hover */
-            transform: scale(1.05); /* Efek zoom */
+            background-color: #fabe49;
+            /* Kuning lebih terang saat hover */
+            transform: scale(1.05);
+            /* Efek zoom */
         }
 
         /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
             .filter-form {
-                flex-direction: column; /* Elemen ditampilkan secara vertikal */
-                align-items: stretch; /* Elemen memenuhi lebar */
+                flex-direction: column;
+                /* Elemen ditampilkan secara vertikal */
+                align-items: stretch;
+                /* Elemen memenuhi lebar */
             }
 
             .filter-form select {
-                width: 100%; /* Lebar penuh untuk layar kecil */
+                width: 100%;
+                /* Lebar penuh untuk layar kecil */
             }
 
             .filter-form button {
-                width: 100%; /* Tombol memenuhi lebar */
+                width: 100%;
+                /* Tombol memenuhi lebar */
             }
         }
 
         @media (max-width: 480px) {
             .filter-form select {
-                font-size: 0.9em; /* Ukuran font lebih kecil */
-                padding: 8px; /* Kurangi padding */
+                font-size: 0.9em;
+                /* Ukuran font lebih kecil */
+                padding: 8px;
+                /* Kurangi padding */
             }
 
             .filter-form button {
-                font-size: 0.9em; /* Ukuran font lebih kecil */
-                padding: 8px 15px; /* Kurangi padding */
+                font-size: 0.9em;
+                /* Ukuran font lebih kecil */
+                padding: 8px 15px;
+                /* Kurangi padding */
             }
         }
 
@@ -251,7 +308,8 @@ $tahun_result = $conn->query($tahun_query);
                 font-size: 1em;
             }
 
-            th, td {
+            th,
+            td {
                 font-size: 0.9em;
                 padding: 10px;
             }
@@ -276,7 +334,8 @@ $tahun_result = $conn->query($tahun_query);
                 font-size: 0.9em;
             }
 
-            th, td {
+            th,
+            td {
                 font-size: 0.8em;
                 padding: 8px;
             }
@@ -287,31 +346,32 @@ $tahun_result = $conn->query($tahun_query);
             }
         }
     </style>
-        <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
         </div>
         <h1 class="title">Dashboard Siswa</h1>
-    <ul class="nav-links">
-        <li><a href="home.php">Presensi</a></li>
-        <li><a href="pengajar.php">Pengajar</a></li>
-        <li><a href="rating.php">Rating</a></li>
-        <li><a href="jadwal1.php">Jadwal</a></li>
-        <li><a href="nilai_siswa.php" class="active">Nilai</a></li>
-        <li><a href="profile.php">Profil</a></li>
-        <li><a href="kontak.php">Kontak</a></li>
-        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
-    </ul>
-    <div class="menu-icon" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
+        <ul class="nav-links">
+            <li><a href="home.php">Presensi</a></li>
+            <li><a href="pengajar.php">Pengajar</a></li>
+            <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
+            <li><a href="nilai_siswa.php" class="active">Nilai</a></li>
+            <li><a href="profile.php">Profil</a></li>
+            <li><a href="kontak.php">Kontak</a></li>
+            <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
     <div class="container">
         <h2>Daftar Nilai Siswa</h2>
         <p>Selamat datang, <?php echo htmlspecialchars($siswa_name); ?></p>
@@ -349,7 +409,7 @@ $tahun_result = $conn->query($tahun_query);
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         // Format tanggal untuk tampil dengan format dd-mm-YYYY HH:MM:SS
@@ -371,8 +431,9 @@ $tahun_result = $conn->query($tahun_query);
         <a href="download_nilai.php" class="back-button">Unduh PDF</a>
     </div>
 </body>
-    <script src="js/logout.js" defer></script>
-    <script src="js/menu.js" defer></script>
+<script src="js/logout.js" defer></script>
+<script src="js/menu.js" defer></script>
+
 </html>
 <?php
 $stmt->close();

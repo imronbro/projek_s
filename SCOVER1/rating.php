@@ -78,6 +78,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin-top: 80px;
             /* Sesuaikan dengan tinggi navbar */
         }
+
+        * {
+
+            box-sizing: border-box;
+        }
     </style>
 </head>
 

@@ -64,111 +64,116 @@ mysqli_close($conn);
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #ffffff;
-        color: #145375;
-        margin: 0;
-        padding: 0;
-        padding-top: 100px;
-        overflow-x: hidden;
-    }
+        * {
 
-    h2,
-    p {
-        color: #145375;
-    }
-
-    .container {
-        width: 80%;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-        position: relative;
-        color: #145375;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    button {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        font-size: 16px;
-    }
-
-    #autocomplete-list {
-        margin-bottom: 0;
-        border-bottom: none;
-    }
-
-    button {
-        background-color: #faaf1d;
-        color:rgb(255, 255, 255);
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #145375;
-    }
-
-    .back-button {
-        display: inline-block;
-        background-color: #faaf1d;
-        color:rgb(255, 255, 255);
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 20px;
-        margin-right: 10px;
-        transition: background-color 0.3s;
-        font-weight: bold;
-    }
-
-    .back-button:hover {
-        background-color: #145375;
-    }
-
-    /* Autocomplete */
-    .autocomplete-suggestions {
-        border: 1px solid #ccc;
-        border-top: none;
-        max-height: 150px;
-        overflow-y: auto;
-        background-color: #ffffff;
-        position: absolute;
-        width: calc(100% - 22px);
-        z-index: 9999;
-        left: 10px;
-        border-radius: 0 0 5px 5px;
-    }
-
-    .autocomplete-suggestion {
-        padding: 10px;
-        cursor: pointer;
-        color: #145375;
-    }
-
-    .autocomplete-suggestion:hover {
-        background-color: #faaf1d;
-        color: #003049;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .container {
-            padding: 20px;
+            box-sizing: border-box;
         }
-    }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #145375;
+            margin: 0;
+            padding: 0;
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+
+        h2,
+        p {
+            color: #145375;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            color: #145375;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        #autocomplete-list {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        button {
+            background-color: #faaf1d;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #145375;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #faaf1d;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background-color: #145375;
+        }
+
+        /* Autocomplete */
+        .autocomplete-suggestions {
+            border: 1px solid #ccc;
+            border-top: none;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            position: absolute;
+            width: calc(100% - 22px);
+            z-index: 9999;
+            left: 10px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+            color: #145375;
+        }
+
+        .autocomplete-suggestion:hover {
+            background-color: #faaf1d;
+            color: #003049;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -218,43 +223,43 @@ mysqli_close($conn);
     <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script>
-    const siswaList = <?php echo json_encode($siswaList); ?>;
+        const siswaList = <?php echo json_encode($siswaList); ?>;
 
-    const searchInput = document.getElementById('searchStudent');
-    const autocompleteList = document.getElementById('autocomplete-list');
-    const siswaIdInput = document.getElementById('siswaId');
+        const searchInput = document.getElementById('searchStudent');
+        const autocompleteList = document.getElementById('autocomplete-list');
+        const siswaIdInput = document.getElementById('siswaId');
 
-    searchInput.addEventListener('input', function() {
-        const query = this.value.toLowerCase();
-        autocompleteList.innerHTML = '';
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            autocompleteList.innerHTML = '';
 
-        if (!query) {
-            return;
-        }
+            if (!query) {
+                return;
+            }
 
-        siswaList.forEach(function(siswa) {
-            if (siswa.full_name.toLowerCase().includes(query)) {
-                const suggestionItem = document.createElement('div');
-                suggestionItem.classList.add('autocomplete-suggestion');
-                suggestionItem.textContent = siswa.full_name;
-                suggestionItem.dataset.id = siswa.siswa_id;
+            siswaList.forEach(function(siswa) {
+                if (siswa.full_name.toLowerCase().includes(query)) {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.classList.add('autocomplete-suggestion');
+                    suggestionItem.textContent = siswa.full_name;
+                    suggestionItem.dataset.id = siswa.siswa_id;
 
-                suggestionItem.addEventListener('click', function() {
-                    searchInput.value = siswa.full_name;
-                    siswaIdInput.value = siswa.siswa_id;
-                    autocompleteList.innerHTML = '';
-                });
+                    suggestionItem.addEventListener('click', function() {
+                        searchInput.value = siswa.full_name;
+                        siswaIdInput.value = siswa.siswa_id;
+                        autocompleteList.innerHTML = '';
+                    });
 
-                autocompleteList.appendChild(suggestionItem);
+                    autocompleteList.appendChild(suggestionItem);
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target !== searchInput) {
+                autocompleteList.innerHTML = '';
             }
         });
-    });
-
-    document.addEventListener('click', function(e) {
-        if (e.target !== searchInput) {
-            autocompleteList.innerHTML = '';
-        }
-    });
     </script>
 </body>
 

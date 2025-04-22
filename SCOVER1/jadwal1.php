@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php'; 
+include 'koneksi.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
@@ -41,18 +41,25 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="id">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/jadwal.css" />
-  </head>
-  <body>
+    <style>
+        * {
+
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
     <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
@@ -93,63 +100,64 @@ $conn->close();
                             <th>Mata Pelajaran</th>
                             <th>Pengajar</th>
                         </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['sesi']) ?></td>
+                        <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
+                        <td><?= htmlspecialchars('Kak ' . ($row['pengajar'] ?? 'Pengajar Tidak Ditemukan')) ?></td>
+                    </tr>
+                <?php endwhile; ?>
+                    </table>
+                <?php else: ?>
+                    <p>Belum ada jadwal yang tersedia.</p>
                 <?php endif; ?>
-                        <tr>
-                            <td><?= htmlspecialchars($row['sesi']) ?></td>
-                            <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
-                            <td><?= htmlspecialchars('Kak ' . ($row['pengajar'] ?? 'Pengajar Tidak Ditemukan')) ?></td>
-                        </tr>
-            <?php endwhile; ?>
-            </table>
-        <?php else: ?>
-            <p>Belum ada jadwal yang tersedia.</p>
-        <?php endif; ?>
     </div>
-    
-    <!-- Bagian Kuis dari Mentor -->
-<h2 style="text-align: center; margin-top: 40px;">Kuis dari Mentor</h2>
-<?php
-include 'koneksi.php'; // Pastikan koneksi dibuka ulang jika sebelumnya sudah ditutup
 
-$sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
+    <!-- Bagian Kuis dari Mentor -->
+    <h2 style="text-align: center; margin-top: 40px;">Kuis dari Mentor</h2>
+    <?php
+    include 'koneksi.php'; // Pastikan koneksi dibuka ulang jika sebelumnya sudah ditutup
+
+    $sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
              FROM kuis k
              LEFT JOIN mentor m ON k.pengajar_id = m.pengajar_id
              WHERE k.siswa_id = ?
              ORDER BY k.tanggal DESC";
-$stmt_kuis = $conn->prepare($sql_kuis);
-$stmt_kuis->bind_param("i", $siswa_id);
-$stmt_kuis->execute();
-$result_kuis = $stmt_kuis->get_result();
+    $stmt_kuis = $conn->prepare($sql_kuis);
+    $stmt_kuis->bind_param("i", $siswa_id);
+    $stmt_kuis->execute();
+    $result_kuis = $stmt_kuis->get_result();
 
-if ($result_kuis->num_rows > 0): ?>
-    <table border="1" style="margin: 0 auto; margin-top: 20px;">
-        <tr>
-            <th>Nama Kuis</th>
-            <th>Pengajar</th>
-            <th>Tanggal</th> <!-- Tambahkan kolom Tanggal -->
-            <th>File</th>
-        </tr>
-        <?php while ($row = $result_kuis->fetch_assoc()): ?>
+    if ($result_kuis->num_rows > 0): ?>
+        <table border="1" style="margin: 0 auto; margin-top: 20px;">
             <tr>
-                <td><?= htmlspecialchars($row['nama']) ?></td>
-                <td><?= htmlspecialchars('Kak ' . $row['pengajar']) ?></td>
-                <td><?= htmlspecialchars($row['tanggal']) ?></td>
-                <td>
-                    <?php if (!empty($row['file_kuis'])): ?>
-                        <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
-                    <?php else: ?>
-                        Tidak Ada File
-                    <?php endif; ?>
-                </td>
+                <th>Nama Kuis</th>
+                <th>Pengajar</th>
+                <th>Tanggal</th> <!-- Tambahkan kolom Tanggal -->
+                <th>File</th>
             </tr>
-        <?php endwhile; ?>
-    </table>
-<?php else: ?>
-    <p style="text-align: center;">Belum ada kuis yang diberikan oleh mentor.</p>
-<?php endif; ?>
+            <?php while ($row = $result_kuis->fetch_assoc()): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['nama']) ?></td>
+                    <td><?= htmlspecialchars('Kak ' . $row['pengajar']) ?></td>
+                    <td><?= htmlspecialchars($row['tanggal']) ?></td>
+                    <td>
+                        <?php if (!empty($row['file_kuis'])): ?>
+                            <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                        <?php else: ?>
+                            Tidak Ada File
+                        <?php endif; ?>
+                    </td>
+                </tr>
+            <?php endwhile; ?>
+        </table>
+    <?php else: ?>
+        <p style="text-align: center;">Belum ada kuis yang diberikan oleh mentor.</p>
+    <?php endif; ?>
 
     <script src="js/menu.js" defer></script>
-  </body>
+</body>
+
 </html>
 
 <?php
