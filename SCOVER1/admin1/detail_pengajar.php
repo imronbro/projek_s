@@ -298,7 +298,6 @@ $ratingQuery = mysqli_query($conn, "
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -332,12 +331,9 @@ $ratingQuery = mysqli_query($conn, "
             <div class="btn-group-vertical">
                 <a href="detailriwayatrating.php?id=<?= $id ?>" class="btn-detail">Riwayat Rating & Komentar</a>
                 <a href="riwayat_presensi.php?id=<?= $id ?>" class="btn-detail">Riwayat Presensi</a>
+                <a href="edit_pengajar.php?id=<?= $id ?>" class="btn-detail">Edit</a>
             </div>
         </div>
-
-
-
-
     </div>
 </body>
 
