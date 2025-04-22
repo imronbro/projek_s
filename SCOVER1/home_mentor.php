@@ -173,6 +173,24 @@ $conn->close();
                 padding: 20px;
             }
         }
+
+        .btn-secondary {
+            background-color: #145375;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e6c200;
+            color: #145375;
+        }
     </style>
 </head>
 <body>
@@ -238,17 +256,17 @@ $conn->close();
 
         <label for="keterangan">Keterangan:</label>
         <select id="keterangan" name="keterangan" required>
-            <option value="MENGAJAR TETAP">MENGAJAR TETAP</option>
-            <option value="MENGAJAR POWER HOUR">MENGAJAR POWER HOUR</option>
-            <option value="MENGAJAR LUAR KOTA">MENGAJAR LUAR KOTA</option>
             <option value="AL-IZZAH">AL-IZZAH</option>
+            <option value="AL-UMM">AL-UMM</option>   
             <option value="AR-ROHMAH">AR-ROHMAH</option>
-            <option value="OLIMPIADE">OLIMPIADE</option>
-            <option value="SOSIALISASI">SOSIALISASI</option>
+            <option value="MENGAJAR LUAR KOTA">MENGAJAR LUAR KOTA</option>
+            <option value="MENGAJAR POWER HOUR">MENGAJAR POWER HOUR</option>
+            <option value="MENGAJAR TETAP">MENGAJAR TETAP</option>
             <option value="ONLINE CLASS">ONLINE CLASS</option> 
+            <option value="OLIMPIADE">OLIMPIADE</option>
+            <option value="TELKOM">TELKOM</option>   
             <option value="THURSINA">THURSINA</option>         
-            <option value="TELKOM">TELKOM</option>             
-            <option value="AL-UMM">AL-UMM</option>            
+            <option value="SOSIALISASI">SOSIALISASI</option>
         </select>
 
         <label for="note">Catatan:</label>
@@ -260,6 +278,7 @@ $conn->close();
 
         <div class="form-buttons">
             <button type="submit" class="btn">Kirim</button>
+            <a href="riwayat_presensi_mentor.php" class="btn btn-secondary">Riwayat Presensi</a>
         </div>
     </form>
 </div>
