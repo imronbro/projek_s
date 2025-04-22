@@ -44,15 +44,19 @@ $result = $stmt->get_result();
     <title>Riwayat Presensi Mentor</title>
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+        /* Container */
         .container {
-            max-width: 800px;
+            max-width: 100%;
             margin: auto;
-            padding: 30px;
+            padding: 20px;
+            padding-top: 120px; /* Tambahkan padding atas untuk menghindari tumpang tindih dengan navbar */
             background-color: #f9f9f9;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow-x: auto; /* Tambahkan scroll horizontal jika tabel terlalu lebar */
         }
 
+        /* Tabel */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -63,6 +67,7 @@ $result = $stmt->get_result();
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
+            font-size: 14px;
         }
 
         table th {
@@ -70,16 +75,21 @@ $result = $stmt->get_result();
             color: white;
         }
 
+        /* Tombol */
+        .btn-edit, .btn-view, .btn-delete, .btn-action {
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-align: center;
+            display: inline-block;
+        }
+
         .btn-edit {
             background-color: #e6c200;
             color: #145375;
             border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-decoration: none;
         }
 
         .btn-edit:hover {
@@ -91,11 +101,6 @@ $result = $stmt->get_result();
             background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
         }
 
         .btn-view:hover {
@@ -106,19 +111,24 @@ $result = $stmt->get_result();
             background-color: #e74c3c;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-decoration: none;
-            margin-left: 5px;
         }
 
         .btn-delete:hover {
             background-color: #c0392b;
         }
 
+        .btn-action {
+            background-color: #145375;
+            color: white;
+            border: none;
+        }
+
+        .btn-action:hover {
+            background-color: #e6c200;
+            color: #145375;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -158,29 +168,52 @@ $result = $stmt->get_result();
             cursor: pointer;
         }
 
-        .btn-action {
-            background-color: #145375;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            table th, table td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .btn-edit, .btn-view, .btn-delete, .btn-action {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .navbar .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .navbar .nav-links li {
+                margin: 0;
+            }
         }
 
-        .btn-action:hover {
-            background-color: #e6c200;
-            color: #145375;
-        }
+        /* Responsif untuk layar sangat kecil */
+        @media (max-width: 480px) {
+            table th, table td {
+                font-size: 10px;
+                padding: 5px;
+            }
 
-        .action-menu {
-            margin-top: 5px;
-        }
+            .btn-edit, .btn-view, .btn-delete, .btn-action {
+                font-size: 10px;
+                padding: 5px 8px;
+            }
 
-        .action-menu a {
-            display: block;
-            margin-bottom: 5px;
+            .container {
+                padding: 10px;
+                padding-top:40px;
+            }
+
+            .navbar .nav-links {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
