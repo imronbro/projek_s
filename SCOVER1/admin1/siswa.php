@@ -148,6 +148,48 @@ $result = mysqli_query($conn, $query);
                 transform: translateY(0);
             }
         }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #0271ab;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 0;
+            margin: 5px;
+            left: -35px;
+            list-style: none;
+
+            /* <- tambahkan border */
+        }
+
+        .dropdown-menu li a {
+            color: #fff !important;
+            /* pastikan warnanya terlihat */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+
+            font-weight: bold;
+            /* opsional biar lebih terlihat */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #e6c200;
+            color: #145375;
+        }
+
+
+        .arrow {
+            font-size: 12px;
+            margin-left: 5px;
+        }
     </style>
 </head>
 
@@ -158,14 +200,27 @@ $result = mysqli_query($conn, $query);
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Presensi Siswa</a></li>
+            <li class="dropdown">
+                <a href="#" onclick="toggleDropdown(event)">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="home.php">Presensi Siswa</a></li>
+                    <li><a href="presensipengajar.php">Presensi Pengajar</a></li>
+                </ul>
+            </li>
+
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="siswa.php"class="active">Siswa</a></li>
+            <li><a href="siswa.php" class="active">Siswa</a></li>
             <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
     </nav>
 
     <div class="container">
@@ -203,6 +258,31 @@ $result = mysqli_query($conn, $query);
             ?>
         </div>
     </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = event.target.closest('.dropdown');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const arrow = dropdown.querySelector('.arrow');
+
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            arrow.innerHTML = menu.style.display === 'block' ? '&#9650;' : '&#9660;'; // ▲ dan ▼
+        }
+
+        // Tutup dropdown jika klik di luar
+        window.addEventListener('click', function(e) {
+            const dropdown = document.querySelector('.dropdown');
+            if (!dropdown.contains(e.target)) {
+                dropdown.querySelector('.dropdown-menu').style.display = 'none';
+                dropdown.querySelector('.arrow').innerHTML = '&#9660;';
+            }
+        });
+    </script>
 </body>
 
 </html>
