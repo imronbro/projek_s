@@ -38,244 +38,261 @@ $ratingQuery = mysqli_query($conn, "
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
-        * {
+    * {
 
-            box-sizing: border-box;
-        }
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
 
-        .container {
-            margin-top: 0px;
-            /* Memberikan ruang di bawah navbar */
-            padding: 20px;
-            text-align: center;
-        }
+    .container {
+        margin-top: 0px;
+        /* Memberikan ruang di bawah navbar */
+        padding: 20px;
+        text-align: center;
+    }
 
-        h2 {
-            text-align: center;
-            color: rgb(255, 255, 255);
-        }
+    h2 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-        input,
-        select {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    input,
+    select {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        .select2-container {
-            width: 100% !important;
-        }
+    .select2-container {
+        width: 100% !important;
+    }
 
-        .select2-container--default .select2-selection--single {
-            height: 45px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: #333;
-        }
+    .select2-container--default .select2-selection--single {
+        height: 45px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: #333;
+    }
 
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 35px;
-            color: #333;
-            font-size: 14px;
-        }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 35px;
+        color: #333;
+        font-size: 14px;
+    }
 
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            height: 45px;
-            width: 40px;
-        }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 45px;
+        width: 40px;
+    }
 
-        button {
-            padding: 10px 15px;
-            background-color: rgb(7, 52, 100);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    button {
+        padding: 10px 15px;
+        background-color: rgb(7, 52, 100);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-        button:hover {
-            background-color: rgb(14, 54, 98);
-        }
+    button:hover {
+        background-color: rgb(14, 54, 98);
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        table th,
-        table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-        table th {
-            background-color: rgb(16, 59, 105);
-            color: #fff;
-        }
+    table th {
+        background-color: rgb(16, 59, 105);
+        color: #fff;
+    }
 
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
 
-        .btn-detail {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 12px;
-            background-color: rgb(13, 78, 135);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+    .btn-detail {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 12px;
+        background-color: #e6c200;
+        color: #145375;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-        .btn-detail:hover {
-            background-color: rgb(2, 65, 131);
-        }
+    .btn-detail:hover {
+        background-color: #fff;
 
-        .btn-group-vertical {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-            margin-top: 10px;
-        }
+    }
 
-        .profile-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            margin-top: 120px;
-            /* tambahkan ini */
-        }
+    .btn-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+    }
 
-
-        .card {
-            background-color: rgb(2, 65, 131);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(14, 63, 148, 0.1);
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        .mentor-img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 3px solid rgb(12, 54, 99);
-        }
-
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #0271ab;
-            min-width: 180px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            padding: 0;
-            margin: 5px;
-            left: -35px;
-            list-style: none;
-
-            /* <- tambahkan border */
-        }
-
-        .dropdown-menu li a {
-            color: #fff !important;
-            /* pastikan warnanya terlihat */
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-
-            font-weight: bold;
-            /* opsional biar lebih terlihat */
-        }
-
-        .dropdown-menu li a:hover {
-            background-color: #e6c200;
-            color: #145375;
-        }
+    .btn-grid1{
+        display: center flex;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 tombol per baris */
+        gap: 15 px;
+        justify-items: center;
+        margin-top: 0px;
+    }
+    .btn-grid2{
+        padding-left: 14px;
+        display: center flex;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 tombol per baris */
+        gap: 15 px;
+        justify-items: center;
+        margin-top: 0px;
+    }
 
 
-        .arrow {
-            font-size: 12px;
-            margin-left: 5px;
-        }
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        margin-top: 120px;
+        /* tambahkan ini */
+    }
+
+
+    .card {
+        background-color: #145375;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(14, 63, 148, 0.1);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+    }
+
+    .mentor-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        border: 3px solid rgb(12, 54, 99);
+    }
+
+    /* Dropdown styles */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #0271ab;
+        min-width: 180px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        padding: 0;
+        margin: 5px;
+        left: -35px;
+        list-style: none;
+
+        /* <- tambahkan border */
+    }
+
+    .dropdown-menu li a {
+        color: #fff !important;
+        /* pastikan warnanya terlihat */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+
+        font-weight: bold;
+        /* opsional biar lebih terlihat */
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #e6c200;
+        color: #145375;
+    }
+
+
+    .arrow {
+        font-size: 12px;
+        margin-left: 5px;
+    }
     </style>
 </head>
 <script>
-    function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active');
-    }
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-    function toggleDropdown(event) {
-        event.preventDefault(); // supaya gak reload atau pergi ke #
-        const dropdown = event.currentTarget.nextElementSibling;
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
+function toggleDropdown(event) {
+    event.preventDefault(); // supaya gak reload atau pergi ke #
+    const dropdown = event.currentTarget.nextElementSibling;
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
 
-    function toggleDropdown(event) {
-        event.preventDefault();
-        const link = event.currentTarget;
-        const dropdown = link.nextElementSibling;
-        const arrow = link.querySelector('#arrow');
+function toggleDropdown(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const dropdown = link.nextElementSibling;
+    const arrow = link.querySelector('#arrow');
 
-        const isOpen = dropdown.style.display === 'block';
-        dropdown.style.display = isOpen ? 'none' : 'block';
-        arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
-    }
+    const isOpen = dropdown.style.display === 'block';
+    dropdown.style.display = isOpen ? 'none' : 'block';
+    arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
+}
 
-    // Tutup dropdown kalau klik di luar menu
-    document.addEventListener('click', function(event) {
-        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-        dropdownMenus.forEach(menu => {
-            if (!menu.parentElement.contains(event.target)) {
-                menu.style.display = 'none';
-            }
-        });
+// Tutup dropdown kalau klik di luar menu
+document.addEventListener('click', function(event) {
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    dropdownMenus.forEach(menu => {
+        if (!menu.parentElement.contains(event.target)) {
+            menu.style.display = 'none';
+        }
     });
+});
 </script>
 
 <body>
-    <a href="pengajar.php" style="position: absolute; top: 90px; left: 20px; text-decoration: none; margin: top 100px;">
-        <button style="background-color: #083d6e; color: white; padding: 8px 16px; border: none; border-radius: 8px;">← Kembali</button>
-    </a>
 
     <nav class="navbar">
         <div class="logo">
@@ -328,10 +345,13 @@ $ratingQuery = mysqli_query($conn, "
             <p><strong>Alamat:</strong> <?= htmlspecialchars($mentor['alamat']); ?></p>
             <p><strong>Tanggal Lahir:</strong> <?= htmlspecialchars($mentor['ttl']); ?></p>
             <!-- Tombol navigasi -->
-            <div class="btn-group-vertical">
-                <a href="detailriwayatrating.php?id=<?= $id ?>" class="btn-detail">Riwayat Rating & Komentar</a>
+            <div class="btn-grid1">
+                <a href="detailriwayatrating.php?id=<?= $id ?>" class="btn-detail">Riwayat Rating</a>
                 <a href="riwayat_presensi.php?id=<?= $id ?>" class="btn-detail">Riwayat Presensi</a>
+            </div>
+                <div class="btn-grid2">
                 <a href="edit_pengajar.php?id=<?= $id ?>" class="btn-detail">Edit</a>
+                <a href="pengajar.php?id=<?= $id ?>" class="btn-detail">Kembali</a>
             </div>
         </div>
     </div>
