@@ -40,10 +40,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal = $_POST['tanggal'] ?? null;
     $sesi = htmlspecialchars($_POST['sesi'] ?? '');
     $status = htmlspecialchars($_POST['kehadiran'] ?? '');
-    $tempat = htmlspecialchars($_POST['tempat'] ?? '');
     $komentar = htmlspecialchars($_POST['komentar'] ?? '');
+    $mapel = htmlspecialchars($_POST['mapel'] ?? '');
+    $materi = htmlspecialchars($_POST['materi'] ?? '');
+    $kelas = htmlspecialchars($_POST['kelas'] ?? '');
+    $jumlah_siswa = htmlspecialchars($_POST['jumlah_siswa'] ?? '');
+    $keterangan = htmlspecialchars($_POST['keterangan'] ?? '');
+    $note = htmlspecialchars($_POST['note'] ?? '');
 
-    if (!$tanggal || !$sesi || !$status || empty($tempat)) {
+    if (!$tanggal || !$sesi || !$status || !$mapel || !$materi || !$kelas || !$jumlah_siswa || !$keterangan) {
         echo "<script>alert('Semua kolom harus diisi!'); window.history.back();</script>";
         exit();
     }
@@ -61,10 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES['gambar']['tmp_name'], $image_path);
     }
 
-    $sql = "INSERT INTO presensi_pengajar (pengajar_id, full_name, tanggal, sesi, status, tempat, komentar, gambar, waktu_presensi)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())";
+    $sql = "INSERT INTO presensi_pengajar (pengajar_id, full_name, tanggal, sesi, status, komentar, gambar, mapel, materi, kelas, jumlah_siswa, keterangan, note, waktu_presensi)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssssss", $pengajar_id, $full_name, $tanggal, $sesi, $status, $tempat, $komentar, $image_path);
+    $stmt->bind_param("isssssssssiss", $pengajar_id, $full_name, $tanggal, $sesi, $status, $komentar, $image_path, $mapel, $materi, $kelas, $jumlah_siswa, $keterangan, $note);
 
     if ($stmt->execute()) {
         echo "<script>alert('Presensi berhasil disimpan!'); window.location.href='home_mentor.php';</script>";
@@ -125,7 +130,7 @@ $conn->close();
             color: #333;
         }
 
-        select, input[type="date"], input[type="text"], textarea {
+        select, input[type="date"], input[type="text"], input[type="number"], textarea {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
@@ -214,14 +219,40 @@ $conn->close();
             <option value="Sakit">Sakit</option>
         </select>
 
-        <label for="tempat">Tempat Mengajar:</label>
-        <input type="text" id="tempat" name="tempat" required>
-
         <div id="komentar-container">
             <label for="komentar">Alasan Izin/Sakit:</label>
             <textarea id="komentar" name="komentar" rows="3"></textarea>
         </div>
 
+        <label for="mapel">Mata Pelajaran:</label>
+        <input type="text" id="mapel" name="mapel" required>
+
+        <label for="materi">Materi/Soal yang Disampaikan:</label>
+        <textarea id="materi" name="materi" rows="3" required></textarea>
+
+        <label for="kelas">Kelas:</label>
+        <input type="text" id="kelas" name="kelas" required>
+
+        <label for="jumlah_siswa">Jumlah Siswa:</label>
+        <input type="number" id="jumlah_siswa" name="jumlah_siswa" required>
+
+        <label for="keterangan">Keterangan:</label>
+        <select id="keterangan" name="keterangan" required>
+            <option value="MENGAJAR TETAP">MENGAJAR TETAP</option>
+            <option value="MENGAJAR POWER HOUR">MENGAJAR POWER HOUR</option>
+            <option value="MENGAJAR LUAR KOTA">MENGAJAR LUAR KOTA</option>
+            <option value="AL-IZZAH">AL-IZZAH</option>
+            <option value="AR-ROHMAH">AR-ROHMAH</option>
+            <option value="OLIMPIADE">OLIMPIADE</option>
+            <option value="SOSIALISASI">SOSIALISASI</option>
+            <option value="ONLINE CLASS">ONLINE CLASS</option> 
+            <option value="THURSINA">THURSINA</option>         
+            <option value="TELKOM">TELKOM</option>             
+            <option value="AL-UMM">AL-UMM</option>            
+        </select>
+
+        <label for="note">Catatan:</label>
+        <textarea id="note" name="note" rows="3" placeholder="Tambahkan catatan jika diperlukan..."></textarea>
         <div id="upload-container">
             <label for="gambar">Upload Bukti Kehadiran:</label>
             <input type="file" id="gambar" name="gambar" accept="image/*">
