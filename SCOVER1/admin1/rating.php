@@ -182,6 +182,52 @@ $result = $conn->query($sql);
             background-color: #145375;
             color: #fff;
         }
+
+        /* Dropdown styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #0271ab;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 0;
+            margin: 5px;
+            left: -35px;
+            list-style: none;
+
+            /* <- tambahkan border */
+        }
+
+        .dropdown-menu li a {
+            color: #fff !important;
+            /* pastikan warnanya terlihat */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+
+            font-weight: bold;
+            /* opsional biar lebih terlihat */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #e6c200;
+            color: #145375;
+        }
+
+
+        .arrow {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
@@ -192,12 +238,19 @@ $result = $conn->query($sql);
         </div>
         <h1 class="title">Dashboard Admin</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Presensi</a></li>
+            <li class="dropdown">
+                <a href="#" onclick="toggleDropdown(event)">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="home.php">Presensi Siswa</a></li>
+                    <li><a href="presensipengajar.php">Presensi Pengajar</a></li>
+                </ul>
+            </li>
+
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwaL.php">Jadwal</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="rating.php"class="active">Rating</a></li>
+            <li><a href="rating.php" class="active">Rating</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -256,6 +309,46 @@ $result = $conn->query($sql);
             </tbody>
         </table>
     </div>
+    <script>
+        function confirmLogout() {
+            if (confirm("Apakah kamu yakin ingin keluar?")) {
+                window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+            }
+        }
+
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault(); // supaya gak reload atau pergi ke #
+            const dropdown = event.currentTarget.nextElementSibling;
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const link = event.currentTarget;
+            const dropdown = link.nextElementSibling;
+            const arrow = link.querySelector('#arrow');
+
+            const isOpen = dropdown.style.display === 'block';
+            dropdown.style.display = isOpen ? 'none' : 'block';
+            arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
+        }
+
+
+        // Tutup dropdown kalau klik di luar menu
+        document.addEventListener('click', function(event) {
+            const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            dropdownMenus.forEach(menu => {
+                if (!menu.parentElement.contains(event.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
