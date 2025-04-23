@@ -185,13 +185,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 datalistOptions.forEach((option) => {
                     if (option.value === inputValue) {
-                        pengajarIdInput.value = option.getAttribute("data-id"); // Set ID pengajar ke hidden input
+                        pengajarIdInput.value = option.getAttribute("data-id");
                         found = true;
                     }
                 });
 
                 if (!found) {
-                    pengajarIdInput.value = ""; // Kosongkan ID jika nama tidak valid
+                    pengajarIdInput.value = "";
                 }
             });
         });

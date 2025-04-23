@@ -28,14 +28,12 @@ $siswa_name = $siswa['full_name'];
 // Ambil tahun saat ini
 $current_year = date('Y');
 
-// Ambil tahun yang dipilih dari filter (jika ada)
-$selected_year = isset($_GET['tahun']) ? $_GET['tahun'] : $current_year;
+// Ambil bulan dan tahun yang dipilih dari filter (jika ada)
+$selected_month = isset($_GET['bulan']) ? $_GET['bulan'] : date('m');
+$selected_year = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
 
 // Buat array tahun mulai dari 2025 hingga tahun berikutnya
 $years = range(2025, $current_year + 1);
-
-// Ambil bulan dan tahun yang dipilih dari filter (jika ada)
-$selected_month = isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); // Default ke bulan saat ini
 
 // Query untuk mengambil data nilai berdasarkan bulan dan tahun yang dipilih
 $query = "SELECT n.nilai, n.nama_kuis, n.waktu, p.full_name AS pengajar_name 
@@ -213,17 +211,14 @@ $tahun_result = $conn->query($tahun_query);
             margin-bottom: 20px;
             display: flex;
             flex-wrap: wrap;
-            /* Membuat elemen dalam form responsif */
             align-items: center;
             gap: 10px;
             justify-content: center;
-            /* Pusatkan elemen */
         }
 
         .filter-form label {
             font-weight: bold;
             color: #003049;
-            /* Teks biru gelap */
             margin-bottom: 5px;
         }
 
@@ -233,16 +228,13 @@ $tahun_result = $conn->query($tahun_query);
             border: 1px solid #ccc;
             font-size: 1em;
             width: 200px;
-            /* Lebar default */
             box-sizing: border-box;
         }
 
         .filter-form button {
             padding: 10px 20px;
             background-color: #faaf1d;
-            /* Tombol kuning */
             color: #ffffff;
-            /* Teks putih */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -253,44 +245,34 @@ $tahun_result = $conn->query($tahun_query);
 
         .filter-form button:hover {
             background-color: #fabe49;
-            /* Kuning lebih terang saat hover */
             transform: scale(1.05);
-            /* Efek zoom */
         }
 
         /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
             .filter-form {
                 flex-direction: column;
-                /* Elemen ditampilkan secara vertikal */
                 align-items: stretch;
-                /* Elemen memenuhi lebar */
             }
 
             .filter-form select {
                 width: 100%;
-                /* Lebar penuh untuk layar kecil */
             }
 
             .filter-form button {
                 width: 100%;
-                /* Tombol memenuhi lebar */
             }
         }
 
         @media (max-width: 480px) {
             .filter-form select {
                 font-size: 0.9em;
-                /* Ukuran font lebih kecil */
                 padding: 8px;
-                /* Kurangi padding */
             }
 
             .filter-form button {
                 font-size: 0.9em;
-                /* Ukuran font lebih kecil */
                 padding: 8px 15px;
-                /* Kurangi padding */
             }
         }
 
@@ -377,23 +359,26 @@ $tahun_result = $conn->query($tahun_query);
         <p>Selamat datang, <?php echo htmlspecialchars($siswa_name); ?></p>
 
         <!-- Filter Pilihan Bulan dan Tahun -->
-        <form method="GET" class="filter-form">
+        <form method="get" action="nilai_siswa.php" class="filter-form">
             <label for="bulan">Pilih Bulan:</label>
-            <select name="bulan" id="bulan">
-                <?php for ($i = 1; $i <= 12; $i++): ?>
-                    <option value="<?= $i; ?>" <?= $i == $selected_month ? 'selected' : ''; ?>>
-                        <?= date('F', mktime(0, 0, 0, $i, 1)); ?>
-                    </option>
-                <?php endfor; ?>
+            <select id="bulan" name="bulan" required>
+                <?php
+                for ($i = 1; $i <= 12; $i++) {
+                    $selected = (isset($_GET['bulan']) && $_GET['bulan'] == $i) ? 'selected' : '';
+                    echo "<option value='$i' $selected>" . date('F', mktime(0, 0, 0, $i, 1)) . "</option>";
+                }
+                ?>
             </select>
 
             <label for="tahun">Pilih Tahun:</label>
-            <select name="tahun" id="tahun">
-                <?php foreach ($years as $year): ?>
-                    <option value="<?= $year; ?>" <?= $year == $selected_year ? 'selected' : ''; ?>>
-                        <?= $year; ?>
-                    </option>
-                <?php endforeach; ?>
+            <select id="tahun" name="tahun" required>
+                <?php
+                $currentYear = date('Y');
+                for ($i = $currentYear; $i >= $currentYear - 5; $i--) {
+                    $selected = (isset($_GET['tahun']) && $_GET['tahun'] == $i) ? 'selected' : '';
+                    echo "<option value='$i' $selected>$i</option>";
+                }
+                ?>
             </select>
 
             <button type="submit">Tampilkan</button>
@@ -428,7 +413,8 @@ $tahun_result = $conn->query($tahun_query);
             </tbody>
         </table>
         <a href="home.php" class="back-button">Kembali</a>
-        <a href="download_nilai.php" class="back-button">Unduh PDF</a>
+        <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh PDF</a>
+        <a href="download_nilai.php?format=html&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh HTML</a>
     </div>
 </body>
 <script src="js/logout.js" defer></script>
