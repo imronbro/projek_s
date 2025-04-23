@@ -72,7 +72,7 @@ $conn->close();
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         * {
-        
+
             box-sizing: border-box;
         }
 
@@ -179,7 +179,8 @@ $conn->close();
             background-color: #f9f9f9;
         }
 
-        /* Dropdown styles */ .dropdown {
+        /* Dropdown styles */
+        .dropdown {
             position: relative;
         }
 
@@ -194,7 +195,7 @@ $conn->close();
             margin: 5px;
             left: -35px;
             list-style: none;
-           
+
             /* <- tambahkan border */
         }
 
@@ -204,7 +205,7 @@ $conn->close();
             padding: 12px 16px;
             text-decoration: none;
             display: block;
-           
+
             font-weight: bold;
             /* opsional biar lebih terlihat */
         }
@@ -223,16 +224,23 @@ $conn->close();
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 ;
+            padding: 0;
             width: 100%;
         }
     </style>
 </head>
 <script>
-     function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+    function confirmLogout() {
+        if (confirm("Apakah kamu yakin ingin keluar?")) {
+            window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
         }
+    }
+
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
     function toggleDropdown(event) {
         event.preventDefault(); // supaya gak reload atau pergi ke #
         const dropdown = event.currentTarget.nextElementSibling;
@@ -281,7 +289,7 @@ $conn->close();
 
             <li><a href="pengajar.php">Pengajar</a></li>
             <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwal.php"class="active">Jadwal</a></li>
+            <li><a href="jadwal.php" class="active">Jadwal</a></li>
             <li><a href="nilai.php">Nilai</a></li>
             <li><a href="rating.php">Rating</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>

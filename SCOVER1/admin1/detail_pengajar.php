@@ -270,6 +270,11 @@ $ratingQuery = mysqli_query($conn, "
             }
         });
     });
+    function confirmLogout() {
+            if (confirm("Apakah kamu yakin ingin keluar?")) {
+                window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+            }
+        }
 </script>
 
 <body>

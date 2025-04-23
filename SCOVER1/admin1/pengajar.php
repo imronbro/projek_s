@@ -331,7 +331,7 @@ $centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
                 height: 400px;
                 margin-left: -80px;
                 margin-top: 10px;
-              
+
             }
 
             .search-form button {
@@ -348,12 +348,18 @@ $centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
                 transition: background 0.3s;
             }
 
-        
 
-            }
+
+        }
     </style>
 </head>
 <script>
+    function confirmLogout() {
+        if (confirm("Apakah kamu yakin ingin keluar?")) {
+            window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+        }
+    }
+
     function toggleMenu() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');

@@ -144,6 +144,12 @@ $ratingQuery = mysqli_query($conn, "
     </style>
 </head>
 <script>
+    function confirmLogout() {
+        if (confirm("Apakah kamu yakin ingin keluar?")) {
+            window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+        }
+    }
+
     function toggleMenu() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');

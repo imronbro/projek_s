@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         * {
-            
+
             box-sizing: border-box;
         }
 
@@ -283,6 +283,12 @@ $result = mysqli_query($conn, $query);
     </div>
 
     <script>
+        function confirmLogout() {
+            if (confirm("Apakah kamu yakin ingin keluar?")) {
+                window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+            }
+        }
+
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');

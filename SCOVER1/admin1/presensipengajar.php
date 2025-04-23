@@ -205,7 +205,7 @@ $result = mysqli_query($conn, $query);
         @media (max-width: 768px) {
             table {
                 width: 97%;
-          
+
             }
 
             th,
@@ -331,6 +331,12 @@ $result = mysqli_query($conn, $query);
     </div>
 
     <script>
+        function confirmLogout() {
+            if (confirm("Apakah kamu yakin ingin keluar?")) {
+                window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
+            }
+        }
+
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
