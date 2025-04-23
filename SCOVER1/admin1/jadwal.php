@@ -81,11 +81,11 @@ $conn->close();
             background-color: #f4f4f4;
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 100px;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 80px auto;
             background: #fff;
             padding: 20px;
@@ -95,7 +95,7 @@ $conn->close();
 
         h2 {
             text-align: center;
-            color: #007bff;
+            color: #145375;
         }
 
         form {
@@ -146,7 +146,7 @@ $conn->close();
 
         button {
             padding: 10px 15px;
-            background-color: #007bff;
+            background-color: #145375;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -154,7 +154,7 @@ $conn->close();
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #145375;
         }
 
         table {
@@ -171,7 +171,7 @@ $conn->close();
         }
 
         table th {
-            background-color: #007bff;
+            background-color: #145375;
             color: #fff;
         }
 
