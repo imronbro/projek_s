@@ -1,5 +1,5 @@
 body {
-  background: #003049;
+  background: #f4f4f4;
   color: #fabe49;
   font-family: "Poppins", sans-serif;
   text-align: center;
@@ -13,14 +13,7 @@ body {
   padding: 30px;
   background: #145375;
   border-radius: 15px;
-  box-shadow: 0 0 25px rgba(250, 175, 29, 0.7);
   animation: fadeIn 1s ease-in-out;
-}
-
-header h1 {
-  font-size: 3em;
-  color: #faaf1d;
-  animation: slideDown 1s ease-in-out;
 }
 
 .contact {
@@ -37,7 +30,6 @@ header h1 {
   font-weight: bold;
   border-radius: 8px;
   transition: transform 0.3s ease-in-out, background 0.3s;
-  box-shadow: 0 6px 12px rgba(250, 175, 29, 0.5);
 }
 
 .contact .btn:hover {
@@ -50,7 +42,7 @@ header h1 {
 }
 
 .gallery h2 {
-  font-size: 2.2em;
+  font-size: 2em;
   color: #faaf1d;
 }
 
