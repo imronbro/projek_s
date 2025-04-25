@@ -77,30 +77,122 @@ if (!$data) {
     die("Data pengguna tidak ditemukan.");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/home.css">
     <style>
-        body { background-color: #003049; color: white; }
-        .container { background-color: #0271ab; padding: 20px; border-radius: 10px; }
-        h2 { color: #fabe49; }
-        .btn-success { background-color: #faaf1d; border: none; }
-        .btn-secondary { background-color: #145375; }
+        body {
+    background-color: #f9fbfd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.container {
+    background: #fff;
+    max-width: 650px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+h2.text-center {
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: inline-block;
+    color: #444;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccd6dd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #faaf1d;
+    box-shadow: 0 0 8px rgba(250, 175, 29, 0.25);
+    outline: none;
+}
+
+.btn-success, .btn-secondary {
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-success {
+    background-color: #faaf1d;
+    color: white;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #f89c0e;
+}
+
+.btn-secondary {
+    background-color: #145375;
+    color: white;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #103f5b;
+}
+
+img.preview-img {
+    width: 100px;
+    margin-top: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    display: block;
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+input[type="file"] {
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
     </style>
 </head>
 <body>
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
@@ -118,62 +210,56 @@ if (!$data) {
             <span></span>
         </div>
     </nav>
-    <div class="container mt-5">
-        <h2 class="text-center">Edit Profil</h2>
-        <form action="" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="sekolah" class="form-label">Sekolah</label>
-                <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['sekolah']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" id="kelas" name="kelas" value="<?= htmlspecialchars($data['kelas']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="ttl" class="form-label">Tanggal Lahir</label>
-                <input type="date" id="ttl" name="ttl" value="<?= htmlspecialchars($data['ttl']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="alamat" class="form-label">Alamat Rumah</label>
-                <input type="text" id="alamat" name="alamat" value="<?= htmlspecialchars($data['alamat']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="nohp" class="form-label">No. HP</label>
-                <input type="text" id="nohp" name="nohp" value="<?= htmlspecialchars($data['nohp']); ?>" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="gambar" class="form-label">Upload Foto Profil</label>
-                <input type="file" id="gambar" name="gambar" class="form-control">
-                <?php if (!empty($data['gambar'])): ?>
-                    <img src="<?= htmlspecialchars($data['gambar']); ?>" alt="Profil" width="100" class="mt-2">
-                <?php endif; ?>
-            </div>
+    <div class="container">
+    <h2 class="text-center">Edit Profil Siswa</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="sekolah" class="form-label">Sekolah</label>
+            <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['sekolah']); ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="kelas" class="form-label">Kelas</label>
+            <input type="text" id="kelas" name="kelas" value="<?= htmlspecialchars($data['kelas']); ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="ttl" class="form-label">Tanggal Lahir</label>
+            <input type="date" id="ttl" name="ttl" value="<?= htmlspecialchars($data['ttl']); ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat Rumah</label>
+            <input type="text" id="alamat" name="alamat" value="<?= htmlspecialchars($data['alamat']); ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="nohp" class="form-label">No. HP</label>
+            <input type="text" id="nohp" name="nohp" value="<?= htmlspecialchars($data['nohp']); ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="gambar" class="form-label">Foto Profil</label>
+            <input type="file" id="gambar" name="gambar" class="form-control">
+            <?php if (!empty($data['gambar'])): ?>
+                <img src="<?= htmlspecialchars($data['gambar']); ?>" alt="Foto Profil" class="preview-img">
+            <?php endif; ?>
+        </div>
+        <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-success">Simpan Perubahan</button>
             <a href="profile.php" class="btn btn-secondary">Kembali</a>
-        </form>
-    </div>
-    <script>
-        document.getElementById('nohp').addEventListener('input', function (e) {
-            let value = e.target.value;
+        </div>
+    </form>
+</div>
 
-            // Hapus karakter selain angka dan tanda +
-            value = value.replace(/[^0-9]/g, '');
-
-            // Jika dimulai dengan 0, ubah menjadi +62
-            if (value.startsWith('0')) {
-                value = '+62' + value.slice(1);
-            }
-
-            // Jika dimulai dengan 62 tanpa tanda +, tambahkan +
-            if (value.startsWith('62') && !value.startsWith('+62')) {
-                value = '+62' + value.slice(2);
-            }
-
-            // Tetapkan nilai yang telah diformat kembali ke input
-            e.target.value = value;
-        });
-    </script>
-    <script src="js/menu.js" defer></script>
-    <script src="js/logout.js" defer></script>
+<script>
+    document.getElementById('nohp').addEventListener('input', function (e) {
+        let value = e.target.value;
+        value = value.replace(/[^0-9]/g, '');
+        if (value.startsWith('0')) {
+            value = '+62' + value.slice(1);
+        } else if (value.startsWith('62') && !value.startsWith('+62')) {
+            value = '+62' + value.slice(2);
+        }
+        e.target.value = value;
+    });
+</script>
+<script src="js/menu.js" defer></script>
+<script src="js/logout.js" defer></script>
 </body>
 </html>
