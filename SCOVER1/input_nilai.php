@@ -101,8 +101,8 @@ $result = $stmt->get_result();
     }
     .back-button {
         display: inline-block;
-        background-color: #145375;
-        color: #fff;
+        background-color: #e6c200;
+        color: #145375;
         font-weight: bold;
         padding: 12px 25px;
         text-decoration: none;
@@ -111,7 +111,8 @@ $result = $stmt->get_result();
         transition: background-color 0.3s, transform 0.3s;
     }
     .back-button:hover {
-        background-color: #e6c200;
+        background-color: #145375;
+        color:#fff;
         transform: scale(1.05);
     }
     @keyframes fadeIn {
@@ -175,7 +176,7 @@ $result = $stmt->get_result();
         </tbody>
     </table>
     <div style="text-align: center;">
-        <a href="home_mentor.php" class="back-button">Kembali</a>
+        <a href="nilai.php" class="back-button">Kembali</a>
     </div>
 </div>
 <script src="js/logout.js" defer></script>

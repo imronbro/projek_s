@@ -122,23 +122,22 @@ if ($email) {
     .btn-primary {
         background-color: #145375;
         color: white;
-        border: 1px solid #145375;
+        
     }
 
     .btn-primary:hover {
-        background-color: #0d3c5b;
-        border-color: #0d3c5b;
+        background-color: #e6c200;
+        
     }
 
     .btn-secondary {
-        background-color: #faaf1d;
-        border: 1px solid #584f3b;
-        color: #003049;
+        background-color: #e6c200;
+        color: #145375;
     }
 
     .btn-secondary:hover {
-        background-color: #fabe49;
-        border-color: #fabe49;
+        background-color: #145375;
+        color: #fff;
     }
 
     .star {
@@ -226,7 +225,6 @@ if ($email) {
                 <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>
             </div>
         </div>
-        <a href="home_mentor.php" class="btn btn-primary">Kembali</a>
         <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
         <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
     </div>
