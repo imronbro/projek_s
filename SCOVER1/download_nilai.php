@@ -45,41 +45,139 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 // Format data nilai menjadi HTML
-$html = '<h2>Daftar Nilai Siswa</h2>';
-$html .= '<p>Nama: ' . htmlspecialchars($siswa_name) . '</p>';
-$html .= '<p>Bulan: ' . date('F', mktime(0, 0, 0, $selected_month, 1)) . ' ' . $selected_year . '</p>';
-$html .= '<table border="1" style="width: 100%; border-collapse: collapse; text-align: center;">';
-$html .= '<thead>
+$html = '
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #145375;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .header h1 {
+            margin: 10px 0 5px;
+            font-size: 24px;
+            color: #145375;
+        }
+        .header p {
+            margin: 0;
+            font-size: 16px;
+            color: #e6c200;
+            font-weight: bold;
+        }
+        h2 {
+            text-align: center;
+            background-color: #145375;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #145375;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #e6c200;
+            color: #145375;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .info {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Scover</h1>
+        <h1>Study and Discover</h1>
+        <p>PT Edumedia Solusi Kreatif</p>
+    </div>
+    
+    <h2>Daftar Nilai Siswa</h2>
+    
+    <div class="info">
+        <strong>Nama:</strong> ' . htmlspecialchars($siswa_name) . '<br>
+        <strong>Bulan:</strong> ' . date('F', mktime(0, 0, 0, $selected_month, 1)) . ' ' . $selected_year . '
+    </div>
+    
+    <table>
+        <thead>
             <tr>
                 <th>Nama Kuis</th>
                 <th>Nilai</th>
                 <th>Pengajar</th>
                 <th>Tanggal</th>
             </tr>
-          </thead>';
-$html .= '<tbody>';
+        </thead>
+        <tbody>';
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $tanggal = date("d-m-Y H:i:s", strtotime($row['waktu']));
-        $html .= '<tr>
-                    <td>' . htmlspecialchars($row['nama_kuis']) . '</td>
-                    <td>' . htmlspecialchars($row['nilai']) . '</td>
-                    <td>' . htmlspecialchars($row['pengajar_name']) . '</td>
-                    <td>' . $tanggal . '</td>
-                  </tr>';
+        $html .= '
+            <tr>
+                <td>' . htmlspecialchars($row['nama_kuis']) . '</td>
+                <td>' . htmlspecialchars($row['nilai']) . '</td>
+                <td>' . htmlspecialchars($row['pengajar_name']) . '</td>
+                <td>' . $tanggal . '</td>
+            </tr>';
     }
 } else {
-    $html .= '<tr><td colspan="4">Tidak ada nilai untuk bulan dan tahun ini.</td></tr>';
+    $html .= '
+            <tr>
+                <td colspan="4">Tidak ada nilai untuk bulan dan tahun ini.</td>
+            </tr>';
 }
 
-$html .= '</tbody></table>';
+$html .= '
+        </tbody>
+    </table>
+
+    <div class="footer">
+        © ' . date('Y') . ' PT Edumedia Solusi Kreatif. All rights reserved.
+    </div>
+</body>
+</html>';
 
 // Periksa format unduhan
 if (isset($_GET['format']) && $_GET['format'] === 'pdf') {
     // Unduh sebagai PDF
     $dompdf = new Dompdf();
     $dompdf->loadHtml($html);
+
+    // Penting untuk gambar lokal:
+    $dompdf->set_option('isRemoteEnabled', true);
+
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
     $dompdf->stream('nilai_siswa.pdf', ['Attachment' => true]);
