@@ -129,6 +129,25 @@ $conn->close();
     </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/foto4.png" alt="Logo">
+    </div>
+    <h1 class="title">Dashboard Mentor</h1>
+    <ul class="nav-links">
+        <li><a href="home_mentor.php" class="active">Jurnal</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
+        <li><a href="profile_mentor.php">Profil</a></li>
+        <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
 <div class="container">
     <h2>Edit Presensi</h2>
     <form action="" method="post" enctype="multipart/form-data">

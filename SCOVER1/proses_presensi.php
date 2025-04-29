@@ -57,7 +57,12 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presensi Siswa</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
         .container {
             margin-top: 100px; /* Tambahkan margin agar konten tidak tertutup navbar */
             max-width: 800px;
@@ -73,6 +78,8 @@ $conn->close();
             text-align: center;
             margin-bottom: 30px;
             color: #145375;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; /* Gunakan berat font yang sesuai */
         }
 
         form {
@@ -84,6 +91,8 @@ $conn->close();
         label {
             font-weight: bold;
             color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         select, input[type="text"], textarea {
@@ -93,6 +102,8 @@ $conn->close();
             font-size: 14px;
             width: 100%; /* Pastikan elemen input memenuhi lebar kontainer */
             box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran elemen */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         textarea {
@@ -132,6 +143,8 @@ $conn->close();
             transition: 0.3s ease;
             text-decoration: none;
             text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         .btn:hover {
