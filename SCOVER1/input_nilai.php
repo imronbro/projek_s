@@ -47,7 +47,7 @@ $result = $stmt->get_result();
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #003049;
+            background-color: #;
             color: #fabe49;
             margin: 0;
             padding: 0;
