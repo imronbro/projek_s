@@ -37,9 +37,9 @@
                     <img src="images/register.png" alt="Learnings Logo" width="40"> Scover Learning Center
                 </div>
                 <div class="social-media">
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-tiktok"></i></a>
-                    <a href="#"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/scover.idn/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.youtube.com/@scover.indonesia"><i class="bi bi-youtube"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=6289697053591"><i class="bi bi-whatsapp"></i></a>
                 </div>
             </div>
 
