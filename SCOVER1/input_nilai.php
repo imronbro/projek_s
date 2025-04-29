@@ -47,7 +47,7 @@ $result = $stmt->get_result();
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #;
+            background-color: #003049;
             color: #fabe49;
             margin: 0;
             padding: 0;
@@ -100,7 +100,6 @@ $result = $stmt->get_result();
 <nav class="navbar">
         <div class="logo">
             <img src="images/foto4.png" alt="Logo">
-            <span class="logo-text">Scover Center</span>
         </div>
         <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
@@ -151,7 +150,7 @@ $result = $stmt->get_result();
         </tbody>
     </table>
     <div style="text-align: center;">
-        <a href="home_mentor.php" class="back-button">Kembali</a>
+        <a href="nilai.php" class="back-button">Kembali</a>
     </div>
 </div>
 <script src="js/logout.js" defer></script>

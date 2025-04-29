@@ -91,8 +91,8 @@ $result = $stmt->get_result();
         .back-button {
             margin-top: 20px;
             display: inline-block;
-            background-color: #faaf1d;
-            color: white;
+            background-color: #e6c200;
+            color: #145375;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
@@ -101,6 +101,7 @@ $result = $stmt->get_result();
 
         .back-button:hover {
             background-color: #145375;
+            color: #fff;
         }
     </style>
 </head>
