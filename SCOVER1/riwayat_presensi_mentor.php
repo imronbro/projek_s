@@ -184,15 +184,6 @@ $result = $stmt->get_result();
                 padding: 15px;
             }
 
-            .navbar .nav-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .navbar .nav-links li {
-                margin: 0;
-            }
-        }
 
         /* Responsif untuk layar sangat kecil */
         @media (max-width: 480px) {
@@ -211,9 +202,7 @@ $result = $stmt->get_result();
                 padding-top:40px;
             }
 
-            .navbar .nav-links {
-                font-size: 12px;
-            }
+
         }
     </style>
 </head>
@@ -283,11 +272,15 @@ $result = $stmt->get_result();
                     <td><?= htmlspecialchars($row['keterangan']) ?></td>
                     <td><?= htmlspecialchars($row['note']) ?></td>
                     <td>
-                        <button class="btn-action" onclick="toggleActionMenu(this)">Aksi</button>
-                        <div class="action-menu" style="display: none;">
-                            <a href="edit_presensi.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
-                            <a href="hapus_presensi.php?id=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus presensi ini?')">Hapus</a>
-                        </div>
+                        <?php if ($dapat_diedit): ?>
+                            <button class="btn-action" onclick="toggleActionMenu(this)">Aksi</button>
+                            <div class="action-menu" style="display: none;">
+                                <a href="edit_presensi.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
+                                <a href="hapus_presensi.php?id=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus presensi ini?')">Hapus</a>
+                            </div>
+                        <?php else: ?>
+                            <span>Tidak Dapat Diedit</span>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endwhile; ?>

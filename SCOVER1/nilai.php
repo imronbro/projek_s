@@ -114,8 +114,8 @@ mysqli_close($conn);
         }
 
         button {
-            background-color: #faaf1d;
-            color: rgb(255, 255, 255);
+            background-color: #e6c200;
+            color:#145375;
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
@@ -124,12 +124,13 @@ mysqli_close($conn);
 
         button:hover {
             background-color: #145375;
+            color: #fff;
         }
 
         .back-button {
             display: inline-block;
-            background-color: #faaf1d;
-            color: rgb(255, 255, 255);
+            background-color: #e6c200;
+            color: #145375;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
@@ -141,6 +142,7 @@ mysqli_close($conn);
 
         .back-button:hover {
             background-color: #145375;
+            color: #fff;
         }
 
         /* Autocomplete */
@@ -216,7 +218,6 @@ mysqli_close($conn);
 
             <button type="submit">Simpan Nilai</button>
         </form>
-        <a href="home.php" class="back-button">Kembali</a>
         <a href="input_nilai.php" class="back-button">Riwayat</a>
     </div>
     <script src="js/logout.js" defer></script>

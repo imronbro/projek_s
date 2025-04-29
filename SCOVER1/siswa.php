@@ -75,7 +75,8 @@ $result = mysqli_query($conn, $query);
         }
 
         .search-box button:hover {
-            background-color: #d4ac0d;
+            background-color: #145375;
+            color: #fff;
         }
 
         .row {
@@ -134,7 +135,7 @@ $result = mysqli_query($conn, $query);
 
         .btn-whatsapp {
             background-color: #e6c200;
-            color: #fff;
+            color: #145375;
             padding: 8px 16px;
             border: none;
             border-radius: 8px;
@@ -145,6 +146,7 @@ $result = mysqli_query($conn, $query);
 
         .btn-whatsapp:hover {
             background-color: #145375;
+            color: #fff;
         }
     </style>
 </head>
