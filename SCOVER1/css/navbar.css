@@ -16,6 +16,13 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* Terapkan font Poppins hanya untuk elemen navbar */
+.navbar,
+.navbar * {
+  font-family: "Poppins", sans-serif !important; /* Gunakan font Poppins */
+  font-weight: 400; /* Berat font default */
+}
+
 /* Logo */
 .navbar .logo {
   display: flex;
@@ -31,7 +38,7 @@
 /* Logo Text */
 .navbar .logo-text {
   font-size: 1.5em; /* Ukuran default untuk layar besar */
-  font-weight: bold;
+  font-weight: 600; /* Berat font untuk teks logo */
   color: #fabe49;
   white-space: nowrap; /* Pastikan teks tidak membungkus */
 }
@@ -39,7 +46,7 @@
 /* Title */
 .navbar .title {
   font-size: 1.8em; /* Ukuran default untuk layar besar */
-  font-weight: bold;
+  font-weight: 700; /* Berat font untuk judul */
   color: white;
   text-align: center;
   flex-grow: 1; /* Ambil ruang yang tersedia */
@@ -98,6 +105,7 @@
   font-size: 16px;
   padding: 10px 15px;
   transition: all 0.3s ease;
+  font-weight: 500; /* Berat font untuk tautan */
 }
 
 .navbar .nav-links a::after {
@@ -262,22 +270,4 @@
     text-align: center; /* Teks di tengah */
     margin: 10px auto; /* Posisikan tombol di tengah */
   }
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-}
-
-h2 {
-  font-family: "Poppins", sans-serif;
-  font-weight: 600; /* Gunakan berat font yang sesuai */
-}
-
-label,
-input,
-select,
-textarea,
-.btn {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400; /* Berat font normal */
 }
