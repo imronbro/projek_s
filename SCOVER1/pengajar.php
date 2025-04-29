@@ -26,9 +26,8 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/pengajar.css">
     <link rel="stylesheet" href="css/navbar.css">
-    
+    <link rel="stylesheet" href="css/pengajar.css">
     <style>
         * {
 
@@ -49,6 +48,7 @@ $result = mysqli_query($conn, $query);
 
         .card {
             height: 350px;
+            /* 👈 Tinggi tetap agar semua kartu seragam */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -96,6 +96,7 @@ $result = mysqli_query($conn, $query);
             width: 100%;
             box-sizing: border-box;
         }
+
 
         table {
             width: 100%;
