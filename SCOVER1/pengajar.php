@@ -26,8 +26,9 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    
     <style>
         * {
 
@@ -48,7 +49,6 @@ $result = mysqli_query($conn, $query);
 
         .card {
             height: 350px;
-            /* 👈 Tinggi tetap agar semua kartu seragam */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -97,19 +97,6 @@ $result = mysqli_query($conn, $query);
             box-sizing: border-box;
         }
 
-        button {
-            padding: 10px 15px;
-            background-color: #145375;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #145375;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -131,28 +118,7 @@ $result = mysqli_query($conn, $query);
         table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-
-        .btn-detail {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 12px;
-            background-color: rgb(13, 78, 135);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .btn-detail:hover {
-            background-color: rgb(2, 65, 131);
-        }
-
-        .btn-group-vertical {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: center;
-            margin-top: 10px;
-        }
+        
 
         /* Form pencarian seperti filter-bar */
 
@@ -189,28 +155,10 @@ $result = mysqli_query($conn, $query);
         }
 
         .search-box button:hover {
-            background-color: #d4ac0d;
-        }
-
-
-
-
-
-        button {
-            background-color: #e6c200;
-            color: #145375;
-            padding: 10px 100px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        button:hover {
             background-color: #145375;
             color: #fff;
         }
-
+    
         .arrow {
             font-size: 12px;
             margin-left: 5px;
@@ -265,8 +213,6 @@ $result = mysqli_query($conn, $query);
             <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
-
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">

@@ -345,7 +345,6 @@ $tahun_result = $conn->query($tahun_query);
             <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="nilai_siswa.php" class="active">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -412,7 +411,6 @@ $tahun_result = $conn->query($tahun_query);
                 ?>
             </tbody>
         </table>
-        <a href="home.php" class="back-button">Kembali</a>
         <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh PDF</a>
         <a href="download_nilai.php?format=html&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh HTML</a>
     </div>

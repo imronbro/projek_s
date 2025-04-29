@@ -99,7 +99,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
