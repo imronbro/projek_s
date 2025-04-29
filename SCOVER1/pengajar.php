@@ -202,7 +202,6 @@ $result = mysqli_query($conn, $query);
             padding: 10px 100px;
             border: none;
             cursor: pointer;
-            font-weight: bold;
             border-radius: 5px;
         }
 

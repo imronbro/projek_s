@@ -7,7 +7,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #145375;
+  background-color: #f4f4f4;
   color: #fff;
 }
 
@@ -131,7 +131,7 @@ body {
   font-weight: bold;
 }
 .form-container input {
-  width: 100%;
+  width: 95.5%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #145375;
@@ -163,6 +163,7 @@ body {
 .forgot a,
 .form-container a {
   color: #145375;
+  font-weight: 750;
   text-decoration: none;
 }
 .forgot a:hover,

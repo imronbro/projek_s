@@ -45,82 +45,56 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f4;
-        color: #145375;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        width: 90%;
-        max-width: 1000px;
-        margin: 30px auto;
-        background-color: #fff;
-        padding: 60px;
-        border-radius: 15px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        animation: fadeIn 0.8s ease-in-out;
-    }
-    h2 {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 28px;
-        color: #145375;
-    }
-    p {
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: 20px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: #fff;
-        color: #145375;
-        border-radius: 10px;
-        overflow: hidden;
-    }
-    th, td {
-        padding: 14px 18px;
-        border-bottom: 1px solid #e0e0e0;
-        text-align: center;
-        font-size: 16px;
-    }
-    th {
-        background-color: #145375;
-        color: #fff;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    .back-button {
-        display: inline-block;
-        background-color: #e6c200;
-        color: #145375;
-        font-weight: bold;
-        padding: 12px 25px;
-        text-decoration: none;
-        border-radius: 8px;
-        margin-top: 25px;
-        transition: background-color 0.3s, transform 0.3s;
-    }
-    .back-button:hover {
-        background-color: #145375;
-        color:#fff;
-        transform: scale(1.05);
-    }
-    @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(-10px); }
-        100% { opacity: 1; transform: translateY(0); }
-    }
-</style>
-
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #003049;
+            color: #fabe49;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #0271ab;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fabe49;
+            color: #003049;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #003049;
+            text-align: center;
+        }
+        th {
+            background-color: #faaf1d;
+        }
+        tr:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+        .back-button {
+            display: inline-block;
+            background-color: #faaf1d;
+            color: #003049;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #fabe49;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar">
@@ -130,12 +104,12 @@ $result = $stmt->get_result();
         <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
         <li><a href="home_mentor.php">Presensi</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>
         <li><a href="nilai.php" class="active">Nilai</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
-        <li><a href="kontak_mentor.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
     <div class="menu-icon" onclick="toggleMenu()">

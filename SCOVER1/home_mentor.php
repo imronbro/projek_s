@@ -201,6 +201,7 @@ $conn->close();
     <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
         <li><a href="home_mentor.php" class="active">Jurnal</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>
