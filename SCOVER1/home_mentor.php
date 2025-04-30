@@ -284,8 +284,6 @@ $conn->close();
         </div>
     </form>
 </div>
-
-<script src="js/logout.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script>
     function toggleUpload() {

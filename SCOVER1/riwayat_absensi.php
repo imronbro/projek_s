@@ -259,5 +259,6 @@ $result = $stmt->get_result();
             </tbody>
         </table>
     </div>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>

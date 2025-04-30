@@ -255,7 +255,7 @@ $conn->close();
             </div>
         </form>
     </div>
-
+    <script src="js/menu.js" defer></script>
     <script>
         const selectedSiswa = {}; // Objek untuk menyimpan siswa yang dipilih
 

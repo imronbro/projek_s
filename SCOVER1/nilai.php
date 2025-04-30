@@ -221,8 +221,6 @@ mysqli_close($conn);
         </form>
         <a href="input_nilai.php" class="back-button">Riwayat</a>
     </div>
-    <script src="js/logout.js" defer></script>
-    <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script>
         const siswaList = <?php echo json_encode($siswaList); ?>;

@@ -214,7 +214,7 @@ mysqli_close($conn);
 
         <a href="riwayat_kuis.php" class="back-button">Riwayat Kuis</a>
     </div>
-
+    <script src="js/menu.js" defer></script>
     <script>
     const siswaList = <?php echo json_encode($siswaList); ?>;
     const searchInput = document.getElementById('searchStudent');

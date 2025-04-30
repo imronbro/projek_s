@@ -152,5 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn">Simpan Perubahan</button>
         </form>
     </div>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>
