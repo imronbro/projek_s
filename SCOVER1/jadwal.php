@@ -26,6 +26,7 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
     * {
@@ -51,13 +52,13 @@ $result = $stmt->get_result();
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    h2 {
+    .container h2 {
         text-align: center;
         color: #145375;
         margin-bottom: 30px;
     }
 
-    table {
+    .container table {
         width: 100%;
         border-collapse: collapse;
         background-color: #f8f9fa;
@@ -65,20 +66,20 @@ $result = $stmt->get_result();
         overflow: hidden;
     }
 
-    th,
-    td {
+    .container th,
+    .container td {
         padding: 12px 16px;
         text-align: left;
         border-bottom: 1px solid #dee2e6;
     }
 
-    th {
+    .container th {
         background-color: #145375;
         color: white;
         font-weight: bold;
     }
 
-    tr:hover {
+    .container tr:hover {
         background-color: #e9f3f9;
     }
 
@@ -87,12 +88,12 @@ $result = $stmt->get_result();
             padding: 20px;
         }
 
-        table,
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
+        .container table,
+        .container thead,
+        .container tbody,
+        .container th,
+        .container td,
+        .container tr {
             display: block;
         }
 
@@ -134,6 +135,7 @@ $result = $stmt->get_result();
             content: "Mata Pelajaran";
         }
     }
+    
     </style>
 
 <body>
@@ -153,7 +155,7 @@ $result = $stmt->get_result();
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
+            <span></span><span></span><span></                                                                                    span>
         </div>
     </nav>
 

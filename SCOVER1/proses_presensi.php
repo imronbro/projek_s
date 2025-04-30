@@ -56,9 +56,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presensi Siswa</title>
-    <link rel="stylesheet" href="css/navbar.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
+                * {
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins', sans-serif;
         }
@@ -68,7 +71,7 @@ $conn->close();
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            padding: 30px;
+            padding: 20px;
             background-color: #f9f9f9;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
