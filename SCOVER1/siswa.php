@@ -161,11 +161,11 @@ $result = mysqli_query($conn, $query);
         <ul class="nav-links">
         <li><a href="home_mentor.php">Jurnal</a></li>
       <li><a href="proses_presensi.php">Presensi Siswa</a></li>
-        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="siswa.php" class="active">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>
         <li><a href="nilai.php">Nilai</a></li>
-      <li><a href="profile_mentor.php" class="active">Profil</a></li>
+      <li><a href="profile_mentor.php" >Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -188,7 +188,7 @@ $result = mysqli_query($conn, $query);
             <?php if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "uploads1/default.png";
+                    $defaultImage = "uploads1/default.jpg"; // Gambar default
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
             ?>
                     <div class="col-md-4 mb-4">

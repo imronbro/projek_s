@@ -86,7 +86,8 @@ $conn->close();
         .container {
             margin-top: 120px;
             max-width: 600px;
-            margin: ;
+            margin-left:auto ;
+            margin-right: auto;
             padding: 30px;
             background-color: #f9f9f9;
             border-radius: 15px;

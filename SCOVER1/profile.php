@@ -143,7 +143,7 @@ if ($email) {
             if (!empty($data['gambar']) && file_exists($imagePath)) {
                 echo "<img src='$imagePath' alt='Foto Profil' class='profile-img'>";
             } else {
-                echo "<img src='uploads/default.png' alt='Foto Profil Default' class='profile-img'>";
+                echo "<img src='uploads/default.jpg' alt='Foto Profil Default' class='profile-img'>";
             }
             ?>
         </div>

@@ -54,6 +54,7 @@ if ($email) {
         overflow-x: hidden;
     }
 
+    /* Container */
     .container {
         max-width: 900px;
         margin: 0 auto;
@@ -66,23 +67,27 @@ if ($email) {
         }
     }
 
+    /* Card */
     .card {
         background-color: #145375;
         color: white;
         border: 2px solid white;
         display: flex;
-        flex-direction: row;
+        flex-direction: row; /* Default: Foto dan info dalam satu baris */
         align-items: center;
         padding: 20px;
         border-radius: 10px;
         gap: 20px;
     }
 
-    .profile-section {
-        text-align: center;
-        margin-right: 20px;
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column; /* Ubah menjadi kolom pada layar kecil */
+            text-align: center; /* Pusatkan konten */
+        }
     }
 
+    /* Foto Profil */
     .profile-img {
         width: 150px;
         height: 150px;
@@ -93,14 +98,43 @@ if ($email) {
         border: 3px solid #faaf1d;
     }
 
-    .profile-info {
-        flex-grow: 1;
-    }
-
+    /* Rating */
     .rating {
         font-size: 18px;
         color: #ffd700;
         margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .rating {
+            margin-top: 20px; /* Tambahkan jarak di bawah foto profil */
+            font-size: 16px; /* Ukuran font lebih kecil */
+        }
+    }
+
+    /* Bintang */
+    .star {
+        font-size: 24px;
+        display: inline-block;
+    }
+
+    .star.full {
+        color: #ffd700;
+    }
+
+    .star.empty {
+        color: #d3d3d3;
+    }
+
+    .star.partial {
+        background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
     }
 
     h2 {
@@ -140,26 +174,6 @@ if ($email) {
         background-color: #145375;
         color: #fff;
     }
-
-    .star {
-        font-size: 24px;
-        display: inline-block;
-    }
-
-    .star.full {
-        color: #ffd700;
-    }
-
-    .star.empty {
-        color: #d3d3d3;
-    }
-
-    .star.partial {
-        background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-    }
     </style>
 </head>
 
@@ -194,7 +208,7 @@ if ($email) {
             <?php 
             } else { 
             ?>
-            <img src="uploads1/default.png" alt="Foto Profil Default" class="profile-img">
+            <img src="uploads1/default.jpg" alt="Foto Profil Default" class="profile-img">
             <?php 
             } 
             ?>

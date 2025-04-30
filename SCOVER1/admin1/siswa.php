@@ -237,7 +237,7 @@ $result = mysqli_query($conn, $query);
                 while ($row = mysqli_fetch_assoc($result)) {
                     $gambar = htmlspecialchars($row['gambar']);
                     $imagePath = "../uploads/" . basename($gambar);
-                    $defaultImage = "../uploads1/default.png";
+                    $defaultImage = "../uploads1/default.jpg";
                     $finalImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 
             ?>

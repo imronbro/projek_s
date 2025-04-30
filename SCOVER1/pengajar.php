@@ -288,7 +288,7 @@ $result = mysqli_query($conn, $query);
             <?php if (mysqli_num_rows($result) > 0) { ?>
                 <?php while ($row = mysqli_fetch_assoc($result)) {
                     $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "../uploads1/default.png";
+                    $defaultImage = "../uploads1/default.jpg";
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 
                 ?>
