@@ -45,7 +45,10 @@ $result = $stmt->get_result();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        /* Container */
+              * {
+            box-sizing: border-box;
+        }  
+        /* Container untuk tabel */
         .container {
             max-width: 100%;
             margin: auto;
@@ -62,6 +65,7 @@ $result = $stmt->get_result();
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 800px; /* Pastikan tabel memiliki lebar minimum */
         }
 
         table th, table td {
@@ -171,39 +175,28 @@ $result = $stmt->get_result();
 
         /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-top: 100px; /* Tambahkan padding atas untuk menghindari tumpang tindih dengan navbar */
+            }
+
             table th, table td {
                 font-size: 12px;
                 padding: 8px;
             }
-
-            .btn-edit, .btn-view, .btn-delete, .btn-action {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
+        }
 
         /* Responsif untuk layar sangat kecil */
         @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                padding-top: 100px; /* Tambahkan padding atas untuk menghindari tumpang tindih dengan navbar */
+            }
+
             table th, table td {
                 font-size: 10px;
                 padding: 5px;
             }
-
-            .btn-edit, .btn-view, .btn-delete, .btn-action {
-                font-size: 10px;
-                padding: 5px 8px;
-            }
-
-            .container {
-                padding: 10px;
-                padding-top:40px;
-            }
-
-
         }
     </style>
 </head>

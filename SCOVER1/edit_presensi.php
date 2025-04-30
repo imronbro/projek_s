@@ -80,9 +80,13 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+                * {
+            box-sizing: border-box;
+        }
         .container {
+            margin-top: 120px;
             max-width: 600px;
-            margin: auto;
+            margin: ;
             padding: 30px;
             background-color: #f9f9f9;
             border-radius: 15px;
@@ -150,7 +154,7 @@ $conn->close();
     </div>
 </nav>
 <div class="container">
-    <h2>Edit Presensi</h2>
+    <h2>Edit Presensi Mentor</h2>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="tanggal">Tanggal:</label>
         <input type="date" id="tanggal" name="tanggal" value="<?= htmlspecialchars($data['tanggal']) ?>" required>
