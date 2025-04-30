@@ -222,7 +222,7 @@ $conn->close();
             </div>
         </form>
     </div>
-
+    <script src="js/menu.js" defer></script>
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');

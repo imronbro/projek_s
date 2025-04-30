@@ -314,6 +314,7 @@ $result = mysqli_query($conn, $query);
             <?php } ?>
         </div>
     </div>
+    <script src="js/menu.js" defer></script>
 </body>
 
 </html>

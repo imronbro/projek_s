@@ -288,7 +288,7 @@ $result = $stmt->get_result();
     </div>
     <h1 class="title">Dashboard Siswa</h1>
     <ul class="nav-links">
-      <li><a href="home.php" class="active">Presensi</a></li>
+      <li><a href="home.php" class="active">Jurnal</a></li>
       <li><a href="pengajar.php">Pengajar</a></li>
       <li><a href="rating.php">Rating</a></li>
       <li><a href="jadwal1.php">Jadwal</a></li>

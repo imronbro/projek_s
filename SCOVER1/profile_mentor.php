@@ -229,8 +229,6 @@ if ($email) {
         <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
         <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
     </div>
-    <script src="js/logout.js" defer></script>
-    <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
 </body>
 
