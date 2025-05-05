@@ -137,15 +137,17 @@ $conn->close();
         }
 
         .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            margin: 10px 5px;
+            cursor: pointer;
             background-color: #e6c200;
             color: #145375;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
             transition: 0.3s ease;
-            text-decoration: none;
             text-align: center;
             font-family: 'Poppins', sans-serif;
             font-weight: 400; /* Berat font normal */

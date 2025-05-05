@@ -26,21 +26,23 @@ function getHari($tanggal)
 
 // Proses tambah jadwal
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['siswa_id'])) {
-    $siswa_id = $_POST['siswa_id'];
+    $siswa_ids = $_POST['siswa_id']; // Ini adalah array
     $tanggal = $_POST['tanggal'];
     $sesi = $_POST['sesi'];
     $mata_pelajaran = $_POST['mata_pelajaran'];
     $pengajar_id = $_POST['pengajar_id'];
 
-    $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar_id) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssi", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar_id);
+    // Loop untuk memasukkan setiap siswa
+    foreach ($siswa_ids as $siswa_id) {
+        $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar_id) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("isssi", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar_id);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Jadwal berhasil ditambahkan!'); window.location.href='jadwal.php';</script>";
-    } else {
-        echo "<script>alert('Gagal menambahkan jadwal!');</script>";
+        if (!$stmt->execute()) {
+            echo "<script>alert('Gagal menambahkan jadwal untuk siswa ID: $siswa_id');</script>";
+        }
     }
+    echo "<script>alert('Jadwal berhasil ditambahkan!'); window.location.href='jadwal.php';</script>";
     $stmt->close();
 }
 
@@ -51,11 +53,18 @@ $siswa_result = $conn->query("SELECT siswa_id, full_name FROM siswa");
 $pengajar_result = $conn->query("SELECT pengajar_id, full_name FROM mentor");
 
 // Ambil jadwal
+$today = date('Y-m-d');
 $jadwal_query = "SELECT j.id, s.full_name AS siswa_name, j.tanggal, j.sesi, j.mata_pelajaran, m.full_name AS pengajar_name 
                  FROM jadwal_siswa j 
                  JOIN siswa s ON j.siswa_id = s.siswa_id 
                  JOIN mentor m ON j.pengajar_id = m.pengajar_id
-                 ORDER BY j.tanggal, j.sesi";
+                 ORDER BY 
+                    CASE 
+                        WHEN j.tanggal = CURDATE() THEN 0
+                        WHEN j.tanggal > CURDATE() THEN 1
+                        ELSE 2
+                    END,
+                 j.tanggal ASC, j.sesi ASC";
 $jadwal_result = $conn->query($jadwal_query);
 
 $conn->close();
@@ -160,24 +169,49 @@ $conn->close();
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-        table th,
-        table td {
-            border: 1px solid #ddd;
-            padding: 10px;
+        th,
+        td {
+            padding: 12px 15px;
             text-align: left;
         }
 
-        table th {
+        th {
             background-color: #145375;
             color: #fff;
+            font-weight: normal;
         }
 
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tr:nth-child(even) {
+            background-color: #f4f7fb;
         }
+
+        tr:hover {
+            background-color: #eaf3ff;
+        }
+
+        a {
+            color: #145375;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h3 {
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            margin-top: 30px;
+        }
+
 
         /* Dropdown styles */
         .dropdown {
@@ -227,7 +261,43 @@ $conn->close();
             padding: 0;
             width: 100%;
         }
-        
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 80px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(20, 83, 117, 0.6);
+            /* semi-transparan biru */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: auto;
+            padding: 25px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #145375;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #e6c200;
+        }
     </style>
 </head>
 <script>
@@ -303,45 +373,49 @@ $conn->close();
     </nav>
     <div class="container">
         <h2>Atur Jadwal Siswa</h2>
+        <button onclick="openModal()" style="margin-bottom: 20px;">Tambah Jadwal</button>
+        <div id="jadwalModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2>Tambah Jadwal</h2>
+                <form action="" method="post">
+                    <label for="siswa_id">Siswa:</label>
+                    <select name="siswa_id[]" id="siswa_id" class="select2" multiple required>
+                        <?php while ($row = $siswa_result->fetch_assoc()) { ?>
+                            <option value="<?= $row['siswa_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
+                        <?php } ?>
+                    </select>
 
-        <!-- Form Tambah Jadwal -->
-        <form action="" method="post">
-            <label for="siswa_id">Siswa:</label>
-            <select name="siswa_id" id="siswa_id" class="select2" required>
-                <option value="" disabled selected>Pilih Siswa</option>
-                <?php while ($row = $siswa_result->fetch_assoc()) { ?>
-                    <option value="<?= $row['siswa_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
-                <?php } ?>
-            </select>
+                    <label for="tanggal">Tanggal:</label>
+                    <input type="date" name="tanggal" required>
 
-            <label for="tanggal">Tanggal:</label>
-            <input type="date" name="tanggal" required>
+                    <label for="sesi">Sesi:</label>
+                    <select name="sesi" required>
+                        <option value="Sesi 1 (09:00-10:30)">Sesi 1 (09:00-10:30)</option>
+                        <option value="Sesi 2 (10:30-12:00)">Sesi 2 (10:30-12:00)</option>
+                        <option value="Sesi 3 (13:00-14:30)">Sesi 3 (13:00-14:30)</option>
+                        <option value="Sesi 4 (14:30-16:00)">Sesi 4 (14:30-16:00)</option>
+                        <option value="Sesi 5 (16:00-17:30)">Sesi 5 (16:00-17:30)</option>
+                        <option value="Sesi 6 (18:00-19:30)">Sesi 6 (18:00-19:30)</option>
+                        <option value="Sesi 7 (19:30-21:00)">Sesi 7 (19:30-21:00)</option>
+                    </select>
 
-            <label for="sesi">Sesi:</label>
-            <select name="sesi" required>
-                <option value="Sesi 1 (09:00-10:30)">Sesi 1 (09:00-10:30)</option>
-                <option value="Sesi 2 (10:30-12:00)">Sesi 2 (10:30-12:00)</option>
-                <option value="Sesi 3 (13:00-14:30)">Sesi 3 (13:00-14:30)</option>
-                <option value="Sesi 4 (14:30-16:00)">Sesi 4 (14:30-16:00)</option>
-                <option value="Sesi 5 (16:00-17:30)">Sesi 5 (16:00-17:30)</option>
-                <option value="Sesi 6 (18:00-19:30)">Sesi 6 (18:00-19:30)</option>
-                <option value="Sesi 7 (19:30-21:00)">Sesi 7 (19:30-21:00)</option>
-            </select>
-
-            <label for="mata_pelajaran">Mata Pelajaran:</label>
-            <input type="text" name="mata_pelajaran" required>
+                    <label for="mata_pelajaran">Mata Pelajaran:</label>
+                    <input type="text" name="mata_pelajaran" required>
 
 
-            <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id" class="select2"
-                    required>
-                    <option value="" disabled selected>Pilih Pengajar</option>
-                    <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
-                        <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
-                    <?php } ?>
-                </select>
-
-                <button type="submit">Tambah Jadwal</button>
-        </form>
+                    <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id"
+                            class="select2" required>
+                            <option value="" disabled selected>Pilih Pengajar</option>
+                            <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
+                                <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <button type="submit">Tambah Jadwal</button>
+                </form>
+            </div>
+        </div>
 
         <!-- Tabel Jadwal -->
         <h3>Jadwal yang Telah Diatur</h3>
@@ -355,18 +429,19 @@ $conn->close();
                 <th>Pengajar</th>
                 <th>Aksi</th>
             </tr>
-            <?php if ($jadwal_result->num_rows > 0) {
+            <?php
+            if ($jadwal_result->num_rows > 0) {
                 while ($row = $jadwal_result->fetch_assoc()) {
-                    $hari = getHari($row['tanggal']); // Dapatkan nama hari
+                    $hari = getHari($row['tanggal']);
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['siswa_name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
-                    echo "<td>" . htmlspecialchars($hari) . "</td>"; // Tampilkan nama hari
-                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>"; // Tampilkan sesi lengkap
+                    echo "<td>" . htmlspecialchars($hari) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['sesi']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['mata_pelajaran']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['pengajar_name']) . "</td>";
-                    echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | ";
-                    echo "<a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
+                    echo "<td><a href='edit_jadwal.php?id=" . $row['id'] . "'>Edit</a> | 
+                      <a href='hapus_jadwal.php?id=" . $row['id'] . "' onclick='return confirm(\"Hapus jadwal ini?\")'>Hapus</a></td>";
                     echo "</tr>";
                 }
             } else {
@@ -374,6 +449,7 @@ $conn->close();
             }
             ?>
         </table>
+
     </div>
 
     <!-- Select2 JS -->
@@ -388,6 +464,23 @@ $conn->close();
             });
         });
     </script>
+    <script>
+        function openModal() {
+            document.getElementById("jadwalModal").style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById("jadwalModal").style.display = "none";
+        }
+
+        // Tutup jika klik di luar konten modal
+        window.onclick = function (event) {
+            var modal = document.getElementById("jadwalModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
+
 </html>

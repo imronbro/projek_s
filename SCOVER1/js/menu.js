@@ -1,20 +1,25 @@
 function toggleMenu() {
   const navLinks = document.querySelector(".nav-links");
   const menuIcon = document.querySelector(".menu-icon");
+  const notification = document.getElementById("logout-notification");
+
   navLinks.classList.toggle("active");
   menuIcon.classList.toggle("active");
+
+  // Pastikan notifikasi berada di atas navbar saat menu aktif
+  if (navLinks.classList.contains("active")) {
+    notification.style.zIndex = "2000"; // Z-index lebih tinggi dari navbar
+  } else {
+    notification.style.zIndex = "1000"; // Kembalikan z-index default
+  }
 }
 
 function confirmLogout() {
   const notification = document.getElementById("logout-notification");
-  notification.classList.remove("hide"); // Hapus kelas "hide" jika ada
   notification.style.display = "block"; // Tampilkan notifikasi
 }
 
 function cancelLogout() {
   const notification = document.getElementById("logout-notification");
-  notification.classList.add("hide"); // Tambahkan kelas "hide" untuk animasi keluar
-  setTimeout(() => {
-    notification.style.display = "none"; // Sembunyikan notifikasi setelah animasi selesai
-  }, 300); // Waktu harus sesuai dengan durasi animasi slideOut (0.3s)
+  notification.style.display = "none"; // Sembunyikan notifikasi
 }

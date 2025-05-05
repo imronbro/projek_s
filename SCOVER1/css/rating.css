@@ -128,8 +128,8 @@ table tr:hover {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #faaf1d; /* Tombol kuning */
-  color: #ffffff; /* Teks putih */
+  background-color: #e6c200; /* Tombol kuning */
+  color: #145375; /* Teks putih */
   text-decoration: none;
   border-radius: 5px;
   font-size: 1em;
@@ -138,7 +138,8 @@ table tr:hover {
 }
 
 .btn:hover {
-  background-color: #fabe49; /* Kuning lebih terang saat hover */
+  background-color: #145375;
+  color: white;
   transform: scale(1.05); /* Efek zoom */
 }
 

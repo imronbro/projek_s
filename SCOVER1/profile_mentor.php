@@ -143,38 +143,117 @@ if ($email) {
         text-align: center;
     }
 
-    .btn-primary,
-    .btn-secondary {
-        display: inline-block;
-        padding: 10px 20px;
-        font-weight: bold;
-        text-decoration: none;
-        border: none;
-        border-radius: 5px;
-        margin: 10px 5px;
-        cursor: pointer;
-    }
+    .notification {
+  display: none; /* Sembunyikan elemen secara default */
+  position: fixed; /* Tetap di posisi layar */
+  top: 50%; /* Posisikan di tengah vertikal */
+  left: 50%; /* Posisikan di tengah horizontal */
+  transform: translate(-50%, -50%); /* Pastikan elemen benar-benar di tengah */
+  background-color: #f9f9f9; /* Warna latar belakang */
+  color: #145375; /* Warna teks */
+  padding: 20px; /* Ruang di dalam elemen */
+  border-radius: 10px; /* Sudut melengkung */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bayangan untuk efek melayang */
+  z-index: 1000; /* Pastikan elemen berada di atas elemen lainnya */
+  text-align: center; /* Teks rata tengah */
+  width: 300px; /* Lebar tetap */
+  animation: slideIn 0.3s ease forwards; /* Animasi muncul */
+}
 
-    .btn-primary {
-        background-color: #145375;
-        color: white;
-        
-    }
+.notification.hide {
+  animation: slideOut 0.3s ease forwards; /* Animasi menghilang */
+}
 
-    .btn-primary:hover {
-        background-color: #e6c200;
-        
-    }
+.notification p {
+  margin-bottom: 20px; /* Jarak bawah untuk teks */
+  font-size: 16px; /* Ukuran font */
+  font-weight: bold; /* Teks tebal */
+}
 
-    .btn-secondary {
-        background-color: #e6c200;
-        color: #145375;
-    }
+/* Tombol di dalam notifikasi */
+.notification-buttons {
+  display: flex; /* Tampilkan tombol secara horizontal */
+  justify-content: space-between; /* Jarak antar tombol */
+  gap: 10px; /* Tambahkan jarak antar tombol */
+}
 
-    .btn-secondary:hover {
-        background-color: #145375;
-        color: #fff;
-    }
+.notification-buttons .btn {
+  flex: 1; /* Tombol mengambil ruang yang sama */
+  text-align: center; /* Teks rata tengah */
+  padding: 10px; /* Ruang di dalam tombol */
+  border-radius: 6px; /* Sudut melengkung */
+  font-weight: bold; /* Teks tebal */
+  cursor: pointer; /* Ubah kursor menjadi pointer */
+  transition: 0.3s ease; /* Animasi transisi */
+  text-decoration: none; /* Hilangkan garis bawah */
+}
+
+/* Tombol Batal */
+.notification-buttons .btn-secondary {
+  background-color: #145375; /* Warna biru */
+  color: white; /* Warna teks */
+}
+
+.notification-buttons .btn-secondary:hover {
+  background-color: #e6c200; /* Warna kuning saat hover */
+  color: #145375; /* Warna teks saat hover */
+}
+
+/* Tombol Keluar */
+.notification-buttons .btn-danger {
+  background-color: #e74c3c; /* Warna merah */
+  color: white; /* Warna teks */
+  border: none; /* Hilangkan border */
+}
+
+.notification-buttons .btn-danger:hover {
+  background-color: #c0392b; /* Warna merah lebih gelap saat hover */
+  transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+/* Tombol Edit Profil */
+.edit-profile-btn {
+  background-color: #e6c200; /* Warna latar belakang */
+  color: #145375; /* Warna teks */
+  padding: 10px 20px; /* Ruang di dalam tombol */
+  border-radius: 5px; /* Sudut melengkung */
+  font-weight: bold; /* Teks tebal */
+  text-decoration: none; /* Hilangkan garis bawah */
+  display: inline-block; /* Tampilkan sebagai tombol */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
+}
+
+.edit-profile-btn:hover {
+  background-color: #145375; /* Warna latar belakang saat hover */
+  color: #fff; /* Warna teks saat hover */
+}
+
+/* Animasi untuk notifikasi pop-up */
+@keyframes slideIn {
+  0% {
+    opacity: 0; /* Tidak terlihat */
+    transform: translate(-50%, -60%); /* Mulai sedikit di atas posisi tengah */
+  }
+  100% {
+    opacity: 1; /* Terlihat */
+    transform: translate(-50%, -50%); /* Berakhir di posisi tengah */
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1; /* Terlihat */
+    transform: translate(-50%, -50%); /* Mulai di posisi tengah */
+  }
+  100% {
+    opacity: 0; /* Tidak terlihat */
+    transform: translate(
+      -50%,
+      -60%
+    ); /* Menghilang sedikit di atas posisi tengah */
+  }
+}
+
     </style>
 </head>
 
@@ -242,7 +321,7 @@ if ($email) {
                 <p><strong>No HP:</strong> <?= htmlspecialchars($data['nohp'] ?? '-'); ?></p>
             </div>
         </div>
-        <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
+        <a href="edit_profile_mentor.php" class="btn btn-secondary edit-profile-btn">Edit Profil</a>
         <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
     </div>
     <script src="js/menu.js" defer></script>
