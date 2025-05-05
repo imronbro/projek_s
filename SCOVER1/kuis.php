@@ -163,7 +163,16 @@ mysqli_close($conn);
         color: #003049;
     }
 
-
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 5px;
+        cursor: pointer;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {

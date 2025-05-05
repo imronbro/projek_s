@@ -285,11 +285,6 @@
   display: none; /* Default: disembunyikan */
   text-align: center;
   width: 300px;
-  animation: slideIn 0.3s ease forwards; /* Animasi muncul */
-}
-
-.notification.hide {
-  animation: slideOut 0.3s ease forwards; /* Animasi menghilang */
 }
 
 .notification p {
@@ -337,30 +332,4 @@
 .notification-buttons .btn-danger:hover {
   background-color: #c0392b; /* Warna merah lebih gelap saat hover */
   transform: scale(1.05); /* Efek zoom saat hover */
-}
-
-/* Animasi untuk notifikasi pop-up */
-@keyframes slideIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -60%); /* Mulai sedikit di atas posisi tengah */
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%); /* Berakhir di posisi tengah */
-  }
-}
-
-@keyframes slideOut {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%); /* Mulai di posisi tengah */
-  }
-  100% {
-    opacity: 0;
-    transform: translate(
-      -50%,
-      -60%
-    ); /* Menghilang sedikit di atas posisi tengah */
-  }
 }
