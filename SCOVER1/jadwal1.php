@@ -71,7 +71,6 @@ $conn->close();
             <li><a href="jadwal1.php" class="active">Jadwal</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php">Profil</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
             <li>
                 <button class="logout-btn" onclick="confirmLogout()">Keluar</button>
             </li>

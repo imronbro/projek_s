@@ -26,21 +26,23 @@ function getHari($tanggal)
 
 // Proses tambah jadwal
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['siswa_id'])) {
-    $siswa_id = $_POST['siswa_id'];
+    $siswa_ids = $_POST['siswa_id']; // Ini adalah array
     $tanggal = $_POST['tanggal'];
     $sesi = $_POST['sesi'];
     $mata_pelajaran = $_POST['mata_pelajaran'];
     $pengajar_id = $_POST['pengajar_id'];
 
-    $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar_id) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("isssi", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar_id);
+    // Loop untuk memasukkan setiap siswa
+    foreach ($siswa_ids as $siswa_id) {
+        $query = "INSERT INTO jadwal_siswa (siswa_id, tanggal, sesi, mata_pelajaran, pengajar_id) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("isssi", $siswa_id, $tanggal, $sesi, $mata_pelajaran, $pengajar_id);
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Jadwal berhasil ditambahkan!'); window.location.href='jadwal.php';</script>";
-    } else {
-        echo "<script>alert('Gagal menambahkan jadwal!');</script>";
+        if (!$stmt->execute()) {
+            echo "<script>alert('Gagal menambahkan jadwal untuk siswa ID: $siswa_id');</script>";
+        }
     }
+    echo "<script>alert('Jadwal berhasil ditambahkan!'); window.location.href='jadwal.php';</script>";
     $stmt->close();
 }
 
@@ -71,155 +73,155 @@ $conn->close();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        * {
+    * {
 
-            box-sizing: border-box;
-        }
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 100px;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        margin: 0;
+        padding: 100px;
+    }
 
-        .container {
-            max-width: 700px;
-            margin: 80px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        max-width: 700px;
+        margin: 80px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        h2 {
-            text-align: center;
-            color: #145375;
-        }
+    h2 {
+        text-align: center;
+        color: #145375;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
 
-        input,
-        select {
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    input,
+    select {
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-        .select2-container {
-            width: 100% !important;
-        }
+    .select2-container {
+        width: 100% !important;
+    }
 
-        .select2-container--default .select2-selection--single {
-            height: 45px;
-            padding: 5px 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #fff;
-            color: #333;
-        }
+    .select2-container--default .select2-selection--single {
+        height: 45px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #fff;
+        color: #333;
+    }
 
-        .select2-container--default .select2-selection--single .select2-selection__rendered {
-            line-height: 35px;
-            color: #333;
-            font-size: 14px;
-        }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 35px;
+        color: #333;
+        font-size: 14px;
+    }
 
-        .select2-container--default .select2-selection--single .select2-selection__arrow {
-            height: 45px;
-            width: 40px;
-        }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 45px;
+        width: 40px;
+    }
 
-        button {
-            padding: 10px 15px;
-            background-color: #145375;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    button {
+        padding: 10px 15px;
+        background-color: #145375;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-        button:hover {
-            background-color: #145375;
-        }
+    button:hover {
+        background-color: #145375;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        table th,
-        table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-        table th {
-            background-color: #145375;
-            color: #fff;
-        }
+    table th {
+        background-color: #145375;
+        color: #fff;
+    }
 
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
 
-        /* Dropdown styles */
-        .dropdown {
-            position: relative;
-        }
+    /* Dropdown styles */
+    .dropdown {
+        position: relative;
+    }
 
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #0271ab;
-            min-width: 180px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            padding: 0;
-            margin: 5px;
-            left: -35px;
-            list-style: none;
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #0271ab;
+        min-width: 180px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        padding: 0;
+        margin: 5px;
+        left: -35px;
+        list-style: none;
 
-            /* <- tambahkan border */
-        }
+        /* <- tambahkan border */
+    }
 
-        .dropdown-menu li a {
-            color: #fff !important;
-            /* pastikan warnanya terlihat */
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+    .dropdown-menu li a {
+        color: #fff !important;
+        /* pastikan warnanya terlihat */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
 
-            font-weight: bold;
-            /* opsional biar lebih terlihat */
-        }
+        font-weight: bold;
+        /* opsional biar lebih terlihat */
+    }
 
-        .dropdown-menu li a:hover {
-            background-color: #e6c200;
-            color: #145375;
-        }
+    .dropdown-menu li a:hover {
+        background-color: #e6c200;
+        color: #145375;
+    }
 
 
-        .arrow {
-            font-size: 12px;
-            margin-left: 5px;
-        }
+    .arrow {
+        font-size: 12px;
+        margin-left: 5px;
+    }
 
         .container {
             max-width: 1100px;
@@ -227,41 +229,40 @@ $conn->close();
             padding: 0;
             width: 100%;
         }
-        
     </style>
 </head>
 <script>
-    function confirmLogout() {
-        if (confirm("Apakah kamu yakin ingin keluar?")) {
-            window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
-        }
+function confirmLogout() {
+    if (confirm("Apakah kamu yakin ingin keluar?")) {
+        window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
     }
+}
 
-    function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active');
-    }
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+}
 
-    function toggleDropdown(event) {
-        event.preventDefault(); // supaya gak reload atau pergi ke #
-        const dropdown = event.currentTarget.nextElementSibling;
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
+function toggleDropdown(event) {
+    event.preventDefault(); // supaya gak reload atau pergi ke #
+    const dropdown = event.currentTarget.nextElementSibling;
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
 
-    function toggleDropdown(event) {
-        event.preventDefault();
-        const link = event.currentTarget;
-        const dropdown = link.nextElementSibling;
-        const arrow = link.querySelector('#arrow');
+function toggleDropdown(event) {
+    event.preventDefault();
+    const link = event.currentTarget;
+    const dropdown = link.nextElementSibling;
+    const arrow = link.querySelector('#arrow');
 
-        const isOpen = dropdown.style.display === 'block';
-        dropdown.style.display = isOpen ? 'none' : 'block';
-        arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
-    }
+    const isOpen = dropdown.style.display === 'block';
+    dropdown.style.display = isOpen ? 'none' : 'block';
+    arrow.innerHTML = isOpen ? '&#9660;' : '&#9650;'; // ▼ / ▲
+}
 
 
     // Tutup dropdown kalau klik di luar menu
-    document.addEventListener('click', function (event) {
+    document.addEventListener('click', function(event) {
         const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         dropdownMenus.forEach(menu => {
             if (!menu.parentElement.contains(event.target)) {
@@ -307,12 +308,19 @@ $conn->close();
         <!-- Form Tambah Jadwal -->
         <form action="" method="post">
             <label for="siswa_id">Siswa:</label>
-            <select name="siswa_id" id="siswa_id" class="select2" required>
-                <option value="" disabled selected>Pilih Siswa</option>
+            <select name="siswa_id[]" id="siswa_id" class="select2" multiple required>
                 <?php while ($row = $siswa_result->fetch_assoc()) { ?>
-                    <option value="<?= $row['siswa_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
+                <option value="<?= $row['siswa_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
                 <?php } ?>
             </select>
+            <!-- Area untuk menampilkan nama siswa yang dipilih -->
+            <div id="selected-siswa-list" style="margin-top:10px; padding:10px; background:#eef5ff; border-radius:5px;">
+                <strong>Siswa dipilih:</strong>
+                <ul id="selected-siswa-ul" style="padding-left: 20px; list-style: none;"></ul>
+            </div>
+
+
+
 
             <label for="tanggal">Tanggal:</label>
             <input type="date" name="tanggal" required>
@@ -336,10 +344,9 @@ $conn->close();
                     required>
                     <option value="" disabled selected>Pilih Pengajar</option>
                     <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
-                        <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
+                    <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
                     <?php } ?>
                 </select>
-
                 <button type="submit">Tambah Jadwal</button>
         </form>
 
@@ -380,7 +387,7 @@ $conn->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Inisialisasi Select2
             $('.select2').select2({
                 placeholder: "Pilih...",
@@ -388,6 +395,5 @@ $conn->close();
             });
         });
     </script>
-
 </body>
 </html>
