@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");

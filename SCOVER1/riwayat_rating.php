@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'logout_notification.php';
 // Informasi koneksi database
 $host = "localhost";
 $user = "root";

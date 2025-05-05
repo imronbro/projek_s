@@ -269,3 +269,98 @@
     margin: 10px auto; /* Posisikan tombol di tengah */
   }
 }
+
+/* Notifikasi Pop-up */
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  color: #145375;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none; /* Default: disembunyikan */
+  text-align: center;
+  width: 300px;
+  animation: slideIn 0.3s ease forwards; /* Animasi muncul */
+}
+
+.notification.hide {
+  animation: slideOut 0.3s ease forwards; /* Animasi menghilang */
+}
+
+.notification p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Tombol di dalam notifikasi */
+.notification-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.notification-buttons .btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none; /* Hilangkan garis bawah */
+}
+
+/* Tombol Batal */
+.notification-buttons .btn-secondary {
+  background-color: #145375;
+  color: white;
+}
+
+.notification-buttons .btn-secondary:hover {
+  background-color: #e6c200;
+  color: #145375;
+}
+
+/* Tombol Keluar */
+.notification-buttons .btn-danger {
+  background-color: #e74c3c; /* Warna merah */
+  color: white;
+  border: none;
+}
+
+.notification-buttons .btn-danger:hover {
+  background-color: #c0392b; /* Warna merah lebih gelap saat hover */
+  transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+/* Animasi untuk notifikasi pop-up */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%); /* Mulai sedikit di atas posisi tengah */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Berakhir di posisi tengah */
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* Mulai di posisi tengah */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(
+      -50%,
+      -60%
+    ); /* Menghilang sedikit di atas posisi tengah */
+  }
+}

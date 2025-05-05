@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
+date_default_timezone_set('Asia/Jakarta'); // Sesuaikan dengan zona waktu Anda
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");

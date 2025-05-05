@@ -6,13 +6,15 @@ function toggleMenu() {
 }
 
 function confirmLogout() {
-  if (confirm("Apakah Anda yakin ingin keluar?")) {
-    window.location.href = "logout.php";
-  }
+  const notification = document.getElementById("logout-notification");
+  notification.classList.remove("hide"); // Hapus kelas "hide" jika ada
+  notification.style.display = "block"; // Tampilkan notifikasi
 }
 
-function confirmLogout() {
-  if (confirm("Apakah Anda yakin ingin keluar?")) {
-    window.location.href = "logout.php";
-  }
+function cancelLogout() {
+  const notification = document.getElementById("logout-notification");
+  notification.classList.add("hide"); // Tambahkan kelas "hide" untuk animasi keluar
+  setTimeout(() => {
+    notification.style.display = "none"; // Sembunyikan notifikasi setelah animasi selesai
+  }, 300); // Waktu harus sesuai dengan durasi animasi slideOut (0.3s)
 }

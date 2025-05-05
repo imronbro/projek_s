@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 // Pastikan pengajar sudah login
 if (!isset($_SESSION['user_email'])) {

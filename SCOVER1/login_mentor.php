@@ -1,6 +1,7 @@
 <?php
 session_start();
-include 'koneksi.php'; // Koneksi database
+include 'koneksi.php';
+include 'logout_notification.php';
 
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
