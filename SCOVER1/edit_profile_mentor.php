@@ -179,6 +179,17 @@ if (!$data) {
         color: #145375;
     }
 
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-weight: bold;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 5px;
+        cursor: pointer;
+    }
+
     @media (max-width: 768px) {
         .container {
             padding: 20px;
