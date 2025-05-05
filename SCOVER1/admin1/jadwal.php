@@ -227,6 +227,7 @@ $conn->close();
             padding: 0;
             width: 100%;
         }
+        
     </style>
 </head>
 <script>
@@ -260,7 +261,7 @@ $conn->close();
 
 
     // Tutup dropdown kalau klik di luar menu
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         const dropdownMenus = document.querySelectorAll('.dropdown-menu');
         dropdownMenus.forEach(menu => {
             if (!menu.parentElement.contains(event.target)) {
@@ -331,7 +332,8 @@ $conn->close();
             <input type="text" name="mata_pelajaran" required>
 
 
-            <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id" class="select2" required>
+            <label for="pengajar_id">Pengajar:</label\><select name="pengajar_id" id="pengajar_id" class="select2"
+                    required>
                     <option value="" disabled selected>Pilih Pengajar</option>
                     <?php while ($row = $pengajar_result->fetch_assoc()) { ?>
                         <option value="<?= $row['pengajar_id'] ?>"><?= htmlspecialchars($row['full_name']) ?></option>
@@ -378,7 +380,7 @@ $conn->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Inisialisasi Select2
             $('.select2').select2({
                 placeholder: "Pilih...",
@@ -386,6 +388,6 @@ $conn->close();
             });
         });
     </script>
-</body>
 
+</body>
 </html>

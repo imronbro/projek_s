@@ -9,15 +9,19 @@ if (!isset($_SESSION['mentor_id'])) {
 
 $mentor_id = $_SESSION['mentor_id'];
 
+// Query untuk mengambil jadwal siswa dan mengurutkannya berdasarkan tanggal
 $query = "SELECT js.id, js.tanggal, js.sesi, js.mata_pelajaran, s.full_name as nama_siswa 
           FROM jadwal_siswa js
           JOIN siswa s ON js.siswa_id = s.siswa_id
-          WHERE js.pengajar_id = ?";
+          WHERE js.pengajar_id = ?
+          ORDER BY js.tanggal DESC"; // Mengurutkan berdasarkan tanggal (ascending)
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $mentor_id);
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
