@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $query = "SELECT full_name, kelas, alamat, gambar, sekolah, nohp FROM siswa";
@@ -18,6 +19,7 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor - Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         * {
@@ -158,12 +160,13 @@ $result = mysqli_query($conn, $query);
         </div>
         <h1 class="title">Dashboard Mentor</h1>
         <ul class="nav-links">
-            <li><a href="home_mentor.php">Jurnal</a></li>
-            <li><a href="siswa.php" class="active">Siswa</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="kuis.php">Kuis</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="profile_mentor.php">Profil</a></li>
+        <li><a href="home_mentor.php">Jurnal</a></li>
+      <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php" class="active">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
+      <li><a href="profile_mentor.php" >Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -186,7 +189,7 @@ $result = mysqli_query($conn, $query);
             <?php if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "uploads1/default.png";
+                    $defaultImage = "uploads1/default.jpg"; // Gambar default
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
             ?>
                     <div class="col-md-4 mb-4">

@@ -88,6 +88,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         * {
@@ -191,6 +192,25 @@ $conn->close();
             background-color: #e6c200;
             color: #145375;
         }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .notification-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -213,6 +233,14 @@ $conn->close();
         <span></span><span></span><span></span>
     </div>
 </nav>
+
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn">Keluar</a>
+    </div>
+</div>
 
 <div class="container">
     <h2>Presensi Mentor</h2>
@@ -283,8 +311,6 @@ $conn->close();
         </div>
     </form>
 </div>
-
-<script src="js/logout.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script>
     function toggleUpload() {
@@ -292,6 +318,7 @@ $conn->close();
         document.getElementById("upload-container").style.display = (status === "Hadir") ? "block" : "none";
         document.getElementById("komentar-container").style.display = (status !== "Hadir") ? "block" : "none";
     }
+
 
     // Panggil saat halaman pertama kali dimuat
     window.onload = toggleUpload;

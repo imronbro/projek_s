@@ -223,12 +223,12 @@ $conn->close();
         margin-left: 5px;
     }
 
-    .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0;
-        width: 100%;
-    }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+        }
     </style>
 </head>
 <script>
@@ -261,15 +261,15 @@ function toggleDropdown(event) {
 }
 
 
-// Tutup dropdown kalau klik di luar menu
-document.addEventListener('click', function(event) {
-    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-    dropdownMenus.forEach(menu => {
-        if (!menu.parentElement.contains(event.target)) {
-            menu.style.display = 'none';
-        }
+    // Tutup dropdown kalau klik di luar menu
+    document.addEventListener('click', function(event) {
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        dropdownMenus.forEach(menu => {
+            if (!menu.parentElement.contains(event.target)) {
+                menu.style.display = 'none';
+            }
+        });
     });
-});
 </script>
 
 <body>
@@ -387,62 +387,13 @@ document.addEventListener('click', function(event) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/js/select2.min.js"></script>
     <script>
-    $(document).ready(function() {
-        // Inisialisasi Select2
-        $('.select2').select2({
-            placeholder: "Pilih...",
-            allowClear: true
-        });
-    });
-    </script>
-    <script>
-$(document).ready(function () {
-    // Inisialisasi Select2
-    $('.select2').select2({
-        placeholder: "Pilih...",
-        allowClear: true
-    });
-
-    // Fungsi untuk memperbarui daftar siswa terpilih
-    function updateSelectedList() {
-        var selectedOptions = $('#siswa_id').select2('data');
-        var listContainer = $('#selected-siswa-ul');
-        listContainer.empty();
-
-        if (selectedOptions.length === 0) {
-            listContainer.append('<li><i>Tidak ada siswa dipilih</i></li>');
-        } else {
-            selectedOptions.forEach(function (option) {
-                const siswaId = option.id;
-                const siswaName = option.text;
-                const listItem = $(`
-                    <li style="margin-bottom:5px;">
-                        ${siswaName}
-                        <span class="remove-siswa" data-id="${siswaId}" style="color:red; cursor:pointer; margin-left:10px;">❌</span>
-                    </li>
-                `);
-                listContainer.append(listItem);
+        $(document).ready(function() {
+            // Inisialisasi Select2
+            $('.select2').select2({
+                placeholder: "Pilih...",
+                allowClear: true
             });
-        }
-    }
-
-    // Update list saat pemilihan berubah
-    $('#siswa_id').on('change', updateSelectedList);
-
-    // Hapus siswa dari pilihan saat ❌ diklik
-    $('#selected-siswa-ul').on('click', '.remove-siswa', function () {
-        const idToRemove = $(this).data('id').toString(); // pastikan string
-        let selected = $('#siswa_id').val() || [];
-        selected = selected.filter(id => id !== idToRemove);
-        $('#siswa_id').val(selected).trigger('change');
-    });
-
-    // Inisialisasi awal (jika ada data terisi sebelumnya)
-    updateSelectedList();
-});
-</script>
-
-
+        });
+    </script>
 </body>
-
 </html>

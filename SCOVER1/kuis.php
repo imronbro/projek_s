@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");
@@ -58,6 +59,7 @@ mysqli_close($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor - Kuis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
     * {
@@ -180,11 +182,12 @@ mysqli_close($conn);
         <h1 class="title">Dashboard Mentor</h1>
         <ul class="nav-links">
             <li><a href="home_mentor.php">Jurnal</a></li>
-            <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="kuis.php" class="active">Kuis</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="profile_mentor.php">Profil</a></li>
+            <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php" class="active" >Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
+        <li><a href="profile_mentor.php">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -213,7 +216,7 @@ mysqli_close($conn);
 
         <a href="riwayat_kuis.php" class="back-button">Riwayat Kuis</a>
     </div>
-
+    <script src="js/menu.js" defer></script>
     <script>
     const siswaList = <?php echo json_encode($siswaList); ?>;
     const searchInput = document.getElementById('searchStudent');

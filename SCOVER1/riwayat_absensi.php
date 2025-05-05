@@ -1,6 +1,8 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Jakarta');
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");
@@ -44,8 +46,26 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Absensi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+                * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; /* Gunakan berat font yang sesuai */
+        }
+
+        label, input, select, textarea, .btn {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
+        }
+
         .container {
             margin-top: 100px; /* Tambahkan margin agar konten tidak tertutup navbar */
             max-width: 1000px;
@@ -90,32 +110,31 @@ $result = $stmt->get_result();
             color: #145375;
         }
 
-        .btn-edit {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
+        .btn-edit, .btn-delete {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 14px;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 12px;
+            color: white;
             transition: 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-edit {
+            background-color: #4CAF50; /* Warna hijau untuk tombol Edit */
         }
 
         .btn-edit:hover {
-            background-color: #45a049;
+            background-color: #45a049; /* Warna hijau lebih gelap saat hover */
         }
 
         .btn-delete {
-            background-color: #e74c3c;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 12px;
-            transition: 0.3s ease;
+            background-color: #e74c3c; /* Warna merah untuk tombol Hapus */
         }
 
         .btn-delete:hover {
-            background-color: #c0392b;
+            background-color: #c0392b; /* Warna merah lebih gelap saat hover */
         }
 
         /* Responsif untuk layar kecil */
@@ -132,6 +151,15 @@ $result = $stmt->get_result();
                 font-size: 12px;
                 padding: 8px;
             }
+
+            .btn-edit, .btn-delete {
+                font-size: 12px; /* Ukuran font lebih kecil */
+                padding: 6px 10px; /* Padding lebih kecil */
+            }
+
+            td small {
+                font-size: 10px; /* Ukuran font untuk sisa waktu */
+            }
         }
 
         /* Responsif untuk layar sangat kecil */
@@ -143,6 +171,15 @@ $result = $stmt->get_result();
             table th, table td {
                 font-size: 10px;
                 padding: 6px;
+            }
+
+            .btn-edit, .btn-delete {
+                font-size: 10px; /* Ukuran font lebih kecil lagi */
+                padding: 5px 8px; /* Padding lebih kecil lagi */
+            }
+
+            td small {
+                font-size: 9px; /* Ukuran font untuk sisa waktu */
             }
         }
     </style>
@@ -192,6 +229,7 @@ $result = $stmt->get_result();
                         $waktu_sekarang = time();
                         $dapat_diedit = ($waktu_sekarang - $waktu_presensi) <= $batas_edit;
                         ?>
+
                         <tr>
                             <td><?= htmlspecialchars($row['nama_siswa']) ?></td>
                             <td><?= htmlspecialchars($row['kelas']) ?></td>
@@ -204,8 +242,15 @@ $result = $stmt->get_result();
                                 <?php if ($dapat_diedit): ?>
                                     <a href="edit_absensi.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
                                     <a href="hapus_absensi.php?id=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</a>
+                                    <br>
+                                    <small style="color: #555;">Sisa waktu: 
+                                        <?php
+                                        $sisa_waktu = $batas_edit - ($waktu_sekarang - $waktu_presensi);
+                                        echo gmdate("i menit s detik", $sisa_waktu);
+                                        ?>
+                                    </small>
                                 <?php else: ?>
-                                    <span>Tidak Dapat Diedit</span>
+                                    <span>Tidak Dapat Diedit atau Dihapus</span>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -218,5 +263,6 @@ $result = $stmt->get_result();
             </tbody>
         </table>
     </div>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 // Ambil data user berdasarkan email dari session
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
@@ -25,6 +26,7 @@ if ($email) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Pengguna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         * {
@@ -141,7 +143,7 @@ if ($email) {
             if (!empty($data['gambar']) && file_exists($imagePath)) {
                 echo "<img src='$imagePath' alt='Foto Profil' class='profile-img'>";
             } else {
-                echo "<img src='uploads/default.png' alt='Foto Profil Default' class='profile-img'>";
+                echo "<img src='uploads/default.jpg' alt='Foto Profil Default' class='profile-img'>";
             }
             ?>
         </div>

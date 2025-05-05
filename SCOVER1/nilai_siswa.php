@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 // Pastikan siswa sudah login
 if (!isset($_SESSION['user_email'])) {
@@ -57,6 +58,7 @@ $tahun_result = $conn->query($tahun_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nilai Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
 

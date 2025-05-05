@@ -289,15 +289,13 @@ document.addEventListener('click', function(event) {
             menu.style.display = 'none';
         }
     });
-<<<<<<< HEAD
+
     function confirmLogout() {
             if (confirm("Apakah kamu yakin ingin keluar?")) {
                 window.location.href = "logout.php"; // ganti sesuai nama file logout-mu
             }
         }
-=======
 });
->>>>>>> d818687959853024a73938e523f56ffe8affb8d8
 </script>
 
 <body>

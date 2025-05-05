@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'logout_notification.php';
 // Informasi koneksi database
 $host = "localhost";
 $user = "root";
@@ -56,6 +56,7 @@ if ($result_pengajar->num_rows > 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riwayat Rating - <?php echo htmlspecialchars($pengajar_name); ?></title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/navbar.css">
   <style>
     * {
@@ -146,12 +147,13 @@ if ($result_pengajar->num_rows > 0) {
     </div>
     <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
-      <li><a href="home_mentor.php">Presensi</a></li>
-      <li><a href="siswa.php">Siswa</a></li>
-      <li><a href="jadwal.php">Jadwal</a></li>
-      <li><a href="jurnal.php">Jurnal</a></li>
+      <li><a href="home_mentor.php">Jurnal</a></li>
+      <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
       <li><a href="profile_mentor.php" class="active">Profil</a></li>
-      <li><a href="kontak.php">Kontak</a></li>
       <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
     <div class="menu-icon" onclick="toggleMenu()">

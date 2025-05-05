@@ -1,6 +1,8 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
+date_default_timezone_set('Asia/Jakarta'); // Sesuaikan dengan zona waktu Anda
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");
@@ -42,9 +44,13 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Presensi Mentor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        /* Container */
+              * {
+            box-sizing: border-box;
+        }  
+        /* Container untuk tabel */
         .container {
             max-width: 100%;
             margin: auto;
@@ -61,6 +67,7 @@ $result = $stmt->get_result();
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            min-width: 800px; /* Pastikan tabel memiliki lebar minimum */
         }
 
         table th, table td {
@@ -170,39 +177,28 @@ $result = $stmt->get_result();
 
         /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                padding-top: 100px; /* Tambahkan padding atas untuk menghindari tumpang tindih dengan navbar */
+            }
+
             table th, table td {
                 font-size: 12px;
                 padding: 8px;
             }
-
-            .btn-edit, .btn-view, .btn-delete, .btn-action {
-                font-size: 12px;
-                padding: 6px 10px;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
+        }
 
         /* Responsif untuk layar sangat kecil */
         @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                padding-top: 100px; /* Tambahkan padding atas untuk menghindari tumpang tindih dengan navbar */
+            }
+
             table th, table td {
                 font-size: 10px;
                 padding: 5px;
             }
-
-            .btn-edit, .btn-view, .btn-delete, .btn-action {
-                font-size: 10px;
-                padding: 5px 8px;
-            }
-
-            .container {
-                padding: 10px;
-                padding-top:40px;
-            }
-
-
         }
     </style>
 </head>
@@ -214,6 +210,7 @@ $result = $stmt->get_result();
     <h1 class="title">Riwayat Presensi Mentor</h1>
     <ul class="nav-links">
         <li><a href="home_mentor.php" class="active">Jurnal</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>

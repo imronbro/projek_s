@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: loginadmin.php");
@@ -25,6 +26,7 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
@@ -235,7 +237,7 @@ $result = mysqli_query($conn, $query);
             <?php if (mysqli_num_rows($result) > 0) { ?>
                 <?php while ($row = mysqli_fetch_assoc($result)) {
                     $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "../uploads1/default.png";
+                    $defaultImage = "uploads1/default.jpg";
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 
                 ?>
@@ -262,6 +264,7 @@ $result = mysqli_query($conn, $query);
             <?php } ?>
         </div>
     </div>
+    <script src="js/menu.js" defer></script>
 </body>
 
 </html>

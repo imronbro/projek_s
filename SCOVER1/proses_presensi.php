@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");
@@ -56,14 +57,22 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presensi Siswa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+                * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
         .container {
             margin-top: 100px; /* Tambahkan margin agar konten tidak tertutup navbar */
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            padding: 30px;
+            padding: 20px;
             background-color: #f9f9f9;
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -73,6 +82,8 @@ $conn->close();
             text-align: center;
             margin-bottom: 30px;
             color: #145375;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600; /* Gunakan berat font yang sesuai */
         }
 
         form {
@@ -84,6 +95,8 @@ $conn->close();
         label {
             font-weight: bold;
             color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         select, input[type="text"], textarea {
@@ -93,6 +106,8 @@ $conn->close();
             font-size: 14px;
             width: 100%; /* Pastikan elemen input memenuhi lebar kontainer */
             box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran elemen */
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         textarea {
@@ -132,6 +147,8 @@ $conn->close();
             transition: 0.3s ease;
             text-decoration: none;
             text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400; /* Berat font normal */
         }
 
         .btn:hover {
@@ -242,7 +259,7 @@ $conn->close();
             </div>
         </form>
     </div>
-
+    <script src="js/menu.js" defer></script>
     <script>
         const selectedSiswa = {}; // Objek untuk menyimpan siswa yang dipilih
 

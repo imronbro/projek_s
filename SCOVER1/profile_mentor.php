@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
@@ -37,6 +38,7 @@ if ($email) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Mentor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
     * {
@@ -53,6 +55,7 @@ if ($email) {
         overflow-x: hidden;
     }
 
+    /* Container */
     .container {
         max-width: 900px;
         margin: 0 auto;
@@ -65,23 +68,27 @@ if ($email) {
         }
     }
 
+    /* Card */
     .card {
         background-color: #145375;
         color: white;
         border: 2px solid white;
         display: flex;
-        flex-direction: row;
+        flex-direction: row; /* Default: Foto dan info dalam satu baris */
         align-items: center;
         padding: 20px;
         border-radius: 10px;
         gap: 20px;
     }
 
-    .profile-section {
-        text-align: center;
-        margin-right: 20px;
+    @media (max-width: 768px) {
+        .card {
+            flex-direction: column; /* Ubah menjadi kolom pada layar kecil */
+            text-align: center; /* Pusatkan konten */
+        }
     }
 
+    /* Foto Profil */
     .profile-img {
         width: 150px;
         height: 150px;
@@ -92,14 +99,43 @@ if ($email) {
         border: 3px solid #faaf1d;
     }
 
-    .profile-info {
-        flex-grow: 1;
-    }
-
+    /* Rating */
     .rating {
         font-size: 18px;
         color: #ffd700;
         margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .rating {
+            margin-top: 20px; /* Tambahkan jarak di bawah foto profil */
+            font-size: 16px; /* Ukuran font lebih kecil */
+        }
+    }
+
+    /* Bintang */
+    .star {
+        font-size: 24px;
+        display: inline-block;
+    }
+
+    .star.full {
+        color: #ffd700;
+    }
+
+    .star.empty {
+        color: #d3d3d3;
+    }
+
+    .star.partial {
+        background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
     }
 
     h2 {
@@ -139,26 +175,6 @@ if ($email) {
         background-color: #145375;
         color: #fff;
     }
-
-    .star {
-        font-size: 24px;
-        display: inline-block;
-    }
-
-    .star.full {
-        color: #ffd700;
-    }
-
-    .star.empty {
-        color: #d3d3d3;
-    }
-
-    .star.partial {
-        background: linear-gradient(to right, #ffd700 var(--fill), #d3d3d3 var(--fill));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-    }
     </style>
 </head>
 
@@ -170,10 +186,11 @@ if ($email) {
         <h1 class="title">Dashboard Mentor</h1>
         <ul class="nav-links">
             <li><a href="home_mentor.php">Jurnal</a></li>
-            <li><a href="siswa.php">Siswa</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
-            <li><a href="kuis.php">Kuis</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php">Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
             <li><a href="profile_mentor.php" class="active">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
@@ -192,7 +209,7 @@ if ($email) {
             <?php 
             } else { 
             ?>
-            <img src="uploads1/default.png" alt="Foto Profil Default" class="profile-img">
+            <img src="uploads1/default.jpg" alt="Foto Profil Default" class="profile-img">
             <?php 
             } 
             ?>
@@ -228,8 +245,6 @@ if ($email) {
         <a href="edit_profile_mentor.php" class="btn btn-secondary">Edit Profil</a>
         <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
     </div>
-    <script src="js/logout.js" defer></script>
-    <script src="js/home.js" defer></script>
     <script src="js/menu.js" defer></script>
 </body>
 

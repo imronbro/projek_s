@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");
@@ -28,6 +29,7 @@ $result = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <title>Riwayat Kuis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
@@ -113,9 +115,10 @@ $result = $stmt->get_result();
     <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
         <li><a href="home_mentor.php">Jurnal</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
-        <li><a href="kuis.php" class="active">Kuis</a></li>
+        <li><a href="kuis.php" calss="active">Kuis</a></li>
         <li><a href="nilai.php">Nilai</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 // Pastikan pengajar sudah login
 if (!isset($_SESSION['user_email'])) {
@@ -42,6 +43,7 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Riwayat Penilaian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
@@ -104,12 +106,12 @@ $result = $stmt->get_result();
         <h1 class="title">Dashboard Mentor</h1>
     <ul class="nav-links">
         <li><a href="home_mentor.php">Presensi</a></li>
+        <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
         <li><a href="kuis.php">Kuis</a></li>
         <li><a href="nilai.php" class="active">Nilai</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
-        <li><a href="kontak_mentor.php">Kontak</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
     </ul>
     <div class="menu-icon" onclick="toggleMenu()">
