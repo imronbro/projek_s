@@ -2,7 +2,10 @@
 session_start();
 include 'koneksi.php';
 // Koneksi database
-
+if (!isset($_SESSION['user_email'])) {
+    header("Location: loginadmin.php");
+    exit();
+}
 // Ambil filter dan search dari GET request
 $tanggal = $_GET['tanggal'] ?? date('Y-m-d');
 $search = $_GET['search'] ?? '';

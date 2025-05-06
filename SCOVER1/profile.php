@@ -2,7 +2,10 @@
 session_start();
 include 'koneksi.php';
 include 'logout_notification.php';
-
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login.php");
+    exit();
+}
 // Ambil data user berdasarkan email dari session
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 

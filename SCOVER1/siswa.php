@@ -2,7 +2,10 @@
 session_start();
 include 'koneksi.php';
 include 'logout_notification.php';
-
+if (!isset($_SESSION['user_email'])) {
+    header("Location: login_mentor.php");
+    exit();
+}
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $query = "SELECT full_name, kelas, alamat, gambar, sekolah, nohp FROM siswa";
 if (!empty($search)) {

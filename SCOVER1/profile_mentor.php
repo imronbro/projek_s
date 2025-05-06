@@ -2,7 +2,10 @@
 session_start();
 include 'koneksi.php';
 include 'logout_notification.php';
-
+if (!isset($_SESSION['user_email'])) {
+  header("Location: login_mentor.php");
+  exit();
+}
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 

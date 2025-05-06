@@ -3,7 +3,10 @@ $conn = new mysqli("localhost", "root", "", "scover");
 if ($conn->connect_error) {
     die("Koneksi gagal: " . $conn->connect_error);
 }
-
+if (!isset($_SESSION['user_email'])) {
+    header("Location: loginadmin.php");
+    exit();
+}
 // Ambil keyword pencarian jika ada
 $keyword = isset($_GET['keyword']) ? $conn->real_escape_string($_GET['keyword']) : "";
 
