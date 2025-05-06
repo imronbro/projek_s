@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php'; // Koneksi database
+include '../koneksi.php'; // Koneksi database
 
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -28,13 +28,75 @@ if (isset($_POST['login'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+<style>
+    body {
+        font-family: 'poppins';
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f4f4f4;
+        color: #fff;
+    }
+
+    .input-field {
+        margin-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .input-with-icon {
+        position: relative;
+    }
+
+
+
+    .input-with-icon input {
+        width: 100%;
+        padding: 10px 10px 10px 38px;
+        /* padding kiri untuk ruang ikon */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    .input-with-icon .icon-left {
+        position: absolute;
+        left: 12px;
+        top: 34%;
+        transform: translateY(-50%);
+        color: #145375;
+        font-size: 16px;
+    }
+
+    .icon-right {
+        position: absolute;
+        right: 12px;
+        top: 34%;
+        transform: translateY(-50%);
+        color: #145375;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+
 <body>
     <style> 
     body{
@@ -53,12 +115,23 @@ if (isset($_POST['login'])) {
                 <h2>Masuk</h2>
                 <p>Masuk jika Anda sudah memiliki akun.</p>
                 <form method="POST" action="">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Masukan Email" required>
+                    <div class="input-field">
+                        <label for="email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope icon-left"></i>
+                            <input type="email" id="email" name="email" placeholder="Masukan Email" required>
+                        </div>
+                    </div>
 
-                    <label for="password">Kata Sandi</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required>
+                    <div class="input-field">
+                        <label for="password">Kata Sandi</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock icon-left"></i>
+                            <div class="password-wrapper">
+                                <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required>
+                            </div>
+                            <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
+                        </div>
                     </div>
                     <div class="forgot">
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
@@ -71,9 +144,10 @@ if (isset($_POST['login'])) {
     </div>
     <script>
     document.querySelector('.icon').addEventListener('click', function() {
-        window.location.href = '../index.php';
+        window.location.href = 'index.php';
     });
 </script>
 
 </body>
+
 </html>
