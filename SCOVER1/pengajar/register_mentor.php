@@ -132,7 +132,7 @@ if (isset($_POST['register'])) {
         <!-- Form Section -->
         <div class="login-box">
             <div class="logo-container">
-                <a href="index.php"> <!-- Tautkan logo ke halaman tampilan.php -->
+                <a href="../index.php"> <!-- Tautkan logo ke halaman tampilan.php -->
                     <img src="images/foto4.png" alt="Logo Asrama Kita" class="logo">
                 </a>
             </div>
@@ -182,7 +182,7 @@ if (isset($_POST['register'])) {
         <button type="submit" class="btn" name="register">Daftar</button>
         </form>
 
-        <p class="login-link">Sudah punya akun? <a href="login.php">Masuk</a></p>
+        <p class="login-link">Sudah punya akun? <a href="login_mentor.php">Masuk</a></p>
     </div>
     </div>
     <script>

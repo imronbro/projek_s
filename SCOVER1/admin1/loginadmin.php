@@ -144,7 +144,7 @@ if (isset($_POST['login'])) {
     </div>
     <script>
     document.querySelector('.icon').addEventListener('click', function() {
-        window.location.href = 'index.php';
+        window.location.href = '../index.php';
     });
 </script>
 

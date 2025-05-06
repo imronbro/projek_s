@@ -67,7 +67,7 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="registerDropdown">
                         <li><a class="dropdown-item" href="siswa/register.php">Register Siswa</a></li>
-                        <li><a class="dropdown-item" href="siswa/register_mentor.php">Register Pengajar</a></li>
+                        <li><a class="dropdown-item" href="pengajar/register_mentor.php">Register Pengajar</a></li>
                     </ul>
                 </div>
             </div>
