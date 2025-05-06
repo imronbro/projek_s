@@ -3,7 +3,7 @@ session_start();
 include 'koneksi.php';
 
 if (!isset($_SESSION['user_email'])) {
-    header("Location: login.php");
+    header("Location: login_mentor.php");
     exit();
 }
 

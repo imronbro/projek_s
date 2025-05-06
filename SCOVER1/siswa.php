@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
-
+include 'logout_notification.php';
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $query = "SELECT full_name, kelas, alamat, gambar, sekolah, nohp FROM siswa";

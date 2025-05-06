@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 // Ambil data user berdasarkan email dari session
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;

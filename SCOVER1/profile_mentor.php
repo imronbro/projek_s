@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
+include 'logout_notification.php';
 
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
