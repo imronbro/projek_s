@@ -51,8 +51,8 @@
                         Login
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="loginDropdown">
-                        <li><a class="dropdown-item" href="login.php">Login Siswa</a></li>
-                        <li><a class="dropdown-item" href="login_mentor.php">Login Pengajar</a></li>
+                        <li><a class="dropdown-item" href="siswa/login.php">Login Siswa</a></li>
+                        <li><a class="dropdown-item" href="pengajar/login_mentor.php">Login Pengajar</a></li>
                         <li><a class="dropdown-item" href="admin1/loginadmin.php">Login Admin</a></li>
                     </ul>
                 </div>
@@ -63,8 +63,8 @@
                         Register
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="registerDropdown">
-                        <li><a class="dropdown-item" href="register.php">Register Siswa</a></li>
-                        <li><a class="dropdown-item" href="register_mentor.php">Register Pengajar</a></li>
+                        <li><a class="dropdown-item" href="siswa/register.php">Register Siswa</a></li>
+                        <li><a class="dropdown-item" href="siswa/register_mentor.php">Register Pengajar</a></li>
                     </ul>
                 </div>
             </div>

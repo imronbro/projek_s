@@ -1,0 +1,166 @@
+body {
+  background-color: #003049;
+  color: #fabe49;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animasi Dasar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animasi untuk Konten */
+.container {
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk container */
+}
+
+h2 {
+  color: #faaf1d;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  animation: scaleUp 1s ease-in-out; /* Animasi pembesaran heading */
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 10px;
+  scroll-behavior: smooth;
+  animation: slideIn 1s ease-in-out; /* Animasi slide-in untuk baris */
+}
+
+.row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.row::-webkit-scrollbar-thumb {
+  background-color: #faaf1d;
+  border-radius: 10px;
+}
+
+.row::-webkit-scrollbar-track {
+  background-color: #145375;
+}
+
+.card {
+  background-color: #145375;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  flex: 0 0 auto; /* Membuat elemen tidak meluas */
+  width: 250px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk kartu */
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Efek melayang saat hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #faaf1d;
+  margin-bottom: 15px;
+  animation: scaleUp 1s ease-in-out; /* Animasi pembesaran gambar profil */
+}
+
+.btn-whatsapp {
+  background-color: #faaf1d;
+  color: #003049;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk tombol */
+}
+
+.btn-whatsapp:hover {
+  background-color: #fabe49;
+  transform: scale(1.1); /* Efek pembesaran saat hover */
+}
+
+/* Gaya untuk Form Pencarian */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk form pencarian */
+}
+
+.search-input {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  font-size: 14px;
+  outline: none;
+  width: 300px;
+  transition: box-shadow 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk input */
+}
+
+.search-input:focus {
+  box-shadow: 0 0 8px #faaf1d; /* Efek fokus pada input */
+}
+
+.btn {
+  background-color: #faaf1d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 1s ease-in-out; /* Animasi fade-in untuk tombol */
+}
+
+.btn:hover {
+  background-color: #fabe49;
+  transform: scale(1.05); /* Efek pembesaran saat hover */
+}
