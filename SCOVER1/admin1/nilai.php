@@ -1,8 +1,7 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "scover");
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+session_start();
+include 'koneksi.php';
+
 if (!isset($_SESSION['user_email'])) {
     header("Location: loginadmin.php");
     exit();
@@ -35,6 +34,7 @@ $result = $conn->query($sql);
     <title>Data Nilai Siswa</title>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;

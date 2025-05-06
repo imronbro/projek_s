@@ -32,6 +32,7 @@ $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $def
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             

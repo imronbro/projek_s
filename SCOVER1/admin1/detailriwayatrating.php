@@ -25,6 +25,7 @@ $ratingQuery = mysqli_query($conn, "
     <meta charset="UTF-8">
     <title>Riwayat Rating dan Komentar</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
 

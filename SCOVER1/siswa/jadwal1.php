@@ -54,7 +54,9 @@ $conn->close();
 
             box-sizing: border-box;
         }
-        
+        body{
+            font-family: 'Poppins';
+        }
     </style>
 </head>
 
