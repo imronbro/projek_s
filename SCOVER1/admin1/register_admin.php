@@ -94,6 +94,11 @@ if (isset($_POST['register'])) {
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
+    <style>
+        body{
+            font-family: 'Poppins';
+        }
+    </style>
 <div class="login-container">
         <!-- Form Section -->
         <div class="login-box">

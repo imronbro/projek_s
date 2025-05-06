@@ -68,7 +68,7 @@ $tahun_result = $conn->query($tahun_query);
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;

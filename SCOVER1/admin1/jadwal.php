@@ -86,7 +86,7 @@ $conn->close();
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             background-color: #f4f4f4;
             color: #333;
             margin: 0;

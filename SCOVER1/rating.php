@@ -84,6 +84,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             box-sizing: border-box;
         }
+        body{
+            font-family: 'Poppins';
+        }
     </style>
 </head>
 

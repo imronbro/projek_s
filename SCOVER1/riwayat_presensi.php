@@ -74,7 +74,7 @@ $result = $stmt->get_result();
   <link rel="stylesheet" href="css/navbar.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins';
       /* Gunakan font yang sama dengan navbar */
       color: white;
       /* Warna teks default */

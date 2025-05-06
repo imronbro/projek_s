@@ -26,7 +26,7 @@ $gallery = [
     body {
         background: #f4f4f4;
         color: #fabe49;
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins";
         text-align: center;
         margin: 0;
         padding: 0;
