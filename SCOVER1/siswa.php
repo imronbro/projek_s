@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
+
 
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 $query = "SELECT full_name, kelas, alamat, gambar, sekolah, nohp FROM siswa";
@@ -150,6 +150,53 @@ $result = mysqli_query($conn, $query);
             background-color: #145375;
             color: #fff;
         }
+
+        .notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .notification-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bbb;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 
@@ -210,6 +257,14 @@ $result = mysqli_query($conn, $query);
                     <p class="text-danger">Siswa tidak ditemukan.</p>
                 </div>
             <?php } ?>
+        </div>
+    </div>
+
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
         </div>
     </div>
 

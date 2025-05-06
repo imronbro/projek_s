@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");
@@ -155,6 +154,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit" class="btn">Simpan Perubahan</button>
         </form>
+    </div>
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
     </div>
     <script src="js/menu.js" defer></script>
 </body>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
+
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 if ($email === null) {
@@ -189,6 +189,35 @@ input[type="file"] {
     font-size: 14px;
 }
 
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.notification-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
     </style>
 </head>
 <body>
@@ -249,6 +278,14 @@ input[type="file"] {
     </form>
 </div>
 
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
+    </div>
+</div>
+
 <script>
     document.getElementById('nohp').addEventListener('input', function (e) {
         let value = e.target.value;
@@ -260,6 +297,14 @@ input[type="file"] {
         }
         e.target.value = value;
     });
+
+    function confirmLogout() {
+        document.getElementById('logout-notification').style.display = 'block';
+    }
+
+    function cancelLogout() {
+        document.getElementById('logout-notification').style.display = 'none';
+    }
 </script>
 <script src="js/menu.js" defer></script>
 <script src="js/logout.js" defer></script>

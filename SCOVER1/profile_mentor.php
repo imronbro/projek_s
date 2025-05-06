@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
@@ -228,6 +227,23 @@ if ($email) {
   color: #fff; /* Warna teks saat hover */
 }
 
+/* Tombol Riwayat Rating */
+.riwayat-rating-btn {
+  background-color: #faaf1d; /* Warna latar belakang */
+  color: #145375; /* Warna teks */
+  padding: 10px 20px; /* Ruang di dalam tombol */
+  border-radius: 5px; /* Sudut melengkung */
+  font-weight: bold; /* Teks tebal */
+  text-decoration: none; /* Hilangkan garis bawah */
+  display: inline-block; /* Tampilkan sebagai tombol */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animasi transisi */
+}
+
+.riwayat-rating-btn:hover {
+  background-color: #145375; /* Warna latar belakang saat hover */
+  color: #fff; /* Warna teks saat hover */
+}
+
 /* Animasi untuk notifikasi pop-up */
 @keyframes slideIn {
   0% {
@@ -322,7 +338,14 @@ if ($email) {
             </div>
         </div>
         <a href="edit_profile_mentor.php" class="btn btn-secondary edit-profile-btn">Edit Profil</a>
-        <a href="riwayat_rating.php" class="btn btn-secondary">Riwayat Rating</a>
+        <a href="riwayat_rating.php" class="btn btn-secondary riwayat-rating-btn">Riwayat Rating</a>
+    </div>
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
     </div>
     <script src="js/menu.js" defer></script>
 </body>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: loginadmin.php");
@@ -262,6 +261,13 @@ $result = mysqli_query($conn, $query);
                     <p class="text-danger">Pengajar tidak ditemukan.</p>
                 </div>
             <?php } ?>
+        </div>
+    </div>
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
         </div>
     </div>
     <script src="js/menu.js" defer></script>

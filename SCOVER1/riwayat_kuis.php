@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");
@@ -105,7 +104,60 @@ $result = $stmt->get_result();
             background-color: #145375;
             color: #fff;
         }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .notification-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background-color: #e6e6e6;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d4d4d4;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+        }
     </style>
+    <script>
+        function confirmLogout() {
+            document.getElementById('logout-notification').style.display = 'block';
+        }
+
+        function cancelLogout() {
+            document.getElementById('logout-notification').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar">
@@ -159,6 +211,14 @@ $result = $stmt->get_result();
         </tbody>
     </table>
     <a href="kuis.php" class="back-button">Kembali</a>
+</div>
+
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
+    </div>
 </div>
 
 </body>

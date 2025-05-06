@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 if ($email === null) {
@@ -252,6 +251,13 @@ if (!$data) {
             <button type="submit" class="btn-primary">Simpan Perubahan</button>
             <a href="profile_mentor.php" class="btn btn-secondary">Kembali</a>
         </form>
+    </div>
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
     </div>
     <script src="js/logout.js" defer></script>
     <script src="js/home.js" defer></script>

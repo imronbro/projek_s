@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php'; 
-include 'logout_notification.php';
 
 date_default_timezone_set('Asia/Jakarta'); // Sesuaikan dengan zona waktu Anda
 
@@ -159,6 +158,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span></span><span></span><span></span>
         </div>
     </nav>
+
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
+    </div>
 
     <div class="container">
         <h2>Edit Riwayat Presensi</h2>

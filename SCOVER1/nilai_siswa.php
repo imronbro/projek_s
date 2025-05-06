@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
+
 
 // Pastikan siswa sudah login
 if (!isset($_SESSION['user_email'])) {
@@ -416,6 +416,14 @@ $tahun_result = $conn->query($tahun_query);
         <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh PDF</a>
         <a href="download_nilai.php?format=html&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh HTML</a>
     </div>
+
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
+    </div>
 </body>
 <script src="js/logout.js" defer></script>
 <script src="js/menu.js" defer></script>
@@ -425,3 +433,4 @@ $tahun_result = $conn->query($tahun_query);
 $stmt->close();
 mysqli_close($conn);
 ?>
+``` 

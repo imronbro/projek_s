@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
@@ -222,6 +221,13 @@ mysqli_close($conn);
             <button type="submit">Simpan Nilai</button>
         </form>
         <a href="input_nilai.php" class="back-button">Riwayat</a>
+    </div>
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
     </div>
     <script src="js/menu.js" defer></script>
     <script>

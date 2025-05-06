@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 // Pastikan pengajar sudah login
 if (!isset($_SESSION['user_email'])) {
@@ -153,6 +152,13 @@ $result = $stmt->get_result();
     </table>
     <div style="text-align: center;">
         <a href="nilai.php" class="back-button">Kembali</a>
+    </div>
+</div>
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
     </div>
 </div>
 <script src="js/logout.js" defer></script>
