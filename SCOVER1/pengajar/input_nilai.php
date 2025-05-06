@@ -47,7 +47,7 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             background-color: #003049;
             color: #fabe49;
             margin: 0;

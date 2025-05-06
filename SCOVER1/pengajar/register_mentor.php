@@ -75,7 +75,7 @@ if (isset($_POST['register'])) {
 </head>
 <style>
     body {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Poppins';
         padding: 40px;
         background: #f5f5f5;
     }

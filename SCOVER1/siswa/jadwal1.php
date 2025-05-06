@@ -54,6 +54,7 @@ $conn->close();
 
             box-sizing: border-box;
         }
+        
     </style>
 </head>
 

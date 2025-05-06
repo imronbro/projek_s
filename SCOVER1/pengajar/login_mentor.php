@@ -37,6 +37,11 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+    <style>
+        body{
+            font-family: 'Poppins';
+        }
+    </style>
     <div class="container">
         <div class="left-section">
             <div class="logo">

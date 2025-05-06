@@ -92,7 +92,7 @@ if (!$data) {
     }
 
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins';
         background-color: #fff;
         color: #145375;
         margin: 0;

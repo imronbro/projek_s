@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             background: #f2f2f2;
             margin: 0;
             padding: 0;

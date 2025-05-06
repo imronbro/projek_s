@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="css/navbar.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;

@@ -59,6 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 * {
             box-sizing: border-box;
         }
+        body{
+            font-family: 'Poppins';
+        }
         .container {
             margin-top: 100px;
             max-width: 600px;
