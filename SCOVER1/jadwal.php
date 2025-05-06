@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");
@@ -159,7 +158,7 @@ $current_date = null;
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span><span></span><span></ span>
+            <span></span><span></span><span></span>
         </div>
     </nav>
 
@@ -207,6 +206,13 @@ $current_date = null;
         ?>
     </div>
 
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
+    </div>
 
     <script src="js/logout.js" defer></script>
     <script src="js/menu.js" defer></script>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 date_default_timezone_set('Asia/Jakarta'); // Sesuaikan dengan zona waktu Anda
 
 if (!isset($_SESSION['user_email'])) {
@@ -290,26 +289,16 @@ $result = $stmt->get_result();
     <img class="modal-content" id="modalImage">
 </div>
 
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
+    </div>
+</div>
+
 <script src="js/logout.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script>
     function showImageModal(imageSrc) {
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        modal.style.display = 'block';
-        modalImage.src = imageSrc;
-    }
-
-    function closeImageModal() {
-        const modal = document.getElementById('imageModal');
-        modal.style.display = 'none';
-    }
-
-    function toggleActionMenu(button) {
-        const actionMenu = button.nextElementSibling;
-        button.style.display = "none"; // Sembunyikan tombol Aksi
-        actionMenu.style.display = "block"; // Tampilkan menu Edit dan Hapus
-    }
-</script>
-</body>
-</html>
+        const modal = document.getElementById('imageModal

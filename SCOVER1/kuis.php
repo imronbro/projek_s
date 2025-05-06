@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['mentor_id'])) {
     header("Location: login_mentor.php");
@@ -225,6 +224,15 @@ mysqli_close($conn);
 
         <a href="riwayat_kuis.php" class="back-button">Riwayat Kuis</a>
     </div>
+
+    <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
+    </div>
+
     <script src="js/menu.js" defer></script>
     <script>
     const siswaList = <?php echo json_encode($siswaList); ?>;

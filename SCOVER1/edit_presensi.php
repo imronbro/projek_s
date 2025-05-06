@@ -1,7 +1,6 @@
 <?php
 session_start();
 include 'koneksi.php';
-include 'logout_notification.php';
 
 if (!isset($_SESSION['user_email'])) {
     header("Location: login_mentor.php");
@@ -133,6 +132,35 @@ $conn->close();
             background-color: #e6c200;
             color: #145375;
         }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .notification-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .btn-danger {
+            background-color: #d9534f;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -155,6 +183,13 @@ $conn->close();
         <span></span><span></span><span></span>
     </div>
 </nav>
+<div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
+    </div>
+</div>
 <div class="container">
     <h2>Edit Presensi Mentor</h2>
     <form action="" method="post" enctype="multipart/form-data">

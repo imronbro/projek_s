@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'logout_notification.php';
 // Informasi koneksi database
 $host = "localhost";
 $user = "root";
@@ -196,6 +195,14 @@ if ($result_pengajar->num_rows > 0) {
     </table>
 
     <a href="javascript:history.back()" class="btn">Kembali</a>
+  </div>
+
+  <div id="logout-notification" class="notification">
+    <p>Apakah Anda yakin ingin keluar?</p>
+    <div class="notification-buttons">
+        <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+        <a href="logout.php" class="btn btn-danger">Keluar</a>
+    </div>
   </div>
 
   <script src="js/logout.js" defer></script>
