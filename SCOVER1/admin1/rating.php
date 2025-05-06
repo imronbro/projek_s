@@ -40,7 +40,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
         body {
-            font-family: 'Poppins';
+            font-family: 'Poppins',sans-serif;
             background-color: #fff;
             color: #145375;
             margin: 0;
