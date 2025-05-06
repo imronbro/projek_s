@@ -2,7 +2,10 @@
 session_start();
 include 'koneksi.php';
 // Koneksi database
-
+if (!isset($_SESSION['user_email'])) {
+    header("Location: loginadmin.php");
+    exit();
+}
 // Ambil filter dan search dari GET request
 $tanggal = $_GET['tanggal'] ?? date('Y-m-d');
 $search = $_GET['search'] ?? '';
@@ -33,6 +36,7 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Siswa</title>
     <link rel="stylesheet" href="css/navbar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
 
@@ -40,7 +44,7 @@ $result = mysqli_query($conn, $query);
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins';
             background-color: #f4f4f4;
             color: #145375;
             margin: 0;

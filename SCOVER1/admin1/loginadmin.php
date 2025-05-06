@@ -36,6 +36,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <style>
     body {
@@ -97,6 +98,11 @@ if (isset($_POST['login'])) {
 </style>
 
 <body>
+    <style> 
+    body{
+        font-family: 'Poppins';
+    }
+</style>
     <div class="container">
         <div class="left-section">
             <div class="logo">
@@ -137,25 +143,10 @@ if (isset($_POST['login'])) {
         </div>
     </div>
     <script>
-        document.querySelector('.icon').addEventListener('click', function() {
-            window.location.href = '../index.php';
-        });
-
-        function toggleVisibility(toggleId, inputId) {
-            const toggleIcon = document.getElementById(toggleId);
-            const inputField = document.getElementById(inputId);
-
-            toggleIcon.addEventListener('click', function() {
-                const type = inputField.type === 'password' ? 'text' : 'password';
-                inputField.type = type;
-                this.classList.toggle('fa-eye');
-                this.classList.toggle('fa-eye-slash');
-            });
-        }
-
-        toggleVisibility('toggle-password', 'password');
-        toggleVisibility('toggle-confirm-password', 'confirm-password');
-    </script>
+    document.querySelector('.icon').addEventListener('click', function() {
+        window.location.href = 'index.php';
+    });
+</script>
 
 </body>
 

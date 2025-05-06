@@ -37,6 +37,7 @@ $ratingQuery = mysqli_query($conn, "
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
     * {
 
@@ -44,7 +45,7 @@ $ratingQuery = mysqli_query($conn, "
     }
 
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Poppins';
         background-color: #f4f4f4;
         color: #333;
         margin: 0;

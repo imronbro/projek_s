@@ -1,9 +1,11 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "scover");
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+session_start();
+include 'koneksi.php';
 
+if (!isset($_SESSION['user_email'])) {
+    header("Location: loginadmin.php");
+    exit();
+}
 // Ambil keyword pencarian jika ada
 $keyword = isset($_GET['keyword']) ? $conn->real_escape_string($_GET['keyword']) : "";
 
@@ -35,9 +37,10 @@ $result = $conn->query($sql);
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/pengajar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins',sans-serif;
             background-color: #fff;
             color: #145375;
             margin: 0;

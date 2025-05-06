@@ -1,0 +1,392 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff; /* Latar belakang putih */
+  color: #003049; /* Teks biru gelap */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #ffffff; /* Latar belakang putih */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+.content {
+  margin-top: 120px; /* Tambahkan margin untuk memberi ruang di bawah navbar */
+  padding: 20px;
+}
+
+/* Header */
+h2 {
+  color: #003049; /* Teks biru gelap */
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Form Styles */
+form {
+  background-color: #f4f4f4; /* Latar belakang abu-abu terang */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  animation: slideIn 1s ease-in-out;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #003049; /* Teks biru gelap */
+}
+
+form input,
+form select,
+form textarea,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #003049; /* Border biru gelap saat fokus */
+  outline: none;
+}
+
+form textarea {
+  resize: none;
+  height: 100px;
+}
+
+form button {
+  background-color: #faaf1d; /* Tombol kuning */
+  color: #ffffff; /* Teks putih */
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background-color: #fabe49; /* Kuning lebih terang saat hover */
+  transform: scale(1.05); /* Efek zoom */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff; /* Latar belakang putih */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th,
+table td {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 1em;
+}
+
+table th {
+  background-color: #003049; /* Header tabel biru gelap */
+  color: #ffffff; /* Teks putih */
+  font-weight: bold;
+}
+
+table tr:nth-child(even) {
+  background-color: #f4f4f4; /* Baris genap abu-abu terang */
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff; /* Baris ganjil putih */
+}
+
+table tr:hover {
+  background-color: #fabe49; /* Baris kuning saat hover */
+  color: #003049; /* Teks biru gelap */
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e6c200; /* Tombol kuning */
+  color: #145375; /* Teks putih */
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #145375;
+  color: white;
+  transform: scale(1.05); /* Efek zoom */
+}
+
+/* Rating Styles */
+.rating {
+  display: flex;
+  flex-direction: row-reverse; /* Bintang dimulai dari kanan ke kiri */
+  justify-content: center;
+  gap: 20px; /* Jarak antar bintang */
+  margin: 20px 0;
+}
+
+.rating input {
+  display: none; /* Sembunyikan input radio */
+}
+
+.rating label {
+  font-size: 4.5em; /* Ukuran bintang lebih besar */
+  cursor: pointer;
+  color: #ccc; /* Warna default bintang (abu-abu) */
+  transition: color 0.2s ease, transform 0.2s ease;
+  position: relative; /* Untuk efek tambahan */
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffd700; /* Warna kuning emas saat di-hover */
+}
+
+.rating input:checked ~ label {
+  color: #ffd700; /* Warna kuning emas untuk bintang yang dipilih */
+}
+
+.rating input:checked ~ label ~ label {
+  color: #ccc; /* Pastikan bintang setelah yang dipilih tetap abu-abu */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  form {
+    width: 90%; /* Pastikan form memenuhi lebar layar kecil */
+    padding: 15px;
+    margin: 20px auto; /* Pusatkan form */
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  .rating {
+    gap: 5px; /* Kurangi jarak antar bintang */
+  }
+
+  .rating label {
+    font-size: 1.8em; /* Perkecil ukuran bintang */
+  }
+
+  .content {
+    margin-top: 120px; /* Sesuaikan dengan tinggi navbar pada perangkat kecil */
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #pengajar,
+  textarea {
+    width: 100%; /* Pastikan input dan textarea memenuhi lebar form */
+    font-size: 0.9em; /* Perkecil ukuran teks */
+    padding: 10px; /* Kurangi padding */
+    margin-bottom: 15px; /* Tambahkan jarak antar elemen */
+  }
+
+  textarea {
+    height: 80px; /* Kurangi tinggi textarea */
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5em;
+  }
+
+  form {
+    width: 100%; /* Pastikan form memenuhi lebar layar HP */
+    padding: 15px; /* Kurangi padding untuk layar kecil */
+    margin: 15px auto; /* Pusatkan form */
+    box-sizing: border-box; /* Sertakan padding dalam lebar total */
+  }
+
+  form button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+
+  .btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+  }
+
+  label {
+    display: block; /* Pastikan label berada di baris sendiri */
+    font-size: 0.9em; /* Perkecil ukuran teks label */
+    margin-bottom: 5px; /* Tambahkan jarak bawah label */
+  }
+
+  input[type="text"],
+  input[type="hidden"],
+  textarea,
+  button {
+    width: 100%; /* Pastikan elemen input dan tombol memenuhi lebar form */
+    box-sizing: border-box; /* Sertakan padding dalam lebar total */
+    margin-bottom: 10px; /* Tambahkan jarak antar elemen */
+    font-size: 0.9em; /* Perkecil ukuran teks input dan tombol */
+    padding: 10px; /* Kurangi padding elemen */
+  }
+
+  #pengajar {
+    width: 100%; /* Pastikan input memenuhi lebar form */
+    font-size: 0.9em; /* Perkecil ukuran teks input */
+    padding: 10px; /* Kurangi padding */
+    margin-bottom: 10px; /* Tambahkan jarak bawah */
+    box-sizing: border-box; /* Sertakan padding dalam lebar total */
+  }
+
+  .rating {
+    display: flex;
+    justify-content: space-between; /* Sebar bintang secara merata */
+    width: 100%; /* Pastikan rating tidak melampaui lebar form */
+    gap: 5px; /* Tambahkan sedikit jarak antar bintang */
+  }
+
+  .rating label {
+    font-size: 2em; /* Perbesar ukuran bintang untuk layar HP */
+  }
+
+  textarea {
+    resize: none; /* Nonaktifkan resize untuk textarea */
+    height: 70px; /* Kurangi tinggi textarea lebih jauh */
+  }
+
+  button {
+    padding: 8px 10px; /* Kurangi padding tombol */
+    font-size: 0.9em; /* Perkecil ukuran teks tombol */
+  }
+
+  .content {
+    padding: 10px; /* Tambahkan padding untuk menghindari elemen menempel ke tepi */
+  }
+
+  #pengajar,
+  textarea {
+    width: 100%; /* Pastikan input dan textarea memenuhi lebar form */
+    font-size: 0.8em; /* Perkecil ukuran teks lebih jauh */
+    padding: 8px; /* Kurangi padding */
+    margin-bottom: 10px; /* Tambahkan jarak antar elemen */
+  }
+}
+
+/* Input Pencarian Nama Pengajar */
+#pengajar {
+  width: 100%; /* Lebar penuh */
+  padding: 10px; /* Padding untuk kenyamanan */
+  margin-bottom: 20px; /* Jarak bawah */
+  border: 2px solid #145375; /* Border kuning gelap */
+  border-radius: 5px; /* Membuat sudut membulat */
+  font-size: 1em; /* Ukuran font */
+  background-color: #f4f4f4; /* Latar belakang gelap */
+  color: #fabe49; /* Teks kuning terang */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#pengajar:focus {
+  border-color: #0271ab; /* Border biru terang saat fokus */
+  background-color: #145375; /* Latar belakang biru gelap saat fokus */
+  outline: none; /* Hilangkan outline default */
+}
+
+/* Placeholder Styling */
+#pengajar::placeholder {
+  color: #fabe49; /* Warna placeholder kuning terang */
+  opacity: 0.8; /* Transparansi placeholder */
+}
+
+/* Datalist Styling */
+datalist {
+  background-color: #003049; /* Latar belakang gelap */
+  color: #fabe49; /* Teks kuning terang */
+  border: 2px solid #faaf1d; /* Border kuning gelap */
+  border-radius: 5px; /* Membuat sudut membulat */
+  padding: 5px;
+}
+
+datalist option {
+  padding: 10px;
+  font-size: 1em;
+  background-color: #0271ab; /* Latar belakang biru terang */
+  color: #fabe49; /* Teks kuning terang */
+  border-bottom: 1px solid #faaf1d; /* Garis bawah kuning gelap */
+}
+
+datalist option:hover {
+  background-color: #faaf1d; /* Latar belakang kuning gelap saat hover */
+  color: #003049; /* Teks gelap saat hover */
+}
