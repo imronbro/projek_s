@@ -16,8 +16,8 @@ if (!$siswa) {
 }
 
 $gambar = htmlspecialchars($siswa['gambar']);
-$imagePath = "../" . $gambar;
-$defaultImage = "../uploads/default.png";
+$imagePath = "" . $gambar;
+$defaultImage = "uploads/default.png";
 $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 
 // Proses update
@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Upload gambar jika ada
     $gambarBaru = $gambar; // default: tetap pakai gambar lama
     if (!empty($_FILES['gambar']['name'])) {
-        $uploadDir = '../uploads/';
+        $uploadDir = 'uploads/';
         $fileName = uniqid() . '_' . basename($_FILES['gambar']['name']);
         $uploadPath = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['gambar']['tmp_name'], $uploadPath)) {
             // Hapus gambar lama jika bukan default
-            if ($gambar !== 'uploads/default.png' && file_exists("../" . $gambar)) {
-                unlink("../" . $gambar);
+            if ($gambar !== 'uploads/default.png' && file_exists("" . $gambar)) {
+                unlink("" . $gambar);
             }
             $gambarBaru = 'uploads/' . $fileName;
         }

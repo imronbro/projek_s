@@ -18,8 +18,8 @@ if (!$siswa) {
 }
 
 $gambar = htmlspecialchars($siswa['gambar']);
-$imagePath = "../" . $gambar;
-$defaultImage = "../uploads1/default.png";
+$imagePath = "" . $gambar;
+$defaultImage = "uploads1/default.png";
 $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 ?>
 <!DOCTYPE html>
