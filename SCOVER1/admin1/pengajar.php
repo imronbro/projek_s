@@ -38,56 +38,54 @@ $centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
     }
 
     @media (max-width: 768px) {
-        .row {
-            padding-left: 0;
-            gap: 20px;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .col-md-4 {
-            width: 90% !important;
-            max-width: 90%;
-            margin: 0 auto 20px;
-        }
-
-        .card {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            white-space: normal;
-        }
-
-        .card h5,
-        .card p {
-            word-break: break-word;
-            white-space: normal;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-
-        .card {
-            margin: 0;
-            height: auto;
-            /* biarkan tinggi menyesuaikan isi */
-            padding: 10px;
-        }
-
-        .search-form {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .search-form input[type="text"] {
-            width: 100%;
-            max-width: 200px;
-        }
-
-        .search-form button {
-            width: 100%;
-            max-width: 200px;
-        }
+    .row {
+        padding-left: 0;
+        gap: 5px; /* dikurangi dari 20px menjadi 10px agar antar card lebih dekat */
+        flex-direction: column;
+        align-items: center;
+        display: flex;
     }
+
+    .col-md-4 {
+        width: 90% !important;
+        max-width: 90%;
+        margin-bottom: 5px;
+    }
+
+    .card {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        margin: 0;
+        height: auto;
+        padding: 5px;
+    }
+
+    .card h5,
+    .card p {
+        word-break: break-word;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .search-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-form input[type="text"] {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 8px; /* tambahkan jarak bawah antara input dan button */
+    }
+
+    .search-form button {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
 
 
     .profile-img {
