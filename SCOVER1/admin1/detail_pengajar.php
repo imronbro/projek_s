@@ -25,7 +25,11 @@ $ratingQuery = mysqli_query($conn, "
     WHERE r.pengajar_id = $id
     ORDER BY r.created_at DESC
 ");
-
+$gambar = htmlspecialchars($mentor['gambar']);
+$imagePath = "" . $gambar;
+$defaultImage = "uploads1/default.png";
+$displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+?>
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -332,19 +336,7 @@ document.addEventListener('click', function(event) {
     </nav>
     <div class="profile-container">
         <div class="card">
-            <?php
-            $gambar = htmlspecialchars($mentor['gambar']);
-            $imagePath = "../" . $gambar; // gambar sudah termasuk 'uploads/namafile' dari DB
-            $defaultImage = "../uploads1/default.png";
-
-            if (!empty($gambar) && file_exists($imagePath)) {
-                $displayImage = $imagePath;
-            } else {
-                $displayImage = $defaultImage;
-            }
-            ?>
             <img src="<?= $displayImage; ?>" alt="Foto Pengajar" class="mentor-img">
-
             <h2><?= htmlspecialchars($mentor['full_name']); ?></h2>
             <p><strong>Mata Pelajaran:</strong> <?= htmlspecialchars($mentor['mapel']); ?></p>
             <p><strong>Email:</strong> <?= htmlspecialchars($mentor['email']); ?></p>

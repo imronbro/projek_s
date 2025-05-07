@@ -233,14 +233,11 @@ $result = mysqli_query($conn, $query);
         </form>
 
         <div class="row">
-            <?php
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $gambar = htmlspecialchars($row['gambar']);
-                    $imagePath = "../uploads/" . basename($gambar);
-                    $defaultImage = "../uploads1/default.jpg";
-                    $finalImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
-
+        <?php if (mysqli_num_rows($result) > 0) { ?>
+                        <?php while ($row = mysqli_fetch_assoc($result)) {
+                            $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
+                            $defaultImage = "uploads1/default.jpg";
+                            $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
             ?>
                     <div class="card">
                         <img src="<?= $finalImage; ?>" alt="Foto Siswa" class="profile-img">
