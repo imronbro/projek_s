@@ -165,25 +165,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="js/menu.js" defer></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const stars = document.querySelectorAll(".rating input");
-            const labels = document.querySelectorAll(".rating label");
+        document.addEventListener("DOMContentLoaded", function () {
+            const stars = document.querySelectorAll(".rating label");
+            const inputs = document.querySelectorAll(".rating input");
 
-            stars.forEach((star) => {
-                star.addEventListener("change", function() {
-                    updateStars(this.value);
-                });
-            });
-
-            function updateStars(value) {
-                labels.forEach((label, index) => {
-                    if (index >= 5 - value) {
-                        label.style.color = "gold";
-                    } else {
-                        label.style.color = "#ccc";
+            stars.forEach((star, index) => {
+                star.addEventListener("mouseover", () => {
+                    // Isi semua bintang dari kiri ke bintang yang di-hover
+                    for (let i = 0; i <= index; i++) {
+                        stars[i].style.color = "#ffd700"; // Warna emas
+                    }
+                    // Sisanya tetap abu-abu
+                    for (let i = index + 1; i < stars.length; i++) {
+                        stars[i].style.color = "#ccc"; // Warna default
                     }
                 });
-            }
+
+                star.addEventListener("mouseout", () => {
+                    // Kembalikan semua bintang ke warna default
+                    stars.forEach((s) => (s.style.color = "#ccc"));
+                    // Tetap isi bintang yang dipilih
+                    const checkedInput = Array.from(inputs).find((input) => input.checked);
+                    if (checkedInput) {
+                        const checkedIndex = Array.from(inputs).indexOf(checkedInput);
+                        for (let i = 0; i <= checkedIndex; i++) {
+                            stars[i].style.color = "#ffd700"; // Warna emas
+                        }
+                    }
+                });
+
+                star.addEventListener("click", () => {
+                    // Tandai input yang sesuai sebagai dipilih
+                    inputs[index].checked = true;
+                });
+            });
         });
 
         document.addEventListener("DOMContentLoaded", function() {

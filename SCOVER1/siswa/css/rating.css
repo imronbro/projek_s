@@ -34,53 +34,67 @@ h2 {
 
 /* Form Styles */
 form {
-  background-color: #f4f4f4; /* Latar belakang abu-abu terang */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  animation: slideIn 1s ease-in-out;
+  max-width: 500px; /* Lebar maksimum form */
+  margin: 0 auto; /* Pusatkan form */
+  padding: 20px; /* Ruang di dalam form */
+  background-color: #ffffff; /* Latar belakang putih */
+  border-radius: 10px; /* Sudut membulat */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Bayangan lembut */
+  animation: fadeIn 0.8s ease-in-out; /* Animasi masuk */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi hover */
+}
+
+form:hover {
+  transform: scale(1.02); /* Efek zoom saat hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat hover */
 }
 
 form label {
-  display: block;
-  margin-bottom: 10px;
+  display: block; /* Label berada di baris sendiri */
+  margin-bottom: 10px; /* Jarak bawah label */
   font-weight: bold;
+  font-size: 14px; /* Ukuran font label */
   color: #003049; /* Teks biru gelap */
 }
 
-form input,
-form select,
+form input[type="text"],
 form textarea,
-form button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-  box-sizing: border-box;
+form select {
+  width: 100%; /* Lebar penuh */
+  padding: 10px; /* Ruang di dalam input */
+  margin-bottom: 15px; /* Jarak bawah antar elemen */
+  border-radius: 5px; /* Sudut membulat */
+  border: 1px solid #ccc; /* Border abu-abu */
+  font-size: 14px; /* Ukuran font */
+  box-sizing: border-box; /* Sertakan padding dalam lebar total */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Animasi fokus */
 }
 
 form input:focus,
-form select:focus,
-form textarea:focus {
-  border-color: #003049; /* Border biru gelap saat fokus */
-  outline: none;
+form textarea:focus,
+form select:focus {
+  border-color: #faaf1d; /* Border kuning saat fokus */
+  box-shadow: 0 0 5px rgba(250, 175, 29, 0.5); /* Efek cahaya kuning */
+  outline: none; /* Hilangkan outline default */
 }
 
 form textarea {
-  resize: none;
-  height: 100px;
+  resize: none; /* Nonaktifkan resize */
+  height: 80px; /* Tinggi default textarea */
 }
 
 form button {
+  display: block;
+  width: 100%; /* Lebar penuh */
+  padding: 12px; /* Ruang di dalam tombol */
   background-color: #faaf1d; /* Tombol kuning */
-  color: #ffffff; /* Teks putih */
-  font-weight: bold;
+  color: white; /* Teks putih */
   border: none;
+  border-radius: 5px; /* Sudut membulat */
+  font-size: 16px; /* Ukuran font tombol */
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animasi hover */
 }
 
 form button:hover {
@@ -146,9 +160,9 @@ table tr:hover {
 /* Rating Styles */
 .rating {
   display: flex;
-  flex-direction: row-reverse; /* Bintang dimulai dari kanan ke kiri */
   justify-content: center;
-  gap: 20px; /* Jarak antar bintang */
+  align-items: center;
+  gap: 10px; /* Jarak antar bintang */
   margin: 20px 0;
 }
 
@@ -157,24 +171,28 @@ table tr:hover {
 }
 
 .rating label {
-  font-size: 4.5em; /* Ukuran bintang lebih besar */
+  font-size: 2.5em; /* Ukuran bintang */
+  color: #ccc; /* Warna default bintang */
   cursor: pointer;
-  color: #ccc; /* Warna default bintang (abu-abu) */
-  transition: color 0.2s ease, transform 0.2s ease;
-  position: relative; /* Untuk efek tambahan */
+  transition: color 0.3s ease, transform 0.2s ease; /* Animasi hover */
 }
 
+/* Warna bintang saat hover (kiri ke kanan) */
 .rating label:hover,
 .rating label:hover ~ label {
   color: #ffd700; /* Warna kuning emas saat di-hover */
+  transform: scale(1.2); /* Efek zoom saat hover */
 }
 
+/* Bintang yang dipilih */
 .rating input:checked ~ label {
   color: #ffd700; /* Warna kuning emas untuk bintang yang dipilih */
 }
 
-.rating input:checked ~ label ~ label {
-  color: #ccc; /* Pastikan bintang setelah yang dipilih tetap abu-abu */
+/* Hover setelah dipilih */
+.rating input:checked ~ label:hover,
+.rating input:checked ~ label:hover ~ label {
+  color: #ffd700; /* Warna bintang tetap emas saat hover */
 }
 
 /* Animations */
@@ -238,7 +256,12 @@ table tr:hover {
   }
 
   .rating label {
-    font-size: 1.8em; /* Perkecil ukuran bintang */
+    font-size: 2em; /* Perkecil ukuran bintang */
+  }
+
+  form button {
+    font-size: 14px; /* Perkecil ukuran font tombol */
+    padding: 10px; /* Kurangi padding tombol */
   }
 
   .content {
@@ -270,19 +293,17 @@ table tr:hover {
 
   form {
     width: 100%; /* Pastikan form memenuhi lebar layar HP */
-    padding: 15px; /* Kurangi padding untuk layar kecil */
+    padding: 10px; /* Kurangi padding lebih jauh */
     margin: 15px auto; /* Pusatkan form */
-    box-sizing: border-box; /* Sertakan padding dalam lebar total */
+  }
+
+  .rating label {
+    font-size: 1.8em; /* Perkecil ukuran bintang lebih jauh */
   }
 
   form button {
-    padding: 8px 15px;
-    font-size: 0.9em;
-  }
-
-  .btn {
-    padding: 8px 15px;
-    font-size: 0.9em;
+    font-size: 12px; /* Perkecil ukuran font tombol */
+    padding: 8px; /* Kurangi padding tombol */
   }
 
   label {
@@ -315,10 +336,6 @@ table tr:hover {
     justify-content: space-between; /* Sebar bintang secara merata */
     width: 100%; /* Pastikan rating tidak melampaui lebar form */
     gap: 5px; /* Tambahkan sedikit jarak antar bintang */
-  }
-
-  .rating label {
-    font-size: 2em; /* Perbesar ukuran bintang untuk layar HP */
   }
 
   textarea {
