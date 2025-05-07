@@ -22,6 +22,7 @@
     <style>
         body{
             font-family: 'Poppins';
+            
         }
         .hero-image img {
             opacity: 0;
