@@ -15,6 +15,16 @@ if (isset($_POST['login'])) {
             $_SESSION['user_name'] = $user['full_name'];
             $_SESSION['user_email'] = $user['email'];
             header("Location: home.php");
+            // Cek Remember Me
+            if (isset($_POST['remember'])) {
+               // Simpan cookie selama 10 tahun
+               setcookie("email", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
+               setcookie("password", $password, time() + (10 * 365 * 24 * 60 * 60), "/");
+           } else {
+               // Hapus cookie jika tidak dicentang
+               setcookie("email", "", time() - 3600, "/");
+               setcookie("password", "", time() - 3600, "/");
+           }
             exit();
         } else {
             echo "<script>alert('Password salah!');</script>";
@@ -36,7 +46,7 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
 </head>
 <style>
     body {
@@ -119,7 +129,8 @@ if (isset($_POST['login'])) {
                         <label for="email">Email</label>
                         <div class="input-with-icon">
                             <i class="fas fa-envelope icon-left"></i>
-                            <input type="email" id="email" name="email" placeholder="Masukan Email" required>
+                            <input type="email" id="email" name="email" placeholder="Masukan Email" required
+                            value="<?php if (isset($_COOKIE['email'])) echo $_COOKIE['email']; ?>">
                         </div>
                     </div>
 
@@ -128,14 +139,22 @@ if (isset($_POST['login'])) {
                         <div class="input-with-icon">
                             <i class="fas fa-lock icon-left"></i>
                             <div class="password-wrapper">
-                                <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required>
+                                <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi"required
+                                value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>">
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
                     </div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
+                        <input type="checkbox" name="remember" id="remember" style="width: 16px; height: 16px; margin: 0;"
+                            <?php if (isset($_COOKIE['email'])) echo 'checked'; ?>>
+                        <label for="remember" style="margin: 0; font-weight: normal; white-space: nowrap;">Ingatkan saya nanti</label>
+                    </div>
+                    <br>
                     <div class="forgot">
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
                     </div>
+                    <br>
                     <button type="submit" class="btn" name="login">Masuk</button>
                     <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
                 </form>
@@ -146,6 +165,20 @@ if (isset($_POST['login'])) {
     document.querySelector('.icon').addEventListener('click', function() {
         window.location.href = '../index.php';
     });
+    function toggleVisibility(toggleId, inputId) {
+            const toggleIcon = document.getElementById(toggleId);
+            const inputField = document.getElementById(inputId);
+
+            toggleIcon.addEventListener('click', function() {
+                const type = inputField.type === 'password' ? 'text' : 'password';
+                inputField.type = type;
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        toggleVisibility('toggle-password', 'password');
+        toggleVisibility('toggle-confirm-password', 'confirm-password');
 </script>
 
 </body>

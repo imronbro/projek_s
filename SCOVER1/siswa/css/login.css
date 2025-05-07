@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'poppins';
   margin: 0;
   padding: 0;
   display: flex;
@@ -160,17 +160,23 @@ body {
 }
 
 /* Links */
+
 .forgot a,
 .form-container a {
   color: #145375;
   font-weight: 750;
   text-decoration: none;
+  margin-top: 20px;
 }
 .forgot a:hover,
 .form-container a:hover {
   text-decoration: underline;
 }
 
+.submi {
+  margin-top: 10px;
+  padding-top: 10px;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
   .container {

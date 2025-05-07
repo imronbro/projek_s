@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include '../koneksi.php';
@@ -16,6 +15,14 @@ if (isset($_POST['login'])) {
             $_SESSION['user_name'] = $user['full_name']; // Simpan nama lengkap di sesi
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['mentor_id'] = $user['pengajar_id']; // Simpan pengajar_id ke sesi
+            // Cek Remember Me
+            if (isset($_POST['remember'])) {
+                // Simpan cookie selama 10 tahun
+                setcookie("email_mentor", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
+            } else {
+                // Hapus cookie jika tidak dicentang
+                setcookie("email_mentor", "", time() - 3600, "/");
+            }
             header("Location: home_mentor.php");
             exit();
         } else {
@@ -103,7 +110,8 @@ if (isset($_POST['login'])) {
                         <label for="email">Email</label>
                         <div class="input-with-icon">
                             <i class="fas fa-envelope icon-left"></i>
-                            <input type="email" id="email" name="email" placeholder="Masukan Email" required>
+                            <input type="email" id="email" name="email" placeholder="Masukan Email" required
+                                value="<?php if (isset($_COOKIE['email_mentor'])) echo $_COOKIE['email_mentor']; ?>">
                         </div>
                     </div>
 
@@ -117,9 +125,18 @@ if (isset($_POST['login'])) {
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
                     </div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
+                        <input type="checkbox" name="remember" id="remember"
+                            style="width: 16px; height: 16px; margin: 0;"
+                            <?php if (isset($_COOKIE['email_mentor'])) echo 'checked'; ?>>
+
+                        <label for="remember" style="margin: 0; font-weight: normal; white-space: nowrap;">Ingatkan saya nanti</label>
+                    </div>
+                    <br>
                     <div class="forgot">
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
                     </div>
+                    <br>
                     <button type="submit" class="btn" name="login">Masuk</button>
                     <p>Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
                 </form>
@@ -130,6 +147,7 @@ if (isset($_POST['login'])) {
         document.querySelector('.icon').addEventListener('click', function() {
             window.location.href = '../index.php';
         });
+
         function toggleVisibility(toggleId, inputId) {
             const toggleIcon = document.getElementById(toggleId);
             const inputField = document.getElementById(inputId);

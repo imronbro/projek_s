@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include '../koneksi.php'; // Koneksi database
@@ -15,6 +14,14 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_name'] = $user['full_name']; // Simpan nama lengkap di sesi
             $_SESSION['user_email'] = $user['email'];
+            // Cek Remember Me
+            if (isset($_POST['remember'])) {
+                // Simpan cookie selama 10 tahun
+                setcookie("email_siswa", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
+            } else {
+                // Hapus cookie jika tidak dicentang
+                setcookie("email_siswa", "", time() - 3600, "/");
+            }
             header("Location: home.php");
             exit();
         } else {
@@ -102,7 +109,8 @@ if (isset($_POST['login'])) {
                         <label for="email">Email</label>
                         <div class="input-with-icon">
                             <i class="fas fa-envelope icon-left"></i>
-                            <input type="email" id="email" name="email" placeholder="Masukan Email" required>
+                            <input type="email" id="email" name="email" placeholder="Masukan Email" required
+                                value="<?php if (isset($_COOKIE['email_siswa'])) echo $_COOKIE['email_siswa']; ?>">
                         </div>
                     </div>
 
@@ -115,12 +123,19 @@ if (isset($_POST['login'])) {
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
-                    </div>
-                    <div class="forgot">
-                        <a href="forgot_password.php">Lupa Kata Sandi?</a>
-                    </div>
-                    <button type="submit" class="btn" name="login">Masuk</button>
-                    <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
+                        <div  style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
+                            <input type="checkbox" name="remember" id="remember" style="width: 16px; height: 16px; margin: 0;"
+                                <?php if (isset($_COOKIE['email_siswa'])) echo 'checked'; ?>>
+                            <label for="remember" style="margin: 0; font-weight: normal; white-space: nowrap;">Ingatkan saya nanti</label>
+                        </div>
+                        <br>
+                            <div class="forgot">
+                                <a href="forgot_password.php">Lupa Kata Sandi?</a>
+                            </div>
+                        <br>
+                            <button type="submit" class="btn" name="login">Masuk</button>
+                            <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
+                       
                 </form>
             </div>
         </div>
@@ -129,6 +144,7 @@ if (isset($_POST['login'])) {
         document.querySelector('.icon').addEventListener('click', function() {
             window.location.href = '../index.php';
         });
+
         function toggleVisibility(toggleId, inputId) {
             const toggleIcon = document.getElementById(toggleId);
             const inputField = document.getElementById(inputId);

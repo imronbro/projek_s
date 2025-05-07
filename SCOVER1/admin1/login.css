@@ -136,8 +136,80 @@ body {
 .form-container a {
   color: #145375;
   text-decoration: none;
+  font-weight: 750;
 }
 .forgot a:hover,
 .form-container a:hover {
   text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .left-section {
+    padding: 15px;
+  }
+
+  .left-section .logo h1 {
+    font-size: 28px;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  .right-section {
+    padding: 20px;
+  }
+
+  .right-section h2 {
+    font-size: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .right-section p {
+    font-size: 13px;
+    animation: fadeIn 1.8s ease-in-out;
+  }
+
+  .form-container input {
+    padding: 8px;
+    animation: fadeIn 1.8s ease-in-out;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+    animation: fadeIn 2s ease-in-out;
+  }
+}
+
+@media (max-width: 480px) {
+  .left-section .logo h1 {
+    font-size: 24px;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+
+  .right-section h2 {
+    font-size: 18px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+
+  .right-section p {
+    font-size: 12px;
+    animation: fadeIn 1.8s ease-in-out;
+  }
+
+  .form-container input {
+    padding: 6px;
+    animation: fadeIn 1.8s ease-in-out;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px;
+    animation: fadeIn 2s ease-in-out;
+  }
 }
