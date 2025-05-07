@@ -18,9 +18,11 @@ if (isset($_POST['login'])) {
             if (isset($_POST['remember'])) {
                 // Simpan cookie selama 10 tahun
                 setcookie("email_siswa", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
+                setcookie("password_siswa", $password, time() + (10 * 365 * 24 * 60 * 60), "/");
             } else {
                 // Hapus cookie jika tidak dicentang
                 setcookie("email_siswa", "", time() - 3600, "/");
+                setcookie("password_siswa", "", time() - 3600, "/");
             }
             header("Location: home.php");
             exit();
@@ -119,7 +121,8 @@ if (isset($_POST['login'])) {
                         <div class="input-with-icon">
                             <i class="fas fa-lock icon-left"></i>
                             <div class="password-wrapper">
-                                <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required>
+                                <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required
+                                value="<?php if (isset($_COOKIE['password_siswa'])) echo $_COOKIE['password_siswa']; ?>">
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>

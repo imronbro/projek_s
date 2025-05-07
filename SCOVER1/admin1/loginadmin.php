@@ -18,12 +18,12 @@ if (isset($_POST['login'])) {
             // Cek Remember Me
             if (isset($_POST['remember'])) {
                // Simpan cookie selama 10 tahun
-               setcookie("email", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
-               setcookie("password", $password, time() + (10 * 365 * 24 * 60 * 60), "/");
+               setcookie("email_admin", $email, time() + (10 * 365 * 24 * 60 * 60), "/");
+               setcookie("password_admin", $password, time() + (10 * 365 * 24 * 60 * 60), "/");
            } else {
                // Hapus cookie jika tidak dicentang
-               setcookie("email", "", time() - 3600, "/");
-               setcookie("password", "", time() - 3600, "/");
+               setcookie("email_admin", "", time() - 3600, "/");
+               setcookie("password_admin", "", time() - 3600, "/");
            }
             exit();
         } else {
@@ -130,7 +130,7 @@ if (isset($_POST['login'])) {
                         <div class="input-with-icon">
                             <i class="fas fa-envelope icon-left"></i>
                             <input type="email" id="email" name="email" placeholder="Masukan Email" required
-                            value="<?php if (isset($_COOKIE['email'])) echo $_COOKIE['email']; ?>">
+                            value="<?php if (isset($_COOKIE['email_admin'])) echo $_COOKIE['email_admin']; ?>">
                         </div>
                     </div>
 
@@ -140,14 +140,14 @@ if (isset($_POST['login'])) {
                             <i class="fas fa-lock icon-left"></i>
                             <div class="password-wrapper">
                                 <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi"required
-                                value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>">
+                                value="<?php if (isset($_COOKIE['password_admin'])) echo $_COOKIE['password_admin']; ?>">
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
                         <input type="checkbox" name="remember" id="remember" style="width: 16px; height: 16px; margin: 0;"
-                            <?php if (isset($_COOKIE['email'])) echo 'checked'; ?>>
+                            <?php if (isset($_COOKIE['email_admin'])) echo 'checked'; ?>>
                         <label for="remember" style="margin: 0; font-weight: normal; white-space: nowrap;">Ingatkan saya nanti</label>
                     </div>
                     <br>
