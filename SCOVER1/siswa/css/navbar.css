@@ -59,7 +59,7 @@
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
-  position: absolute;
+  position: fixed;
   top: 15px; /* Posisikan di dekat bagian atas */
   right: 20px; /* Posisikan di pojok kanan */
   z-index: 1100; /* Pastikan di atas elemen lainnya */
