@@ -442,13 +442,12 @@ $centerClass = ($jumlahCard > 0 && $jumlahCard < 3) ? 'centered' : '';
             </div>
         </form>
         <div class="row mt-4 <?= $centerClass ?>">
-
-            <?php if (mysqli_num_rows($result) > 0) { ?>
-                <?php while ($row = mysqli_fetch_assoc($result)) {
-                    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "../uploads1/default.jpg";
-                    $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
-
+                    <?php if (mysqli_num_rows($result) > 0) { ?>
+                        <?php while ($row = mysqli_fetch_assoc($result)) {
+                            $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
+                            $defaultImage = "uploads1/default.jpg";
+                            $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+        
                     // Ambil rata-rata rating dari tabel rating_pengajar
                     $pengajarId = $row['pengajar_id'];
                     $sqlRating = "SELECT AVG(rating) AS rata_rating, COUNT(*) AS jumlah_rating FROM rating_pengajar WHERE pengajar_id = $pengajarId";
