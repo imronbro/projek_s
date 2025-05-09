@@ -182,19 +182,34 @@ $result = mysqli_query($conn, $query);
     }
 
     .btn-detail {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #fff;
+    color: #145375;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 900; /* ini yang membuat teks jadi bold */
+}
+
+
+    .btn-detail:hover {
+        background-color: #145375;
+        color: #fff;
+    }
+    .btn-whatsapp {
         display: inline-block;
         margin-top: 10px;
         padding: 8px 12px;
-        background-color: rgb(13, 78, 135);
-        color: #fff;
+        background-color: #e6c200;
+        color: #145375;
         text-decoration: none;
         border-radius: 5px;
     }
-
-    .btn-detail:hover {
-        background-color: rgb(2, 65, 131);
+    .btn-whatsapp:hover{
+        background-color: #fff;
+        color:#145375; 
     }
-
     .btn-group-vertical {
         display: flex;
         flex-direction: column;

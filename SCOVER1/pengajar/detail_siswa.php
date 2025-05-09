@@ -310,7 +310,6 @@ $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $def
 </nav>
     <div class="profile-container">
         <div class="card">
-            <img src="<?= $displayImage ?>" alt="Foto Siswa" class="siswa-img">
             <h2><?= htmlspecialchars($siswa['full_name']) ?></h2>
             <p><strong>Email:</strong> <?= htmlspecialchars($siswa['email']) ?></p>
             <p><strong>Sekolah:</strong> <?= htmlspecialchars($siswa['sekolah']) ?></p>
