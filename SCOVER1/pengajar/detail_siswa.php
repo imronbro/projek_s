@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 if (!isset($_GET['id'])) {
     echo "Siswa tidak ditemukan.";
@@ -287,28 +287,19 @@ $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $def
     </style>
 </head>
 <body>
-<nav class="navbar">
+<nav < class="navbar">
         <div class="logo">
-            <a href="home.php">
-                <img src="images/foto4.png" alt="Logo" class="logo-image">
-            </a>
+            <img src="images/foto4.png" alt="Logo">
         </div>
-        <h1 class="title">Dashboard Admin</h1>
+        <h1 class="title">Dashboard Mentor</h1>
         <ul class="nav-links">
-            <li class="dropdown">
-                <a href="#" onclick="toggleDropdown(event)">Presensi <span id="arrow" class="arrow">&#9660;</span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="home.php">Presensi Siswa</a></li>
-                    <li><a href="presensipengajar.php">Presensi Pengajar</a></li>
-                </ul>
-            </li>
-
-            <li><a href="pengajar.php" >Pengajar</a></li>
-            <li><a href="siswa.php" class="active">Siswa</a></li>
-            <li><a href="jadwal.php" >Jadwal</a></li>
-            <li><a href="nilai.php">Nilai</a></li>
-            <li><a href="rating.php">Rating</a></li>
-            <li><a href="kontak.php">Kontak</a></li>
+            <li><a href="home_mentor.php">Jurnal</a></li>
+            <li><a href="proses_presensi.php">Presensi Siswa</a></li>
+        <li><a href="siswa.php"class="active">Siswa</a></li>
+        <li><a href="jadwal.php">Jadwal</a></li>
+        <li><a href="kuis.php" >Kuis</a></li>
+        <li><a href="nilai.php">Nilai</a></li>
+        <li><a href="profile_mentor.php">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -316,7 +307,7 @@ $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $def
             <span></span>
             <span></span>
         </div>
-    </nav>
+</nav>
     <div class="profile-container">
         <div class="card">
             <img src="<?= $displayImage ?>" alt="Foto Siswa" class="siswa-img">
@@ -331,7 +322,6 @@ $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $def
 
             <div class="btn-group">
                 <a href="siswa.php" class="btn">Kembali</a>
-                <a href="edit_siswa.php?id=<?= $siswa['siswa_id'] ?>" class="btn">Edit</a>
             </div>
         </div>
     </div>

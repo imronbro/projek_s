@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Proses upload gambar baru jika ada
     $gambar = $data['gambar']; // Gambar lama
     if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $gambar = $target_dir . basename($_FILES['gambar']['name']);
         move_uploaded_file($_FILES['gambar']['tmp_name'], $gambar);
     }

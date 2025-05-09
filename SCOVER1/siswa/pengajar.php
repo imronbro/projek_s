@@ -438,8 +438,8 @@ $result = mysqli_query($conn, $query);
         <div class="row mt-4">
             <?php if (mysqli_num_rows($result) > 0) { ?>
                 <?php while ($row = mysqli_fetch_assoc($result)) {
-                    $imagePath = "uploads/" . basename(htmlspecialchars($row['gambar']));
-                    $defaultImage = "uploads1/default.jpg";
+                    $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
+                    $defaultImage = "../uploads1/default.jpg";
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
                 ?>
                     <div class="col-md-4 mb-4">

@@ -175,7 +175,7 @@ $conn->close();
 // Pastikan file yang diminta ada di folder uploads
 if (isset($_GET['file'])) {
     $file_name = basename($_GET['file']);
-    $file_path = __DIR__ . '/uploads1/' . $file_name;
+    $file_path = __DIR__ . '/../uploads1/' . $file_name;
 
     echo "Parameter file: " . htmlspecialchars($file_name) . "<br>";
     echo "Path file: " . htmlspecialchars($file_path) . "<br>";

@@ -297,14 +297,14 @@ if ($email) {
         <h2 class="text-center">Profil Pengguna Pengajar</h2>
         <div class="card p-3 shadow mb-4 text-center">
             <?php 
-            $imagePath = "uploads/" . basename(htmlspecialchars($data['gambar']));
+            $imagePath = "../uploads/" . basename(htmlspecialchars($data['gambar']));
             if (!empty($data['gambar']) && file_exists($imagePath)) {
             ?>
             <img src="<?= $imagePath; ?>" alt="Foto Profil" class="profile-img">
             <?php 
             } else { 
             ?>
-            <img src="uploads1/default.jpg" alt="Foto Profil Default" class="profile-img">
+            <img src="../uploads1/default.jpg" alt="Foto Profil Default" class="profile-img">
             <?php 
             } 
             ?>

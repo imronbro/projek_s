@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $image_path = null;
     if ($status == "Hadir" && isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $image_path = $target_dir . basename($_FILES['gambar']['name']);
         move_uploaded_file($_FILES['gambar']['tmp_name'], $image_path);
     }

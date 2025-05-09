@@ -175,11 +175,11 @@ if ($email) {
         <h2>Profil Pengguna</h2>
         <div class="card text-center">
             <?php
-            $imagePath = "uploads/" . basename(htmlspecialchars($data['gambar']));
+            $imagePath = "../uploads/" . basename(htmlspecialchars($data['gambar']));
             if (!empty($data['gambar']) && file_exists($imagePath)) {
                 echo "<img src='$imagePath' alt='Foto Profil' class='profile-img'>";
             } else {
-                echo "<img src='uploads/default.jpg' alt='Foto Profil Default' class='profile-img'>";
+                echo "<img src='../uploads/default.jpg' alt='Foto Profil Default' class='profile-img'>";
             }
             ?>
         </div>

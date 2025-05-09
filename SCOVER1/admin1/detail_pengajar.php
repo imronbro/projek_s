@@ -26,8 +26,8 @@ $ratingQuery = mysqli_query($conn, "
     ORDER BY r.created_at DESC
 ");
 $gambar = htmlspecialchars($mentor['gambar']);
-$imagePath = "" . $gambar;
-$defaultImage = "uploads1/default.png";
+$imagePath = "../uploads/" . basename(htmlspecialchars($mentor['gambar']));
+$defaultImage = "../uploads1/default.png";
 $displayImage = (!empty($gambar) && file_exists($imagePath)) ? $imagePath : $defaultImage;
 ?>
 ?>
