@@ -1,6 +1,6 @@
 <?php
-require 'dompdf/autoload.inc.php'; // Pastikan path ini sesuai dengan lokasi Dompdf Anda
-include 'koneksi.php';
+require '../dompdf/autoload.inc.php'; // Pastikan path ini sesuai dengan lokasi Dompdf Anda
+include '../koneksi.php';
 
 use Dompdf\Dompdf;
 

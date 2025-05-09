@@ -121,7 +121,6 @@ $result = $stmt->get_result();
     </nav>
 <div class="container">
     <h2>Riwayat Penilaian</h2>
-    <p>Selamat datang, <?php echo htmlspecialchars($pengajar_name); ?></p>
     <table>
         <thead>
             <tr>
