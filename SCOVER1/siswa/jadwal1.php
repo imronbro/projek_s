@@ -57,6 +57,93 @@ $conn->close();
         body{
             font-family: 'Poppins';
         }
+
+        /* Form Filter Tanggal */
+        form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px; /* Jarak antara elemen input dan tombol */
+          margin-bottom: 20px;
+        }
+
+        form label {
+          font-size: 16px;
+          font-weight: bold;
+          color: #333;
+        }
+
+        form input[type="date"] {
+          padding: 10px;
+          border: 1px solid #ccc; /* Border abu-abu */
+          border-radius: 5px; /* Sudut membulat */
+          font-size: 14px;
+          box-sizing: border-box; /* Sertakan padding dalam lebar total */
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form input[type="date"]:focus {
+          border-color: #faaf1d; /* Border kuning saat fokus */
+          box-shadow: 0 0 5px rgba(250, 175, 29, 0.5); /* Efek cahaya kuning */
+          outline: none; /* Hilangkan outline default */
+        }
+
+        form .button {
+          padding: 10px 20px;
+          background-color: #faaf1d; /* Warna tombol kuning */
+          color: white;
+          border: none;
+          border-radius: 5px; /* Sudut membulat */
+          font-size: 14px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        form .button:hover {
+          background-color: #fabe49; /* Warna kuning lebih terang saat hover */
+          transform: scale(1.05); /* Efek zoom saat hover */
+        }
+
+        /* Responsif untuk Layar Kecil */
+        @media (max-width: 768px) {
+          form {
+            flex-direction: column; /* Susun elemen secara vertikal */
+            gap: 15px; /* Jarak antar elemen */
+          }
+
+          form label {
+            font-size: 14px; /* Ukuran font lebih kecil */
+          }
+
+          form input[type="date"] {
+            width: 100%; /* Input memenuhi lebar layar */
+            font-size: 14px; /* Ukuran font lebih kecil */
+          }
+
+          form .button {
+            width: 100%; /* Tombol memenuhi lebar layar */
+            font-size: 14px; /* Ukuran font lebih kecil */
+            padding: 10px; /* Kurangi padding */
+          }
+        }
+
+        /* Responsif untuk Layar Sangat Kecil */
+        @media (max-width: 480px) {
+          form label {
+            font-size: 12px; /* Ukuran font lebih kecil */
+          }
+
+          form input[type="date"] {
+            font-size: 12px; /* Ukuran font lebih kecil */
+            padding: 8px; /* Kurangi padding */
+          }
+
+          form .button {
+            font-size: 12px; /* Ukuran font lebih kecil */
+            padding: 8px 10px; /* Kurangi padding tombol */
+          }
+        }
     </style>
 </head>
 
@@ -118,25 +205,44 @@ $conn->close();
 
     <!-- Bagian Kuis dari Mentor -->
     <h2 style="text-align: center; margin-top: 40px;">Kuis dari Mentor</h2>
+    <form action="jadwal1.php" method="get" style="text-align: center; margin-bottom: 20px;">
+        <label for="filter_tanggal">Filter Tanggal:</label>
+        <input type="date" name="filter_tanggal" id="filter_tanggal" value="<?= htmlspecialchars($_GET['filter_tanggal'] ?? '') ?>">
+        <button type="submit" class="button">Tampilkan</button>
+    </form>
     <?php
     include '../koneksi.php'; // Pastikan koneksi dibuka ulang jika sebelumnya sudah ditutup
 
-    $sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
-             FROM kuis k
-             LEFT JOIN mentor m ON k.pengajar_id = m.pengajar_id
-             WHERE k.siswa_id = ?
-             ORDER BY k.tanggal DESC";
-    $stmt_kuis = $conn->prepare($sql_kuis);
-    $stmt_kuis->bind_param("i", $siswa_id);
-    $stmt_kuis->execute();
-    $result_kuis = $stmt_kuis->get_result();
+    // Periksa apakah filter tanggal diisi
+    if (isset($_GET['filter_tanggal']) && !empty($_GET['filter_tanggal'])) {
+        $filter_tanggal = $_GET['filter_tanggal'];
+
+        $sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
+                     FROM kuis k
+                     LEFT JOIN mentor m ON k.pengajar_id = m.pengajar_id
+                     WHERE k.siswa_id = $siswa_id AND k.tanggal = '$filter_tanggal'
+                     ORDER BY k.tanggal DESC";
+
+        $result_kuis = $conn->query($sql_kuis);
+    } else {
+        // Query default untuk menampilkan kuis mulai dari hari ini
+        $sql_kuis = "SELECT k.nama, k.kelas, k.tanggal, k.nilai, m.full_name AS pengajar, k.file_kuis
+                     FROM kuis k
+                     LEFT JOIN mentor m ON k.pengajar_id = m.pengajar_id
+                     WHERE k.siswa_id = ? AND k.tanggal >= ?
+                     ORDER BY k.tanggal ASC";
+        $stmt_kuis = $conn->prepare($sql_kuis);
+        $stmt_kuis->bind_param("is", $siswa_id, $tanggal_sekarang);
+        $stmt_kuis->execute();
+        $result_kuis = $stmt_kuis->get_result();
+    }
 
     if ($result_kuis->num_rows > 0): ?>
         <table border="1" style="margin: 0 auto; margin-top: 20px;">
             <tr>
                 <th>Nama Kuis</th>
                 <th>Pengajar</th>
-                <th>Tanggal</th> <!-- Tambahkan kolom Tanggal -->
+                <th>Tanggal</th>
                 <th>File</th>
             </tr>
             <?php while ($row = $result_kuis->fetch_assoc()): ?>
@@ -155,7 +261,7 @@ $conn->close();
             <?php endwhile; ?>
         </table>
     <?php else: ?>
-        <p style="text-align: center;">Belum ada kuis yang diberikan oleh mentor.</p>
+        <p style="text-align: center;">Belum ada kuis yang tersedia.</p>
     <?php endif; ?>
 
     <div id="logout-notification" class="notification">
