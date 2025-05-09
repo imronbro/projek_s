@@ -87,6 +87,9 @@ if (!$data) {
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+                * {
+            box-sizing: border-box;
+        }
         body {
     background-color: #f9fbfd;
     font-family: 'Poppins';
@@ -96,7 +99,9 @@ if (!$data) {
 .container {
     background: #fff;
     max-width: 650px;
-    margin: 60px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px;
     padding: 40px;
     border-radius: 18px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
@@ -227,19 +232,19 @@ input[type="file"] {
         </div>
         <h1 class="title">Dashboard Siswa</h1>
         <ul class="nav-links">
-            <li><a href="home.php">Presensi</a></li>
+            <li><a href="home.php" >Presensi</a></li>
             <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="rating.php">Rating</a></li>
+            <li><a href="jadwal1.php">Jadwal</a></li>
             <li><a href="nilai_siswa.php">Nilai</a></li>
             <li><a href="profile.php" class="active">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </nav>
+
     <div class="container">
     <h2 class="text-center">Edit Profil Siswa</h2>
     <form action="" method="POST" enctype="multipart/form-data">

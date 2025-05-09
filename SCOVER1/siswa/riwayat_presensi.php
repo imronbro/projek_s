@@ -73,6 +73,9 @@ $result = $stmt->get_result();
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/navbar.css">
   <style>
+           * {
+            box-sizing: border-box;
+        }
     body {
       font-family: 'Poppins';
       /* Gunakan font yang sama dengan navbar */
@@ -289,7 +292,7 @@ $result = $stmt->get_result();
     </div>
     <h1 class="title">Dashboard Siswa</h1>
     <ul class="nav-links">
-      <li><a href="home.php" class="active">Jurnal</a></li>
+      <li><a href="home.php" class="active">Presensi</a></li>
       <li><a href="pengajar.php">Pengajar</a></li>
       <li><a href="rating.php">Rating</a></li>
       <li><a href="jadwal1.php">Jadwal</a></li>

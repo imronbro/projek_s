@@ -269,10 +269,12 @@ $result = $stmt->get_result();
                     <td><?= htmlspecialchars($row['note']) ?></td>
                     <td>
                         <?php if ($dapat_diedit): ?>
-                            <button class="btn-action" onclick="toggleActionMenu(this)">Aksi</button>
-                            <div class="action-menu" style="display: none;">
-                                <a href="edit_presensi.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
-                                <a href="hapus_presensi.php?id=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus presensi ini?')">Hapus</a>
+                            <div class="action-container">
+                                <button class="btn-action" onclick="showActionMenu(this)">Aksi</button>
+                                <div class="action-menu" style="display: none;">
+                                    <a href="edit_presensi.php?id=<?= $row['id'] ?>" class="btn-edit">Edit</a>
+                                    <a href="hapus_presensi.php?id=<?= $row['id'] ?>" class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus presensi ini?')">Hapus</a>
+                                </div>
                             </div>
                         <?php else: ?>
                             <span>Tidak Dapat Diedit</span>
@@ -297,8 +299,31 @@ $result = $stmt->get_result();
     </div>
 </div>
 
-<script src="js/logout.js" defer></script>
 <script src="js/menu.js" defer></script>
 <script>
     function showImageModal(imageSrc) {
-        const modal = document.getElementById('imageModal
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = imageSrc;
+        modal.style.display = "block";
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = "none";
+    }
+
+    function toggleActionMenu(button) {
+        const actionMenu = button.nextElementSibling;
+        const isVisible = actionMenu.style.display === "block";
+        actionMenu.style.display = isVisible ? "none" : "block";
+    }
+
+    function showActionMenu(button) {
+        const actionMenu = button.nextElementSibling; // Ambil elemen menu aksi
+        actionMenu.style.display = "block"; // Tampilkan menu aksi
+        button.style.display = "none"; // Sembunyikan tombol aksi
+    }
+</script>
+</body>
+</html>

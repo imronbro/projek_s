@@ -203,7 +203,6 @@ mysqli_close($conn);
         </div>
     </nav>
     <h2>Input Nilai Siswa</h2>
-    <p>Pengajar: <b><?php echo htmlspecialchars($pengajar_name); ?></b></p>
     <div class="container">
         <form action="" method="POST">
             <label for="searchStudent">Cari Siswa:</label>
