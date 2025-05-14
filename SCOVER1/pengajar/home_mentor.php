@@ -53,11 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $current_time = time();
-    if ($last_presensi > 0 && ($current_time - $last_presensi) < 5400) {
-        echo "<script>alert('Anda hanya bisa mengisi presensi sekali dalam 90 menit!'); window.history.back();</script>";
-        exit();
-    }
+    // $current_time = time();
+    // if ($last_presensi > 0 && ($current_time - $last_presensi) < 5400) {
+    //     echo "<script>alert('Anda hanya bisa mengisi presensi sekali dalam 90 menit!'); window.history.back();</script>";
+    //     exit();
+    // }
 
     $image_path = null;
     if ($status == "Hadir" && isset($_FILES['gambar']) && $_FILES['gambar']['error'] == 0) {
