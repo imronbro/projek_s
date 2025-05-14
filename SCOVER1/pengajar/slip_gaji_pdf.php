@@ -149,7 +149,7 @@ if (count($data_presensi) > 0) {
                 <td>' . htmlspecialchars($item['kelas']) . '</td>
                 <td>' . htmlspecialchars($item['mapel']) . '</td>
                 <td>' . htmlspecialchars($item['keterangan']) . '</td>
-                <td>Rp ' . number_format($item['tarif'], 0, ',', '.') . '</td>
+                <td>Rp ' . number_format($item['Jumlah HR'], 0, ',', '.') . '</td>
             </tr>';
     }
 } else {

@@ -415,7 +415,7 @@ while ($row = $result->fetch_assoc()) {
                     <th>Kelas</th>
                     <th>Mapel</th>
                     <th>Tempat</th> <!-- Tambahan -->
-                    <th>Tarif (Rp)</th>
+                    <th>Jumlah HR (Rp)</th>
                 </tr>
             </thead>
             <tbody>
