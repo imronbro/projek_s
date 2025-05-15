@@ -93,6 +93,31 @@ if (isset($_POST['login'])) {
         font-size: 16px;
         cursor: pointer;
     }
+
+    .btn-google {
+        display: inline-block;
+        background-color: #db4437;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+        width: 100%; /* Tombol memenuhi lebar form */
+        box-sizing: border-box;
+    }
+
+    .btn-google:hover {
+        background-color: #c23321;
+    }
+
+    .btn-google i {
+        margin-right: 8px;
+        font-size: 16px;
+    }
 </style>
 
 <body>
@@ -139,6 +164,12 @@ if (isset($_POST['login'])) {
                     <div class="forgot">
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
                     </div>
+                    <div class="input-field">
+                            <p style="text-align: center;">Atau masuk dengan:</p>
+                            <a href="google_login.php" class="btn-google">
+                                <i class="fab fa-google"></i> Masuk dengan Google
+                            </a>
+                        </div>
                     <br>
                     <button type="submit" class="btn" name="login">Masuk</button>
                     <p>Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>

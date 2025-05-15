@@ -120,6 +120,23 @@ if (isset($_POST['register'])) {
             font-size: 16px;
             cursor: pointer;
         }
+
+        .btn-google {
+            display: inline-block;
+            background-color: #db4437;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-google:hover {
+            background-color: #c23321;
+        }
     </style>
 </head>
 
@@ -172,6 +189,12 @@ if (isset($_POST['register'])) {
                     </div>
                 </div>
 
+                <div class="input-field">
+                    <p style="text-align: center;">Atau daftar dengan:</p>
+                    <a href="google_login.php" class="btn btn-google">
+                        <i class="fab fa-google"></i> Daftar dengan Google
+                    </a>
+                </div>
 
         </div>
 
