@@ -98,16 +98,21 @@ if (isset($_POST['login'])) {
         background-color: #db4437;
         color: white;
         padding: 10px 20px;
+        /* default: 10px 20px */
+    
+
         border-radius: 5px;
         text-align: center;
         font-size: 14px;
         font-weight: bold;
         text-decoration: none;
         transition: background-color 0.3s ease;
-        margin-top: 10px;
-        width: 100%; /* Tombol memenuhi lebar form */
+
+        width: 100%;
+        /* Tombol memenuhi lebar form */
         box-sizing: border-box;
     }
+
 
     .btn-google:hover {
         background-color: #c23321;
@@ -129,7 +134,7 @@ if (isset($_POST['login'])) {
         </div>
         <div class="right-section">
             <div class="form-container">
-                <h2>Masuk</h2>
+                <h2>Masuk Siswa</h2>
                 <p>Masuk jika Anda sudah memiliki akun.</p>
                 <form method="POST" action="">
                     <div class="input-field">
@@ -147,28 +152,29 @@ if (isset($_POST['login'])) {
                             <i class="fas fa-lock icon-left"></i>
                             <div class="password-wrapper">
                                 <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required
-                                value="<?php if (isset($_COOKIE['password_siswa'])) echo $_COOKIE['password_siswa']; ?>">
+                                    value="<?php if (isset($_COOKIE['password_siswa'])) echo $_COOKIE['password_siswa']; ?>">
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
-                        <div  style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; margin-top: 10px;">
                             <input type="checkbox" name="remember" id="remember" style="width: 16px; height: 16px; margin: 0;"
                                 <?php if (isset($_COOKIE['email_siswa'])) echo 'checked'; ?>>
                             <label for="remember" style="margin: 0; font-weight: normal; white-space: nowrap;">Ingatkan saya nanti</label>
                         </div>
                         <br>
-                            <div class="forgot">
-                                <a href="forgot_password.php">Lupa Kata Sandi?</a>
-                            </div>
+                        <div class="forgot">
+                            <a href="forgot_password.php">Lupa Kata Sandi?</a>
+                        </div>
                         <br>
-                            <button type="submit" class="btn" name="login">Masuk</button>
-                            <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
+                        <button type="submit" class="btn" name="login">Masuk</button>
                         <div class="input-field">
                             <p style="text-align: center;">Atau masuk dengan:</p>
-                            <a href="google_login.php" class="btn-google">
+                            <a href="google_login.php" class="btn-google" style="margin-top: 4px;">
                                 <i class="fab fa-google"></i> Masuk dengan Google
                             </a>
                         </div>
+                        <br>
+                        <p>Belum punya akun? <a href="register.php">Buat Akun</a></p>
                 </form>
             </div>
         </div>

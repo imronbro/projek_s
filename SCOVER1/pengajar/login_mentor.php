@@ -164,14 +164,15 @@ if (isset($_POST['login'])) {
                     <div class="forgot">
                         <a href="forgot_password.php">Lupa Kata Sandi?</a>
                     </div>
-                    <div class="input-field">
-                            <p style="text-align: center;">Atau masuk dengan:</p>
-                            <a href="google_login.php" class="btn-google">
-                                <i class="fab fa-google"></i> Masuk dengan Google
-                            </a>
-                        </div>
                     <br>
                     <button type="submit" class="btn" name="login">Masuk</button>
+                    <div class="input-field">
+                            <p style="text-align: center;">Atau masuk dengan:</p>
+                            <a href="google_login.php" class="btn-google" style="margin-top: 4px;">
+                                <i class="fab fa-google"></i> Masuk dengan Google
+                            </a>
+                    </div>
+                    <br>
                     <p>Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
                 </form>
             </div>
