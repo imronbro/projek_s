@@ -24,7 +24,7 @@ if (isset($_POST['register'])) {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert ke database
-      $query = "INSERT INTO mentor (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
+    $query = "INSERT INTO mentor (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
 
     if (mysqli_query($conn, $query)) {
         echo "<script>
@@ -168,19 +168,19 @@ if (isset($_POST['register'])) {
                         <i class="fas fa-eye icon-right" id="toggle-confirm-password"></i>
                     </div>
                 </div>
+                <br>
+                <button type="submit" class="btn" name="register">Daftar</button>
                 <div class="input-field">
                     <p style="text-align: center;">Atau daftar dengan:</p>
-                    <a href="google_login.php" class="btn btn-google">
-                        <i class="fab fa-google"></i> Daftar dengan Google
+                    <a href="google_login.php" style="display: inline-block; margin-top: 2px;">
+                        <img src="images/signupgoogle.png" alt="Sign in with Google" style="width: 90%; max-width: 200px; margin-left: 150px;">
                     </a>
                 </div>
-
         </div>
 
-        <button type="submit" class="btn" name="register">Daftar</button>
+        <p class="login-link">Sudah punya akun? <a href="login_mentor.php">Masuk</a></p>
         </form>
 
-        <p class="login-link">Sudah punya akun? <a href="login_mentor.php">Masuk</a></p>
     </div>
     </div>
     <script>

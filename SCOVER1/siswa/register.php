@@ -168,20 +168,20 @@ if (isset($_POST['register'])) {
                         <i class="fas fa-eye icon-right" id="toggle-confirm-password"></i>
                     </div>
                 </div>
-
+                <br>
+                <button type="submit" class="btn" name="register">Daftar</button>
                 <div class="input-field">
                     <p style="text-align: center;">Atau daftar dengan:</p>
-                    <a href="google_login.php" class="btn btn-google">
-                        <i class="fab fa-google"></i> Daftar dengan Google
+                    <a href="google_login.php" style="display: inline-block; margin-top: 2px;">
+                        <img src="images/signupgoogle.png" alt="Sign in with Google" style="width: 90%; max-width: 200px; margin-left: 150px;">
                     </a>
                 </div>
 
         </div>
 
-        <button type="submit" class="btn" name="register">Daftar</button>
-        </form>
 
         <p class="login-link">Sudah punya akun? <a href="login.php">Masuk</a></p>
+        </form>
     </div>
     </div>
     <script>
