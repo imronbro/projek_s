@@ -1,12 +1,11 @@
 <?php
-require '../dompdf/autoload.inc.php'; // Pastikan path ini sesuai dengan lokasi Dompdf Anda
+require '../dompdf/autoload.inc.php';
 include '../koneksi.php';
 
 use Dompdf\Dompdf;
 
 session_start();
 
-// Pastikan siswa sudah login
 if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
     exit();
@@ -14,7 +13,6 @@ if (!isset($_SESSION['user_email'])) {
 
 $user_email = $_SESSION['user_email'];
 
-// Ambil data siswa berdasarkan email
 $query = "SELECT siswa_id, full_name FROM siswa WHERE email = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $user_email);
@@ -29,11 +27,9 @@ if (!$siswa) {
 $siswa_id = $siswa['siswa_id'];
 $siswa_name = $siswa['full_name'];
 
-// Ambil bulan dan tahun dari parameter GET
 $selected_month = isset($_GET['bulan']) ? $_GET['bulan'] : date('m');
 $selected_year = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
 
-// Query untuk mengambil data nilai berdasarkan filter
 $query = "SELECT n.nilai, n.nama_kuis, n.waktu, p.full_name AS pengajar_name 
           FROM nilai_siswa n 
           JOIN mentor p ON n.pengajar_id = p.pengajar_id 
@@ -44,7 +40,6 @@ $stmt->bind_param("iii", $siswa_id, $selected_month, $selected_year);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Format data nilai menjadi HTML
 $html = '
 <!DOCTYPE html>
 <html lang="id">
@@ -170,25 +165,15 @@ $html .= '
 </body>
 </html>';
 
-// Periksa format unduhan
-if (isset($_GET['format']) && $_GET['format'] === 'pdf') {
-    // Unduh sebagai PDF
-    $dompdf = new Dompdf();
-    $dompdf->loadHtml($html);
-
-    // Penting untuk gambar lokal:
-    $dompdf->set_option('isRemoteEnabled', true);
-
-    $dompdf->setPaper('A4', 'portrait');
-    $dompdf->render();
-    $dompdf->stream('nilai_siswa.pdf', ['Attachment' => true]);
-} else {
-    // Unduh sebagai HTML
-    header('Content-Type: text/html');
-    header('Content-Disposition: attachment; filename="nilai_siswa.html"');
-    echo $html;
-}
-
 $stmt->close();
 $conn->close();
+
+// Generate PDF
+$dompdf = new Dompdf();
+$dompdf->loadHtml($html);
+$dompdf->set_option('isRemoteEnabled', true); // Jika Anda ingin load font atau gambar dari URL
+$dompdf->setPaper('A4', 'portrait');
+$dompdf->render();
+$dompdf->stream('nilai_siswa_' . $selected_month . '_' . $selected_year . '.pdf', ['Attachment' => true]);
+exit();
 ?>

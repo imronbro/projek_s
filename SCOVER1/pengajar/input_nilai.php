@@ -48,7 +48,7 @@ $result = $stmt->get_result();
     <style>
         body {
             font-family: 'Poppins';
-            background-color: #003049;
+            background-color: #fff;
             color: #fabe49;
             margin: 0;
             padding: 0;
@@ -56,7 +56,7 @@ $result = $stmt->get_result();
         .container {
             width: 80%;
             margin: 20px auto;
-            background-color: #0271ab;
+            background-color: #145375;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -68,32 +68,33 @@ $result = $stmt->get_result();
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fabe49;
-            color: #003049;
+            background-color: #fff;
+            color: #145375;
         }
         th, td {
             padding: 12px;
-            border: 1px solid #003049;
+            border: 1px solid #145375;
             text-align: center;
         }
         th {
-            background-color: #faaf1d;
+            background-color: #e6c200;
         }
         tr:nth-child(even) {
             background-color: #e0e0e0;
         }
         .back-button {
             display: inline-block;
-            background-color: #faaf1d;
-            color: #003049;
+            background-color: #e6c200;
+            color: #145375;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 20px;
             transition: background-color 0.3s;
+            font-weight: bold;
         }
         .back-button:hover {
-            background-color: #fabe49;
+            background-color: #e6c200;
         }
     </style>
 </head>

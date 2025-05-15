@@ -2,64 +2,41 @@
 session_start();
 include '../koneksi.php';
 
-
-
-// Proses registrasi
-
 if (isset($_POST['register'])) {
-
-    // Ambil data dari form
-
     $full_name = $_POST['full_name'];
-
     $email = $_POST['email'];
-
     $password = $_POST['password'];
-
     $confirm_password = $_POST['confirm-password'];
 
-
-
-    // Validasi password
-
+    // Validasi password dan konfirmasi
     if ($password !== $confirm_password) {
-
-        echo "Kata sandi dan konfirmasi kata sandi tidak cocok.";
-
+        echo "<script>alert('Kata sandi dan konfirmasi kata sandi tidak cocok.'); window.history.back();</script>";
         exit;
     }
 
-
+    // Validasi panjang dan angka
+    if (strlen($password) < 8 || !preg_match('/[0-9]/', $password)) {
+        echo "<script>alert('Kata sandi harus minimal 8 karakter dan mengandung setidaknya satu angka.'); window.history.back();</script>";
+        exit;
+    }
 
     // Hash password
-
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-
-
     // Insert ke database
-
-    $query = "INSERT INTO mentor (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
-
-
+      $query = "INSERT INTO mentor (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
 
     if (mysqli_query($conn, $query)) {
-
-        // Jika registrasi berhasil, tampilkan notifikasi dan alihkan ke halaman login
-
         echo "<script>
-
                 alert('Registrasi berhasil!');
-
-                window.location.href = 'login_mentor.php'; // Mengarahkan ke halaman login
-
+                window.location.href = 'login_mentor.php';
               </script>";
+        exit;
     } else {
-
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
+        exit;
     }
 }
-
 ?>
 
 <!DOCTYPE html>

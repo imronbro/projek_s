@@ -38,16 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     $last_rating = $result->fetch_assoc();
 
-    if ($last_rating) {
-        $last_rating_time = strtotime($last_rating['created_at']);
-        $current_time = time();
-        $time_diff = $current_time - $last_rating_time;
+    // if ($last_rating) {
+    //     $last_rating_time = strtotime($last_rating['created_at']);
+    //     $current_time = time();
+    //     $time_diff = $current_time - $last_rating_time;
 
-        if ($time_diff < 5400) { // 5400 detik = 90 menit
-            echo "<script>alert('Anda hanya bisa memberikan rating setiap 90 menit sekali.'); window.history.back();</script>";
-            exit();
-        }
-    }
+    //     if ($time_diff < 5400) { // 5400 detik = 90 menit
+    //         echo "<script>alert('Anda hanya bisa memberikan rating setiap 90 menit sekali.'); window.history.back();</script>";
+    //         exit();
+    //     }
+    // }
 
     // Simpan rating ke database
     $sql = "INSERT INTO rating_pengajar (pengajar_id, siswa_id, rating, komentar, created_at) VALUES (?, ?, ?, ?, NOW())";
@@ -75,18 +75,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="css/rating.css">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        .content {
-            margin-top: 80px;
-            /* Sesuaikan dengan tinggi navbar */
-        }
+    .content {
+        margin-top: 80px;
+        /* Sesuaikan dengan tinggi navbar */
+    }
 
-        * {
+    * {
 
-            box-sizing: border-box;
-        }
-        body{
-            font-family: 'Poppins';
-        }
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins';
+    }
+
+    .star {
+        font-size: 2rem;
+        color: #ccc;
+        cursor: pointer;
+    }
     </style>
 </head>
 
@@ -136,17 +143,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="rating">Rating:</label>
 
             <div class="rating">
-                <input type="radio" id="star5" name="rating" value="5" />
-                <label for="star5" title="5 stars">★</label>
-                <input type="radio" id="star4" name="rating" value="4" />
-                <label for="star4" title="4 stars">★</label>
-                <input type="radio" id="star3" name="rating" value="3" />
-                <label for="star3" title="3 stars">★</label>
-                <input type="radio" id="star2" name="rating" value="2" />
-                <label for="star2" title="2 stars">★</label>
-                <input type="radio" id="star1" name="rating" value="1" />
-                <label for="star1" title="1 star">★</label>
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
             </div>
+            <input type="hidden" name="rating" id="rating-value">
+
+
 
             <label for="komentar">Komentar:</label>
             <textarea name="komentar" placeholder="Tambahkan komentar (opsional)"></textarea>
@@ -165,63 +170,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="js/menu.js" defer></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const stars = document.querySelectorAll(".rating label");
-            const inputs = document.querySelectorAll(".rating input");
+    document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll(".rating label");
+        const inputs = document.querySelectorAll(".rating input");
 
-            stars.forEach((star, index) => {
-                star.addEventListener("mouseover", () => {
-                    // Isi semua bintang dari kiri ke bintang yang di-hover
-                    for (let i = 0; i <= index; i++) {
-                        stars[i].style.color = "#ffd700"; // Warna emas
-                    }
-                    // Sisanya tetap abu-abu
-                    for (let i = index + 1; i < stars.length; i++) {
-                        stars[i].style.color = "#ccc"; // Warna default
-                    }
-                });
-
-                star.addEventListener("mouseout", () => {
-                    // Kembalikan semua bintang ke warna default
-                    stars.forEach((s) => (s.style.color = "#ccc"));
-                    // Tetap isi bintang yang dipilih
-                    const checkedInput = Array.from(inputs).find((input) => input.checked);
-                    if (checkedInput) {
-                        const checkedIndex = Array.from(inputs).indexOf(checkedInput);
-                        for (let i = 0; i <= checkedIndex; i++) {
-                            stars[i].style.color = "#ffd700"; // Warna emas
-                        }
-                    }
-                });
-
-                star.addEventListener("click", () => {
-                    // Tandai input yang sesuai sebagai dipilih
-                    inputs[index].checked = true;
-                });
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const pengajarInput = document.getElementById("pengajar");
-            const pengajarIdInput = document.getElementById("pengajar-id");
-            const datalistOptions = document.querySelectorAll("#pengajar-list option");
-
-            pengajarInput.addEventListener("input", function() {
-                const inputValue = pengajarInput.value;
-                let found = false;
-
-                datalistOptions.forEach((option) => {
-                    if (option.value === inputValue) {
-                        pengajarIdInput.value = option.getAttribute("data-id");
-                        found = true;
-                    }
-                });
-
-                if (!found) {
-                    pengajarIdInput.value = "";
+        stars.forEach((star, index) => {
+            star.addEventListener("mouseover", () => {
+                // Isi semua bintang dari kiri ke bintang yang di-hover
+                for (let i = 0; i <= index; i++) {
+                    stars[i].style.color = "#ffd700"; // Warna emas
+                }
+                // Sisanya tetap abu-abu
+                for (let i = index + 1; i < stars.length; i++) {
+                    stars[i].style.color = "#ccc"; // Warna default
                 }
             });
+
+            star.addEventListener("mouseout", () => {
+                // Kembalikan semua bintang ke warna default
+                stars.forEach((s) => (s.style.color = "#ccc"));
+                // Tetap isi bintang yang dipilih
+                const checkedInput = Array.from(inputs).find((input) => input.checked);
+                if (checkedInput) {
+                    const checkedIndex = Array.from(inputs).indexOf(checkedInput);
+                    for (let i = 0; i <= checkedIndex; i++) {
+                        stars[i].style.color = "#ffd700"; // Warna emas
+                    }
+                }
+            });
+
+            star.addEventListener("click", () => {
+                // Tandai input yang sesuai sebagai dipilih
+                inputs[index].checked = true;
+            });
         });
+    });
+    const stars = document.querySelectorAll(".star");
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+        star.addEventListener("mouseover", () => {
+            highlightStars(index);
+        });
+
+        star.addEventListener("mouseout", () => {
+            highlightStars(selectedRating - 1);
+        });
+
+        star.addEventListener("click", () => {
+            selectedRating = index + 1;
+            document.getElementById("rating-value").value = selectedRating;
+            highlightStars(index);
+            console.log("Rating yang dipilih:", selectedRating);
+        });
+    });
+
+    function highlightStars(index) {
+        stars.forEach((star, i) => {
+            star.style.color = i <= index ? "#ffd700" : "#ccc";
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const pengajarInput = document.getElementById("pengajar");
+        const pengajarIdInput = document.getElementById("pengajar-id");
+        const datalistOptions = document.querySelectorAll("#pengajar-list option");
+
+        pengajarInput.addEventListener("input", function() {
+            const inputValue = pengajarInput.value;
+            let found = false;
+
+            datalistOptions.forEach((option) => {
+                if (option.value === inputValue) {
+                    pengajarIdInput.value = option.getAttribute("data-id");
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                pengajarIdInput.value = "";
+            }
+        });
+    });
     </script>
 
 
