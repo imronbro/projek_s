@@ -106,7 +106,8 @@ if (isset($_POST['login'])) {
         text-decoration: none;
         transition: background-color 0.3s ease;
         margin-top: 10px;
-        width: 100%; /* Tombol memenuhi lebar form */
+        width: 100%;
+        /* Tombol memenuhi lebar form */
         box-sizing: border-box;
     }
 
@@ -148,7 +149,7 @@ if (isset($_POST['login'])) {
                             <i class="fas fa-lock icon-left"></i>
                             <div class="password-wrapper">
                                 <input type="password" id="password" name="password" placeholder="Masukan Kata Sandi" required
-                                value="<?php if (isset($_COOKIE['password_mentor'])) echo $_COOKIE['password_mentor']; ?>">
+                                    value="<?php if (isset($_COOKIE['password_mentor'])) echo $_COOKIE['password_mentor']; ?>">
                             </div>
                             <i class="fas fa-eye icon-right" id="toggle-password"></i> <!-- Ikon Mata -->
                         </div>
@@ -167,13 +168,13 @@ if (isset($_POST['login'])) {
                     <br>
                     <button type="submit" class="btn" name="login">Masuk</button>
                     <div class="input-field">
-                            <p style="text-align: center;">Atau masuk dengan:</p>
-                            <a href="google_login.php" class="btn-google" style="margin-top: 4px;">
-                                <i class="fab fa-google"></i> Masuk dengan Google
-                            </a>
+                        <p style="text-align: center;">Atau masuk dengan:</p>
+                        <a href="google_login.php" style="display: inline-block; margin-top: 4px;">
+                            <img src="images/continue2.png" alt="Sign in with Google" style="width: 90%; max-width: 200px; margin-left: 167px;">
+                        </a>
+
                     </div>
-                    <br>
-                    <p>Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
+                    <p style="margin-left: 160px;">Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
                 </form>
             </div>
         </div>
