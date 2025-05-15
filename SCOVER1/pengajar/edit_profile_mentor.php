@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uploadOk = 1;
     $gambar = '';
     if (!empty($_FILES["gambar"]["name"])) {
-        $target_dir = "uploads/";
+        $target_dir = "../uploads/";
         $gambar = basename($_FILES["gambar"]["name"]);
         $target_file = $target_dir . $gambar;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));

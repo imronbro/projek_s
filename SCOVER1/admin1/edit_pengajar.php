@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Upload gambar baru jika ada
     if ($_FILES['gambar']['name']) {
-        $gambar = 'uploads/' . basename($_FILES['gambar']['name']);
+        $gambar = '../uploads/' . basename($_FILES['gambar']['name']);
         move_uploaded_file($_FILES['gambar']['tmp_name'], "../" . $gambar);
     } else {
         $gambar = $data['gambar'];

@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Upload file kuis
-    $target_dir = "uploads1/";
+    $target_dir = "../uploads1/";
     $file_name = basename($file_kuis["name"]);
     $target_file = $target_dir . $file_name;
     $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
