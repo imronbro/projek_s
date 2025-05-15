@@ -1,0 +1,180 @@
+/* General Styles */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #145375;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+p {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.input-field {
+  margin-bottom: 15px;
+}
+
+.input-field label {
+  display: block;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding: 10px 40px 10px 38px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.input-with-icon .icon-left {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+}
+
+.btn {
+  width: 100%;
+  background-color: #ffd700;
+  color: #145375;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: fadeIn 1.8s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #e6c200;
+  transform: scale(1.05);
+}
+
+.login-link {
+  margin-top: 15px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #ffd700;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  .input-with-icon input {
+    padding: 8px 40px 8px 38px;
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .login-link {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .input-with-icon input {
+    padding: 6px 40px 6px 38px;
+    font-size: 12px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .login-link {
+    font-size: 12px;
+  }
+}

@@ -169,12 +169,11 @@ if (isset($_POST['login'])) {
                     <button type="submit" class="btn" name="login">Masuk</button>
                     <div class="input-field">
                         <p style="text-align: center;">Atau masuk dengan:</p>
-                        <a href="google_login.php" style="display: inline-block; margin-top: 4px;">
-                            <img src="images/continue2.png" alt="Sign in with Google" style="width: 90%; max-width: 200px; margin-left: 167px;">
+                        <a href="google_login.php" class="responsive-link">
+                            <img src="images/continue2.png" alt="Sign in with Google">
                         </a>
-
                     </div>
-                    <p style="margin-left: 160px;">Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
+                    <p class="responsive-text">Belum punya akun? <a href="register.php">Buat Akun</a></p>
                 </form>
             </div>
         </div>

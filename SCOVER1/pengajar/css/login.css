@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-  font-family: 'poppins';
+  font-family: "poppins";
   margin: 0;
   padding: 0;
   display: flex;
@@ -158,20 +158,58 @@ body {
   background-color: #e6c200;
   transform: scale(1.05);
 }
-
 /* Links */
+
 .forgot a,
 .form-container a {
   color: #145375;
   font-weight: 750;
   text-decoration: none;
+  margin-top: 20px;
 }
 .forgot a:hover,
 .form-container a:hover {
   text-decoration: underline;
 }
 
-/* Responsive Styles */
+.submi {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+/* Responsive Link */
+.responsive-link {
+  display: inline-block;
+  margin-top: 2px;
+  text-align: center;
+  width: 100%; /* Elemen <a> menyesuaikan dengan lebar kontainer */
+}
+
+.responsive-link img {
+  max-width: 90%; /* Gambar tidak akan melebihi 90% dari lebar elemen induknya */
+  max-height: 150px; /* Batasi tinggi maksimum gambar */
+  height: auto; /* Menjaga rasio aspek gambar */
+  margin: 0 auto; /* Memusatkan gambar */
+}
+
+/* Responsive Text */
+.responsive-text {
+  text-align: center; /* Pusatkan teks */
+  margin: 10px 0; /* Margin atas dan bawah */
+  font-size: 14px; /* Ukuran font default */
+}
+
+.responsive-text a {
+  color: #145375; /* Warna link */
+  text-decoration: none; /* Hilangkan garis bawah */
+  font-weight: bold;
+}
+
+.responsive-text a:hover {
+  text-decoration: underline; /* Tambahkan garis bawah saat hover */
+}
+
+/* Media query untuk layar kecil (HP) */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -180,7 +218,7 @@ body {
   }
 
   .left-section {
-    padding: 15px;
+    padding: 16px;
   }
 
   .left-section .logo h1 {
@@ -212,8 +250,33 @@ body {
     padding: 8px;
     animation: fadeIn 2s ease-in-out;
   }
+
+  .responsive-text {
+    font-size: 12px; /* Ukuran font lebih kecil */
+    margin: 5px 0; /* Margin lebih kecil */
+  }
+
+  .responsive-link img {
+    max-width: 80%; /* Kurangi ukuran gambar untuk layar kecil */
+    max-height: 120px; /* Batasi tinggi maksimum untuk layar kecil */
+  }
 }
 
+/* Media query untuk layar besar (PC) */
+@media (min-width: 769px) {
+  .responsive-text {
+    font-size: 16px; /* Ukuran font lebih besar */
+    margin: 20px 0; /* Margin lebih besar */
+  }
+
+  .responsive-link img {
+    max-width: 50%; /* Kurangi ukuran gambar untuk layar besar */
+    max-height: 100px; /* Batasi tinggi maksimum */
+    height: auto; /* Menjaga rasio aspek gambar */
+  }
+}
+
+/* Media query untuk layar sangat kecil (HP kecil) */
 @media (max-width: 480px) {
   .left-section .logo h1 {
     font-size: 24px;
@@ -239,5 +302,10 @@ body {
     font-size: 12px;
     padding: 6px;
     animation: fadeIn 2s ease-in-out;
+  }
+
+  .responsive-link img {
+    max-width: 70%; /* Kurangi ukuran gambar lebih jauh untuk layar sangat kecil */
+    max-height: 100px; /* Batasi tinggi maksimum lebih kecil */
   }
 }

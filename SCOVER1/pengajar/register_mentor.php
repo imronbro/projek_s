@@ -172,8 +172,8 @@ if (isset($_POST['register'])) {
                 <button type="submit" class="btn" name="register">Daftar</button>
                 <div class="input-field">
                     <p style="text-align: center;">Atau daftar dengan:</p>
-                    <a href="google_login.php" style="display: inline-block; margin-top: 2px;">
-                        <img src="images/signupgoogle.png" alt="Sign in with Google" style="width: 90%; max-width: 200px; margin-left: 150px;">
+                    <a href="google_login.php" class="responsive-link">
+                        <img src="images/signupgoogle.png" alt="Sign in with Google" class="responsive-img">
                     </a>
                 </div>
         </div>
