@@ -8,6 +8,7 @@ if ($email === null) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
     $mapel = mysqli_real_escape_string($conn, $_POST['mapel']);
     $ttl = mysqli_real_escape_string($conn, $_POST['ttl']);
     $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
@@ -42,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    $query = "UPDATE mentor SET mapel='$mapel', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
+    $query = "UPDATE mentor SET full_name='$full_name', mapel='$mapel', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
     if ($gambar) {
         $query .= ", gambar='$gambar'";
     }
@@ -221,6 +222,11 @@ if (!$data) {
     <div class="container mt-5">
         <h2 class="text-center">Edit Profil</h2>
         <form action="" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="full_name" class="form-label">Nama Lengkap</label>
+                <input type="text" id="full_name" name="full_name" value="<?= htmlspecialchars($data['full_name']); ?>"
+                    class="form-control" required>
+            </div>
             <div class="mb-3">
                 <label for="mapel" class="form-label">Mata Pelajaran</label>
                 <input type="text" id="mapel" name="mapel" value="<?= htmlspecialchars($data['mapel']); ?>"

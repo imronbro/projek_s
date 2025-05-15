@@ -9,6 +9,7 @@ if ($email === null) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
     $sekolah = mysqli_real_escape_string($conn, $_POST['sekolah']);
     $kelas = mysqli_real_escape_string($conn, $_POST['kelas']);
     $ttl = mysqli_real_escape_string($conn, $_POST['ttl']);
@@ -44,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     
-    $query = "UPDATE siswa SET sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
+    $query = "UPDATE siswa SET full_name='$full_name', sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
     if ($gambar) {
         $query .= ", gambar='$gambar'";
     }
@@ -248,6 +249,10 @@ input[type="file"] {
     <div class="container">
     <h2 class="text-center">Edit Profil Siswa</h2>
     <form action="" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="full_name" class="form-label">Nama Lengkap</label>
+            <input type="text" id="full_name" name="full_name" value="<?= htmlspecialchars($data['full_name']); ?>" class="form-control" required>
+        </div>
         <div class="mb-3">
             <label for="sekolah" class="form-label">Sekolah</label>
             <input type="text" id="sekolah" name="sekolah" value="<?= htmlspecialchars($data['sekolah']); ?>" class="form-control" required>
