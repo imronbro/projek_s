@@ -144,6 +144,15 @@ $conn->close();
             padding: 8px 10px; /* Kurangi padding tombol */
           }
         }
+        .unduh {
+            display: inline-block;
+            background-color: #145375;
+            color: #fff;
+            padding: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -252,7 +261,7 @@ $conn->close();
                     <td><?= htmlspecialchars($row['tanggal']) ?></td>
                     <td>
                         <?php if (!empty($row['file_kuis'])): ?>
-                            <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                            <a href="download_nilai.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank"class="unduh">Unduh</a>
                         <?php else: ?>
                             Tidak Ada File
                         <?php endif; ?>

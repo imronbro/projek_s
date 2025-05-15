@@ -10,17 +10,17 @@ if (!isset($_SESSION['mentor_id'])) {
 $mentor_id = $_SESSION['mentor_id'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $siswa_id = $_POST["siswa_id"];
+    $siswa_ids = $_POST["siswa_id"]; // ini array
     $nama_kuis = $_POST["nama_kuis"];
     $file_kuis = $_FILES["file_kuis"];
 
     // Validasi input
-    if (empty($siswa_id) || empty($nama_kuis) || empty($file_kuis)) {
+    if (empty($siswa_ids) || empty($nama_kuis) || empty($file_kuis)) {
         echo "<script>alert('Harap isi semua kolom.'); window.history.back();</script>";
         exit();
     }
 
-    // Upload file kuis
+    // Upload file kuis (sama sekali saja)
     $target_dir = "../uploads1/";
     $file_name = basename($file_kuis["name"]);
     $target_file = $target_dir . $file_name;
@@ -29,18 +29,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (move_uploaded_file($file_kuis["tmp_name"], $target_file)) {
         $query = "INSERT INTO kuis (pengajar_id, siswa_id, nama, file_kuis) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("iiss", $mentor_id, $siswa_id, $nama_kuis, $target_file);
 
-        if ($stmt->execute()) {
-            echo "<script>alert('Kuis berhasil disimpan!'); window.location.href = 'kuis.php';</script>";
-        } else {
-            echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
+        foreach ($siswa_ids as $siswa_id) {
+            $stmt->bind_param("iiss", $mentor_id, $siswa_id, $nama_kuis, $target_file);
+            $stmt->execute();
         }
+
         $stmt->close();
+
+        echo "<script>alert('Kuis berhasil disimpan!'); window.location.href = 'kuis.php';</script>";
     } else {
         echo "<script>alert('Gagal mengupload file.'); window.history.back();</script>";
     }
 }
+
 
 $query = "SELECT siswa_id, full_name FROM siswa";
 $result = mysqli_query($conn, $query);
@@ -115,13 +117,13 @@ mysqli_close($conn);
 
     button:hover {
         background-color: #145375;
-        color:#fff;
+        color: #fff;
     }
 
     .back-button {
         display: inline-block;
         background-color: #e6c200;
-        color:#145375;
+        color: #145375;
         padding: 10px 20px;
         text-decoration: none;
         border-radius: 5px;
@@ -191,11 +193,11 @@ mysqli_close($conn);
         <ul class="nav-links">
             <li><a href="home_mentor.php">Jurnal</a></li>
             <li><a href="proses_presensi.php">Presensi Siswa</a></li>
-        <li><a href="siswa.php">Siswa</a></li>
-        <li><a href="jadwal.php">Jadwal</a></li>
-        <li><a href="kuis.php" class="active" >Kuis</a></li>
-        <li><a href="nilai.php">Nilai</a></li>
-        <li><a href="profile_mentor.php">Profil</a></li>
+            <li><a href="siswa.php">Siswa</a></li>
+            <li><a href="jadwal.php">Jadwal</a></li>
+            <li><a href="kuis.php" class="active">Kuis</a></li>
+            <li><a href="nilai.php">Nilai</a></li>
+            <li><a href="profile_mentor.php">Profil</a></li>
             <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
         </ul>
         <div class="menu-icon" onclick="toggleMenu()">
@@ -210,8 +212,15 @@ mysqli_close($conn);
         <form action="" method="POST" enctype="multipart/form-data">
             <label for="searchStudent">Cari Siswa:</label>
             <input type="text" id="searchStudent" placeholder="Ketik nama siswa...">
-            <input type="hidden" name="siswa_id" id="siswaId">
+
+            <!-- Container pilihan siswa yang sudah dipilih -->
+            <div id="selectedStudents" style="margin:10px 0; min-height:30px;"></div>
+
+            <!-- Hidden inputs array untuk kirim id siswa -->
+            <div id="hiddenInputs"></div>
+
             <div id="autocomplete-list" class="autocomplete-suggestions"></div>
+
 
             <label for="nama_kuis">Nama Kuis:</label>
             <input type="text" name="nama_kuis" placeholder="Contoh: Kuis Matematika" required>
@@ -238,27 +247,67 @@ mysqli_close($conn);
     const siswaList = <?php echo json_encode($siswaList); ?>;
     const searchInput = document.getElementById('searchStudent');
     const autocompleteList = document.getElementById('autocomplete-list');
-    const siswaIdInput = document.getElementById('siswaId');
+    const selectedStudentsDiv = document.getElementById('selectedStudents');
+    const hiddenInputsDiv = document.getElementById('hiddenInputs');
+
+    let selectedStudents = []; // Array { siswa_id, full_name }
+
+    function renderSelectedStudents() {
+        selectedStudentsDiv.innerHTML = '';
+        hiddenInputsDiv.innerHTML = '';
+
+        selectedStudents.forEach(student => {
+            const studentElem = document.createElement('span');
+            studentElem.style.cssText =
+                'display:inline-block; background:#e6c200; color:#145375; padding:5px 10px; margin:3px; border-radius:5px; font-weight:bold; cursor:default;';
+            studentElem.textContent = student.full_name;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.textContent = '×';
+            removeBtn.style.cssText =
+                'margin-left:8px; border:none; background:none; font-weight:bold; cursor:pointer; color:#145375;';
+            removeBtn.title = 'Hapus';
+            removeBtn.addEventListener('click', () => {
+                selectedStudents = selectedStudents.filter(s => s.siswa_id !== student.siswa_id);
+                renderSelectedStudents();
+            });
+
+            studentElem.appendChild(removeBtn);
+            selectedStudentsDiv.appendChild(studentElem);
+
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'siswa_id[]'; // array supaya multiple terkirimm
+            hiddenInput.value = student.siswa_id;
+            hiddenInputsDiv.appendChild(hiddenInput);
+        });
+    }
 
     searchInput.addEventListener('input', function() {
         const query = this.value.toLowerCase();
         autocompleteList.innerHTML = '';
 
-        if (!query) {
-            return;
-        }
+        if (!query) return;
 
-        siswaList.forEach(function(siswa) {
-            if (siswa.full_name.toLowerCase().includes(query)) {
+        siswaList.forEach(siswa => {
+            if (
+                siswa.full_name.toLowerCase().includes(query) &&
+                !selectedStudents.find(s => s.siswa_id === siswa.siswa_id) // cegah duplikat
+            ) {
                 const suggestionItem = document.createElement('div');
                 suggestionItem.classList.add('autocomplete-suggestion');
                 suggestionItem.textContent = siswa.full_name;
                 suggestionItem.dataset.id = siswa.siswa_id;
 
                 suggestionItem.addEventListener('click', function() {
-                    searchInput.value = siswa.full_name;
-                    siswaIdInput.value = siswa.siswa_id;
+                    selectedStudents.push({
+                        siswa_id: siswa.siswa_id,
+                        full_name: siswa.full_name
+                    });
+                    renderSelectedStudents();
+                    searchInput.value = '';
                     autocompleteList.innerHTML = '';
+                    searchInput.focus();
                 });
 
                 autocompleteList.appendChild(suggestionItem);

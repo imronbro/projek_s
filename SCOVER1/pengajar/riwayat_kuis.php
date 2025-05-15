@@ -99,6 +99,15 @@ $result = $stmt->get_result();
             border-radius: 5px;
             font-weight: bold;
         }
+        .unduh {
+            display: inline-block;
+            background-color: #e6c200;
+            color: #145375;
+            padding: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
 
         .back-button:hover {
             background-color: #145375;
@@ -201,7 +210,7 @@ $result = $stmt->get_result();
                     <td><?= htmlspecialchars($row['tanggal']) ?></td>
                     <td>
                         <?php if (!empty($row['file_kuis'])): ?>
-                            <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank">Unduh</a>
+                            <a href="download.php?file=<?= urlencode($row['file_kuis']) ?>" target="_blank"class="unduh">Unduh</a>
                         <?php else: ?>
                             Tidak Ada File
                         <?php endif; ?>
