@@ -1,10 +1,10 @@
 <?php
-if (!isset($_GET['file_kuis'])) {
+if (!isset($_GET['file'])) {
     echo "File tidak ditentukan.";
     exit;
 }
 
-$filename = basename($_GET['file_kuis']); // Hindari directory traversal
+$filename = basename($_GET['file']); // Hindari directory traversal
 $filepath = '../uploads1/' . $filename; // Ganti sesuai direktori file disimpan
 
 if (file_exists($filepath)) {
