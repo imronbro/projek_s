@@ -6,13 +6,16 @@ if (!isset($_SESSION['user_email'])) {
     header("Location: login.php");
     exit();
 }
+
 $user_email = $_SESSION['user_email'];
 
+// Ambil data siswa_id dari email
 $query = "SELECT siswa_id, full_name FROM siswa WHERE email = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("s", $user_email);
 $stmt->execute();
 $result = $stmt->get_result();
+
 if ($row = $result->fetch_assoc()) {
     $siswa_id = $row['siswa_id'];
     $full_name = $row['full_name'];
@@ -22,50 +25,41 @@ if ($row = $result->fetch_assoc()) {
 }
 $stmt->close();
 
-$sql_cek = "SELECT UNIX_TIMESTAMP(waktu_presensi) as last_presensi FROM presensi_siswa WHERE siswa_id = ? ORDER BY waktu_presensi DESC LIMIT 1";
-$stmt = $conn->prepare($sql_cek);
-$stmt->bind_param("i", $siswa_id);
+// Cek filter tanggal
+$tanggal_filter = isset($_GET['tanggal']) ? $_GET['tanggal'] : '';
+
+if ($tanggal_filter) {
+    $query = "SELECT a.status, a.alasan AS komentar, a.waktu_presensi,
+                     DATE(a.waktu_presensi) AS tanggal, 
+                     TIME(a.waktu_presensi) AS sesi
+              FROM absensi_siswa a
+              WHERE a.siswa_id = ? AND DATE(a.waktu_presensi) = ?
+              ORDER BY a.waktu_presensi DESC";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("is", $siswa_id, $tanggal_filter);
+} else {
+    $query = "SELECT a.status, a.alasan AS komentar, a.waktu_presensi,
+                     DATE(a.waktu_presensi) AS tanggal, 
+                     TIME(a.waktu_presensi) AS sesi
+              FROM absensi_siswa a
+              WHERE a.siswa_id = ?
+              ORDER BY a.waktu_presensi DESC";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $siswa_id);
+}
+
 $stmt->execute();
 $result = $stmt->get_result();
+
+$presensi = [];
+while ($row = $result->fetch_assoc()) {
+    $presensi[] = $row;
+}
+
 $stmt->close();
-
-$last_presensi = 0;
-if ($row = $result->fetch_assoc()) {
-    $last_presensi = $row['last_presensi'];
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $tanggal = !empty($_POST['tanggal']) ? $_POST['tanggal'] : null;
-    $sesi = !empty($_POST['sesi']) ? htmlspecialchars($_POST['sesi']) : null;
-    $status = !empty($_POST['kehadiran']) ? htmlspecialchars($_POST['kehadiran']) : null;
-    $komentar = !empty($_POST['komentar']) ? htmlspecialchars($_POST['komentar']) : null;
-
-    if (!$tanggal || !$sesi || !$status) {
-        echo "<script>alert('Semua kolom harus diisi!'); window.history.back();</script>";
-        exit();
-    }
-
-    $current_time = time();
-    if ($last_presensi > 0 && ($current_time - $last_presensi) < 5400) {
-        echo "<script>alert('Anda hanya bisa mengisi presensi sekali dalam 90 menit!'); window.history.back();</script>";
-        exit();
-    }
-
-    $sql = "INSERT INTO presensi_siswa (siswa_id, full_name, tanggal, sesi, status, komentar, waktu_presensi) VALUES (?, ?, ?, ?, ?, ?, NOW())";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("isssss", $siswa_id, $full_name, $tanggal, $sesi, $status, $komentar);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Presensi berhasil disimpan!'); window.location.href='home.php';</script>";
-    } else {
-        echo "<script>alert('Terjadi kesalahan: " . $stmt->error . "');</script>";
-    }
-
-    $stmt->close();
-}
-
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -77,131 +71,174 @@ $conn->close();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
-        * {
-            box-sizing: border-box;
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #003049;
+        padding-top: 110px;
+    }
+
+    .container {
+        margin-top: 35px;
+        padding: 20px;
+        width: 90%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        text-align: center;
+        color: #145375;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+    .filter-form {
+        margin-bottom: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .filter-form label {
+        font-weight: bold;
+        color: #003049;
+    }
+
+    .filter-form input[type="date"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1em;
+        width: 200px;
+    }
+
+    .filter-form button {
+        padding: 10px 20px;
+        background-color: #faaf1d;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-size: 1em;
+    }
+
+    .filter-form button:hover {
+        background-color: #fabe49;
+        transform: scale(1.05);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fabe49;
+        color: #003049;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    th,
+    td {
+        padding: 15px;
+        border: 1px solid #003049;
+        text-align: center;
+        font-size: 1em;
+    }
+
+    th {
+        background-color: #faaf1d;
+        color: #003049;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e0e0e0;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    tr:hover {
+        background-color: #faaf1d;
+        color: #003049;
+    }
+
+    @media (max-width: 768px) {
+        .filter-form {
+            flex-direction: column;
+            align-items: stretch;
         }
 
-        body {
-            font-family: 'Poppins';
-            background-color: #fff;
-            color: #145375;
-            margin: 0;
-            padding: 0;
-            padding-top: 100px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 30px;
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        .filter-form input,
+        .filter-form button {
+            width: 100%;
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #145375;
+            font-size: 2em;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        select,
-        input[type="date"],
-        textarea {
+        th,
+        td {
+            font-size: 0.9em;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h2 {
+            font-size: 1.8em;
         }
 
-        textarea {
-            resize: vertical;
+        th,
+        td {
+            font-size: 0.8em;
+            padding: 8px;
         }
 
-        .form-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+        .filter-form input,
+        .filter-form button {
+            font-size: 0.9em;
+            padding: 8px;
         }
+    }
+</style>
 
-        .btn {
-            background-color: #e6c200;
-            color: #145375;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background-color: #145375;
-            color: white;
-        }
-
-        #komentar-container {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-        }
-
-        .notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            display: none;
-            z-index: 1000;
-        }
-
-        .notification-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-        }
-
-        .btn-secondary {
-            background-color: #ccc;
-            color: #333;
-        }
-
-        .btn-secondary:hover {
-            background-color: #bbb;
-        }
-
-        .btn-danger {
-            background-color: #e74c3c;
-            color: #fff;
-        }
-
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-    </style>
 </head>
 
 <body>
@@ -225,39 +262,56 @@ $conn->close();
     </nav>
 
     <div class="container">
-        <h2>Presensi Siswa</h2>
-        <form action="" method="post">
-            <label for="sesi">Sesi:</label>
-            <select id="sesi" name="sesi">
-                <option value="Sesi 1">Sesi 1 (09.00-10.30)</option>
-                <option value="Sesi 2">Sesi 2 (10.30-12.00)</option>
-                <option value="Sesi 3">Sesi 3 (13.00-14.30)</option>
-                <option value="Sesi 4">Sesi 4 (14.30-16.00)</option>
-                <option value="Sesi 5">Sesi 5 (16.00-17.30)</option>
-                <option value="Sesi 6">Sesi 6 (18.00-19.30)</option>
-                <option value="Sesi 7">Sesi 7 (19.30-21.00)</option>
-            </select>
-
-            <label for="tanggal">Pilih Tanggal:</label>
-            <input type="date" id="tanggal" name="tanggal" required>
-
-            <label for="kehadiran">Status Kehadiran:</label>
-            <select id="kehadiran" name="kehadiran" required onchange="toggleKomentar()">
-                <option value="Hadir">Hadir</option>
-                <option value="Izin">Izin</option>
-                <option value="Sakit">Sakit</option>
-            </select>
-
-            <div id="komentar-container">
-                <label for="komentar">Alasan Izin/Sakit:</label>
-                <textarea id="komentar" name="komentar" rows="3" placeholder="Jelaskan alasan izin atau sakit..."></textarea>
-            </div>
-
-            <div class="form-buttons">
-                <button type="submit" class="btn">Kirim</button>
-                <a href="riwayat_presensi.php" class="btn">Riwayat Presensi</a>
-            </div>
+        <h2>Riwayat Presensi - <?= htmlspecialchars($full_name) ?></h2>
+        <form method="GET" class="filter-form">
+            <label for="tanggal">Filter Tanggal:</label>
+            <input type="date" id="tanggal" name="tanggal" value="<?= htmlspecialchars($tanggal_filter) ?>">
+            <button type="submit">Tampilkan</button>
         </form>
+
+        <?php if (empty($presensi)) : ?>
+        <p style="text-align: center;">Belum ada data presensi.</p>
+        <?php else : ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Sesi</th>
+                    <th>Status</th>
+                    <th>Waktu Presensi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($presensi as $p) : ?>
+                    <?php
+                     $waktu = date('H:i', strtotime($p['waktu_presensi']));
+                        $sesi = 'Tidak Diketahui';
+                        if ($waktu >= '09:00' && $waktu < '10:30') {
+                            $sesi = 'Sesi 1 (09.00-10.30)';
+                        } elseif ($waktu >= '10:30' && $waktu < '12:00') {
+                            $sesi = 'Sesi 2 (10.30-12.00)';
+                        } elseif ($waktu >= '13:00' && $waktu < '14:30') {
+                            $sesi = 'Sesi 3 (13.00-14.30)';
+                        } elseif ($waktu >= '14:30' && $waktu < '16:00') {
+                            $sesi = 'Sesi 4 (14.30-16.00)';
+                        } elseif ($waktu >= '16:00' && $waktu < '17:30') {
+                            $sesi = 'Sesi 5 (16.00-17.30)';
+                        } elseif ($waktu >= '18:00' && $waktu < '19:30') {
+                            $sesi = 'Sesi 6 (18.00-19.30)';
+                        } elseif ($waktu >= '19:30' && $waktu < '21:00') {
+                            $sesi = 'Sesi 7 (19.30-21.00)';
+                        }
+                        ?>
+                <tr>
+                    <td><?= htmlspecialchars($p['tanggal']) ?></td>
+                    <td><?= $sesi ?></td>
+                    <td><?= htmlspecialchars($p['status']) ?></td>
+                    <td><?= htmlspecialchars($p['waktu_presensi']) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php endif; ?>
     </div>
 
     <div id="logout-notification" class="notification">
@@ -270,26 +324,26 @@ $conn->close();
 
     <script src="js/menu.js" defer></script>
     <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
 
-        function toggleKomentar() {
-            const status = document.getElementById('kehadiran').value;
-            const komentar = document.getElementById('komentar-container');
-            komentar.style.display = (status === 'Izin' || status === 'Sakit') ? 'block' : 'none';
-        }
+    function toggleKomentar() {
+        const status = document.getElementById('kehadiran').value;
+        const komentar = document.getElementById('komentar-container');
+        komentar.style.display = (status === 'Izin' || status === 'Sakit') ? 'block' : 'none';
+    }
 
-        function confirmLogout() {
-            const notification = document.getElementById('logout-notification');
-            notification.style.display = 'block';
-        }
+    function confirmLogout() {
+        const notification = document.getElementById('logout-notification');
+        notification.style.display = 'block';
+    }
 
-        function cancelLogout() {
-            const notification = document.getElementById('logout-notification');
-            notification.style.display = 'none';
-        }
+    function cancelLogout() {
+        const notification = document.getElementById('logout-notification');
+        notification.style.display = 'none';
+    }
     </script>
 </body>
 

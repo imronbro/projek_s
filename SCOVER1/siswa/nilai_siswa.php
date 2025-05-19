@@ -116,7 +116,7 @@ $tahun_result = $conn->query($tahun_query);
 
         h2 {
             text-align: center;
-            color: #faaf1d;
+            color: #145375;
             /* Dark yellow */
             margin-bottom: 20px;
             font-size: 2.5em;
@@ -413,8 +413,7 @@ $tahun_result = $conn->query($tahun_query);
                 ?>
             </tbody>
         </table>
-        <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh PDF</a>
-        <a href="download_nilai.php?format=html&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh HTML</a>
+        <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh Nilai</a>
     </div>
 
     <div id="logout-notification" class="notification">
