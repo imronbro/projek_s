@@ -171,6 +171,8 @@ $result = mysqli_query($conn, $query);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi hover */
             padding: 20px; /* Tambahkan padding di dalam kartu */
+            min-height: 440px;
+            margin-left: 30px;
         }
 
         .card:hover {
@@ -282,6 +284,8 @@ $result = mysqli_query($conn, $query);
 
         /* Responsif untuk Layar Kecil */
         @media (max-width: 768px) {
+
+        
             .search-box {
                 flex-direction: column; /* Susun input dan tombol secara vertikal */
                 gap: 10px; /* Jarak antar elemen */
@@ -315,6 +319,7 @@ $result = mysqli_query($conn, $query);
             .card {
                 margin: 10px auto;
                 width: 100%;
+                min-height: 300px;
                 /* Kartu memenuhi lebar layar */
             }
 

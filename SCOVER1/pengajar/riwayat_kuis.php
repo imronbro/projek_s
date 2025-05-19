@@ -31,6 +31,10 @@ $result = $stmt->get_result();
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <style>
+         * {
+
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins';
             background-color: #ffffff;
@@ -179,7 +183,7 @@ $result = $stmt->get_result();
         <li><a href="proses_presensi.php">Presensi Siswa</a></li>
         <li><a href="siswa.php">Siswa</a></li>
         <li><a href="jadwal.php">Jadwal</a></li>
-        <li><a href="kuis.php" calss="active">Kuis</a></li>
+        <li><a href="kuis.php" class="active">Kuis</a></li>
         <li><a href="nilai.php">Nilai</a></li>
         <li><a href="profile_mentor.php">Profil</a></li>
         <li><button class="logout-btn" onclick="confirmLogout()">Keluar</button></li>
