@@ -2,61 +2,41 @@
 session_start();
 include '../koneksi.php';
 
-
 if (isset($_POST['register'])) {
-
-    // Ambil data dari form
-
     $full_name = $_POST['full_name'];
-
     $email = $_POST['email'];
-
     $password = $_POST['password'];
-
     $confirm_password = $_POST['confirm-password'];
 
-
-
-    // Validasi password
-
+    // Validasi password dan konfirmasi
     if ($password !== $confirm_password) {
-
-        echo "Kata sandi dan konfirmasi kata sandi tidak cocok.";
-
+        echo "<script>alert('Kata sandi dan konfirmasi kata sandi tidak cocok.'); window.history.back();</script>";
         exit;
     }
 
-
+    // Validasi panjang dan angka
+    if (strlen($password) < 8 || !preg_match('/[0-9]/', $password)) {
+        echo "<script>alert('Kata sandi harus minimal 8 karakter dan mengandung setidaknya satu angka.'); window.history.back();</script>";
+        exit;
+    }
 
     // Hash password
-
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-
-
     // Insert ke database
-
     $query = "INSERT INTO siswa (full_name, email, password) VALUES ('$full_name', '$email', '$hashed_password')";
 
-
-
     if (mysqli_query($conn, $query)) {
-
-        // Jika registrasi berhasil, tampilkan notifikasi dan alihkan ke halaman login
-
         echo "<script>
-
                 alert('Registrasi berhasil!');
-
-                window.location.href = 'login.php'; // Mengarahkan ke halaman login
-
+                window.location.href = 'login.php';
               </script>";
+        exit;
     } else {
-
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        echo "<script>alert('Terjadi kesalahan: " . mysqli_error($conn) . "'); window.history.back();</script>";
+        exit;
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -188,20 +168,20 @@ if (isset($_POST['register'])) {
                         <i class="fas fa-eye icon-right" id="toggle-confirm-password"></i>
                     </div>
                 </div>
-
+                <br>
+                <button type="submit" class="btn" name="register">Daftar</button>
                 <div class="input-field">
                     <p style="text-align: center;">Atau daftar dengan:</p>
-                    <a href="google_login.php" class="btn btn-google">
-                        <i class="fab fa-google"></i> Daftar dengan Google
+                    <a href="google_login.php" class="responsive-link">
+                        <img src="images/signupgoogle.png" alt="Sign in with Google" class="responsive-img">
                     </a>
                 </div>
 
         </div>
 
-        <button type="submit" class="btn" name="register">Daftar</button>
-        </form>
 
         <p class="login-link">Sudah punya akun? <a href="login.php">Masuk</a></p>
+        </form>
     </div>
     </div>
     <script>
