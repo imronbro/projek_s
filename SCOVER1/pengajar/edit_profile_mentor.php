@@ -21,23 +21,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $gambar = basename($_FILES["gambar"]["name"]);
         $target_file = $target_dir . $gambar;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        
+
+        // Cek apakah file benar-benar gambar
         $check = getimagesize($_FILES["gambar"]["tmp_name"]);
         if ($check === false) {
             echo "File bukan gambar.";
             $uploadOk = 0;
         }
+
+        // Cek ukuran file
         if ($_FILES["gambar"]["size"] > 2000000) {
             echo "Ukuran file terlalu besar.";
             $uploadOk = 0;
         }
-        if (!in_array($imageFileType, ["jpg", "png", "jpeg", "gif"])) {
+
+        // Cek ekstensi file
+        if (!in_array($imageFileType, ["jpg", "jpeg", "png", "gif"])) {
             echo "Hanya format JPG, JPEG, PNG & GIF yang diperbolehkan.";
             $uploadOk = 0;
         }
+
+        // Cek MIME type menggunakan finfo
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $_FILES["gambar"]["tmp_name"]);
+        finfo_close($finfo);
+
+        if (!in_array($mimeType, $allowedMimeTypes)) {
+            echo "File bukan tipe gambar yang valid.";
+            $uploadOk = 0;
+        }
+
+        // Proses upload jika lolos semua validasi
         if ($uploadOk && move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
             $gambar = $target_file;
-        } else {
+        } else if ($uploadOk) {
             echo "Terjadi kesalahan saat mengupload gambar.";
             $uploadOk = 0;
         }
@@ -77,6 +95,7 @@ if (!$data) {
     die("Data pengguna tidak ditemukan.");
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -249,7 +268,8 @@ if (!$data) {
             </div>
             <div class="mb-3">
                 <label for="gambar" class="form-label">Upload Foto Profil</label>
-                <input type="file" id="gambar" name="gambar" class="form-control">
+                <input type="file" id="gambar" name="gambar" class="form-control" accept="image/*">
+
                 <?php if (!empty($data['gambar'])): ?>
                 <img src="<?= htmlspecialchars($data['gambar']); ?>" alt="Profil" width="100" class="mt-2">
                 <?php endif; ?>

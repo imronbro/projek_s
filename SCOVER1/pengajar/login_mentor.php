@@ -173,7 +173,7 @@ if (isset($_POST['login'])) {
                             <img src="images/continue2.png" alt="Sign in with Google">
                         </a>
                     </div>
-                    <p class="responsive-text">Belum punya akun? <a href="register.php">Buat Akun</a></p>
+                    <p class="responsive-text">Belum punya akun? <a href="register_mentor.php">Buat Akun</a></p>
                 </form>
             </div>
         </div>
