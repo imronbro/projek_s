@@ -8,37 +8,38 @@ if (!isset($_SESSION['user_email'])) {
 }
 $user_email = $_SESSION['user_email'];
 
-// Ambil data siswa berdasarkan email
-$query = "SELECT siswa_id, full_name FROM siswa WHERE email = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("s", $user_email);
-$stmt->execute();
-$result = $stmt->get_result();
-if ($row = $result->fetch_assoc()) {
-    $siswa_id = $row['siswa_id'];
-    $full_name = $row['full_name'];
+// Ambil siswa_id berdasarkan user_email
+$query_siswa = "SELECT siswa_id FROM siswa WHERE email = ?";
+$stmt_siswa = $conn->prepare($query_siswa);
+$stmt_siswa->bind_param("s", $user_email);
+$stmt_siswa->execute();
+$result_siswa = $stmt_siswa->get_result();
+
+if ($result_siswa->num_rows === 1) {
+    $row_siswa = $result_siswa->fetch_assoc();
+    $siswa_id = $row_siswa['siswa_id'];
 } else {
-    echo "<script>alert('Akun tidak ditemukan!'); window.location.href='login.php';</script>";
+    // Jika siswa tidak ditemukan, bisa redirect atau beri pesan error
+    echo "User siswa tidak ditemukan.";
     exit();
 }
-$stmt->close();
 
-// Ambil tanggal hari ini
-$tanggal_sekarang = date('Y-m-d');
+// Query kuis berdasarkan siswa_id
+$query = "
+    SELECT k.id, k.nama AS nama_kuis, k.file_kuis, k.tanggal, m.full_name AS nama_pengajar
+    FROM kuis k
+    JOIN mentor m ON k.pengajar_id = m.pengajar_id
+    WHERE k.siswa_id = ?
+    ORDER BY k.tanggal DESC
+";
 
-// Ambil jadwal siswa dengan join ke tabel mentor untuk mendapatkan nama pengajar
-$sql = "SELECT j.tanggal, j.sesi, j.mata_pelajaran, j.pengajar_id, m.full_name AS pengajar 
-        FROM jadwal_siswa j
-        LEFT JOIN mentor m ON j.pengajar_id = m.pengajar_id
-        WHERE j.siswa_id = ? AND j.tanggal >= ?
-        ORDER BY j.tanggal, j.sesi";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("is", $siswa_id, $tanggal_sekarang); // Gunakan tanggal sekarang sebagai parameter
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $siswa_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -343,71 +344,73 @@ $conn->close();
     }
     </style>
 </head>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="images/foto4.png" alt="Logo">
-        </div>
-        <h1 class="title">Dashboard Siswa</h1>
-        <ul class="nav-links">
-            <li><a href="home.php">Presensi</a></li>
-            <li><a href="pengajar.php">Pengajar</a></li>
-            <li><a href="rating.php">Rating</a></li>
-            <li><a href="jadwal1.php" class="active">Jadwal</a></li>
-            <li><a href="nilai_siswa.php">Nilai</a></li>
-            <li><a href="profile.php">Profil</a></li>
-            <li>
-                <button class="logout-btn" onclick="confirmLogout()">Keluar</button>
-            </li>
-        </ul>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h2>Jadwal Siswa</h2>
-        <?php if ($result->num_rows > 0): ?>
-        <?php
-            $current_date = null; // Variabel untuk melacak tanggal saat ini
-            while ($row = $result->fetch_assoc()):
-                // Jika tanggal berubah, tampilkan header tanggal baru
-                if ($current_date !== $row['tanggal']):
-                    if ($current_date !== null): ?>
-        </table>
-        <?php endif; ?>
-        <?php $current_date = $row['tanggal']; ?>
-        <h3><?= htmlspecialchars($current_date) ?></h3>
-        <table border="1">
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/foto4.png" alt="Logo">
+    </div>
+    <h1 class="title">Dashboard Siswa</h1>
+    <ul class="nav-links">
+        <li><a href="home.php">Presensi</a></li>
+        <li><a href="pengajar.php">Pengajar</a></li>
+        <li><a href="rating.php">Rating</a></li>
+        <li><a href="jadwal1.php" class="active">Jadwal</a></li>
+        <li><a href="nilai_siswa.php">Nilai</a></li>
+        <li><a href="profile.php">Profil</a></li>
+        <li>
+            <button class="logout-btn" onclick="confirmLogout()">Keluar</button>
+        </li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+<div class="container">
+    <h2>Daftar Kuis dari Pengajar</h2>
+    <table>
+        <thead>
             <tr>
-                <th>Sesi</th>
-                <th>Mata Pelajaran</th>
-                <th>Pengajar</th>
+                <th>Nama Pengajar</th>
+                <th>Nama Kuis</th>
+                <th>Tanggal</th>
+                <th>File</th>
             </tr>
-            <?php endif; ?>
+        </thead>
+        <tbody>
+            <?php if ($result->num_rows > 0): ?>
+            <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
-                <td><?= htmlspecialchars($row['sesi']) ?></td>
-                <td><?= htmlspecialchars($row['mata_pelajaran']) ?></td>
-                <td><?= htmlspecialchars('Kak ' . ($row['pengajar'] ?? 'Pengajar Tidak Ditemukan')) ?></td>
+                <td><?= htmlspecialchars($row['nama_pengajar']) ?></td>
+                <td><?= htmlspecialchars($row['nama_kuis']) ?></td>
+                <td><?= htmlspecialchars($row['tanggal']) ?></td>
+                <td>
+                    <?php if (!empty($row['file_kuis'])): ?>
+                    <a href="download_kuis.php?file=<?= urlencode($row['file_kuis']) ?>" class="unduh"
+                        target="_blank">Unduh</a>
+                    <?php else: ?>
+                    Tidak Ada File
+                    <?php endif; ?>
+                </td>
             </tr>
             <?php endwhile; ?>
-        </table>
-        <?php else: ?>
-        <p>Belum ada jadwal yang tersedia.</p>
-        <?php endif; ?>
-        <a href="kuis.php" class="back-button">Pergi ke Halaman Kuis</a>
-    </div>
-
-    <div id="logout-notification" class="notification">
+            <?php else: ?>
+            <tr>
+                <td colspan="4">Belum ada kuis untuk Anda.</td>
+            </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+    <a href="jadwal1.php" class="back-button">Pergi ke Halaman Jadwal</a>
+</div>
+<div id="logout-notification" class="notification">
         <p>Apakah Anda yakin ingin keluar?</p>
         <div class="notification-buttons">
             <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
             <a href="logout.php" class="btn btn-danger">Keluar</a>
         </div>
     </div>
-
-    <script src="js/menu.js" defer></script>
-    </body>
+</body>
+<script src="js/menu.js" defer></script>
 
 </html>
