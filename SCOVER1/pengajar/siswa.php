@@ -288,6 +288,14 @@ $result = mysqli_query($conn, $query);
         </div>
     </nav>
 
+   <div id="logout-notification" class="notification">
+        <p>Apakah Anda yakin ingin keluar?</p>
+        <div class="notification-buttons">
+            <button class="btn btn-secondary" onclick="cancelLogout()">Batal</button>
+            <a href="logout.php" class="btn btn-danger">Keluar</a>
+        </div>
+    </div>
+
     <div class="container">
         <h2>Daftar Siswa</h2>
 
@@ -323,12 +331,8 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
 
-    <script>
-        function confirmLogout() {
-            if (confirm("Apakah kamu yakin ingin keluar?")) {
-                window.location.href = "logout.php";
-            }
-        }
+     <script src="js/menu.js" defer>
+        
 
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
