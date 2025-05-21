@@ -2,7 +2,6 @@
 session_start();
 include '../koneksi.php';
 
-
 $email = isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null;
 if ($email === null) {
     die("Anda belum login. Harap login terlebih dahulu.");
@@ -18,33 +17,57 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $uploadOk = 1;
     $gambar = '';
+    
     if (!empty($_FILES["gambar"]["name"])) {
         $target_dir = "../uploads/";
-        $gambar = basename($_FILES["gambar"]["name"]);
-        $target_file = $target_dir . $gambar;
-        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        
+        $gambar_name = basename($_FILES["gambar"]["name"]);
+        $imageFileType = strtolower(pathinfo($gambar_name, PATHINFO_EXTENSION));
+
+        // Buat nama unik
+        $new_filename = uniqid('foto_', true) . '.' . $imageFileType;
+        $target_file = $target_dir . $new_filename;
+
+        // Cek apakah file benar-benar gambar
         $check = getimagesize($_FILES["gambar"]["tmp_name"]);
         if ($check === false) {
             echo "File bukan gambar.";
             $uploadOk = 0;
         }
-        if ($_FILES["gambar"]["size"] > 2000000) {
-            echo "Ukuran file terlalu besar.";
+
+        // Cek ukuran file (maks 2MB)
+        if ($_FILES["gambar"]["size"] > 5000000) {
+            echo "Ukuran file terlalu besar. Maksimum 5MB.";
             $uploadOk = 0;
         }
-        if (!in_array($imageFileType, ["jpg", "png", "jpeg", "gif"])) {
-            echo "Hanya format JPG, JPEG, PNG & GIF yang diperbolehkan.";
+
+        // Validasi ekstensi
+        $allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+        if (!in_array($imageFileType, $allowedExtensions)) {
+            echo "Hanya file JPG, JPEG, PNG, dan GIF yang diperbolehkan.";
             $uploadOk = 0;
         }
+
+        // Validasi MIME type
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType = finfo_file($finfo, $_FILES["gambar"]["tmp_name"]);
+        finfo_close($finfo);
+
+        if (!in_array($mimeType, $allowedMimeTypes)) {
+            echo "File bukan tipe gambar yang valid.";
+            $uploadOk = 0;
+        }
+
+        // Upload file jika valid
         if ($uploadOk && move_uploaded_file($_FILES["gambar"]["tmp_name"], $target_file)) {
             $gambar = $target_file;
-        } else {
+        } else if ($uploadOk) {
             echo "Terjadi kesalahan saat mengupload gambar.";
             $uploadOk = 0;
         }
     }
-    
+
+    // Update query
     $query = "UPDATE siswa SET full_name='$full_name', sekolah='$sekolah', kelas='$kelas', ttl='$ttl', alamat='$alamat', nohp='$nohp'";
     if ($gambar) {
         $query .= ", gambar='$gambar'";
@@ -59,19 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-function formatNoHP($nohp) {
-    $nohp = preg_replace('/[^0-9]/', '', $nohp);
-    if (substr($nohp, 0, 1) === '0') {
-        $nohp = '+62' . substr($nohp, 1);
-    } elseif (substr($nohp, 0, 2) !== '62') {
-        $nohp = '+62' . $nohp;
-    } else {
-        $nohp = '+' . $nohp;
-    }
-
-    return $nohp;
-}
-
+// Ambil data siswa
 $query = "SELECT * FROM siswa WHERE email='$email'";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
@@ -79,6 +90,7 @@ if (!$data) {
     die("Data pengguna tidak ditemukan.");
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -275,7 +287,9 @@ input[type="file"] {
         </div>
         <div class="mb-3">
             <label for="gambar" class="form-label">Foto Profil</label>
-            <input type="file" id="gambar" name="gambar" class="form-control">
+          
+            <input type="file" id="gambar" name="gambar" class="form-control" accept="image/*">
+
             <?php if (!empty($data['gambar'])): ?>
                 <img src="<?= htmlspecialchars($data['gambar']); ?>" alt="Foto Profil" class="preview-img">
             <?php endif; ?>
@@ -314,6 +328,19 @@ input[type="file"] {
     function cancelLogout() {
         document.getElementById('logout-notification').style.display = 'none';
     }
+    document.querySelector('form').addEventListener('submit', function(e) {
+    const fileInput = document.getElementById('gambar');
+    const file = fileInput.files[0];
+    if (file) {
+        const maxSizeMB = 5;
+        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+        if (file.size > maxSizeBytes) {
+            alert(`Ukuran file terlalu besar. Maksimum ${maxSizeMB}MB.`);
+            e.preventDefault(); // hentikan submit form
+            fileInput.value = "";
+        }
+    }
+});
 </script>
 <script src="js/menu.js" defer></script>
 <script src="js/logout.js" defer></script>
