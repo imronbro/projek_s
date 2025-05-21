@@ -66,48 +66,120 @@ $result = $stmt->get_result();
         }
 
         .container {
-            margin-top: 100px; /* Tambahkan margin agar konten tidak tertutup navbar */
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 30px;
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        margin-top: 35px;
+        padding: 50px;
+        width: 90%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        text-align: center;
+        color: #145375;
+        margin-bottom: 20px;
+        font-size: 2.5em;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #fabe49;
+        color: #003049;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    th,
+    td {
+        padding: 15px;
+        border: 1px solid #003049;
+        text-align: center;
+        font-size: 1em;
+    }
+
+    th {
+        background-color: #faaf1d;
+        color: #003049;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #e0e0e0;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    tr:hover {
+        background-color: #faaf1d;
+        color: #003049;
+    }
+
+    @media (max-width: 768px) {
+        .filter-form {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .filter-form input,
+        .filter-form button {
+            width: 100%;
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #145375;
+            font-size: 2em;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table th, table td {
-            border: 1px solid #ccc;
+        th,
+        td {
+            font-size: 0.9em;
             padding: 10px;
-            text-align: left;
-            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h2 {
+            font-size: 1.8em;
         }
 
-        table th {
-            background-color: #145375;
-            color: white;
+        th,
+        td {
+            font-size: 0.8em;
+            padding: 8px;
         }
 
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
+        .filter-form input,
+        .filter-form button {
+            font-size: 0.9em;
+            padding: 8px;
         }
-
-        table tr:hover {
-            background-color: #e6c200;
-            color: #145375;
-        }
+    }
 
         .btn-edit, .btn-delete {
             display: inline-block;

@@ -12,7 +12,15 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  margin: 0 auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Terapkan font Poppins hanya untuk elemen navbar */
+.navbar,
+.navbar * {
+  font-family: "Poppins", sans-serif !important; /* Gunakan font Poppins */
+  font-weight: 400; /* Berat font default */
 }
 
 /* Logo */
@@ -30,7 +38,7 @@
 /* Logo Text */
 .navbar .logo-text {
   font-size: 1.5em; /* Ukuran default untuk layar besar */
-  font-weight: bold;
+  font-weight: 600; /* Berat font untuk teks logo */
   color: #fabe49;
   white-space: nowrap; /* Pastikan teks tidak membungkus */
 }
@@ -38,7 +46,7 @@
 /* Title */
 .navbar .title {
   font-size: 1.8em; /* Ukuran default untuk layar besar */
-  font-weight: bold;
+  font-weight: 700; /* Berat font untuk judul */
   color: white;
   text-align: center;
   flex-grow: 1; /* Ambil ruang yang tersedia */
@@ -46,17 +54,15 @@
 }
 
 /* Menu hamburger */
-
 .menu-icon {
-  display: none; /* Tetap disembunyikan di layar besar */
+  display: none; /* Sembunyikan pada layar besar */
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
   position: absolute;
-  top: 25px; /* Jarak dari atas */
-  right: 20px; /* Geser ke kanan */
-  z-index: 1100;
-  transform: none; /* Hapus efek tengah */
+  top: 15px; /* Posisikan di dekat bagian atas */
+  right: 20px; /* Posisikan di pojok kanan */
+  z-index: 1100; /* Pastikan di atas elemen lainnya */
 }
 
 .menu-icon span {
@@ -78,7 +84,6 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
 /* Navbar */
 .navbar .nav-links {
   display: flex; /* Pastikan nav-links terlihat secara default */
@@ -99,6 +104,7 @@
   font-size: 16px;
   padding: 10px 15px;
   transition: all 0.3s ease;
+  font-weight: 500; /* Berat font untuk tautan */
 }
 
 .navbar .nav-links a::after {
@@ -122,27 +128,26 @@
   border-radius: 5px;
 }
 
-/* Tombol logout */
-.navbar .logout-btn {
-  background-color: red;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin: 0 10px 0 0; /* Tambahkan margin kanan untuk memberi ruang */
+/* Tombol Logout */
+.logout-btn {
+  background-color: #e74c3c; /* Warna merah */
+  color: white; /* Warna teks */
+  border: none; /* Hilangkan border */
+  padding: 10px 20px; /* Padding tombol */
+  border-radius: 5px; /* Sudut tombol melengkung */
+  font-size: 14px; /* Ukuran font default */
+  font-weight: bold; /* Teks tebal */
+  cursor: pointer; /* Ubah kursor menjadi pointer */
+  text-align: center; /* Teks di tengah */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animasi hover */
+  display: inline-block; /* Pastikan tombol tetap dalam satu baris */
   white-space: nowrap; /* Pastikan teks tidak membungkus */
 }
 
-.navbar .logout-btn:hover {
-  background-color: rgb(218, 63, 63); /* Warna hover */
-  transform: scale(1.05); /* Efek zoom */
+/* Efek Hover */
+.logout-btn:hover {
+  background-color: #c0392b; /* Warna merah lebih gelap saat hover */
+  transform: scale(1.05); /* Efek zoom saat hover */
 }
 
 /* Default untuk nav-links li */
@@ -153,9 +158,30 @@
 }
 
 /* Responsif untuk layar tablet dan laptop kecil */
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
+  .navbar .logo-text {
+    font-size: 1.3em; /* Ukuran lebih kecil untuk layar tablet */
+  }
+
+  .navbar .title {
+    display: none; /* Sembunyikan judul pada layar tablet */
+  }
+
+  .navbar .nav-links a {
+    font-size: 14px; /* Ukuran lebih kecil untuk nav-link */
+    padding: 8px 12px;
+  }
+
+  .navbar .nav-links li {
+    margin: 8px 0; /* Kurangi margin */
+    font-size: 14px; /* Ukuran font lebih kecil */
+  }
+}
+
+/* Navbar untuk layar kecil */
+@media (max-width: 768px) {
   .menu-icon {
-    display: flex; /* Tampilkan tombol hamburger */
+    display: flex; /* Tampilkan menu icon pada layar kecil */
   }
 
   .navbar {
@@ -195,11 +221,11 @@
     padding: 10px;
   }
 
-  .navbar .logout-btn {
-    margin: 10px auto; /* Posisikan tombol di tengah dengan margin otomatis */
-    font-size: 14px;
-    padding: 10px 15px; /* Sesuaikan ukuran tombol */
-    align-self: center; /* Posisikan tombol di tengah */
+  .logout-btn {
+    font-size: 13px; /* Ukuran font lebih kecil */
+    padding: 8px 15px; /* Padding lebih kecil */
+    width: auto; /* Tombol tetap auto */
+    margin: 10px auto; /* Posisikan tombol di tengah */
   }
 
   .navbar .logo-text {
@@ -209,6 +235,101 @@
   .navbar .title {
     font-size: 1.2em; /* Sesuaikan ukuran judul */
   }
+}
 
-  
+/* Responsif untuk layar ponsel kecil */
+@media (max-width: 480px) {
+  .navbar .logo img {
+    width: 40px;
+  }
+
+  .navbar .logo-text {
+    font-size: 1em; /* Ukuran lebih kecil untuk layar ponsel kecil */
+  }
+
+  .navbar .title {
+    font-size: 1em; /* Sesuaikan ukuran judul */
+  }
+
+  .navbar .nav-links a {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .navbar .nav-links li {
+    margin: 5px 0; /* Margin lebih kecil */
+    font-size: 12px; /* Ukuran font lebih kecil */
+  }
+
+  .logout-btn {
+    font-size: 12px; /* Ukuran font lebih kecil lagi */
+    padding: 8px 10px; /* Padding lebih kecil lagi */
+    width: 90%; /* Tombol memenuhi 90% lebar layar */
+    text-align: center; /* Teks di tengah */
+    margin: 10px auto; /* Posisikan tombol di tengah */
+  }
+}
+
+/* Notifikasi Pop-up */
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  color: #145375;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none; /* Default: disembunyikan */
+  text-align: center;
+  width: 300px;
+}
+
+.notification p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Tombol di dalam notifikasi */
+.notification-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.notification-buttons .btn {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-decoration: none; /* Hilangkan garis bawah */
+}
+
+/* Tombol Batal */
+.notification-buttons .btn-secondary {
+  background-color: #145375;
+  color: white;
+}
+
+.notification-buttons .btn-secondary:hover {
+  background-color: #e6c200;
+  color: #145375;
+}
+
+/* Tombol Keluar */
+.notification-buttons .btn-danger {
+  background-color: #e74c3c; /* Warna merah */
+  color: white;
+  border: none;
+}
+
+.notification-buttons .btn-danger:hover {
+  background-color: #c0392b; /* Warna merah lebih gelap saat hover */
+  transform: scale(1.05); /* Efek zoom saat hover */
 }
