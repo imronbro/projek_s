@@ -31,9 +31,10 @@ $result = mysqli_query($conn, $query);
     <link rel="stylesheet" href="css/pengajar.css">
     <style>
         /* Global Styles */
-                * {
+        * {
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f4f4f4;
@@ -58,7 +59,7 @@ $result = mysqli_query($conn, $query);
 
         /* Kartu Pengajar */
         .card {
-            background-color: #ffffff;
+            background-color: #145375;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             /* Bayangan lembut */
@@ -78,18 +79,25 @@ $result = mysqli_query($conn, $query);
 
         /* Gambar pada Kartu Pengajar */
         .card img {
-            width: 150px; /* Lebar gambar tetap */
-            height: 150px; /* Tinggi gambar tetap */
-            border-radius: 50%; /* Membuat gambar menjadi bulat */
-            object-fit: cover; /* Memastikan gambar tetap proporsional */
-            margin: 0 auto; /* Pusatkan gambar di dalam kartu */
-            display: block; /* Pastikan gambar menjadi elemen blok */
-            border: 3px solid #145375; /* Tambahkan border untuk estetika */
+            width: 150px;
+            /* Lebar gambar tetap */
+            height: 150px;
+            /* Tinggi gambar tetap */
+            border-radius: 50%;
+            /* Membuat gambar menjadi bulat */
+            object-fit: cover;
+            /* Memastikan gambar tetap proporsional */
+            margin: 0 auto;
+            /* Pusatkan gambar di dalam kartu */
+            display: block;
+            /* Pastikan gambar menjadi elemen blok */
+            border: 3px solid #145375;
+            /* Tambahkan border untuk estetika */
         }
 
         .card h4 {
             font-size: 1.2em;
-            color: #145375;
+            color: #fff;
             margin: 10px 0;
         }
 
@@ -143,6 +151,7 @@ $result = mysqli_query($conn, $query);
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -151,70 +160,90 @@ $result = mysqli_query($conn, $query);
 
         /* Daftar Pengajar */
         .row {
-            display: flex;
-            flex-wrap: wrap; /* Pastikan elemen menyesuaikan layar */
-            gap: 30px; /* Jarak antar kartu */
-            justify-content: center; /* Pusatkan elemen */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* 3–4 kartu tergantung lebar layar */
+            gap: 30px;
+            /* Ini jarak antar kartu, termasuk horizontal */
             margin-top: 20px;
+            padding: 0 10px;
         }
 
         .col-md-4 {
-            flex: 1 1 calc(25% - 30px); /* Lebar kartu di layar besar */
-            max-width: calc(25% - 30px); /* Maksimal 4 kartu per baris */
-            box-sizing: border-box; /* Sertakan padding dan border dalam ukuran */
+            width: 100%;
+            /* biar kartu isi kolom grid penuh */
         }
 
+
+
         .card {
-            background-color: #ffffff;
+            background-color: #145375;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Bayangan lembut */
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animasi hover */
-            padding: 20px; /* Tambahkan padding di dalam kartu */
-            min-height: 440px;
-            margin-left: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Animasi hover */
+            padding: 20px;
+            /* Tambahkan padding di dalam kartu */
+            min-height: 370px;
+
         }
 
         .card:hover {
-            transform: scale(1.05); /* Efek zoom saat hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Bayangan lebih besar saat hover */
+            transform: scale(1.05);
+            /* Efek zoom saat hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            /* Bayangan lebih besar saat hover */
         }
 
         .card img {
-            width: 120px; /* Lebar gambar tetap */
-            height: 120px; /* Tinggi gambar tetap */
-            border-radius: 50%; /* Membuat gambar menjadi bulat */
-            object-fit: cover; /* Memastikan gambar tetap proporsional */
-            margin: 0 auto 15px; /* Pusatkan gambar di dalam kartu dan beri jarak bawah */
-            display: block; /* Pastikan gambar menjadi elemen blok */
-            border: 3px solid #145375; /* Tambahkan border untuk estetika */
+            width: 120px;
+            /* Lebar gambar tetap */
+            height: 120px;
+            /* Tinggi gambar tetap */
+            border-radius: 50%;
+            /* Membuat gambar menjadi bulat */
+            object-fit: cover;
+            /* Memastikan gambar tetap proporsional */
+            margin: 0 auto 15px;
+            /* Pusatkan gambar di dalam kartu dan beri jarak bawah */
+            display: block;
+            /* Pastikan gambar menjadi elemen blok */
+            border: 3px solid #fabe49;
+            /* Tambahkan border untuk estetika */
         }
 
         .card h4 {
             font-size: 1.2em;
-            color: #145375;
+
             margin: 10px 0;
-            text-align: center; /* Teks rata tengah */
+            text-align: center;
+            /* Teks rata tengah */
         }
 
         .card p {
             font-size: 0.9em;
-            color: #555;
+            color: #faaf1d;
             margin-bottom: 15px;
-            text-align: center; /* Teks rata tengah */
+            text-align: center;
+            /* Teks rata tengah */
         }
 
         .card .btn-group-vertical {
             display: flex;
-            flex-direction: column; /* Tombol vertikal */
+            flex-direction: column;
+            /* Tombol vertikal */
             align-items: center;
-            gap: 10px; /* Jarak antar tombol */
+            gap: 10px;
+            /* Jarak antar tombol */
             margin-top: 10px;
         }
 
         .card .btn {
             display: block;
-            width: 90%; /* Lebar tombol hampir penuh */
+            width: 90%;
+            /* Lebar tombol hampir penuh */
             padding: 10px;
             background-color: #faaf1d;
             color: white;
@@ -229,7 +258,8 @@ $result = mysqli_query($conn, $query);
 
         .card .btn:hover {
             background-color: #fabe49;
-            transform: scale(1.05); /* Efek zoom saat hover */
+            transform: scale(1.05);
+            /* Efek zoom saat hover */
         }
 
         /* Form Pencarian */
@@ -243,34 +273,45 @@ $result = mysqli_query($conn, $query);
         .search-box {
             display: flex;
             align-items: center;
-            gap: 10px; /* Jarak antara input dan tombol */
+            gap: 10px;
+            /* Jarak antara input dan tombol */
             width: 100%;
-            max-width: 600px; /* Lebar maksimum form pencarian */
+            max-width: 600px;
+            /* Lebar maksimum form pencarian */
         }
 
         .search-input {
-            flex: 1; /* Input memenuhi ruang yang tersedia */
+            flex: 1;
+            /* Input memenuhi ruang yang tersedia */
             padding: 12px;
-            border: 1px solid #ccc; /* Border abu-abu */
-            border-radius: 5px; /* Sudut membulat */
+            border: 1px solid #ccc;
+            /* Border abu-abu */
+            border-radius: 5px;
+            /* Sudut membulat */
             font-size: 16px;
-            box-sizing: border-box; /* Sertakan padding dalam lebar total */
+            box-sizing: border-box;
+            /* Sertakan padding dalam lebar total */
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .search-input:focus {
-            border-color: #faaf1d; /* Border kuning saat fokus */
-            box-shadow: 0 0 5px rgba(250, 175, 29, 0.5); /* Efek cahaya kuning */
-            outline: none; /* Hilangkan outline default */
+            border-color: #faaf1d;
+            /* Border kuning saat fokus */
+            box-shadow: 0 0 5px rgba(250, 175, 29, 0.5);
+            /* Efek cahaya kuning */
+            outline: none;
+            /* Hilangkan outline default */
         }
 
         /* Tombol Cari */
         .button {
             padding: 12px 20px;
-            background-color: #faaf1d; /* Warna tombol kuning */
+            background-color: #faaf1d;
+            /* Warna tombol kuning */
             color: white;
             border: none;
-            border-radius: 5px; /* Sudut membulat */
+            border-radius: 5px;
+            /* Sudut membulat */
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -278,36 +319,47 @@ $result = mysqli_query($conn, $query);
         }
 
         .button:hover {
-            background-color: #fabe49; /* Warna kuning lebih terang saat hover */
-            transform: scale(1.05); /* Efek zoom saat hover */
+            background-color: #fabe49;
+            /* Warna kuning lebih terang saat hover */
+            transform: scale(1.05);
+            /* Efek zoom saat hover */
         }
 
         /* Responsif untuk Layar Kecil */
         @media (max-width: 768px) {
 
-        
+
             .search-box {
-                flex-direction: column; /* Susun input dan tombol secara vertikal */
-                gap: 10px; /* Jarak antar elemen */
+                flex-direction: column;
+                /* Susun input dan tombol secara vertikal */
+                gap: 10px;
+                /* Jarak antar elemen */
             }
 
             .button {
-                width: 100%; /* Tombol memenuhi lebar layar */
-                font-size: 14px; /* Ukuran font lebih kecil */
-                padding: 10px; /* Kurangi padding untuk tombol */
+                width: 100%;
+                /* Tombol memenuhi lebar layar */
+                font-size: 14px;
+                /* Ukuran font lebih kecil */
+                padding: 10px;
+                /* Kurangi padding untuk tombol */
             }
         }
 
         /* Responsif untuk Layar Sangat Kecil */
         @media (max-width: 480px) {
             .search-input {
-                font-size: 14px; /* Ukuran font lebih kecil di layar kecil */
-                padding: 8px; /* Kurangi padding */
+                font-size: 14px;
+                /* Ukuran font lebih kecil di layar kecil */
+                padding: 8px;
+                /* Kurangi padding */
             }
 
             .button {
-                font-size: 12px; /* Ukuran font lebih kecil */
-                padding: 8px 10px; /* Kurangi padding tombol */
+                font-size: 12px;
+                /* Ukuran font lebih kecil */
+                padding: 8px 10px;
+                /* Kurangi padding tombol */
             }
         }
 
@@ -324,8 +376,10 @@ $result = mysqli_query($conn, $query);
             }
 
             .card img {
-                width: 120px; /* Lebar gambar lebih kecil di layar kecil */
-                height: 120px; /* Tinggi gambar lebih kecil di layar kecil */
+                width: 120px;
+                /* Lebar gambar lebih kecil di layar kecil */
+                height: 120px;
+                /* Tinggi gambar lebih kecil di layar kecil */
             }
 
             .card h4 {
@@ -353,8 +407,10 @@ $result = mysqli_query($conn, $query);
 
         @media (max-width: 480px) {
             .card img {
-                width: 100px; /* Lebar gambar lebih kecil di layar sangat kecil */
-                height: 100px; /* Tinggi gambar lebih kecil di layar sangat kecil */
+                width: 100px;
+                /* Lebar gambar lebih kecil di layar sangat kecil */
+                height: 100px;
+                /* Tinggi gambar lebih kecil di layar sangat kecil */
             }
 
             .card h4 {
@@ -446,19 +502,23 @@ $result = mysqli_query($conn, $query);
                     $imagePath = "../uploads/" . basename(htmlspecialchars($row['gambar']));
                     $defaultImage = "../uploads1/default.jpg";
                     $finalImage = (!empty($row['gambar']) && file_exists($imagePath)) ? $imagePath : $defaultImage;
+
+                    $fullName = htmlspecialchars($row['full_name']);
+                    $firstName = explode(' ', trim($fullName))[0];
+                    $displayName = "kak " . ucfirst(strtolower($firstName));
                 ?>
                     <div class="col-md-4 mb-4">
                         <div class="card text-center p-3">
                             <img src="<?= $finalImage; ?>" alt="Foto Pengajar" class="profile-img mb-3">
-                            <h4><?= htmlspecialchars($row['full_name']); ?></h4>
+                            <h4><?= $displayName; ?></h4>
                             <p><strong>TUTOR <?= htmlspecialchars($row['mapel']); ?></strong></p>
-                            <p class="badge"><?= htmlspecialchars($row['mapel']); ?></p>
                             <div class="btn-group-vertical">
                                 <a href="https://wa.me/<?= htmlspecialchars($row['nohp']); ?>" target="_blank" class="btn btn-whatsapp">Hubungi via WhatsApp</a>
                             </div>
                         </div>
                     </div>
                 <?php } ?>
+
             <?php } else { ?>
                 <div class="col-12 text-center">
                     <p class="text-danger">Pengajar tidak ditemukan.</p>

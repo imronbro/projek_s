@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Cek ukuran file (maks 2MB)
-        if ($_FILES["gambar"]["size"] > 2000000) {
-            echo "Ukuran file terlalu besar. Maksimum 2MB.";
+        if ($_FILES["gambar"]["size"] > 5000000) {
+            echo "Ukuran file terlalu besar. Maksimum 5MB.";
             $uploadOk = 0;
         }
 
@@ -328,6 +328,19 @@ input[type="file"] {
     function cancelLogout() {
         document.getElementById('logout-notification').style.display = 'none';
     }
+    document.querySelector('form').addEventListener('submit', function(e) {
+    const fileInput = document.getElementById('gambar');
+    const file = fileInput.files[0];
+    if (file) {
+        const maxSizeMB = 5;
+        const maxSizeBytes = maxSizeMB * 1024 * 1024;
+        if (file.size > maxSizeBytes) {
+            alert(`Ukuran file terlalu besar. Maksimum ${maxSizeMB}MB.`);
+            e.preventDefault(); // hentikan submit form
+            fileInput.value = "";
+        }
+    }
+});
 </script>
 <script src="js/menu.js" defer></script>
 <script src="js/logout.js" defer></script>
