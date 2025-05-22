@@ -1,8 +1,8 @@
 {
     "poppins": {
-        "normal": "C:\\xampp1\\htdocs\\projek_s-1\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_normal_c6711d47669d7317aa5bfeda9f1dded3",
-        "500": "C:\\xampp1\\htdocs\\projek_s-1\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_500_a8989f7b44a711b1b2ef07347b37ec13",
-        "600": "C:\\xampp1\\htdocs\\projek_s-1\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_600_8766355d2de6e5a80a8dfebc31aeaedf",
-        "bold": "poppins_bold_e65267788fadc7206923de221454a2be"
+        "normal": "C:\\xampp\\htdocs\\Scover\\projek_s-6\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_normal_c6711d47669d7317aa5bfeda9f1dded3",
+        "500": "C:\\xampp\\htdocs\\Scover\\projek_s-6\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_500_a8989f7b44a711b1b2ef07347b37ec13",
+        "600": "poppins_600_8766355d2de6e5a80a8dfebc31aeaedf",
+        "bold": "C:\\xampp\\htdocs\\Scover\\projek_s-6\\SCOVER1\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_bold_e65267788fadc7206923de221454a2be"
     }
 }

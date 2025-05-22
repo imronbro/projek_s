@@ -116,7 +116,7 @@ $tahun_result = $conn->query($tahun_query);
 
         h2 {
             text-align: center;
-            color: #145375;
+            color: #faaf1d;
             /* Dark yellow */
             margin-bottom: 20px;
             font-size: 2.5em;
@@ -361,22 +361,23 @@ $tahun_result = $conn->query($tahun_query);
 
         <!-- Filter Pilihan Bulan dan Tahun -->
         <form method="get" action="nilai_siswa.php" class="filter-form">
-            <label for="bulan">Pilih Bulan:</label>
+            <label for="bulan">Bulan:</label>
             <select id="bulan" name="bulan" required>
                 <?php
+                $bulan_sekarang = date('n');
                 for ($i = 1; $i <= 12; $i++) {
-                    $selected = (isset($_GET['bulan']) && $_GET['bulan'] == $i) ? 'selected' : '';
+                    $selected = (isset($_GET['bulan']) ? $_GET['bulan'] : $bulan_sekarang) == $i ? 'selected' : '';
                     echo "<option value='$i' $selected>" . date('F', mktime(0, 0, 0, $i, 1)) . "</option>";
                 }
                 ?>
             </select>
 
-            <label for="tahun">Pilih Tahun:</label>
+            <label for="tahun">Tahun:</label>
             <select id="tahun" name="tahun" required>
                 <?php
-                $currentYear = date('Y');
-                for ($i = $currentYear; $i >= $currentYear - 5; $i--) {
-                    $selected = (isset($_GET['tahun']) && $_GET['tahun'] == $i) ? 'selected' : '';
+                $tahun_sekarang = date('Y');
+                for ($i = 2025; $i <= 2035; $i++) {
+                    $selected = (isset($_GET['tahun']) ? $_GET['tahun'] : $tahun_sekarang) == $i ? 'selected' : '';
                     echo "<option value='$i' $selected>$i</option>";
                 }
                 ?>
@@ -413,7 +414,8 @@ $tahun_result = $conn->query($tahun_query);
                 ?>
             </tbody>
         </table>
-        <a href="download_nilai.php?format=pdf&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh Nilai</a>
+    
+        <a href="download_nilai.php?format=html&bulan=<?= isset($_GET['bulan']) ? $_GET['bulan'] : date('m'); ?>&tahun=<?= isset($_GET['tahun']) ? $_GET['tahun'] : date('Y'); ?>" class="back-button">Unduh</a>
     </div>
 
     <div id="logout-notification" class="notification">
