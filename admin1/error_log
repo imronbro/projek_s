@@ -1,0 +1,712 @@
+[16-May-2025 20:50:12 Asia/Jakarta] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/scoe1247/public_html/koneksi.php:1) in /home/scoe1247/public_html/admin1/loginadmin.php on line 17
+[16-May-2025 20:50:12 Asia/Jakarta] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/scoe1247/public_html/koneksi.php:1) in /home/scoe1247/public_html/admin1/loginadmin.php on line 25
+[16-May-2025 20:50:12 Asia/Jakarta] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/scoe1247/public_html/koneksi.php:1) in /home/scoe1247/public_html/admin1/loginadmin.php on line 26
+[16-May-2025 20:50:28 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/jadwal.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[16-May-2025 20:50:51 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/nilai.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[16-May-2025 20:50:52 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/nilai.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[17-May-2025 00:23:17 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/home.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[17-May-2025 05:45:27 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/home.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[17-May-2025 12:24:02 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/home.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[17-May-2025 12:41:10 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/scoe1247/public_html/admin1/koneksi.php:7
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/koneksi.php(7): mysqli_connect('localhost', 'root', '', 'scover')
+#1 /home/scoe1247/public_html/admin1/pengajar.php(3): include('/home/scoe1247/...')
+#2 {main}
+  thrown in /home/scoe1247/public_html/admin1/koneksi.php on line 7
+[17-May-2025 12:43:56 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'tempat' in 'SELECT' in /home/scoe1247/public_html/admin1/presensipengajar.php:28
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/presensipengajar.php(28): mysqli_query(Object(mysqli), 'SELECT full_nam...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 28
+[17-May-2025 12:44:11 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'tempat' in 'SELECT' in /home/scoe1247/public_html/admin1/presensipengajar.php:28
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/presensipengajar.php(28): mysqli_query(Object(mysqli), 'SELECT full_nam...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 28
+[17-May-2025 12:44:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:38 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 12:44:46 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:46 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 12:44:47 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 12:45:13 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'tempat' in 'SELECT' in /home/scoe1247/public_html/admin1/presensipengajar.php:28
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/presensipengajar.php(28): mysqli_query(Object(mysqli), 'SELECT full_nam...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 28
+[17-May-2025 12:53:00 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'tempat' in 'SELECT' in /home/scoe1247/public_html/admin1/presensipengajar.php:28
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/presensipengajar.php(28): mysqli_query(Object(mysqli), 'SELECT full_nam...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 28
+[17-May-2025 12:55:50 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'tempat' in 'SELECT' in /home/scoe1247/public_html/admin1/presensipengajar.php:35
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/presensipengajar.php(35): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 35
+[17-May-2025 13:00:48 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 13:00:48 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 13:00:49 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 13:01:00 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 13:01:03 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 13:01:03 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 14:01:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 14:01:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 14:01:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 14:01:23 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 18:43:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:43:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:43:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:45:11 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 18:45:26 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 18:47:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:47:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:47:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:48:03 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[17-May-2025 18:48:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:48:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:48:17 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:49:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:49:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:49:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:49:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:49:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[17-May-2025 18:52:01 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[19-May-2025 10:49:33 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[19-May-2025 10:49:33 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[19-May-2025 10:49:33 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[19-May-2025 10:49:33 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 504
+[19-May-2025 10:49:38 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[19-May-2025 10:50:15 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[19-May-2025 10:51:26 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 469
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:32:25 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 505
+[20-May-2025 11:42:12 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:44:31 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[20-May-2025 11:47:28 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 11:47:42 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:54 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:55 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[20-May-2025 20:01:56 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 09:59:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 10:00:13 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[21-May-2025 10:00:25 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:12 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:30:23 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[21-May-2025 11:38:50 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:50 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:50 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:50 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:38:50 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:38:57 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:57 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:57 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:38:57 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:38:57 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:39:03 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:03 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:03 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:03 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:39:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:39:42 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:42 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:42 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:39:42 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:39:42 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:40:22 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:22 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:22 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:22 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:22 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:29 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:29 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:29 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:29 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:29 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:38 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:38 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:38 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:38 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:46 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:46 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:46 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:40:46 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:40:46 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:41:01 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:41:01 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:41:01 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:41:01 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:41:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:43:09 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:09 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:09 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:09 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:43:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:43:14 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:14 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:14 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:43:14 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:43:14 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:44:59 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:44:59 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:44:59 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:44:59 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:44:59 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:45:02 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:45:02 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:45:02 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 3
+[21-May-2025 11:45:02 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:45:02 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 11
+[21-May-2025 11:45:48 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/presensipengajar.php on line 3
+[21-May-2025 11:45:48 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/presensipengajar.php on line 3
+[21-May-2025 11:45:48 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/presensipengajar.php on line 3
+[21-May-2025 11:45:48 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/presensipengajar.php on line 13
+[21-May-2025 11:45:48 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/presensipengajar.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/presensipengajar.php on line 13
+[21-May-2025 11:46:00 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 5
+[21-May-2025 11:46:00 Asia/Jakarta] PHP Warning:  include(koneksi.php): Failed to open stream: No such file or directory in /home/scoe1247/public_html/admin1/home.php on line 5
+[21-May-2025 11:46:00 Asia/Jakarta] PHP Warning:  include(): Failed opening 'koneksi.php' for inclusion (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/scoe1247/public_html/admin1/home.php on line 5
+[21-May-2025 11:46:00 Asia/Jakarta] PHP Warning:  Undefined variable $conn in /home/scoe1247/public_html/admin1/home.php on line 13
+[21-May-2025 11:46:00 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/scoe1247/public_html/admin1/home.php:13
+Stack trace:
+#0 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 13
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 11:48:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 13:15:35 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 13:15:55 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 13:17:47 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 13:53:32 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 14:02:46 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 14:02:49 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 14:03:28 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'a.waktu_presensi' in 'SELECT' in /home/scoe1247/public_html/admin1/home.php:80
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(80): mysqli->prepare('SELECT a.status...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 80
+[21-May-2025 14:12:45 Asia/Jakarta] PHP Warning:  Undefined variable $full_name in /home/scoe1247/public_html/admin1/home.php on line 393
+[21-May-2025 14:12:45 Asia/Jakarta] PHP Warning:  Undefined variable $siswa_list in /home/scoe1247/public_html/admin1/home.php on line 399
+[21-May-2025 14:12:45 Asia/Jakarta] PHP Warning:  foreach() argument must be of type array|object, null given in /home/scoe1247/public_html/admin1/home.php on line 399
+[21-May-2025 14:12:45 Asia/Jakarta] PHP Warning:  Undefined variable $tanggal_filter in /home/scoe1247/public_html/admin1/home.php on line 407
+[21-May-2025 14:12:45 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/home.php on line 407
+[21-May-2025 14:13:20 Asia/Jakarta] PHP Warning:  Undefined variable $siswa_list in /home/scoe1247/public_html/admin1/home.php on line 399
+[21-May-2025 14:13:20 Asia/Jakarta] PHP Warning:  foreach() argument must be of type array|object, null given in /home/scoe1247/public_html/admin1/home.php on line 399
+[21-May-2025 14:13:20 Asia/Jakarta] PHP Warning:  Undefined variable $tanggal_filter in /home/scoe1247/public_html/admin1/home.php on line 407
+[21-May-2025 14:13:20 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/home.php on line 407
+[21-May-2025 14:17:10 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:38
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(38): mysqli_stmt->bind_param('s', '2025-05-21')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 38
+[21-May-2025 14:17:40 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:38
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(38): mysqli_stmt->bind_param('s', '2025-05-21')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 38
+[21-May-2025 14:19:16 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:42
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(42): mysqli_stmt->bind_param('s', '2025-05-21')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 42
+[21-May-2025 14:20:07 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:42
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(42): mysqli_stmt->bind_param('s', '2025-05-21')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 42
+[21-May-2025 14:20:43 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:42
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(42): mysqli_stmt->bind_param('s', '21-05-2025')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 42
+[21-May-2025 14:22:06 Asia/Jakarta] PHP Fatal error:  Uncaught ArgumentCountError: The number of variables must match the number of parameters in the prepared statement in /home/scoe1247/public_html/admin1/home.php:43
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/home.php(43): mysqli_stmt->bind_param('s', '21-05-2025')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/home.php on line 43
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[21-May-2025 14:25:39 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:46:24 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:44 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:51:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:11 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:52 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:54 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:52:56 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[22-May-2025 10:53:00 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[22-May-2025 11:44:20 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:15
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(15): mysqli->query('SELECT * FROM j...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 15
+[22-May-2025 11:44:25 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:15
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(15): mysqli->query('SELECT * FROM j...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 15
+[22-May-2025 11:45:51 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:17
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(17): mysqli->query('SELECT * FROM j...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 17
+[22-May-2025 11:48:07 Asia/Jakarta] PHP Warning:  Undefined array key "siswa_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:48:07 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:48:07 Asia/Jakarta] PHP Warning:  Undefined array key "pengajar_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:48:07 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:49:58 Asia/Jakarta] PHP Warning:  Undefined array key "full_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:49:58 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:49:58 Asia/Jakarta] PHP Warning:  Undefined array key "full_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:49:58 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:50:01 Asia/Jakarta] PHP Warning:  Undefined array key "full_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:50:01 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 86
+[22-May-2025 11:50:01 Asia/Jakarta] PHP Warning:  Undefined array key "full_name" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:50:01 Asia/Jakarta] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 102
+[22-May-2025 11:53:42 Asia/Jakarta] PHP Warning:  Undefined array key "siswa" in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 28
+[22-May-2025 11:53:42 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:42
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(42): mysqli->query('UPDATE jadwal S...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 42
+[22-May-2025 11:54:04 Asia/Jakarta] PHP Warning:  Undefined variable $siswa in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 34
+[22-May-2025 11:54:04 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:41
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(41): mysqli->query('UPDATE jadwal S...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 41
+[22-May-2025 11:54:22 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:40
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(40): mysqli->query('UPDATE jadwal S...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 40
+[22-May-2025 11:55:23 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'scoe1247_scover.jadwal' doesn't exist in /home/scoe1247/public_html/admin1/edit_jadwal.php:40
+Stack trace:
+#0 /home/scoe1247/public_html/admin1/edit_jadwal.php(40): mysqli->query('UPDATE jadwal S...')
+#1 {main}
+  thrown in /home/scoe1247/public_html/admin1/edit_jadwal.php on line 40
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:08:45 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:22:09 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:35:18 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:46 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:50 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:37:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[23-May-2025 17:38:35 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[23-May-2025 17:38:56 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:11 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 11:23:42 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:27 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 16:58:34 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:31 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[26-May-2025 18:48:50 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:29:08 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:34:30 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:34:40 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:55:51 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:53 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:55:57 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:56:07 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:30 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:57:36 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:58:35 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:23 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:29 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:29 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:29 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:32 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:37 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 09:59:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:00:57 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:02 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:03:59 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:04 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:13 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:04:43 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:10 Asia/Jakarta] PHP Deprecated:  round(): Passing null to parameter #1 ($num) of type int|float is deprecated in /home/scoe1247/public_html/admin1/pengajar.php on line 572
+[27-May-2025 10:05:42 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:05:46 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:05:49 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:05:53 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:05:57 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:05:59 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:06:05 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:06:11 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:06:15 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:06:23 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:06:38 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:07:30 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:07:54 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
+[27-May-2025 10:12:26 Asia/Jakarta] PHP Warning:  Undefined variable $centerClass in /home/scoe1247/public_html/admin1/siswa.php on line 536
